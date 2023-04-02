@@ -5,11 +5,16 @@ headerImg: angles.jpg
 
 ## Course Resources
 
-- **Lectures:**             MWF 2:00-2:50pm CENTR 119 and on [Zoom](https://ucsd.zoom.us/j/934813358)
-- **Discussion section:**   Fr 11:00-11:50am on [Zoom](https://ucsd.zoom.us/j/934813358)
+- **Lectures:**             MWF 1:00-1:50pm PCYNH 106 and on [Zoom](https://ucsd.zoom.us/j/934813358)
+- **Discussion section:**   W 7:00-7:50pm PCYNH 106 and on [Zoom](https://ucsd.zoom.us/j/934813358)
 - **Calendar:**             Check [here](calendar.html) for office hours, deadlines, etc.
+- **Piazza:**               COMING SOON
+- **Canvas:**               COMING SOON
+
+<!-- 
 - **Piazza:**               Check [here](https://www.piazza.com/ucsd/spring2022/cse130/home) for announcement and discussions
-- **Canvas:**               Check [here](https://canvas.ucsd.edu/courses/36670) for lecture recordings
+- **Canvas:**               Check [here](https://canvas.ucsd.edu/courses/36670) for lecture recordings 
+-->
 
 
 ## Team
@@ -21,14 +26,14 @@ headerImg: angles.jpg
 ### Teaching Assistants
 
 * [Shraddha Barke](https://shraddhabarke.github.io/)
-* [Michael James](http://michaelbjames.com/)
-* Rose Kunkel
+* Aidan Denlinger
+* [Zheng Guo](https://aaronguo1996.github.io/)
 
 ### Tutors
 
-* Darwin Chan
-* Elizaveta Pertseva
-* Shuhua Xie
+* Justin Du
+* Rana Lulla
+* Melody Ruth
 
 ## Overview
 

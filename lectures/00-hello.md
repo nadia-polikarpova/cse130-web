@@ -29,18 +29,17 @@ date: 2017-03-28
 
 ## The Crew
 
-Teaching assistants:
+### Teaching Assistants
 
 * [Shraddha Barke](https://shraddhabarke.github.io/)
-* [Michael James](http://michaelbjames.com/)
-* Rose Kunkel
+* Aidan Denlinger
+* [Zheng Guo](https://aaronguo1996.github.io/)
 
+### Tutors
 
-Tutors
-
-* Darwin Chan
-* Elizaveta Pertseva
-* Shuhua Xie
+* Justin Du
+* Rana Lulla
+* Melody Ruth
 
 <br>
 <br>
@@ -393,8 +392,9 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 - [piazza](https://www.piazza.com/ucsd/spring2022/cse130/home)
     - announcements and discussions
 - [gradescope](https://www.gradescope.com/courses/381579)
-    - homework/exam submissions, grades    
-
+    - homework/exam submissions, grades
+- [classquestion](https://classquestion.com/students) (code: GXJVJ)
+    - anonymous questions during lecture
 
 
 <br>
@@ -441,11 +441,11 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
     
 ## Exams    
 
-- Midterm on *May 2*
+- Midterm on *May 8*
     - Gradescope multiple choice
     - individual
     - 24h timespan
-- Final: *June 10*
+- Final: *June 15*
     - programming assignment
     - individual
     - 24h timespan
@@ -472,7 +472,7 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 ## In-class Quizzes
 
-We will do quizzes in class via iClickers (remotes and app)
+We will do quizzes in class via ClassQuestion 
 
   - Make class interactive
   - Help *you* and *me* understand what's tricky
@@ -486,7 +486,7 @@ We will do quizzes in class via iClickers (remotes and app)
     - Try to reach consensus
 
 3. *Vote*
-    - Using iClicker remote or app
+    - On the ClassQuestion website
 
 4. *Class Discuss*
     - What was easy or tricky?    
@@ -522,8 +522,8 @@ How can you earn 5% extra credit for this class?
 
 ## Your Resources
 
-- Discussion section: Fri 11am
-    - CENTR 119 and/or on Zoom, depending on the TA
+- Discussion section: Wed 7pm
+    - PCYNH and/or on Zoom
     - same Zoom link as lecture
 - Office hours
     - every day, check calendar

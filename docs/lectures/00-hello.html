@@ -233,10 +233,10 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 			<h2 id="who-am-i">Who am I?</h2>
-<div class="figure">
-<img src="https://cseweb.ucsd.edu/~npolikarpova/images/nadia_polikarpova.jpg" alt="Nadia Polikarpova" id="fig:nadia" class="align-center" style="width:25.0%" />
-<p class="caption">Nadia Polikarpova</p>
-</div>
+<figure>
+<img src="https://cseweb.ucsd.edu/~npolikarpova/images/nadia_polikarpova.jpg" id="fig:nadia" class="align-center" style="width:25.0%" alt="Nadia Polikarpova" />
+<figcaption aria-hidden="true">Nadia Polikarpova</figcaption>
+</figure>
 <ul>
 <li>Assistant professor at CSE since 2017</li>
 <li>PhD at ETH Zurich</li>
@@ -247,21 +247,35 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>Program Verification: how to <em>prove</em> the program is doing the right thing?</li>
 <li>Program Synthesis: how to <em>generate</em> a program that does the right thing?</li>
 </ul>
-<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="the-crew">The Crew</h2>
-<p>Teaching assistants:</p>
+<h3 id="teaching-assistants">Teaching Assistants</h3>
 <ul>
 <li><a href="https://shraddhabarke.github.io/">Shraddha Barke</a></li>
-<li><a href="http://michaelbjames.com/">Michael James</a></li>
-<li>Rose Kunkel</li>
+<li>Aidan Denlinger</li>
+<li><a href="https://aaronguo1996.github.io/">Zheng Guo</a></li>
 </ul>
-<p>Tutors</p>
+<h3 id="tutors">Tutors</h3>
 <ul>
-<li>Darwin Chan</li>
-<li>Elizaveta Pertseva</li>
-<li>Shuhua Xie</li>
+<li>Justin Du</li>
+<li>Rana Lulla</li>
+<li>Melody Ruth</li>
 </ul>
-<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="lecture-format">Lecture Format</h2>
 <p>In-person + live on Zoom</p>
 <p>For those joining on Zoom:</p>
@@ -269,7 +283,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>Keep your <em>mic</em> off unless you are talking</li>
 <li>Keep your <em>video</em> on if you can</li>
 <li>Two ways to ask a question:
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>“Raise your hand” in zoom and I will call on you</li>
 <li>Type into zoom chat</li>
 </ol></li>
@@ -278,7 +292,18 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>Same if I ask you a question</li>
 </ul>
 <p>Lectures will also be recorded and published on canvas and/or <a href="https://podcast.ucsd.edu/">podcast</a></p>
-<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="a-programming-language">A Programming Language</h2>
 <h3 id="two-variables">Two Variables</h3>
 <ul>
@@ -286,18 +311,28 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 </ul>
 <h3 id="three-operations">Three Operations</h3>
 <ul>
-<li><code class="sourceCode haskell">x<span class="fu">++</span></code></li>
-<li><code class="sourceCode haskell">x<span class="fu">--</span></code></li>
-<li><code class="sourceCode haskell">x <span class="fu">=</span> <span class="dv">0</span> <span class="fu">?</span> <span class="dt">L1</span> <span class="fu">:</span> <span class="dt">L2</span></code></li>
+<li><code class="sourceCode haskell">x<span class="op">++</span></code></li>
+<li><code class="sourceCode haskell">x<span class="co">--</span></code></li>
+<li><code class="sourceCode haskell">x <span class="ot">=</span> <span class="dv">0</span> <span class="op">?</span> <span class="dt">L1</span> <span class="op">:</span> <span class="dt">L2</span></code></li>
 </ul>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="example-program">Example Program</h2>
 <p>(What <em>does</em> it do?)</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">L1</span><span class="fu">:</span> x<span class="fu">++</span>
-    y<span class="fu">--</span>
-    y <span class="fu">=</span> <span class="dv">0</span> <span class="fu">?</span> <span class="dt">L2</span> <span class="fu">:</span> <span class="dt">L1</span>
-<span class="dt">L2</span><span class="fu">:</span> <span class="fu">...</span></code></pre></div>
-<p><br> <br> <br> <br> <br> <br></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">L1</span><span class="op">:</span> x<span class="op">++</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    y<span class="co">--</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">=</span> <span class="dv">0</span> <span class="op">?</span> <span class="dt">L2</span> <span class="op">:</span> <span class="dt">L1</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">L2</span><span class="op">:</span> <span class="op">...</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="the-above-language-is-equivalent-to-every-pl">The above language is “equivalent to” every PL!</h2>
 <p>(See <a href="https://en.wikipedia.org/wiki/Counter_machine">wikipedia</a>)</p>
 <p>But good luck writing</p>
@@ -312,7 +347,16 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>All Programming Languages share something fundamental</li>
 <li>But also: your Programming Language shapes your Programming Thought</li>
 </ul>
-<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="what-is-cse-130-not-about">What is CSE 130 <strong>not</strong> about?</h2>
 <p>Learning…</p>
 <ul>
@@ -330,51 +374,82 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>Rust 12 years ago</li>
 <li>WebAssembly 5 years ago</li>
 </ul>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="what-is-cse-130-about">What is CSE 130 about?</h2>
 <ul>
 <li>Concepts in programming languages</li>
 <li>Language design and implementation</li>
 </ul>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h3 id="if-you-dont-trust-me-ask-pl-twitter">If you don’t trust me, ask PL Twitter!</h3>
-<div class="figure">
-<img src="../static/img/tweet2.png" alt="Two schools" id="fig:tweet2" class="align-center" />
-<p class="caption">Two schools</p>
-</div>
-<p><br> <br> <br> <br> <br> <br></p>
+<figure>
+<img src="../static/img/tweet2.png" id="fig:tweet2" class="align-center" alt="Two schools" />
+<figcaption aria-hidden="true">Two schools</figcaption>
+</figure>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="course-goals">Course Goals</h2>
-<div class="figure">
-<img src="https://ucsd-cse130.github.io/wi20/static/img/galaxy-brain-130.jpg" alt="130 Brain" id="fig:morpheus" class="align-center" style="width:40.0%" />
-<p class="caption">130 Brain</p>
-</div>
+<figure>
+<img src="https://ucsd-cse130.github.io/wi20/static/img/galaxy-brain-130.jpg" id="fig:morpheus" class="align-center" style="width:40.0%" alt="130 Brain" />
+<figcaption aria-hidden="true">130 Brain</figcaption>
+</figure>
 <blockquote>
 <p>Free Your Mind.</p>
 </blockquote>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="goal-learn-the-anatomy-of-pl">Goal: Learn the Anatomy of PL</h2>
-<div class="figure">
-<img src="../static/img/anatomy.png" alt="Anatomy" id="fig:anatomy" class="align-center" style="width:20.0%" />
-<p class="caption">Anatomy</p>
-</div>
+<figure>
+<img src="../static/img/anatomy.png" id="fig:anatomy" class="align-center" style="width:20.0%" alt="Anatomy" />
+<figcaption aria-hidden="true">Anatomy</figcaption>
+</figure>
 <ul>
 <li>What makes a programming language?</li>
 <li>Which features are <strong>fundamental</strong> and which are <strong>syntactic sugar</strong>?</li>
 </ul>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="goal-learn-new-languages-constructs">Goal: Learn New Languages / Constructs</h2>
-<div class="figure">
-<img src="../static/img/music-score.png" alt="Musical Score" id="fig:music" class="align-center" style="width:30.0%" />
-<p class="caption">Musical Score</p>
-</div>
-<p>New ways to <strong>describe</strong> and <strong>organize</strong> computation, to create programs that are:</p>
+<figure>
+<img src="../static/img/music-score.png" id="fig:music" class="align-center" style="width:30.0%" alt="Musical Score" />
+<figcaption aria-hidden="true">Musical Score</figcaption>
+</figure>
+<p>New ways to <strong>describe</strong> and <strong>organize</strong> computation,
+to create programs that are:</p>
 <ul>
 <li><strong>Correct</strong></li>
 <li><strong>Readable</strong></li>
 <li><strong>Extendable</strong></li>
 <li><strong>Reusable</strong></li>
 </ul>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="goal-how-to-design-new-languages">Goal: How to Design new Languages</h2>
 <p>New hot languages being designed in industry as we speak:</p>
 <ul>
@@ -393,7 +468,12 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>Latex, shell scripts, build scripts (makefiles), …</li>
 </ul>
 <p>If you work on a large system, you <strong>will</strong> design a new PL!</p>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="course-syllabus">Course Syllabus</h2>
 <ul>
 <li>Lambda calculus (2 weeks)
@@ -410,38 +490,64 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>How do we formalize a language and prove things about it?</li>
 </ul></li>
 </ul>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="quicksort-in-c"><strong>QuickSort</strong> in C</h2>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> sort(<span class="dt">int</span> arr[], <span class="dt">int</span> beg, <span class="dt">int</span> end){
-  <span class="kw">if</span> (end &gt; beg + <span class="dv">1</span>){
-    <span class="dt">int</span> piv = arr[beg];
-    <span class="dt">int</span> l = beg + <span class="dv">1</span>;
-    <span class="dt">int</span> r = end;
-    <span class="kw">while</span> (l != r<span class="dv">-1</span>)
-       <span class="kw">if</span>(arr[l] &lt;= piv) l++;
-       <span class="kw">else</span> swap(&amp;arr[l], &amp;arr[r--]);
-    <span class="kw">if</span>(arr[l]&lt;=piv &amp;&amp; arr[r]&lt;=piv)
-       l=r<span class="dv">+1</span>;
-    <span class="kw">else</span> <span class="kw">if</span>(arr[l]&lt;=piv &amp;&amp; arr[r]&gt;piv)
-       {l++; r--;}
-    <span class="kw">else</span> <span class="kw">if</span> (arr[l]&gt;piv &amp;&amp; arr[r]&lt;=piv)
-       swap(&amp;arr[l++], &amp;arr[r--]);
-    <span class="kw">else</span> r=l<span class="dv">-1</span>;
-    swap(&amp;arr[r--], &amp;arr[beg]);
-    sort(arr, beg, r);
-    sort(arr, l, end);
-  }
-}</code></pre></div>
-<p><br> <br> <br> <br> <br> <br></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> sort<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> beg<span class="op">,</span> <span class="dt">int</span> end<span class="op">){</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>end <span class="op">&gt;</span> beg <span class="op">+</span> <span class="dv">1</span><span class="op">){</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> piv <span class="op">=</span> arr<span class="op">[</span>beg<span class="op">];</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> l <span class="op">=</span> beg <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> r <span class="op">=</span> end<span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span>l <span class="op">!=</span> r<span class="op">-</span><span class="dv">1</span><span class="op">)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>       <span class="cf">if</span><span class="op">(</span>arr<span class="op">[</span>l<span class="op">]</span> <span class="op">&lt;=</span> piv<span class="op">)</span> l<span class="op">++;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>       <span class="cf">else</span> swap<span class="op">(&amp;</span>arr<span class="op">[</span>l<span class="op">],</span> <span class="op">&amp;</span>arr<span class="op">[</span>r<span class="op">--]);</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>arr<span class="op">[</span>l<span class="op">]&lt;=</span>piv <span class="op">&amp;&amp;</span> arr<span class="op">[</span>r<span class="op">]&lt;=</span>piv<span class="op">)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>       l<span class="op">=</span>r<span class="op">+</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span><span class="op">(</span>arr<span class="op">[</span>l<span class="op">]&lt;=</span>piv <span class="op">&amp;&amp;</span> arr<span class="op">[</span>r<span class="op">]&gt;</span>piv<span class="op">)</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>       <span class="op">{</span>l<span class="op">++;</span> r<span class="op">--;}</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>arr<span class="op">[</span>l<span class="op">]&gt;</span>piv <span class="op">&amp;&amp;</span> arr<span class="op">[</span>r<span class="op">]&lt;=</span>piv<span class="op">)</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>       swap<span class="op">(&amp;</span>arr<span class="op">[</span>l<span class="op">++],</span> <span class="op">&amp;</span>arr<span class="op">[</span>r<span class="op">--]);</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> r<span class="op">=</span>l<span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    swap<span class="op">(&amp;</span>arr<span class="op">[</span>r<span class="op">--],</span> <span class="op">&amp;</span>arr<span class="op">[</span>beg<span class="op">]);</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    sort<span class="op">(</span>arr<span class="op">,</span> beg<span class="op">,</span> r<span class="op">);</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    sort<span class="op">(</span>arr<span class="op">,</span> l<span class="op">,</span> end<span class="op">);</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="quicksort-in-haskell"><strong>QuickSort</strong> in Haskell</h2>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">sort []     <span class="fu">=</span> []
-sort (x<span class="fu">:</span>xs) <span class="fu">=</span> sort ls <span class="fu">++</span> [x] <span class="fu">++</span> sort rs
-  <span class="kw">where</span>
-    ls      <span class="fu">=</span> [ l <span class="fu">|</span> l <span class="ot">&lt;-</span> xs, l <span class="fu">&lt;=</span> x ]
-    rs      <span class="fu">=</span> [ r <span class="fu">|</span> r <span class="ot">&lt;-</span> xs, x <span class="fu">&lt;</span>  r ]</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> []     <span class="ot">=</span> []</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="fu">sort</span> ls <span class="op">++</span> [x] <span class="op">++</span> <span class="fu">sort</span> rs</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    ls      <span class="ot">=</span> [ l <span class="op">|</span> l <span class="ot">&lt;-</span> xs, l <span class="op">&lt;=</span> x ]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    rs      <span class="ot">=</span> [ r <span class="op">|</span> r <span class="ot">&lt;-</span> xs, x <span class="op">&lt;</span>  r ]</span></code></pre></div>
 <p>(not a wholly <a href="http://stackoverflow.com/questions/7717691/why-is-the-minimalist-example-haskell-quicksort-not-a-true-quicksort">fair comparison…</a>)</p>
-<p><br> <br> <br> <br> <br> <br></p>
-<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="course-logistics">Course Logistics</h2>
 <ul>
 <li><a href="https://nadia-polikarpova.github.io/cse130-web">webpage</a>
@@ -461,8 +567,17 @@ sort (x<span class="fu">:</span>xs) <span class="fu">=</span> sort ls <span clas
 <ul>
 <li>homework/exam submissions, grades</li>
 </ul></li>
+<li><a href="https://classquestion.com/students">classquestion</a> (code: GXJVJ)
+<ul>
+<li>anonymous questions during lecture</li>
+</ul></li>
 </ul>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="grading">Grading</h2>
 <ul>
 <li>45% Homework assignments</li>
@@ -473,7 +588,12 @@ sort (x<span class="fu">:</span>xs) <span class="fu">=</span> sort ls <span clas
 <li>To <strong>top 20</strong> best participants</li>
 </ul></li>
 </ul>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="assignments">Assignments</h2>
 <ul>
 <li>6 programming assignments</li>
@@ -495,16 +615,21 @@ sort (x<span class="fu">:</span>xs) <span class="fu">=</span> sort ls <span clas
 <li>user this <a href="https://piazza.com/class/l19lxxev1bg5ht?cid=5">piazza thread</a> to find a partner</li>
 </ul></li>
 </ul>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="exams">Exams</h2>
 <ul>
-<li>Midterm on <em>May 2</em>
+<li>Midterm on <em>May 8</em>
 <ul>
 <li>Gradescope multiple choice</li>
 <li>individual</li>
 <li>24h timespan</li>
 </ul></li>
-<li>Final: <em>June 10</em>
+<li>Final: <em>June 15</em>
 <ul>
 <li>programming assignment</li>
 <li>individual</li>
@@ -521,21 +646,26 @@ sort (x<span class="fu">:</span>xs) <span class="fu">=</span> sort ls <span clas
 <li>communicate with each other during the exam</li>
 </ul></li>
 <li>The final is cumulative</li>
-<li>Midterm grade is calculated as <code class="sourceCode haskell">midterm <span class="fu">&gt;</span> <span class="dv">0</span> <span class="fu">?</span>  max(final, midterm) <span class="fu">:</span> <span class="dv">0</span></code>
+<li>Midterm grade is calculated as <code class="sourceCode haskell">midterm <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span>  <span class="fu">max</span>(final, midterm) <span class="op">:</span> <span class="dv">0</span></code>
 <ul>
 <li>you get a second chance if you don’t do well on the midterm</li>
 <li>you must turn in both the midterm and the final</li>
 </ul></li>
 </ul>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="in-class-quizzes">In-class Quizzes</h2>
-<p>We will do quizzes in class via iClickers (remotes and app)</p>
+<p>We will do quizzes in class via ClassQuestion</p>
 <ul>
 <li>Make class interactive</li>
 <li>Help <em>you</em> and <em>me</em> understand what’s tricky</li>
 </ul>
 <p><strong>Protocol</strong></p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><em>Discuss</em>
 <ul>
 <li>I show the quiz on screen</li>
@@ -545,14 +675,19 @@ sort (x<span class="fu">:</span>xs) <span class="fu">=</span> sort ls <span clas
 </ul></li>
 <li><em>Vote</em>
 <ul>
-<li>Using iClicker remote or app</li>
+<li>On the ClassQuestion website</li>
 </ul></li>
 <li><em>Class Discuss</em>
 <ul>
 <li>What was easy or tricky?</li>
 </ul></li>
 </ol>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="test-quiz">TEST QUIZ</h2>
 <p>How can you earn 5% extra credit for this class?</p>
 <ul>
@@ -561,12 +696,17 @@ sort (x<span class="fu">:</span>xs) <span class="fu">=</span> sort ls <span clas
 <li><p><strong>C</strong> submit all my homework on due date (without using late days)</p></li>
 <li><p><strong>D</strong> post snarky comments on zoom chat during lecture</p></li>
 </ul>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="your-resources">Your Resources</h2>
 <ul>
-<li>Discussion section: Fri 11am
+<li>Discussion section: Wed 7pm
 <ul>
-<li>CENTR 119 and/or on Zoom, depending on the TA</li>
+<li>PCYNH and/or on Zoom</li>
 <li>same Zoom link as lecture</li>
 </ul></li>
 <li>Office hours
@@ -582,7 +722,12 @@ sort (x<span class="fu">:</span>xs) <span class="fu">=</span> sort ls <span clas
 <li>online lecture notes and links</li>
 </ul></li>
 </ul>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="academic-integrity">Academic Integrity</h2>
 <p>Programming assignments: do not copy from classmates or from previous years</p>
 <p>Exams done <strong>alone</strong></p>
@@ -591,11 +736,23 @@ sort (x<span class="fu">:</span>xs) <span class="fu">=</span> sort ls <span clas
 <li>Offenders punished ruthlessly</li>
 <li>Please see academic integrity statement</li>
 </ul>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="students-with-disabilites">Students with Disabilites</h2>
-<p>Students requesting accommodations for this course due to a disability or current functional limitation must provide a current <strong>Authorization for Accommodation (AFA)</strong> letter issued by the Office for Students with Disabilities (OSD).</p>
-<p>Students are required to present their AFA letters to Faculty (please make arrangements to contact me privately) and to the CSE OSD Liaison in advance so that accommodations may be arranged.</p>
-<p><br> <br> <br> <br> <br> <br></p>
+<p>Students requesting accommodations for this course due to a disability or current functional limitation must provide
+a current <strong>Authorization for Accommodation (AFA)</strong> letter issued by the Office for Students with Disabilities (OSD).</p>
+<p>Students are required to present their AFA letters to Faculty (please make arrangements to contact me privately)
+and to the CSE OSD Liaison in advance so that accommodations may be arranged.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="diversity-and-inclusion">Diversity and Inclusion</h2>
 <p><strong>Goal</strong></p>
 <ul>
@@ -610,8 +767,15 @@ sort (x<span class="fu">:</span>xs) <span class="fu">=</span> sort ls <span clas
 <li>Understand that others’ backgrounds, perspectives and experiences may be different than your own</li>
 <li>Help us to build an environment where everyone is respected and feels comfortable.</li>
 </ul>
-<p>If you experience any sort of <strong>harassment or discrimination</strong>, please contact the <a href="https://ophd.ucsd.edu/">Office of Prevention of Harassment and Discrimination</a>. Students may receive confidential assistance at the <a href="http://care.ucsd.edu">Sexual Assault Resource Center</a> at (858) 534-5793 or <a href="http://caps.ucsd.edu.">Counseling and Psychological Services</a> (CAPS) at (858) 534-3755.</p>
-<p><br> <br> <br> <br> <br> <br></p>
+<p>If you experience any sort of <strong>harassment or discrimination</strong>, please contact the <a href="https://ophd.ucsd.edu/">Office of Prevention of Harassment and Discrimination</a>.
+Students may receive confidential assistance at the <a href="http://care.ucsd.edu">Sexual Assault Resource Center</a> at (858) 534-5793
+or <a href="http://caps.ucsd.edu.">Counseling and Psychological Services</a> (CAPS) at (858) 534-3755.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
                 <hr>
             </div>
         </div>
