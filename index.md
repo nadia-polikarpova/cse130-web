@@ -10,6 +10,8 @@ headerImg: angles.jpg
 - **Calendar:**             Check [here](calendar.html) for office hours, deadlines, etc.
 - **Piazza:**               COMING SOON
 - **Canvas:**               COMING SOON
+- **Gradescope:**           COMING SOON
+- **ClassQuestion:**        Sign up [here](https://classquestion.com/students) (code: GXJVJ)
 
 <!-- 
 - **Piazza:**               Check [here](https://www.piazza.com/ucsd/spring2022/cse130/home) for announcement and discussions
