@@ -389,9 +389,9 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
     - calendar, lecture notes, programming assignments, ...
 - [canvas](https://canvas.ucsd.edu/courses/36670)
     - lecture recordings  
-- [piazza](https://www.piazza.com/ucsd/spring2022/cse130/home)
+- [piazza](https://www.piazza.com/ucsd/spring2023/cse130/home)
     - announcements and discussions
-- [gradescope](https://www.gradescope.com/courses/381579)
+- [gradescope](https://www.gradescope.com/courses/527932) (code: XV6YV4)
     - homework/exam submissions, grades
 - [classquestion](https://classquestion.com/students) (code: GXJVJ)
     - anonymous questions during lecture

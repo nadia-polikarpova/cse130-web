@@ -8,15 +8,11 @@ headerImg: angles.jpg
 - **Lectures:**             MWF 1:00-1:50pm PCYNH 106 and on [Zoom](https://ucsd.zoom.us/j/934813358)
 - **Discussion section:**   W 7:00-7:50pm PCYNH 106 and on [Zoom](https://ucsd.zoom.us/j/934813358)
 - **Calendar:**             Check [here](calendar.html) for office hours, deadlines, etc.
-- **Piazza:**               COMING SOON
-- **Canvas:**               COMING SOON
-- **Gradescope:**           COMING SOON
+- **Piazza:**               Check [here](https://piazza.com/ucsd/spring2023/cse130) for announcement and discussions
+- **Canvas:**               Check [here](https://canvas.ucsd.edu/courses/45541) for lecture recordings 
+- **Gradescope:**           Submit assignments [here](https://www.gradescope.com/courses/527932) (code: XV6YV4)
 - **ClassQuestion:**        Sign up [here](https://classquestion.com/students) (code: GXJVJ)
 
-<!-- 
-- **Piazza:**               Check [here](https://www.piazza.com/ucsd/spring2022/cse130/home) for announcement and discussions
-- **Canvas:**               Check [here](https://canvas.ucsd.edu/courses/36670) for lecture recordings 
--->
 
 
 ## Team
