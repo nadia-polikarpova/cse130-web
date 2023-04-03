@@ -33,9 +33,7 @@ that explore various class topics in more depth.
 - [Monadic IO](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/07/mark.pdf)
 - [Haskell-Lang](http://haskell-lang.org)
 - [Getting started with Haskell](https://haskell-lang.org/get-started)
-- [What I Wish I Knew When Learning Haskell](http://dev.stephendiehl.com/hask/)
 - [Haskell Cheat Sheet](http://cheatsheet.codeslower.com/CheatSheet.pdf)
-- [Haskell Pitfalls](http://users.jyu.fi/~sapekiis/haskell-pitfalls/)
 - A Simple editor-independent [mini-ide](https://github.com/ndmitchell/ghcid#readme)
 - API Search Engines:
   [Hoogle](http://haskell.org/hoogle)

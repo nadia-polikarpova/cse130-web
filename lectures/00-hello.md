@@ -430,7 +430,7 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 - Submitted via Gradescope
     - submission instructions in the assignment
 - Solve **alone or in groups of two**
-    - user this [piazza thread](https://piazza.com/class/l19lxxev1bg5ht?cid=5) to find a partner
+    - user this [piazza thread](https://piazza.com/class/lfyrhbkf5nw3os/post/5) to find a partner
 
 <br>
 <br>
@@ -523,7 +523,7 @@ How can you earn 5% extra credit for this class?
 ## Your Resources
 
 - Discussion section: Wed 7pm
-    - PCYNH and/or on Zoom
+    - PCYNH 106 and/or on Zoom
     - same Zoom link as lecture
 - Office hours
     - every day, check calendar
