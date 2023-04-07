@@ -494,6 +494,7 @@ For example, `x` is bound in:
 ```
   \x -> x
   \x -> (\y -> x)
+  \x -> (\x -> x)   -- by which binder is x bound? 
 ```
 
 <br>
@@ -559,7 +560,7 @@ is `x` _bound_ or _free_?
 <br>
 
 
-## Free Variables
+## EXERCISE: Free Variables
 
 A variable `x` is **free** in `E` if *there exists* a free occurrence of `x` in `E`
 
@@ -572,16 +573,16 @@ We can formally define the set of _all free variables_ in a term like so:
 
     ```haskell
     FV(x)       = ???
-    FV(\x -> E) = ???
     FV(E1 E2)   = ???
+    FV(\x -> E) = ???
     ```
 
 (I) final
 
     ```haskell
     FV(x)       = {x}
-    FV(\x -> E) = FV(E) \ {x}
     FV(E1 E2)   = FV(E1) + FV(E2)
+    FV(\x -> E) = FV(E) \ {x}
     ```
 
 <br>
@@ -692,7 +693,7 @@ replace all free occurrences of the _formal_ by that _argument_
 =b> apple
 ```
 
-Is this right? Ask [Elsa](http://goto.ucsd.edu/elsa/index.html)!
+Is this right? Ask [Elsa](http://elsa.goto.ucsd.edu/index.html)!
 
 <br>
 <br>

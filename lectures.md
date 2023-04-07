@@ -44,15 +44,16 @@ Lecture schedule is subject to change!
 
 | Date       | Topic                                           | Material                  |
 |:----------:|:------------------------------------------------|:-------------------------:|
-| 4/5        | Lambda Calculus: intro, syntax and reductions   | [pdf][disc1]              |
-| 4/12       | Lambda Calculus: data type encodings            | [pdf][disc2]              |
-| 4/19       | Haskell: simple recursion                       | [pdf][disc3]              |
-| 4/26       | Haskell: recursive data types                   | [pdf][disc4] [code][disc4code] |
-| 5/3        | Midterm review                                  | [pdf][disc5] [code][disc5code] |
-| 5/10       | Haskell: folds.                                 | [pdf][disc6] [code][disc6code] |
-| 5/17       | Nano: interpreters, lexers, and parsers         | [pdf][disc7]              |
-| 5/24       | Type classes and Quickcheck                     | [pdf][disc8]              |
-| 5/31       | IO Monad                                        | [pdf][disc9]              |
+| 4/5        | Tech Intro                                      | [slides][disc0]           |
+| 4/12       | Lambda Calculus: intro, syntax and reductions   | [pdf][disc1]              |
+| 4/19       | Lambda Calculus: data type encodings            | [pdf][disc2]              |
+| 4/26       | Haskell: simple recursion                       | [pdf][disc3]              |
+| 5/3        | Haskell: recursive data types                   | [pdf][disc4] [code][disc4code] |
+| 5/10       | Midterm review                                  | [pdf][disc5] [code][disc5code] |
+| 5/17       | Haskell: folds.                                 | [pdf][disc6] [code][disc6code] |
+| 5/24       | Nano: interpreters, lexers, and parsers         | [pdf][disc7]              |
+| 5/31       | Type classes and Quickcheck                     | [pdf][disc8]              |
+| 6/7        | IO Monad                                        | [pdf][disc9]              |
 
 [lec0]: lectures/00-hello.html
 [lec1]: lectures/01-lambda.html
@@ -67,6 +68,7 @@ Lecture schedule is subject to change!
 [soundness]: lectures/soundness.html
 [mock-final]: https://github.com/cse130-assignments/mock-final
 
+[disc0]: https://docs.google.com/presentation/d/1q7qqYXfmxBbdaRYhupJFp93XVvwnpZyEQAZlcbr0Hs4/edit?usp=sharing
 [disc1]: /static/raw/discussion-week-01.pdf
 [disc2]: /static/raw/discussion-week-02.pdf
 [disc3]: /static/raw/discussion-week-03.pdf
