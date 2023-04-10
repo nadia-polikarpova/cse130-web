@@ -934,7 +934,9 @@ y[x := E']            = y            -- assuming x /= y
 ```
 <br>
 
-- We can rename a formal parameter and replace all its occurrences in the body
+- Intuition: we can rename a formal parameter and replace its occurrences in the body
+
+- Here `E[x := y]` is capture-avoiding substitution
 
 - We say that `\x -> E` $\alpha$-steps to `\y -> E[x := y]`
 
@@ -962,7 +964,7 @@ What's wrong with these?
 
 (I) final
 
-    *Answer:* it violates the side-condition for $\alpha$-renaming that the new formal (`x`) must not occur freely in the body 
+    *Answer:* it violates the side-condition that the new formal (`x`) must not occur freely in the body 
 
 ```haskell
 -- (B)
@@ -975,12 +977,12 @@ What's wrong with these?
 
 ```haskell
 -- (C)
-\x -> \y -> x y   =a>    \apple -> \orange -> apple orange
+\x -> (\y -> x y)   =a>    \y -> (\y -> y y)
 ```
      
 (I) final
      
-    *Answer:* it's fine, but technically it's two $\alpha$-steps and not one
+    *Answer:* the new formal `y` does not occur freely in the body, but the substitution is not capture-avoiding
 
 <br>
 <br>
@@ -997,7 +999,7 @@ What's wrong with these?
 <br>
 
 
-## The Tricky One
+## Tricky Example Revisited
 
 <br>
 
@@ -1018,6 +1020,7 @@ What's wrong with these?
     
 <br>
 <br>
+
 To avoid getting confused, you can always rename formals, so that different variables have different names!
 
 <br>
@@ -1061,15 +1064,15 @@ A $\lambda$-term is in **normal form** if it contains no redexes.
 
 ## QUIZ
 
-Which of the following term are **not** in _normal form_ ?
+Which of the following term are **not** in _normal form_ (i.e. contains a _redex_)?
 
 **A.** `x y`
 
 **B.** `(\x -> x) y`
 
-**C.** `x (\y -> y)`
+**C.** `x (\y -> y) z`
 
-**D.** `z ((\x -> x) y)`
+**D.** `x ((\y -> y) z)`
 
 **E.** B and D
 
@@ -1090,38 +1093,6 @@ Which of the following term are **not** in _normal form_ ?
 <br>
 <br>
 
-## QUIZ
-
-How many redexes does this expression have?
-
-`(\f -> (\x -> x) f) (\x -> x)`
-
-**A.** 0
-
-**B.** 1
-
-**C.** 2
-
-**D.** 3
-
-**E.** 4
-
-(I) final
-     
-    *Answer:* C
-    
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>    
 
 ## Semantics: Evaluation
 
@@ -1165,12 +1136,12 @@ E =?> E_1 =?> ... =?> E_N =?> E'
 (I) final
          
     ```haskell
-    (\f -> (\x -> x) f) (\x -> x)
+    (\f -> f (\x -> x)) (\x -> x)
       =b> (\x -> x) (\x -> x)
       =b> \x -> x
     ```
     
-<br>    
+<!-- <br>    
 
 (I) lecture
     
@@ -1185,7 +1156,94 @@ E =?> E_1 =?> ... =?> E_N =?> E'
     (\x -> x x) (\x -> x)
       =b> (\x -> x) (\x -> x)
       =b> \x -> x
-    ```
+    ``` -->
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ
+
+What does the following term _evaluate_ to?
+
+```haskell
+(\x -> x x) (\x -> x)
+```
+
+**A.** `x`
+
+**B.** `(\x -> x) (\x -> x)`
+
+**C.** `\x -> x`
+
+**D.** `\x -> x x`
+
+**E.** cannot be evaluated
+
+(I) final
+     
+    *Answer:* C
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## EXERCISE: Non-Terminating Evaluation
+
+Can you come up with term `fill_this_in` such that the evaluation of
+`(\x -> x x) fill_this_in` *loops*, i.e.:
+
+```haskell
+eval loop : 
+  (\x -> x x) fill_this_in
+  =b> (\x -> x x) fill_this_in
+  =b> (\x -> x x) fill_this_in
+  =b> ...
+```
+
+ELSA: https://elsa.goto.ucsd.edu/index.html
+
+[Click here to try this exercise](https://elsa.goto.ucsd.edu/index.html#?demo=permalink%2F1664296539_173491.lc)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Non-Terminating Evaluation
+
+```haskell
+(\x -> x x) (\x -> x x)
+  =b> (\x -> x x) (\x -> x x)
+```
+
+Some programs loop back to themselves...
+
+... and *never* reduce to a normal form!
+
+This combinator is called $\Omega$
 
 <br>
 <br>
@@ -1210,8 +1268,8 @@ To substitute name with its definition, use a `=d>` step:
 
 ```haskell
 ID apple
-  =d> (\x -> x) apple  -- expand definition
-  =b> apple            -- beta-reduce
+  =d> (\x -> x) apple    -- expand definition
+  =b> apple              -- beta-reduce
 ```
 
 <br>
@@ -1219,56 +1277,12 @@ ID apple
 
 Evaluation:
 
-- `E1 =*> E2`: `E1` reduces to `E2` in 0 or more steps
+- `e1 =*> e2`: `e1` reduces to `e2` in 0 or more steps
     - where each step is `=a>`, `=b>`, or `=d>`
-- `E1 =~> E2`: `E1` evaluates to `E2`
-
-_What is the difference?_
+- `e1 =~> e2`: `e1` evaluates to `e2` and `e2` is **in normal form**
 
 
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Non-Terminating Evaluation
-
-```haskell
-(\x -> x x) (\x -> x x)
-  =b> (\x -> x x) (\x -> x x)
-```
-
-Oops, we can write programs that loop back to themselves...
-
-and never reduce to a normal form!
-
-This combinator is called $\Omega$
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-What if we pass $\Omega$ as an argument to another function?
-
-```
-let OMEGA = (\x -> x x) (\x -> x x)
-
-(\x -> \y -> y) OMEGA
-```
-
-Does this reduce to a normal form? Try it at home!
-
 <br>
 <br>
 <br>
