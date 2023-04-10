@@ -1234,10 +1234,12 @@ ELSA: https://elsa.goto.ucsd.edu/index.html
 
 ## Non-Terminating Evaluation
 
-```haskell
-(\x -> x x) (\x -> x x)
-  =b> (\x -> x x) (\x -> x x)
-```
+(I) final
+
+    ```haskell
+    (\x -> x x) (\x -> x x)
+      =b> (\x -> x x) (\x -> x x)
+    ```
 
 Some programs loop back to themselves...
 
