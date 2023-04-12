@@ -1484,63 +1484,81 @@ Now you try it!
 
 
 
-## Boolean Operators
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+
+
+
+## EXERCISE: Boolean Operators
+
+ELSA: https://elsa.goto.ucsd.edu/index.html
+
+[Click here to try this exercise](https://elsa.goto.ucsd.edu/index.html#?demo=permalink%2F1585435168_24442.lc)
 
 Now that we have `ITE` it's easy to define other Boolean operators:
 
+(I) lecture
+
+    ```haskell
+    let NOT = \b     -> ???
+    let OR  = \b1 b2 -> ???
+    let AND = \b1 b2 -> ???
+    ```
+
+(I) final 
+
+    ```haskell
+    let NOT = \b     -> ITE b FALSE TRUE 
+    
+    let AND = \b1 b2 -> ITE b1 b2 FALSE
+    
+    let OR  = \b1 b2 -> ITE b1 TRUE b2
+    ```
+
+When you are done, you should get the following behavior:
 
 ```haskell
-let NOT = \b     -> ???
+eval ex_not_t:
+  NOT TRUE =*> FALSE
+  
+eval ex_not_f:
+  NOT FALSE =*> TRUE 
+  
+eval ex_or_ff:
+  OR FALSE FALSE =*> FALSE
 
-let AND = \b1 b2 -> ???
+eval ex_or_ft:
+  OR FALSE TRUE =*> TRUE
+  
+eval ex_or_ft:
+  OR TRUE FALSE =*> TRUE
 
-let OR  = \b1 b2 -> ???
+eval ex_or_tt:
+  OR TRUE TRUE =*> TRUE
+  
+eval ex_and_ff:
+  AND FALSE FALSE =*> FALSE
+
+eval ex_and_ft:
+  AND FALSE TRUE =*> FALSE
+  
+eval ex_and_ft:
+  AND TRUE FALSE =*> FALSE
+
+eval ex_and_tt:
+  AND TRUE TRUE =*> TRUE
 ```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-```haskell
-let NOT = \b     -> ITE b FALSE TRUE 
-
-let AND = \b1 b2 -> ITE b1 b2 FALSE
-
-let OR  = \b1 b2 -> ITE b1 TRUE b2
-```
-
-<br>
-<br>
-
-Or, since `ITE` is redundant:
-
-```haskell
-let NOT = \b     -> b FALSE TRUE 
-
-let AND = \b1 b2 -> b1 b2 FALSE
-
-let OR  = \b1 b2 -> b1 TRUE b2
-```
-
-<br>
-
-*Which definition to do you prefer and why?*
 
 <br>
 <br>
