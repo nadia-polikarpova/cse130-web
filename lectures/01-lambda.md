@@ -1624,19 +1624,22 @@ What do we *do* with a pair?
 We need to define three functions
 
 ```haskell
-let MKPAIR = \x y -> ???    -- Make a pair with elements x and y 
-                            -- { fst : x, snd : y }
-let FST    = \p -> ???      -- Return first element 
-                            -- p.fst
-let SND    = \p -> ???      -- Return second element
-                            -- p.snd
+let PAIR = \x y -> ???    -- Make a pair with elements x and y 
+                          -- { fst : x, snd : y }
+let FST  = \p -> ???      -- Return first element 
+                          -- p.fst
+let SND  = \p -> ???      -- Return second element
+                          -- p.snd
 ```
 
 such that
 
 ```haskell
-FST (MKPAIR apple banana) =~> apple
-SND (MKPAIR apple banana) =~> banana
+eval ex_fst: 
+  FST (PAIR apple banana) =*> apple
+
+eval ex_snd:
+  SND (PAIR apple banana) =*> banana
 ```
 
 
@@ -1657,12 +1660,12 @@ SND (MKPAIR apple banana) =~> banana
 ## Pairs: Implementation
 
 A pair of `x` and `y` is just something that lets you pick between `x` and `y`!
-(I.e. a function that takes a boolean and returns either `x` or `y`)  
+(i.e. a function that takes a boolean and returns either `x` or `y`)  
 
 ```haskell
-let MKPAIR = \x y -> (\b -> ITE b x y)
-let FST    = \p -> p TRUE   -- call w/ TRUE, get first value
-let SND    = \p -> p FALSE  -- call w/ FALSE, get second value
+let PAIR = \x y -> (\b -> ITE b x y)
+let FST  = \p -> p TRUE   -- call w/ TRUE, get first value
+let SND  = \p -> p FALSE  -- call w/ FALSE, get second value
 ```
 
 
@@ -1680,26 +1683,42 @@ let SND    = \p -> p FALSE  -- call w/ FALSE, get second value
 <br>
 
 
-## Exercise: Triples?
+## EXERCISE: Triples
 
 How can we implement a record that contains **three** values?
 
+ELSA: https://goto.ucsd.edu/elsa/index.html
+
+[Click here to try this exercise](https://goto.ucsd.edu/elsa/index.html#?demo=permalink%2F1585434814_24436.lc)
+
 (I) lecture
 
-    ```haskell
-    let MKTRIPLE = \x y z -> ???
-    let FST3  = \t -> ???
-    let SND3  = \t -> ???
-    let TRD3  = \t -> ???
-    ```
+```haskell
+let TRIPLE = \x y z -> ???
+let FST3   = \t -> ???
+let SND3   = \t -> ???
+let THD3   = \t -> ???
+
+eval ex1:
+  FST3 (TRIPLE apple banana orange)
+  =*> apple
+
+eval ex2:
+  SND3 (TRIPLE apple banana orange)
+  =*> banana 
+
+eval ex3:
+  THD3 (TRIPLE apple banana orange)
+  =*> orange
+```
 
 (I) final
 
     ```haskell
-    let MKTRIPLE = \x y z -> MKPAIR x (MKPAIR y z)
+    let TRIPLE = \x y z -> PAIR x (PAIR y z)
     let FST3  = \t -> FST t
     let SND3  = \t -> FST (SND t)
-    let TRD3  = \t -> SND (SND t)
+    let THD3  = \t -> SND (SND t)
     ```
 
 
@@ -1902,24 +1921,40 @@ eval inc_zero :
 <br>
 <br>
 
-## QUIZ
+## EXERCISE 
 
-How shall we implement `ADD`?
+Fill in the implementation of `ADD` so that you get the following behavior
 
 
-**A.**  `let ADD = \n m -> n INC m`
+[Click here to try this exercise](https://goto.ucsd.edu/elsa/index.html#?demo=permalink%2F1585436042_24449.lc)
 
-**B.**  `let ADD = \n m -> INC n m`
+```haskell
+let ZERO = \f x -> x
+let ONE  = \f x -> f x
+let TWO  = \f x -> f (f x)
+let INC  = \n f x -> f (n f x)
 
-**C.**  `let ADD = \n m -> n m INC`
+let ADD  = fill_this_in 
 
-**D.**  `let ADD = \n m -> n (m INC)`
+eval add_zero_zero: 
+  ADD ZERO ZERO =~> ZERO
 
-**E.**  `let ADD = \n m -> n (INC m)`
+eval add_zero_one: 
+  ADD ZERO ONE =~> ONE
 
-(I) final
+eval add_zero_two: 
+  ADD ZERO TWO =~> TWO 
 
-    *Answer:* A
+eval add_one_zero: 
+  ADD ONE ZERO =~> ONE
+
+eval add_one_zero: 
+  ADD ONE ONE =~> TWO
+
+eval add_two_zero: 
+  ADD TWO ZERO =~> TWO  
+```
+
 
 
 <br>
@@ -1967,7 +2002,6 @@ eval add_one_zero :
 <br>
 <br>
 <br>
-
 
 ## QUIZ
 
