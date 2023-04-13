@@ -69,7 +69,7 @@ Lecture schedule is subject to change!
 [mock-final]: https://github.com/cse130-assignments/mock-final
 
 [disc0]: https://docs.google.com/presentation/d/1q7qqYXfmxBbdaRYhupJFp93XVvwnpZyEQAZlcbr0Hs4/edit?usp=sharing
-[disc1]: /static/raw/discussion-week-01.pdf
+[disc1]: https://docs.google.com/presentation/d/1bv8HSdOQkoP5KdItizlhv0rad9ufyvzZ91cGXcBTfIg/edit?usp=sharing
 [disc2]: /static/raw/discussion-week-02.pdf
 [disc3]: /static/raw/discussion-week-03.pdf
 [disc3code]: /static/raw/discussion-week-03.hs
