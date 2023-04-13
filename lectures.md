@@ -45,7 +45,7 @@ Lecture schedule is subject to change!
 | Date       | Topic                                           | Material                  |
 |:----------:|:------------------------------------------------|:-------------------------:|
 | 4/5        | Tech Intro                                      | [slides][disc0]           |
-| 4/12       | Lambda Calculus: intro, syntax and reductions   | [pdf][disc1]              |
+| 4/12       | Lambda Calculus: intro, syntax and reductions   | [slides][disc1]              |
 | 4/19       | Lambda Calculus: data type encodings            | [pdf][disc2]              |
 | 4/26       | Haskell: simple recursion                       | [pdf][disc3]              |
 | 5/3        | Haskell: recursive data types                   | [pdf][disc4] [code][disc4code] |
