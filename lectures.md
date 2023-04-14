@@ -42,18 +42,20 @@ Lecture schedule is subject to change!
 
 **Discussions**
 
-| Date       | Topic                                           | Material                  |
-|:----------:|:------------------------------------------------|:-------------------------:|
-| 4/5        | Tech Intro                                      | [slides][disc0]           |
-| 4/12       | Lambda Calculus: intro, syntax and reductions   | [pdf][disc1]              |
-| 4/19       | Lambda Calculus: data type encodings            | [pdf][disc2]              |
-| 4/26       | Haskell: simple recursion                       | [pdf][disc3]              |
-| 5/3        | Haskell: recursive data types                   | [pdf][disc4] [code][disc4code] |
-| 5/10       | Midterm review                                  | [pdf][disc5] [code][disc5code] |
-| 5/17       | Haskell: folds.                                 | [pdf][disc6] [code][disc6code] |
-| 5/24       | Nano: interpreters, lexers, and parsers         | [pdf][disc7]              |
-| 5/31       | Type classes and Quickcheck                     | [pdf][disc8]              |
-| 6/7        | IO Monad                                        | [pdf][disc9]              |
+| Date       | Topic                                           |
+|:----------:|:------------------------------------------------|
+| 4/5        | Tech Intro                                      |
+| 4/12       | Lambda Calculus: intro, syntax and reductions   |
+| 4/19       | Lambda Calculus: data type encodings            |
+| 4/26       | Haskell: intro and simple recursion             |
+| 5/3        | Haskell: recursive data types                   |
+| 5/10       | Midterm review                                  |
+| 5/17       | Haskell: folds.                                 |
+| 5/24       | Nano: interpreters, lexers, and parsers         |
+| 5/31       | Type classes and Quickcheck                     |
+| 6/7        | IO Monad                                        |
+
+Discussion slides are available [here](https://drive.google.com/drive/u/0/folders/1TQhC29kVsF9Ik5Wmj6x_zYMBTAr7gCAm).
 
 [lec0]: lectures/00-hello.html
 [lec1]: lectures/01-lambda.html
@@ -68,7 +70,7 @@ Lecture schedule is subject to change!
 [soundness]: lectures/soundness.html
 [mock-final]: https://github.com/cse130-assignments/mock-final
 
-[disc0]: https://docs.google.com/presentation/d/1q7qqYXfmxBbdaRYhupJFp93XVvwnpZyEQAZlcbr0Hs4/edit?usp=sharing
+<!-- [disc0]: https://docs.google.com/presentation/d/1q7qqYXfmxBbdaRYhupJFp93XVvwnpZyEQAZlcbr0Hs4/edit?usp=sharing
 [disc1]: /static/raw/discussion-week-01.pdf
 [disc2]: /static/raw/discussion-week-02.pdf
 [disc3]: /static/raw/discussion-week-03.pdf
@@ -83,6 +85,6 @@ Lecture schedule is subject to change!
 [disc8]: /static/raw/discussion-week-08.pdf
 [disc8code]: /static/raw/discussion-week-08.hs
 [disc9]: /static/raw/discussion-week-09.pdf
-
+ -->
 [parsing]: https://github.com/cse130-sp18/arith
 [elsa]: https://github.com/ucsd-progsys/elsa
