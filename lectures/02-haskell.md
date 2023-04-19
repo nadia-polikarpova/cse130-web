@@ -441,7 +441,7 @@ What would *Java* say?
 
 ```java
 void weirdo() {
-  int zero;
+  int zero = 0;
   zero(1);
 }
 ```
