@@ -17,7 +17,7 @@ Lecture schedule is subject to change!
 | 4/19       | contd.                          |                           |
 | 4/21       | contd.                          |                           |
 | 4/24       | contd.                          |                           |
-| 4/26       | Datatypes and Recursion         | [html][lec3]              |
+| 4/26       | Tail Recursion                  | [html][lec3]              |
 | 4/28       | contd.                          |                           |
 | 5/1        | contd.                          |                           |
 | 5/3        | Higher Order Functions          |                           |
@@ -60,13 +60,14 @@ Discussion slides are available [here](https://drive.google.com/drive/u/0/folder
 [lec0]: lectures/00-hello.html
 [lec1]: lectures/01-lambda.html
 [lec2]: lectures/02-haskell.html
-[lec3]: lectures/03-datatypes.html
-[lec4]: lectures/04-hof.html
-[lec5]: lectures/05-closure.html
-[lec6]: lectures/06-parsing.html
-[lec7]: lectures/07-classes.html
-[lec8]: lectures/08-monads.html
-[lec9]: lectures/09-types.html
+[lec3]: lectures/03-tailrec.html
+[lec4]: lectures/03-datatypes.html
+[lec5]: lectures/04-hof.html
+[lec6]: lectures/05-closure.html
+[lec7]: lectures/06-parsing.html
+[lec8]: lectures/07-classes.html
+[lec9]: lectures/08-monads.html
+[lec10]: lectures/09-types.html
 [soundness]: lectures/soundness.html
 [mock-final]: https://github.com/cse130-assignments/mock-final
 

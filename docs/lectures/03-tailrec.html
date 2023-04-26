@@ -214,7 +214,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>Lecture Notes</h1>
+                    <h1>Tail Recursion</h1>
                     
                     <span class="meta">
 		    
@@ -232,241 +232,169 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			<p>Lecture schedule is subject to change!</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Date</th>
-<th style="text-align: left;">Topic</th>
-<th style="text-align: center;">Material</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">4/3</td>
-<td style="text-align: left;">Hello, World!</td>
-<td style="text-align: center;"><a href="lectures/00-hello.html">html</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4/5</td>
-<td style="text-align: left;">The Lambda Calculus</td>
-<td style="text-align: center;"><a href="lectures/01-lambda.html">html</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">4/7</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4/10</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">4/12</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4/14</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">4/17</td>
-<td style="text-align: left;">A crash course in Haskell</td>
-<td style="text-align: center;"><a href="lectures/02-haskell.html">html</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4/19</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">4/21</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4/24</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">4/26</td>
-<td style="text-align: left;">Tail Recursion</td>
-<td style="text-align: center;"><a href="lectures/03-tailrec.html">html</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4/28</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5/1</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5/3</td>
-<td style="text-align: left;">Higher Order Functions</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5/5</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5/8</td>
-<td style="text-align: left;"><strong>Midterm</strong></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5/10</td>
-<td style="text-align: left;">Environments and Closures</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5/12</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5/15</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5/17</td>
-<td style="text-align: left;">Lexing and Parsing</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5/19</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5/22</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5/24</td>
-<td style="text-align: left;">Overloading &amp; TypeClasses</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5/26</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5/29</td>
-<td style="text-align: left;"><em>No lecture: Memorial Day</em></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5/31</td>
-<td style="text-align: left;">Monads</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">6/2</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6/5</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">6/7</td>
-<td style="text-align: left;">contd.</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6/9</td>
-<td style="text-align: left;">Final Review</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">6/10</td>
-<td style="text-align: left;"><strong>Final</strong></td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Discussions</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Date</th>
-<th style="text-align: left;">Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">4/5</td>
-<td style="text-align: left;">Tech Intro</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4/12</td>
-<td style="text-align: left;">Lambda Calculus: intro, syntax and reductions</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">4/19</td>
-<td style="text-align: left;">Lambda Calculus: data type encodings</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4/26</td>
-<td style="text-align: left;">Haskell: intro and simple recursion</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5/3</td>
-<td style="text-align: left;">Haskell: recursive data types</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5/10</td>
-<td style="text-align: left;">Midterm review</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5/17</td>
-<td style="text-align: left;">Haskell: folds.</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5/24</td>
-<td style="text-align: left;">Nano: interpreters, lexers, and parsers</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5/31</td>
-<td style="text-align: left;">Type classes and Quickcheck</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6/7</td>
-<td style="text-align: left;">IO Monad</td>
-</tr>
-</tbody>
-</table>
-<p>Discussion slides are available <a href="https://drive.google.com/drive/u/0/folders/1TQhC29kVsF9Ik5Wmj6x_zYMBTAr7gCAm">here</a>.</p>
-<!-- [disc0]: https://docs.google.com/presentation/d/1q7qqYXfmxBbdaRYhupJFp93XVvwnpZyEQAZlcbr0Hs4/edit?usp=sharing
-[disc1]: /static/raw/discussion-week-01.pdf
-[disc2]: /static/raw/discussion-week-02.pdf
-[disc3]: /static/raw/discussion-week-03.pdf
-[disc3code]: /static/raw/discussion-week-03.hs
-[disc4]: /static/raw/discussion-week-04.pdf
-[disc4code]: /static/raw/discussion-week-04.hs
-[disc5]: /static/raw/discussion-week-05.pdf
-[disc5code]: /static/raw/discussion-week-05.hs
-[disc6]: /static/raw/discussion-week-06.pdf
-[disc6code]: /static/raw/discussion-week-06.hs
-[disc7]: /static/raw/discussion-week-07.pdf
-[disc8]: /static/raw/discussion-week-08.pdf
-[disc8code]: /static/raw/discussion-week-08.hs
-[disc9]: /static/raw/discussion-week-09.pdf
- -->
+			<h2 id="recursion-is">Recursion is…</h2>
+<p>Building solutions for <em>big problems</em>
+from solutions for <em>sub-problems</em></p>
+<ul>
+<li><strong>Base case:</strong> what is the <em>simplest version</em> of this problem and how do I solve it?</li>
+<li><strong>Inductive strategy:</strong> how do I <em>break down</em> this problem into sub-problems?</li>
+<li><strong>Inductive case:</strong> how do I solve the problem <em>given</em> the solutions for subproblems?</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="why-use-recursion">Why use Recursion?</h2>
+<ol type="1">
+<li><p>Often far simpler and cleaner than loops</p>
+<ul>
+<li>But not always…</li>
+</ul></li>
+<li><p>Structure often forced by recursive data</p></li>
+<li><p>Forces you to factor code into reusable units (recursive functions)</p></li>
+</ol>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="why-not-use-recursion">Why <strong>not</strong> use Recursion?</h2>
+<ol type="1">
+<li><p>Slow</p></li>
+<li><p>Can cause stack overflow</p></li>
+</ol>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="example-factorial">Example: factorial</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ot">fac ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fac n</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> n <span class="op">&lt;=</span> <span class="dv">1</span>    <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="fu">otherwise</span> <span class="ot">=</span> n <span class="op">*</span> fac (n <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><br>
+<br></p>
+<p>Lets see how <code class="sourceCode haskell">fac <span class="dv">4</span></code> is evaluated:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>fac <span class="dv">4</span><span class="op">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="op">&lt;</span><span class="dv">4</span> <span class="op">*</span> <span class="op">&lt;</span>fac <span class="dv">3</span><span class="op">&gt;&gt;</span>              <span class="co">-- recursively call `fact 3`</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="op">&lt;</span><span class="dv">4</span> <span class="op">*</span> <span class="op">&lt;</span><span class="dv">3</span> <span class="op">*</span> <span class="op">&lt;</span>fac <span class="dv">2</span><span class="op">&gt;&gt;&gt;</span>        <span class="co">--   recursively call `fact 2`</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="op">&lt;</span><span class="dv">4</span> <span class="op">*</span> <span class="op">&lt;</span><span class="dv">3</span> <span class="op">*</span> <span class="op">&lt;</span><span class="dv">2</span> <span class="op">*</span> <span class="op">&lt;</span>fac <span class="dv">1</span><span class="op">&gt;&gt;&gt;&gt;</span>  <span class="co">--     recursively call `fact 1`</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="op">&lt;</span><span class="dv">4</span> <span class="op">*</span> <span class="op">&lt;</span><span class="dv">3</span> <span class="op">*</span> <span class="op">&lt;</span><span class="dv">2</span> <span class="op">*</span> <span class="dv">1</span><span class="op">&gt;&gt;&gt;</span>        <span class="co">--     multiply 2 to result </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="op">&lt;</span><span class="dv">4</span> <span class="op">*</span> <span class="op">&lt;</span><span class="dv">3</span> <span class="op">*</span> <span class="dv">2</span><span class="op">&gt;&gt;</span>              <span class="co">--   multiply 3 to result</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="op">&lt;</span><span class="dv">4</span> <span class="op">*</span> <span class="dv">6</span><span class="op">&gt;</span>                    <span class="co">-- multiply 4 to result</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="dv">24</span></span></code></pre></div>
+<p><br>
+<br></p>
+<p>Each <em>function call</em> <code class="sourceCode haskell"><span class="op">&lt;&gt;</span></code> allocates a frame on the <em>call stack</em></p>
+<ul>
+<li>expensive</li>
+<li>the stack has a finite size</li>
+</ul>
+<p>Can we do recursion without allocating stack frames?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="tail-recursion">Tail Recursion</h2>
+<p>No computations allowed on recursively returned value</p>
+<ul>
+<li>i.e. value returned by the recursive call == value returned by function</li>
+</ul>
+<p><br>
+<br></p>
+<h3 id="quiz-is-this-function-tail-recursive">QUIZ: Is this function tail recursive?</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ot">fac ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>fac n</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> n <span class="op">&lt;=</span> <span class="dv">1</span>    <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="fu">otherwise</span> <span class="ot">=</span> n <span class="op">*</span> fac (n <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><strong>A.</strong> Yes</p>
+<p><strong>B.</strong> No</p>
+<p><br></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="tail-recursive-factorial">Tail recursive factorial</h2>
+<p>Let’s write a tail-recursive factorial!</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ot">facTR ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>facTR n <span class="ot">=</span> <span class="op">...</span> </span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br></p>
+<p>Lets see how <code class="sourceCode haskell">facTR</code> is evaluated:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>facTR <span class="dv">4</span><span class="op">&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span>    <span class="op">&lt;&lt;</span>loop <span class="dv">1</span>  <span class="dv">4</span><span class="op">&gt;&gt;</span> <span class="co">-- call loop 1 4</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span>   <span class="op">&lt;&lt;&lt;</span>loop <span class="dv">4</span>  <span class="dv">3</span><span class="op">&gt;&gt;&gt;</span> <span class="co">-- rec call loop 4 3 </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span>  <span class="op">&lt;&lt;&lt;&lt;</span>loop <span class="dv">12</span> <span class="dv">2</span><span class="op">&gt;&gt;&gt;&gt;</span> <span class="co">-- rec call loop 12 2</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="op">&lt;&lt;&lt;&lt;&lt;</span>loop <span class="dv">24</span> <span class="dv">1</span><span class="op">&gt;&gt;&gt;&gt;&gt;</span> <span class="co">-- rec call loop 24 1</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="dv">24</span>                  <span class="co">-- return result 24! </span></span></code></pre></div>
+<p>Each recursive call <strong>directly</strong> returns the result</p>
+<ul>
+<li><p>without further computation</p></li>
+<li><p>no need to remember what to do next!</p></li>
+<li><p>no need to store the “empty” stack frames!</p></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="why-care-about-tail-recursion">Why care about Tail Recursion?</h2>
+<p>Because the <em>compiler</em> can transform it into a <em>fast loop</em></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>facTR n <span class="ot">=</span> loop <span class="dv">1</span> n</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    loop acc n</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>      <span class="op">|</span> n <span class="op">&lt;=</span> <span class="dv">1</span>    <span class="ot">=</span> acc</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      <span class="op">|</span> <span class="fu">otherwise</span> <span class="ot">=</span> loop (acc <span class="op">*</span> n) (n <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><br></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">facTR</span>(n){ </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">var</span> acc <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (<span class="kw">true</span>) {</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (n <span class="op">&lt;=</span> <span class="dv">1</span>) { <span class="cf">return</span> acc <span class="op">;</span> }</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>        { acc <span class="op">=</span> acc <span class="op">*</span> n<span class="op">;</span> n <span class="op">=</span> n <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> }</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><p>Tail recursive calls can be optimized as a <strong>loop</strong></p>
+<ul>
+<li>no stack frames needed!</li>
+</ul></li>
+<li><p>Part of the language specification of most functional languages</p>
+<ul>
+<li>compiler <strong>guarantees</strong> to optimize tail calls</li>
+</ul></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p>That’s all folks!</p>
                 <hr>
             </div>
         </div>
