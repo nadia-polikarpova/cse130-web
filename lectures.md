@@ -18,22 +18,22 @@ Lecture schedule is subject to change!
 | 4/21       | contd.                          |                           |
 | 4/24       | contd.                          |                           |
 | 4/26       | Tail Recursion                  | [html][lec3]              |
-| 4/28       | contd.                          |                           |
+| 4/28       | Datatypes                       |                           |
 | 5/1        | contd.                          |                           |
-| 5/3        | Higher Order Functions          |                           |
-| 5/5        | contd.                          |                           |
+| 5/3        | contd.                          |                           |
+| 5/5        | Higher Order Functions          |                           |
 | 5/8        | **Midterm**                     |                           |
-| 5/10       | Environments and Closures       |                           |
-| 5/12       | contd.                          |                           |
+| 5/10       | contd.                          |                           |
+| 5/12       | Environments and Closures       |                           |
 | 5/15       | contd.                          |                           |
-| 5/17       | Lexing and Parsing              |                           |
-| 5/19       | contd.                          |                           |
+| 5/17       | contd.                          |                           |
+| 5/19       | Lexing and Parsing              |                           |
 | 5/22       | contd.                          |                           |
-| 5/24       | Overloading & TypeClasses       |                           |
-| 5/26       | contd.                          |                           |
+| 5/24       | contd.                          |                           |
+| 5/26       | Overloading & TypeClasses       |                           |
 | 5/29       | *No lecture: Memorial Day*      |                           | 
-| 5/31       | Monads                          |                           |
-| 6/2        | contd.                          |                           |
+| 5/31       | contd.                          |                           |
+| 6/2        | Monads                          |                           |
 | 6/5        | contd.                          |                           |
 | 6/7        | contd.                          |                           |
 | 6/9        | Final Review                    |                           |
