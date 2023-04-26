@@ -134,8 +134,8 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
                 <li><a href="https://nadia-polikarpova.github.io/cse130-web/lectures.html">Lectures</a></li>
                 <li><a href="https://nadia-polikarpova.github.io/cse130-web/assignments.html">Assignments</a></li>
                 <li><a href="https://nadia-polikarpova.github.io/cse130-web/links.html">Links</a></li>                
-                <li><a href="https://canvas.ucsd.edu/courses/36670" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
-                <li><a href="https://www.piazza.com/ucsd/spring2022/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/45541" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                <li><a href="https://www.piazza.com/ucsd/spring2023/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -194,8 +194,8 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
                               <li><a href="https://nadia-polikarpova.github.io/cse130-web/lectures.html">Lectures</a></li>
                               <li><a href="https://nadia-polikarpova.github.io/cse130-web/assignments.html">Assignments</a></li>
                               <li><a href="https://nadia-polikarpova.github.io/cse130-web/links.html">Links</a></li>
-                              <li><a href="https://canvas.ucsd.edu/courses/36670" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
-                              <li><a href="https://www.piazza.com/ucsd/spring2022/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/45541" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                              <li><a href="https://www.piazza.com/ucsd/spring2023/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
                             </p>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
                         </div>
@@ -348,7 +348,6 @@ from solutions for <em>sub-problems</em></p>
 <p><strong>A.</strong> Yes</p>
 <p><strong>B.</strong> No</p>
 <p><br></p>
-<p><em>Answer:</em> B</p>
 <p><br>
 <br>
 <br>
@@ -359,12 +358,7 @@ from solutions for <em>sub-problems</em></p>
 <h2 id="tail-recursive-factorial">Tail recursive factorial</h2>
 <p>Let’s write a tail-recursive factorial!</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ot">facTR ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>facTR n <span class="ot">=</span> loop <span class="dv">1</span> n</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ot">    loop ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    loop acc n</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="op">|</span> n <span class="op">&lt;=</span> <span class="dv">1</span>    <span class="ot">=</span> acc</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="op">|</span> <span class="fu">otherwise</span> <span class="ot">=</span> loop (acc <span class="op">*</span> n) (n <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>facTR n <span class="ot">=</span> <span class="op">...</span> </span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -541,7 +535,6 @@ for building up types to represent complex data</p>
 <p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">Date</span></code></p>
 <p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">Date</span> <span class="dt">Int</span> <span class="dt">Int</span> <span class="dt">Int</span></code></p>
 <p><br></p>
-<p><em>Answer:</em> D</p>
 <p><br>
 <br>
 <br>
@@ -657,7 +650,6 @@ that is a <em>sum</em> (<em>one-of</em>) the three options!</p>
 <p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">String</span></code></p>
 <p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">Paragraph</span></code></p>
 <p><br></p>
-<p><em>Answer:</em> E</p>
 <p><br>
 <br>
 <br>
@@ -752,7 +744,6 @@ that is a <em>sum</em> (<em>one-of</em>) the three options!</p>
 <p><strong>D.</strong> <code class="sourceCode haskell">[<span class="dt">Paragraph</span>]</code></p>
 <p><strong>E.</strong> <code class="sourceCode haskell">[<span class="dt">String</span>]</code></p>
 <p><br></p>
-<p><em>Answer:</em> D</p>
 <p><br>
 <br>
 <br>
@@ -834,12 +825,6 @@ that is a <em>sum</em> (<em>one-of</em>) the three options!</p>
 <p>What would GHCi say to:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>html (<span class="dt">PHeading</span> <span class="dv">1</span> <span class="st">&quot;Introduction&quot;</span>)</span></code></pre></div>
 <p><br></p>
-<p><em>Answer:</em> Runtime error (no matching pattern)
-<br>
-<br>
-<br>
-<br>
-<br></p>
 <h3 id="dangers-of-pattern-matching-2">Dangers of pattern matching (2)</h3>
 <div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ot">html ::</span> <span class="dt">Paragraph</span> <span class="ot">-&gt;</span> <span class="dt">String</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>html (<span class="dt">PText</span> str)        <span class="ot">=</span> <span class="fu">unlines</span> [open <span class="st">&quot;p&quot;</span>, str, close <span class="st">&quot;p&quot;</span>]</span>
@@ -849,7 +834,6 @@ that is a <em>sum</em> (<em>one-of</em>) the three options!</p>
 <p>What would GHCi say to:</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>html (<span class="dt">PHeading</span> <span class="dv">0</span> <span class="st">&quot;Introduction&quot;</span>)</span></code></pre></div>
 <p><br></p>
-<p><em>Answer:</em> <code class="sourceCode haskell"><span class="dt">PHeading</span> <span class="dv">0</span> <span class="st">&quot;Introduction&quot;</span></code> will be matched by <code class="sourceCode haskell"><span class="dt">PHeading</span> lvl str</code></p>
 <p><br>
 <br>
 <br>
@@ -903,7 +887,6 @@ that is a <em>sum</em> (<em>one-of</em>) the three options!</p>
 <p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">Int</span></code></p>
 <p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">Paragraph</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></code></p>
 <p><br></p>
-<p><em>Answer:</em> D</p>
 <p><br>
 <br>
 <br>
@@ -928,7 +911,6 @@ that is a <em>sum</em> (<em>one-of</em>) the three options!</p>
 <p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">Paragraph</span></code></p>
 <p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">Paragraph</span> <span class="ot">-&gt;</span> <span class="dt">String</span></code></p>
 <p><br></p>
-<p><em>Answer:</em> B (cases have different types)</p>
 <p><br>
 <br>
 <br>
@@ -1054,7 +1036,6 @@ that is a <em>sum</em> (<em>one-of</em>) the three options!</p>
 <p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">Succ</span> <span class="dt">Zero</span></code></p>
 <p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">Succ</span> (<span class="dt">Succ</span> <span class="dt">Zero</span>)</code></p>
 <p><br></p>
-<p><em>Answer:</em> E</p>
 <p><br>
 <br>
 <br>
@@ -1148,8 +1129,7 @@ are just fancy syntax for <code class="sourceCode haskell"><span class="dt">Nil<
 <br></p>
 <p>What is the right <em>inductive strategy</em> for appending two lists?</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="ot">append ::</span> <span class="dt">List</span> <span class="ot">-&gt;</span> <span class="dt">List</span> <span class="ot">-&gt;</span> <span class="dt">List</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>append <span class="dt">Nil</span> ys <span class="ot">=</span> ys</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>append (<span class="dt">Cons</span> x xs) ys <span class="ot">=</span> <span class="dt">Cons</span> x (append xs ys)    </span></code></pre></div>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>append xs ys <span class="ot">=</span> <span class="op">??</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1195,7 +1175,6 @@ are just fancy syntax for <code class="sourceCode haskell"><span class="dt">Nil<
 <p><strong>(D)</strong> <code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Tree</span> <span class="ot">=</span> <span class="dt">Leaf</span> <span class="dt">Int</span> <span class="op">|</span> <span class="dt">Node</span> <span class="dt">Tree</span> <span class="dt">Tree</span></code></p>
 <p><strong>(E)</strong> <code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Tree</span> <span class="ot">=</span> <span class="dt">Leaf</span> <span class="dt">Int</span> <span class="op">|</span> <span class="dt">Node</span> <span class="dt">Int</span> <span class="dt">Tree</span> <span class="dt">Tree</span></code></p>
 <p><br></p>
-<p><em>Answer:</em> C</p>
 <p><br>
 <br>
 <br>
@@ -1246,8 +1225,7 @@ t12345 = Node
 -->
 <h2 id="functions-on-trees">Functions on trees</h2>
 <div class="sourceCode" id="cb56"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="ot">height ::</span> <span class="dt">Tree</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>height <span class="dt">Leaf</span> <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>height (<span class="dt">Node</span> _ l r) <span class="ot">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="fu">max</span> (height l) (height r)</span></code></pre></div>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>height t <span class="ot">=</span> <span class="op">??</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1281,10 +1259,7 @@ to evaluate expressions like:</p>
 <br></p>
 <p>How do we write a function to <em>evaluate</em> an expression?</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Float</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Num</span> f)     <span class="ot">=</span> f</span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Add</span> e1 e2) <span class="ot">=</span> eval e1 <span class="op">+</span> eval e2</span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Sub</span> e1 e2) <span class="ot">=</span> eval e1 <span class="op">-</span> eval e2</span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Mul</span> e1 e2) <span class="ot">=</span> eval e1 <span class="op">*</span> eval e2</span></code></pre></div>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>eval e <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>

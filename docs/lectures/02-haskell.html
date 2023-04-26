@@ -950,9 +950,9 @@ all occurrences of <code class="sourceCode haskell">e</code> with <code class="s
 <p><br></p>
 <p><strong>Why is this good?</strong></p>
 <ul>
-<li>easier to reason about (remember <code class="sourceCode haskell">x<span class="op">++</span></code> vs <code class="sourceCode haskell"><span class="op">++</span>x</code> in C++?)</li>
-<li>enables compiler optimizations</li>
-<li>especially great for parallelization (<code class="sourceCode haskell">e1 <span class="op">+</span> e2</code>: we can always compute <code class="sourceCode haskell">e1</code> and <code class="sourceCode haskell">e2</code> in parallel!)</li>
+<li>easier to reason about (<code class="sourceCode haskell">e1 <span class="op">+</span> e2</code>: no need to worry about order of evaluation!)</li>
+<li>enables compiler optimizations (<code class="sourceCode haskell">e1 <span class="op">+</span> e2</code>: only need to compute <code class="sourceCode haskell">e1</code> once!)</li>
+<li>great for parallelization (<code class="sourceCode haskell">e1 <span class="op">+</span> e2</code>: we can always compute <code class="sourceCode haskell">e1</code> and <code class="sourceCode haskell">e2</code> in parallel!)</li>
 </ul>
 <p><br>
 <br>
