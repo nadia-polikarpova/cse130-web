@@ -316,7 +316,7 @@ for building up types to represent complex data</p>
 <h2 id="using-type-synonyms">Using Type Synonyms</h2>
 <p>We can now use synonyms by creating values of the given types</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ot">circ0 ::</span> <span class="dt">CircleT</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>circ0 <span class="ot">=</span> (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">100</span>)  <span class="co">-- circle at &quot;origin&quot; with radius 100</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>circ0 <span class="ot">=</span> (<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">100</span>)  <span class="co">-- circle at (5,1) with radius 100</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ot">cub0 ::</span> <span class="dt">CuboidT</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>cub0 <span class="ot">=</span> (<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)  <span class="co">-- cuboid with l=10, d=20, h=30 </span></span></code></pre></div>
@@ -347,7 +347,7 @@ for building up types to represent complex data</p>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">CuboidT</span> <span class="ot">=</span> (<span class="dt">Double</span>, <span class="dt">Double</span>, <span class="dt">Double</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ot">circ0 ::</span> <span class="dt">CircleT</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>circ0 <span class="ot">=</span> (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">100</span>)  <span class="co">-- circle at &quot;origin&quot; with radius 100</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>circ0 <span class="ot">=</span> (<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">100</span>)  <span class="co">-- circle at (5,1) with radius 100</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ot">cub0 ::</span> <span class="dt">CuboidT</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>cub0 <span class="ot">=</span> (<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)  <span class="co">-- cuboid with length=10, depth=20, height=30 </span></span>
@@ -359,7 +359,7 @@ for building up types to represent complex data</p>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>volume (l, d, h) <span class="ot">=</span> l <span class="op">*</span> d <span class="op">*</span> h</span></code></pre></div>
 <p>What is the result of</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> volume circ0</span></code></pre></div>
-<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dv">0</span></code></p>
+<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dv">500</span></code></p>
 <p><strong>B.</strong> Type error</p>
 <p><br>
 <br>
@@ -416,7 +416,7 @@ for building up types to represent complex data</p>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Cuboid</span> <span class="ot">=</span> <span class="dt">MkCuboid</span> <span class="dt">Double</span> <span class="dt">Double</span> <span class="dt">Double</span></span></code></pre></div>
 <p>We use constructors to <em>build</em> values of the new type:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ot">circ1 ::</span> <span class="dt">Circle</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>circ1 <span class="ot">=</span> <span class="dt">MkCircle</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">100</span>  <span class="co">-- circle at &quot;origin&quot; w/ radius 100</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>circ1 <span class="ot">=</span> <span class="dt">MkCircle</span> <span class="dv">5</span> <span class="dv">1</span> <span class="dv">100</span>  <span class="co">-- circle at (5,1) w/ radius 100</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ot">cub1 ::</span> <span class="dt">Cuboid</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>cub1 <span class="ot">=</span> <span class="dt">MkCuboid</span> <span class="dv">10</span> <span class="dv">20</span> <span class="dv">30</span>  <span class="co">-- cuboid w/ len=10, dep=20, ht=30 </span></span></code></pre></div>
@@ -459,8 +459,8 @@ for building up types to represent complex data</p>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  radius   ::</span> <span class="dt">Double</span>  </span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div></li>
 <li><p>then you can do:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>circ1 <span class="ot">=</span> <span class="dt">MkCircle</span> { center_x <span class="ot">=</span> <span class="dv">0</span>, center_y <span class="ot">=</span> <span class="dv">0</span>, radius <span class="ot">=</span> <span class="dv">100</span> }</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- same as: circ1 = MkCircle 0 0 100</span></span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>circ1 <span class="ot">=</span> <span class="dt">MkCircle</span> { center_x <span class="ot">=</span> <span class="dv">5</span>, center_y <span class="ot">=</span> <span class="dv">1</span>, radius <span class="ot">=</span> <span class="dv">100</span> }</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- same as: circ1 = MkCircle 5 1 100</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>r <span class="ot">=</span> radius circ1 <span class="co">-- use field name as a function    </span></span></code></pre></div></li>
 </ul>
@@ -568,7 +568,7 @@ for building up types to represent complex data</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>shapes <span class="ot">=</span> [circ1, cub1]</span></code></pre></div>
 <p>Where we have defined</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ot">circ1 ::</span> <span class="dt">Circle</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>circ1 <span class="ot">=</span> <span class="dt">MkCircle</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">100</span>  <span class="co">-- circle at &quot;origin&quot; with radius 100</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>circ1 <span class="ot">=</span> <span class="dt">MkCircle</span> <span class="dv">5</span> <span class="dv">1</span> <span class="dv">100</span>  <span class="co">-- circle at (5,1) with radius 100</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="ot">cub1 ::</span> <span class="dt">Cuboid</span></span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>cub1 <span class="ot">=</span> <span class="dt">MkCuboid</span> <span class="dv">10</span> <span class="dv">20</span> <span class="dv">30</span>  <span class="co">-- cuboid with length=10, depth=20, height=30 </span></span></code></pre></div>
@@ -621,7 +621,7 @@ for building up types to represent complex data</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Shape</span> </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">MkCircle</span> <span class="dt">Double</span> <span class="dt">Double</span> <span class="dt">Double</span>   <span class="co">-- Circle at x, y with radius r </span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">MkCuboid</span> <span class="dt">Double</span> <span class="dt">Double</span> <span class="dt">Double</span>   <span class="co">-- Cuboid with length, depth, height</span></span></code></pre></div>
-<p>What is the type of <code class="sourceCode haskell"><span class="dt">MkCircle</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">100</span></code> ?</p>
+<p>What is the type of <code class="sourceCode haskell"><span class="dt">MkCircle</span> <span class="dv">5</span> <span class="dv">1</span> <span class="dv">100</span></code> ?</p>
 <p><strong>A.</strong> <code class="sourceCode haskell"><span class="dt">Shape</span></code></p>
 <p><strong>B.</strong> <code class="sourceCode haskell"><span class="dt">Circle</span></code></p>
 <p><strong>C.</strong> <code class="sourceCode haskell"><span class="dt">MkCircle</span></code></p>
@@ -641,7 +641,7 @@ for building up types to represent complex data</p>
 <h2 id="list-of-shapes-take-2">List of Shapes: Take 2</h2>
 <p>Now we can define</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ot">circ2 ::</span> <span class="dt">Shape</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>circ2 <span class="ot">=</span> <span class="dt">MkCircle</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">100</span>  <span class="co">-- circle at &quot;origin&quot; with radius 100</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>circ2 <span class="ot">=</span> <span class="dt">MkCircle</span> <span class="dv">5</span> <span class="dv">1</span> <span class="dv">100</span>  <span class="co">-- circle at (5,1) with radius 100</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="ot">cub2 ::</span> <span class="dt">Shape</span> </span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>cub2 <span class="ot">=</span> <span class="dt">MkCuboid</span> <span class="dv">10</span> <span class="dv">20</span> <span class="dv">30</span>  <span class="co">-- cuboid with length=10, depth=20, height=30 </span></span></code></pre></div>

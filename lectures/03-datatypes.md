@@ -115,7 +115,7 @@ We can now use synonyms by creating values of the given types
 
 ```haskell
 circ0 :: CircleT 
-circ0 = (0, 0, 100)  -- circle at "origin" with radius 100
+circ0 = (5, 1, 100)  -- circle at (5,1) with radius 100
 
 cub0 :: CuboidT
 cub0 = (10, 20, 30)  -- cuboid with l=10, d=20, h=30 
@@ -160,7 +160,7 @@ type CircleT = (Double, Double, Double)
 type CuboidT = (Double, Double, Double)
 
 circ0 :: CircleT
-circ0 = (0, 0, 100)  -- circle at "origin" with radius 100
+circ0 = (5, 1, 100)  -- circle at (5,1) with radius 100
 
 cub0 :: CuboidT
 cub0 = (10, 20, 30)  -- cuboid with length=10, depth=20, height=30 
@@ -178,7 +178,7 @@ What is the result of
 >>> volume circ0
 ```
 
-**A.** `0`
+**A.** `500`
 
 **B.** Type error
 
@@ -257,7 +257,7 @@ We use constructors to *build* values of the new type:
 
 ```haskell
 circ1 :: Circle 
-circ1 = MkCircle 0 0 100  -- circle at "origin" w/ radius 100
+circ1 = MkCircle 5 1 100  -- circle at (5,1) w/ radius 100
 
 cub1 :: Cuboid
 cub1 = MkCuboid 10 20 30  -- cuboid w/ len=10, dep=20, ht=30 
@@ -331,8 +331,8 @@ Haskell's **record syntax** allows you to *name* the constructor parameters:
   * then you can do:
   
     ```
-    circ1 = MkCircle { center_x = 0, center_y = 0, radius = 100 }
-    -- same as: circ1 = MkCircle 0 0 100
+    circ1 = MkCircle { center_x = 5, center_y = 1, radius = 100 }
+    -- same as: circ1 = MkCircle 5 1 100
     
     r = radius circ1 -- use field name as a function    
     ```
@@ -496,7 +496,7 @@ Where we have defined
 
 ```haskell
 circ1 :: Circle 
-circ1 = MkCircle 0 0 100  -- circle at "origin" with radius 100
+circ1 = MkCircle 5 1 100  -- circle at (5,1) with radius 100
 
 cub1 :: Cuboid
 cub1 = MkCuboid 10 20 30  -- cuboid with length=10, depth=20, height=30 
@@ -569,7 +569,7 @@ data Shape
   | MkCuboid Double Double Double   -- Cuboid with length, depth, height
 ```
 
-What is the type of `MkCircle 0 0 100` ? 
+What is the type of `MkCircle 5 1 100` ? 
 
 **A.** `Shape`
 
@@ -603,7 +603,7 @@ Now we can define
 
 ```haskell
 circ2 :: Shape
-circ2 = MkCircle 0 0 100  -- circle at "origin" with radius 100
+circ2 = MkCircle 5 1 100  -- circle at (5,1) with radius 100
 
 cub2 :: Shape 
 cub2 = MkCuboid 10 20 30  -- cuboid with length=10, depth=20, height=30 
