@@ -1,5 +1,5 @@
 ---
-title: Datatypes
+title: Algebraic Data Types
 date: 2018-04-22
 headerImg: books.jpg
 ---    
@@ -32,22 +32,16 @@ for building up types to represent complex data
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>        
 
-## Building data types
+## Algebraic Data Types
 
-<br>
+1. ***Type Synonyms:* naming existing types**
 
-Three key ways to build complex types/values:
+2. *Product Types:* bundling things together
 
-1. **Product types** (**each-of**): a value of `T` contains a value of `T1` *and* a value of `T2`
+3. *Sum Types:* types with multiple variants
 
-2. **Sum types** (**one-of**): a value of `T` contains a value of `T1` *or* a value of `T2`
-
-3. **Recursive types**: a value of `T` contains a *sub-value* of the same type `T`
-    
+4. *Recursive Types:* types that contain themselves
     
 <br>
 <br>
@@ -59,48 +53,28 @@ Three key ways to build complex types/values:
 <br>
 <br>
 
-## Product types
+## Type Synonyms
 
-Tuples can do the job but there are two problems...
+Synonyms are just names ("aliases") for existing types
+
+- think `typedef` in `C`
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## A type to represent circles
+
+A tuple `(x, y, r)` is a *circle* with center at `(x, y)` and radius `r`
 
 ```haskell
-deadlineDate :: (Int, Int, Int)
-deadlineDate = (4, 29, 2022)
-
-deadlineTime :: (Int, Int, Int)
-deadlineTime = (11, 59, 59)
-
--- | Deadline date extended by one day
-extendedDate :: (Int, Int, Int) -> (Int, Int, Int)
-extendedDate = ...
-```
-
-Can you spot them?
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-### 1. Verbose and unreadable
-
-A **type synonym** for `T`: a name that can be used interchangeably with `T`
-
-```haskell
-type Date = (Int, Int, Int)
-type Time = (Int, Int, Int)
-
-deadlineDate :: Date
-deadlineDate = (4, 29, 2022)
-
-deadlineTime :: Time
-deadlineTime = (11, 59, 59)
-
--- | Deadline date extended by one day
-extendedDate :: Date -> Date
-extendedDate = ...
+type CircleT = (Double, Double, Double)
 ```
 
 <br>
@@ -109,29 +83,184 @@ extendedDate = ...
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
 
-### 2. Unsafe
+## A type to represent cuboids
 
-We want this to fail at compile time!!!
+A tuple `(length, depth, height)` is a *cuboid*
 
 ```haskell
-extendedDate deadlineTime
+type CuboidT = (Double, Double, Double)
+```
+
+![](https://upload.wikimedia.org/wikipedia/commons/d/dc/Cuboid.png){#fig:cuboid .align-center width=60%}
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Using Type Synonyms
+
+We can now use synonyms by creating values of the given types
+
+```haskell
+circ0 :: CircleT 
+circ0 = (0, 0, 100)  -- circle at "origin" with radius 100
+
+cub0 :: CuboidT
+cub0 = (10, 20, 30)  -- cuboid with l=10, d=20, h=30 
+```
+
+And we can write functions over synonyms too
+
+```haskell
+area :: CircleT -> Double
+area (x, y, r) = pi * r * r  
+
+volume :: CuboidT -> Double
+volume (l, d, h) = l * d * h 
+```
+
+We should get this behavior
+
+```haskell
+>>> area circ0 
+31415.926535897932
+
+>>> volume cub0
+6000
 ```
 
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-*Solution:* construct two different **datatypes**
+## QUIZ 
+
+Suppose we have the definitions
 
 ```haskell
-data Date = Date Int Int Int
-data Time = Time Int Int Int
--- constructor^   ^parameter types
+type CircleT = (Double, Double, Double)
+type CuboidT = (Double, Double, Double)
 
-deadlineDate :: Date
-deadlineDate = Date 4 29 2022
+circ0 :: CircleT
+circ0 = (0, 0, 100)  -- circle at "origin" with radius 100
 
-deadlineTime :: Time
-deadlineTime = Time 11 59 59
+cub0 :: CuboidT
+cub0 = (10, 20, 30)  -- cuboid with length=10, depth=20, height=30 
+
+area :: CircleT -> Double
+area (x, y, r) = pi * r * r  
+
+volume :: CuboidT -> Double
+volume (l, d, h) = l * d * h
+```
+
+What is the result of
+
+```haskell
+>>> volume circ0
+```
+
+**A.** `0`
+
+**B.** Type error
+
+(I) final    
+
+    *Answer:* A
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Beware!
+
+Type Synonyms 
+
+* Do not _create_ new types
+
+* Just _name_ existing types
+
+And hence, synonyms 
+
+* Do not prevent _confusing_ different values 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Algebraic Data Types
+
+1. *Type Synonyms:* naming existing types \[done\]
+
+2. ***Product Types:* bundling things together**
+
+3. *Sum Types:* types with multiple variants
+
+4. *Recursive Types:* types that contain themselves
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Creating *New* Data Types 
+
+We can avoid mixing up values by creating _new_ `data` types
+
+```haskell
+-- | A new type `Circle` with constructor `MkCircle`,
+--   which takes three arguments of type `Double`
+data Circle = MkCircle Double Double Double
+
+-- | A new type `Cuboid` with constructor `MkCuboid`
+--   which takes three arguments of type `Double`
+data Cuboid = MkCuboid Double Double Double
+```
+
+We use constructors to *build* values of the new type: 
+
+```haskell
+circ1 :: Circle 
+circ1 = MkCircle 0 0 100  -- circle at "origin" w/ radius 100
+
+cub1 :: Cuboid
+cub1 = MkCuboid 10 20 30  -- cuboid w/ len=10, dep=20, ht=30 
 ```
 
 <br>
@@ -146,32 +275,29 @@ deadlineTime = Time 11 59 59
 
 ## QUIZ
 
-```haskell
-data Date = Date Int Int Int
-```
-
-What would GHCi say to
+Suppose we create a new type with a `data` definition
 
 ```haskell
->:t Date 4 29 2022
+-- | A new type `Circle` with constructor `MkCircle`
+data Circle = MkCircle Double Double Double
 ```
 
-**A.**  Syntax error
+What is the **type of** the `MkCircle` _constructor_?
 
-**B.**  Type error
+**A.** `MkCircle :: Circle`
 
-**C.**  `(Int, Int, Int)`
+**B.** `MkCircle :: Double -> Circle`
 
-**D.**  `Date`
+**C.** `MkCircle :: Double -> Double -> Circle`
 
-**E.**  `Date Int Int Int`
+**D.** `MkCircle :: Double -> Double -> Double -> Circle`
 
-<br>
+**E.** `MkCircle :: (Double, Double, Double) -> Circle`
 
 (I) final    
 
     *Answer:* D
-    
+
 <br>
 <br>
 <br>
@@ -182,35 +308,36 @@ What would GHCi say to
 <br>
 
 
-### Record syntax
+### Aside: Record syntax
 
 Haskell's **record syntax** allows you to *name* the constructor parameters:
 
   * Instead of
 
     ```haskell
-    data Date = Date Int Int Int
+    data Circle = MkCircle Double Double Double
     ```
 
   * you can write:
 
     ```
-    data Date = Date { 
-      month :: Int, 
-      day   :: Int,
-      year  :: Int  
+    data Circle = MkCircle { 
+      center_x :: Double, 
+      center_y :: Double,
+      radius   :: Double  
     }
     ```
     
   * then you can do:
   
     ```
-    deadlineDate = Date { month = 4, day = 29, year = 2022 }
-    -- same as: deadlineDate = Date 4 29 2022
+    circ1 = MkCircle { center_x = 0, center_y = 0, radius = 100 }
+    -- same as: circ1 = MkCircle 0 0 100
     
-    deadlineMonth = month deadlineDate -- use field name as a function    
+    r = radius circ1 -- use field name as a function    
     ```
-    
+
+
 <br>
 <br>
 <br>
@@ -221,172 +348,106 @@ Haskell's **record syntax** allows you to *name* the constructor parameters:
 <br>
 <br>
 
-## Building data types
+## QUIZ 
 
-<br>
-
-Three key ways to build complex types/values:
-
-1. **Product types** (**each-of**): a value of `T` contains a value of `T1` *and* a value of `T2` **[done]** 
-
-2. **Sum types** (**one-of**): a value of `T` contains a value of `T1` *or* a value of `T2`
-
-3. **Recursive types**: a value of `T` contains a *sub-value* of the same type `T`
-    
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Example: NanoMarkdown
-
-Suppose I want to represent a *text document* with simple markup
-
-Each paragraph is either:
- 
-  * plain text (`String`)
-  * heading: level and text (`Int` and `String`)
-  * list: ordered? and items (`Bool` and `[String]`)
-  
-I want to store all paragraphs in a *list*
+Suppose we have the definitions
 
 ```haskell
-doc = [
-    (1, "Notes from 130")                        -- Lvl 1 heading
-  , "There are two types of languages:"          -- Plain text
-  , (True, ["those people complain about"        -- Ordered list 
-           , "those no one uses"])
-  ]
+type CuboidT = (Double, Double, Double)
+data Cuboid  = MkCuboid Double Double Double     
+
+volume :: CuboidT -> Double
+volume (l, d, h) = l * d * h
 ```
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-But this doesn't type check!!!  
-
-
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Sum Types
-
-Solution: construct a new type for paragraphs
-that is a *sum* (*one-of*) the three options!
-
-Each paragraph is either:
- 
-  * plain text (`String`)
-  * heading: level and text (`Int` and `String`)
-  * list: ordered? and items (`Bool` and `[String]`)
-  
-```haskell
-data Paragraph = 
-    PText String          -- 3 constructors,
-  | PHeading Int String   -- each with different  
-  | PList Bool [String]   -- parameters
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## QUIZ
+What is the result of
 
 ```haskell
-data Paragraph = 
-    PText String | PHeading Int String | PList Bool [String]
+>>> volume (MkCuboid 10 20 30)
 ```
 
-What would GHCi say to
+**A.** `6000`
 
-```haskell
->:t PText "Hey there!"
-```
-
-**A.**  Syntax error
-
-**B.**  Type error
-
-**C.**  `PText`
-
-**D.**  `String`
-
-**E.**  `Paragraph`
-
-<br>
+**B.** Type error
 
 (I) final    
 
-    *Answer:* E
+    *Answer:* B
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Deconstructing Data
+
+Constructors let us *build* values of new type ... but how to *use* those values?
+
+How can we implement a function
+
+```haskell
+volume :: Cuboid -> Double
+volume c = ???
+```
+
+such that
+
+```haskell
+>>> volume (MkCuboid 10 20 30)
+6000
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Deconstructing Data by Pattern Matching
+
+Haskell lets us *deconstruct* data via pattern-matching
+
+```haskell
+volume :: Cuboid -> Double
+volume (MkCuboid l d h) = l * d * h
+
+area :: Circle -> Double
+area (MkCircle x y r) = pi * r * r
+```
+
+same as for tuples, just using different constructors!
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
     
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+## Algebraic Data Types
 
-## Constructing datatypes
-  
-```haskell
-data T = 
-    C1 T11 .. T1k 
-  | C2 T21 .. T2l
-  | .. 
-  | Cn Tn1 .. Tnm
-```
+1. *Type Synonyms:* naming existing types \[done\]
 
-`T` is the new **datatype**
+2. *Product Types:* bundling things together \[done\]
 
-`C1 .. Cn` are the **constructors** of `T`
+3. ***Sum Types:* types with multiple variants**
 
-<br>
+4. *Recursive Types:* types that contain themselves
 
-A **value** of type `T` is
-
-  * *either* `C1 v1 .. vk` with `vi :: T1i`
-  * *or* `C2 v1 .. vl` with `vi :: T2i`
-  * *or* ...
-  * *or* `Cn v1 .. vm` with `vi :: Tni`
-  
-<br>  
-  
-You can think of a `T` value as a **box**:
-
-  * *either* a box labeled `C1` with values of types `T11 .. T1k` inside
-  * *or* a box labeled `C2` with values of types `T21 .. T2l` inside
-  * *or* ...
-  * *or* a box labeled `Cn` with values of types `Tn1 .. Tnm` inside
-  
-<br>  
-    
-![Constructors as boxes](/static/img/data-box.png){#fig:boxes .align-center width=80%}  
+5. *Polymorphic Datatypes:* datatypes with parameters
 
 <br>
 <br>
@@ -398,70 +459,129 @@ You can think of a `T` value as a **box**:
 <br>
 <br>
 
-## Datatype for Paragraphs
+Defining new types with `data` prevents us from mixing up values:
 
 ```haskell
-data Paragraph = 
-    PText String
-  | PHeading Int String
-  | PList Bool [String]
+area :: Circle -> Double
+area (MkCircle x y r) = pi * r * r
+
+>>> area (MkCuboid 10 20 30) -- TYPE ERROR!
+```
+
+But ... what if we _need_ to mix up values?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## A List of Shapes
+
+Suppose I need to represent a *list of shapes*
+
+- Some `Circle`s
+- Some `Cuboid`s
+
+What is the problem with `shapes` as defined below?
+
+```haskell
+shapes = [circ1, cub1]
+```
+
+Where we have defined
+
+```haskell
+circ1 :: Circle 
+circ1 = MkCircle 0 0 100  -- circle at "origin" with radius 100
+
+cub1 :: Cuboid
+cub1 = MkCuboid 10 20 30  -- cuboid with length=10, depth=20, height=30 
 ```
 
 <br>
-
-![Paragraph Constructors](/static/img/data-para-type.png){#fig:para-boxes .align-center width=80%}
-
 <br>
-<br>  
-  
-Apply a constructor = pack some values into a box (and label it)
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-  * `PText "cat"`
-      * put `"cat"` in a box labeled `PText`
-  * `PHeading 1 "CSE 130"`
-      * put `1` and `"CSE 130"` in a box labeled `PHeading`
-  * Boxes have different labels but same type (`Paragraph`)
-  
-![Paragraph Values](/static/img/data-para-val.png){#fig:para-vals .align-center width=80%}  
+This does not type-check!
+
+All list elements must have the _same_ type!
 
 <br>
 <br>
 <br>
 <br>
+
+Solution?
+
 <br>
 <br>
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+
+## Sum types
+
+Lets create a _single_ type that can represent _both_ kinds of shapes!
+
+```haskell
+data Shape 
+  = MkCircle Double Double Double   -- Circle at x, y with radius r 
+  | MkCuboid Double Double Double   -- Cuboid with length, depth, height
+```
+
+A **sum type** is a data type with multiple constructors
+
+  - aka **enum** in Rust
+  - aka (tagged) **union** in C
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 ## QUIZ
 
-```haskell
-data Paragraph = 
-    PText String | PHeading Int String | PList Bool [String]
-```
-
-What would GHCi say to
+With the definition:
 
 ```haskell
->:t [PHeading 1 "Introduction", PText "Hey there!"]
+data Shape 
+  = MkCircle Double Double Double   -- Circle at x, y with radius r 
+  | MkCuboid Double Double Double   -- Cuboid with length, depth, height
 ```
 
-**A.**  Syntax error
+What is the type of `MkCircle 0 0 100` ? 
 
-**B.**  Type error
+**A.** `Shape`
 
-**C.**  `Paragraph`
+**B.** `Circle`
 
-**D.**  `[Paragraph]`
+**C.** `MkCircle`
 
-**E.**  `[String]`  
-
-<br>
+**D.** `(Double, Double, Double)`
 
 (I) final    
 
-    *Answer:* D
+    *Answer:* A
 
 <br>
 <br>
@@ -471,182 +591,29 @@ What would GHCi say to
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
 
-## Example: NanoMarkdown
+
+## List of Shapes: Take 2
+
+Now we can define
 
 ```haskell
-data Paragraph = 
-    PText String | PHeading Int String | PList Bool [String]
+circ2 :: Shape
+circ2 = MkCircle 0 0 100  -- circle at "origin" with radius 100
+
+cub2 :: Shape 
+cub2 = MkCuboid 10 20 30  -- cuboid with length=10, depth=20, height=30 
 ```
 
-Now I can create a document like so:
+and then define collections of `Shape`s
 
 ```haskell
-doc :: [Paragraph]
-doc = [
-    PHeading 1 "Notes from 130"
-  , PText "There are two types of languages:"
-  , PList True [ "those people complain about"
-               , "those no one uses"]]
-```
-
-<br>
-<br>
-
-Now I want **convert documents in to HTML**.
-
-I need to write a function:
-
-```haskell
-html :: Paragraph -> String
-html p = ??? -- depends on the kind of paragraph!
-```
-
-<br>
-<br>
-
-How to tell what's in the box?
-
-  * Look at the label!
-  
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>  
-  
-## Pattern matching
-
-**Pattern matching** = looking at the label and extracting values from the box
-
-  * we've seen it before
-  * but now for arbitrary datatypes
-  
-```haskell
-html :: Paragraph -> String
-html (PText str)        = ... -- It's a plain text! Get string
-html (PHeading lvl str) = ... -- It's a heading! Get level and string
-html (PList ord items)  = ... -- It's a list! Get ordered and items
-```
-
-<br>
-<br>
-<br>
-<br>
-<br> 
-
-  
-```haskell
-html :: Paragraph -> String
-html (PText str) =           -- It's a plain text! Get string
-  unlines [open "p", str, close "p"]
-html (PHeading lvl str) =    -- It's a heading! Get level and string
-  let htag = "h" ++ show lvl
-  in unwords [open htag, str, close htag]
-html (PList ord items) =    -- It's a list! Get ordered and items
-  let 
-   ltag = if ord then "ol" else "ul"
-   litems = [unwords [open "li", i, close "li"] | i <- items]
-  in unlines ([open ltag] ++ litems ++ [close ltag])
-  
-open t = "<" ++ t ++ ">"
-close t = "</" ++ t ++ ">"  
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>  
-  
-### Dangers of pattern matching (1)
-
-```haskell
-html :: Paragraph -> String
-html (PText str) = ...
-html (PList ord items) = ...
-```
-
-What would GHCi say to:
-
-```haskell
-html (PHeading 1 "Introduction")
-```
-
-<br>
-
-(I) final    
-
-    *Answer:* Runtime error (no matching pattern)
-<br>
-<br>
-<br>
-<br>
-<br>
-
-### Dangers of pattern matching (2)
-
-```haskell
-html :: Paragraph -> String
-html (PText str)        = unlines [open "p", str, close "p"]
-html (PHeading lvl str) = ...
-html (PHeading 0 str)   = html (Heading 1 str)
-html (PList ord items)  = ...
-```
-
-What would GHCi say to:
-
-```haskell
-html (PHeading 0 "Introduction")
-```
-
-<br>
-
-(I) final    
-
-    *Answer:* `PHeading 0 "Introduction"` will be matched by `PHeading lvl str`
-
-<br>
-<br>
-<br>
-<br>
-<br>
-
-### Dangers of pattern matching
-
-Beware of **missing** and **overlapped** patterns
-
-  * GHC warns you about *overlapped* patterns
-  * GHC warns you about *missing* patterns when called with `-W` (use `:set -W` in GHCi)
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>  
-  
-## Pattern matching expression
-
-We've seen: pattern matching in *equations*
-
-You can also pattern-match *inside your program* using the `case` expression:
-
-```haskell
-html :: Paragraph -> String
-html p = 
-  case p of
-    PText str -> unlines [open "p", str, close "p"]
-    PHeading lvl str -> ...
-    PList ord items -> ...
+shapes :: [Shape]
+shapes = [circ2, cub2]
 ```
 
 <br>
@@ -657,85 +624,73 @@ html p =
 <br>
 <br>
 <br>
-<br>  
+<br>
+<br>
+<br>
+<br>
 
-## QUIZ
+## 2D Shapes 
 
-Given the definition:
+Lets define a type for 2D shapes
 
 ```haskell
-data Paragraph = 
-  PText String | PHeading Int String | PList Bool [String]
+data Shape2D 
+  = MkRect Double Double -- rectangle with width and height
+  | MkCirc Double        -- circle with radius
+  | MkPoly [Vertex]      -- polygon with a list of vertices
+
+type Vertex = (Double, Double)
 ```
 
-what is the type of
+Different constructors can have different types!
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Tagged Boxes 
+
+A values of type `Shape2D` is either two doubles *tagged* with `Rectangle` 
 
 ```haskell
-case PText "Hey there!" of
-  PText _ -> 1
-  PHeading _ _ -> 2
-  PList _ _ -> 3     
+>>> :type (Rectangle 4.5 1.2)
+(Rectangle 4.5 1.2) :: Shape
 ```
 
-**A.**  Syntax error
-
-**B.**  Type error
-
-**C.**  `Paragraph`
-
-**D.**  `Int`
-
-**E.**  `Paragraph -> Int`
-
-<br>
-
-(I) final
-
-    *Answer:* D
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br> 
-
-## QUIZ
-
-Given the definition:
+or a single double *tagged* with `Circle`
 
 ```haskell
-data Paragraph = 
-  PText String | PHeading Int String | PList Bool [String]
+>>> :type (Circle 3.2)
+(Circle 3.2) :: Shape
 ```
 
-what is the type of
+or a list of pairs of d *tagged* with `Polygon`
 
 ```haskell
-case PText "Hey there!" of
-  PText str -> str
-  PHeading lvl _ -> lvl
-  PList ord _ -> ord     
+ghci> :type (Polygon [(1, 1), (2, 2), (3, 3)])
+(Polygon [(1, 1), (2, 2), (3, 3)]) :: Shape
 ```
 
-**A.**  Syntax error
-
-**B.**  Type error
-
-**C.**  `String`
-
-**D.**  `Paragraph`
-
-**E.**  `Paragraph -> String`
-
+<br>
+<br>
 <br>
 
-(I) final
+![Data values are **Tagged Boxes**](/static/img/lec4_boxed.png)
 
-    *Answer:* B (cases have different types)
+
+<br>
+<br>
+<br>
+<br>
+
+How do we get the value out of the box?
 
 <br>
 <br>
@@ -745,29 +700,31 @@ case PText "Hey there!" of
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
 
-## Pattern matching expression: typing
+## EXERCISE 
 
-The `case` expression
+Write a function to compute the `perimeter` of a `Shape2D` 
 
 ```haskell
-case e of
-  pattern1 -> e1
-  pattern2 -> e2
-  ...
-  patternN -> eN
+data Shape2D = MkRect Double Double | MkCirc Double | MkPoly [Vertex]
+type Vertex = (Double, Double)
+
+perimeter :: Shape2D -> Double
+perimeter s = ???
 ```
 
-has type `T` if
+**HINT**
 
-  * each `e1`...`eN` has type `T`
-  * `e` has some type `D`
-  * each `pattern1`...`patternN` is a *valid pattern* for `D`    
-      * i.e. a variable or a constructor of `D` applied to other patterns
-      
-The expression `e` is called the *match scrutinee*      
+You may want to use this helper that computes the distance between two points
 
-
+```haskell
+distance :: Vertex -> Vertex -> Double
+distance (x1, y1) (x2, y2) = sqrt ((x2 - x1) ** 2 + (y2 - y1) ** 2)
+```
 
 <br>
 <br>
@@ -775,25 +732,18 @@ The expression `e` is called the *match scrutinee*
 <br>
 <br>
 <br>
+
+## Algebraic Data Types
+
+1. *Type Synonyms:* naming existing types \[done\]
+
+2. *Product Types:* bundling things together \[done\]
+
+3. *Sum Types:* types with multiple variants  \[done\]
+
+4. ***Recursive Types:* types that contain themselves**
+
 <br>
-<br>
-
-## Building data types
-
-<br>
-
-Three key ways to build complex types/values:
-
-1. **Product types** (**each-of**): a value of `T` contains a value of `T1` *and* a value of `T2` **[done]**
-
-    * Cartesian *product* of two sets: $v(T) = v(T1) \times v(T2)$
-
-2. **Sum types** (**one-of**): a value of `T` contains a value of `T1` *or* a value of `T2` **[done]**
-
-    * Union (*sum*) of two sets: $v(T) = v(T1) \cup v(T2)$
-
-3. **Recursive types**: a value of `T` contains a *sub-value* of the same type `T`
-
 <br>
 <br>
 <br>
