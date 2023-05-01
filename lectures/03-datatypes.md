@@ -756,39 +756,113 @@ distance (x1, y1) (x2, y2) = sqrt ((x2 - x1) ** 2 + (y2 - y1) ** 2)
 
 ## Recursive types
 
-Let's define **natural numbers** from scratch:
-
-```haskell
-data Nat = ???
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-```haskell
-data Nat = Zero | Succ Nat
-```
-
-A `Nat` value is:
-
-  * either an *empty* box labeled `Zero`
-  * or a box labeled `Succ` with another `Nat` in it!
+Have we seen an example already where 
   
-Some `Nat` values:  
-  
+  - a value of type `T`
+  - contains another value of the same type `T` inside?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+Yes, lists!
+
+Lists aren't built-in! They are an *algebraic data type* like any other:
+
 ```haskell
-Zero                     -- 0
-Succ Zero                -- 1
-Succ (Succ Zero)         -- 2
-Succ (Succ (Succ Zero))  -- 3
-...
+data IntList 
+  = INil                -- empty list
+  -- ^ base constructor
+  | ICons Int IntList   -- list with Int head and IntList tail
+  -- ^ inductive constructor (contains another IntList)
 ```
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ 
+
+```haskell
+data IntList 
+  = INil                -- empty list
+  | ICons Int IntList   -- list with Int head and IntList tail
+```
+
+What is the type of `ICons` ?
+
+**A.** `IntList`
+
+**B.** `Int -> IntList`
+
+**C.** `(Int, IntList)`
+
+**D.** `Int -> IntList -> IntList`
+
+**E.** `IntList -> IntList`
+
+(I) final    
+
+    *Answer:* D
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## EXERCISE 
+
+With the definition:
+
+```haskell
+data IntList = INil | ICons Int IntList
+```
+
+Write down an `IntList` representation of the list `[1,2,3]`
+
+```haskell
+list_1_2_3 :: IntList
+list_1_2_3 = ???
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+Recursion means boxes *within* boxes
+
+![Recursively Nested Boxes](/static/img/lec4_nested.png)
+
+<br>
 <br>
 <br>
 <br>
@@ -803,38 +877,35 @@ Succ (Succ (Succ Zero))  -- 3
 
 **Recursive code mirrors recursive data**
 
-
-### 1. Recursive type as a parameter
-
 ```haskell
-data Nat = Zero     -- base constructor
-         | Succ Nat -- inductive constructor
+data IntList 
+  = INil                -- base constructor
+  | ICons Int IntList   -- inductive constructor
 ```
 
 **Step 1:** add a pattern per constructor
 
-```
-toInt :: Nat -> Int
-toInt Zero     = ... -- base case
-toInt (Succ n) = ... -- inductive case
-                     -- (recursive call goes here)
+```haskell
+length :: IntList -> Int
+length INil         = ... -- base case
+length (ICons x xs) = ... -- recursive case
 ```
 
 **Step 2:** fill in base case:
 
-```
-toInt :: Nat -> Int
-toInt Zero     = 0   -- base case
-toInt (Succ n) = ... -- inductive case
-                     -- (recursive call goes here)
+```haskell
+length :: IntList -> Int
+length INil         = 0
+length (ICons x xs) = ...
 ```
 
 **Step 3:** fill in inductive case using a recursive call:
 
-```
-toInt :: Nat -> Int
-toInt Zero     = 0           -- base case
-toInt (Succ n) = 1 + toInt n -- inductive case
+```haskell
+length :: IntList -> Int
+length INil         = 0
+length (ICons x xs) = 1 + length xs
+--                        ^ recursive call on the "nested box"
 ```
 
 <br>
@@ -847,54 +918,40 @@ toInt (Succ n) = 1 + toInt n -- inductive case
 <br>
 <br>  
 
-## QUIZ
 
-What does this evaluate to?
+### EXERCISE: Append
+
+Write an `append` function that appends two `IntList`s:
 
 ```haskell
-let foo i = if i <= 0 then Zero else Succ (foo (i - 1))
-in foo 2 
+data IntList = INil | ICons Int IntList
+
+append :: IntList -> IntList -> IntList
+append = ???
 ```
 
-**A.**  Syntax error
+so that we can call:
 
-**B.**  Type error
+```haskell
+-- [1,2] ++ [3,4] ==> [1,2,3,4]
+>>> append (ICons 1 (ICons 2 INil))  (ICons 3 (ICons 4 INil))
+(ICons 1 (ICons 2 (ICons 3 (ICons 4 INil))))
+```
 
-**C.**  `2`
-
-**D.**  `Succ Zero`
-
-**E.**  `Succ (Succ Zero)`
-
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 
 (I) final
-
-    *Answer:* E
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-### 2. Recursive type as a result
-
-```haskell
-data Nat = Zero     -- base constructor
-         | Succ Nat -- inductive constructor
-
-         
-fromInt :: Int -> Nat
-fromInt n
-  | n <= 0    = Zero                   -- base case
-  | otherwise = Succ (fromInt (n - 1)) -- inductive case
-                                       -- (recursive call goes here)
-```
+    
+    ```haskell
+    append :: List -> List -> List
+    append Nil ys = ys
+    append (Cons x xs) ys = Cons x (append xs ys)    
+    ```
 
 <br>
 <br>
@@ -904,46 +961,7 @@ fromInt n
 <br>
 
 
-### 3. Putting the two together
-
-```haskell
-data Nat = Zero     -- base constructor
-         | Succ Nat -- inductive constructor
-
-         
-add :: Nat -> Nat -> Nat
-add n m = ???
-
-sub :: Nat -> Nat -> Nat
-sub n m = ???
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-```haskell
-data Nat = Zero     -- base constructor
-         | Succ Nat -- inductive constructor
-
-         
-add :: Nat -> Nat -> Nat
-add Zero     m = m              -- base case
-add (Succ n) m = Succ (add n m) -- inductive case
-
-sub :: Nat -> Nat -> Nat
-sub n        Zero     = n       -- base case 1
-sub Zero     _        = Zero    -- base case 2
-sub (Succ n) (Succ m) = sub n m -- inductive case
-```
-
-Lessons learned:
+### Lessons Learned
 
 * **Recursive code mirrors recursive data**
 * With **multiple** arguments of a recursive type,
@@ -960,76 +978,11 @@ Lessons learned:
 <br>
 <br>
 
-## Lists
-
-Lists aren't built-in! They are an *algebraic data type* like any other:
-
-```haskell
-data List = Nil           -- base constructor
-          | Cons Int List -- inductive constructor
-```
-
-* List `[1, 2, 3]` is *represented* as `Cons 1 (Cons 2 (Cons 3 Nil))`
-
-* Built-in list constructors `[]` and `(:)`
-  are just fancy syntax for `Nil` and `Cons`
-
-<br>
-<br>
-
-Functions on lists follow the same general strategy:
-
-```haskell
-length :: List -> Int
-length Nil         = 0              -- base case
-length (Cons _ xs) = 1 + length xs  -- inductive case
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-
-What is the right *inductive strategy* for appending two lists?
-
-
-(I) lecture
-    
-    ```haskell
-    append :: List -> List -> List
-    append xs ys = ??
-    ```
-    
-(I) final
-    
-    ```haskell
-    append :: List -> List -> List
-    append Nil ys = ys
-    append (Cons x xs) ys = Cons x (append xs ys)    
-    ```
-    
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 ## Trees
 
 Lists are *unary trees*:
 
 ![Unary tree (aka list)](/static/img/list-tree.png){#fig:boxes .align-center width=50%}  
-
-
-```haskell
-data List = Nil | Cons Int List
-```
 
 <br>
 <br>
@@ -1049,21 +1002,21 @@ How do we represent *binary trees*?
 <br>
 <br>
 
-## QUIZ: Binary trees I
+## QUIZ: Binary trees
 
-What is a Haskell datatype that can represent this *binary tree*?
+How do you represent this *binary tree* as a recursive datatype?
 
 ![Binary tree](/static/img/tree-data-node.png){#fig:boxes .align-center width=50%}
   
-**(A)** `data Tree = Leaf | Node Int Tree`
+**(A)** `data ITree = ILeaf | INode Int ITree`
 
-**(B)** `data Tree = Leaf | Node Tree Tree`
+**(B)** `data ITree = ILeaf | INode ITree ITree`
 
-**(C)** `data Tree = Leaf | Node Int Tree Tree`
+**(C)** `data ITree = ILeaf | INode Int ITree ITree`
 
-**(D)** `data Tree = Leaf Int | Node Tree Tree`
+**(D)** `data ITree = ILeaf Int | INode ITree ITree`
 
-**(E)** `data Tree = Leaf Int | Node Int Tree Tree`
+**(E)** `data ITree = ILeaf Int | INode Int ITree ITree`
 
 <br>
 
@@ -1085,11 +1038,12 @@ What is a Haskell datatype that can represent this *binary tree*?
 ![Binary tree](/static/img/tree-data-node.png){#fig:boxes .align-center width=50%}
 
 ```haskell
-data Tree = Leaf | Node Int Tree Tree
+-- | Binary tree of integers
+data ITree = ILeaf | INode Int ITree ITree
 
-t1234 = Node 1 
-          (Node 2 (Node 3 Leaf Leaf) Leaf) 
-          (Node 4 Leaf Leaf)
+t1234 = INode 1 
+          (INode 2 (INode 3 ILeaf ILeaf) ILeaf) 
+          (INode 4 ILeaf ILeaf)
 ```
 
 <br>
@@ -1100,32 +1054,8 @@ t1234 = Node 1
 <br>
 <br>
 
-<!--
 
-BTW, answer D is also a binary tree, but with values stored in leaves!
-
-![Leaf tree](/static/img/tree-data-leaf.png){#fig:boxes .align-center width=50%}
-
-```haskell
-data Tree = Leaf Int | Node Tree Tree
-
-t12345 = Node
-          (Node (Node (Leaf 1) (Leaf 2)) (Leaf 3))
-          (Node (Leaf 4) (Leaf 5))
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
--->
-
-
-## Functions on trees
+<!-- ## Functions on trees
 
 (I) lecture
     
@@ -1141,6 +1071,7 @@ t12345 = Node
     height Leaf = 0
     height (Node _ l r) = 1 + max (height l) (height r)
     ```
+-->
 
 <br>
 <br>
@@ -1184,8 +1115,25 @@ data Expr = Num Float
 
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-How do we write a function to *evaluate* an expression?
+### EXERCISE: Eval
+
+With expressions defined as follows:
+
+```haskell
+data Expr = Num Float
+          | Add Expr Expr
+          | Sub Expr Expr
+          | Mul Expr Expr
+```
+
+write a function to *evaluate* an expression
 
 (I) lecture
 

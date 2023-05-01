@@ -748,28 +748,81 @@ for building up types to represent complex data</p>
 <br>
 <br></p>
 <h2 id="recursive-types">Recursive types</h2>
-<p>Let’s define <strong>natural numbers</strong> from scratch:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Nat</span> <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p>Have we seen an example already where</p>
+<ul>
+<li>a value of type <code class="sourceCode haskell"><span class="dt">T</span></code></li>
+<li>contains another value of the same type <code class="sourceCode haskell"><span class="dt">T</span></code> inside?</li>
+</ul>
 <p><br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
 <br>
 <br>
 <br></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Nat</span> <span class="ot">=</span> <span class="dt">Zero</span> <span class="op">|</span> <span class="dt">Succ</span> <span class="dt">Nat</span></span></code></pre></div>
-<p>A <code class="sourceCode haskell"><span class="dt">Nat</span></code> value is:</p>
-<ul>
-<li>either an <em>empty</em> box labeled <code class="sourceCode haskell"><span class="dt">Zero</span></code></li>
-<li>or a box labeled <code class="sourceCode haskell"><span class="dt">Succ</span></code> with another <code class="sourceCode haskell"><span class="dt">Nat</span></code> in it!</li>
-</ul>
-<p>Some <code class="sourceCode haskell"><span class="dt">Nat</span></code> values:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="dt">Zero</span>                     <span class="co">-- 0</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Succ</span> <span class="dt">Zero</span>                <span class="co">-- 1</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="dt">Succ</span> (<span class="dt">Succ</span> <span class="dt">Zero</span>)         <span class="co">-- 2</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="dt">Succ</span> (<span class="dt">Succ</span> (<span class="dt">Succ</span> <span class="dt">Zero</span>))  <span class="co">-- 3</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code></pre></div>
+<p>Yes, lists!</p>
+<p>Lists aren’t built-in! They are an <em>algebraic data type</em> like any other:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">IntList</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">INil</span>                <span class="co">-- empty list</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">-- ^ base constructor</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">ICons</span> <span class="dt">Int</span> <span class="dt">IntList</span>   <span class="co">-- list with Int head and IntList tail</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">-- ^ inductive constructor (contains another IntList)</span></span></code></pre></div>
 <p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-4">QUIZ</h2>
+<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">IntList</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">INil</span>                <span class="co">-- empty list</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">ICons</span> <span class="dt">Int</span> <span class="dt">IntList</span>   <span class="co">-- list with Int head and IntList tail</span></span></code></pre></div>
+<p>What is the type of <code class="sourceCode haskell"><span class="dt">ICons</span></code> ?</p>
+<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dt">IntList</span></code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IntList</span></code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell">(<span class="dt">Int</span>, <span class="dt">IntList</span>)</code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IntList</span> <span class="ot">-&gt;</span> <span class="dt">IntList</span></code></p>
+<p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">IntList</span> <span class="ot">-&gt;</span> <span class="dt">IntList</span></code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exercise-1">EXERCISE</h2>
+<p>With the definition:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">IntList</span> <span class="ot">=</span> <span class="dt">INil</span> <span class="op">|</span> <span class="dt">ICons</span> <span class="dt">Int</span> <span class="dt">IntList</span></span></code></pre></div>
+<p>Write down an <code class="sourceCode haskell"><span class="dt">IntList</span></code> representation of the list <code class="sourceCode haskell">[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</code></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ot">list_1_2_3 ::</span> <span class="dt">IntList</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>list_1_2_3 <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p>Recursion means boxes <em>within</em> boxes</p>
+<figure>
+<img src="../static/img/lec4_nested.png" alt="Recursively Nested Boxes" />
+<figcaption aria-hidden="true">Recursively Nested Boxes</figcaption>
+</figure>
+<p><br>
+<br>
 <br>
 <br>
 <br>
@@ -780,23 +833,22 @@ for building up types to represent complex data</p>
 <br></p>
 <h2 id="functions-on-recursive-types">Functions on recursive types</h2>
 <p><strong>Recursive code mirrors recursive data</strong></p>
-<h3 id="recursive-type-as-a-parameter">1. Recursive type as a parameter</h3>
-<div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Nat</span> <span class="ot">=</span> <span class="dt">Zero</span>     <span class="co">-- base constructor</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">Succ</span> <span class="dt">Nat</span> <span class="co">-- inductive constructor</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">IntList</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">INil</span>                <span class="co">-- base constructor</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">ICons</span> <span class="dt">Int</span> <span class="dt">IntList</span>   <span class="co">-- inductive constructor</span></span></code></pre></div>
 <p><strong>Step 1:</strong> add a pattern per constructor</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toInt</span><span class="ot"> ::</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">toInt</span> <span class="dt">Zero</span>     <span class="ot">=</span> <span class="op">...</span> <span class="co">-- base case</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">toInt</span> (<span class="dt">Succ</span> n) <span class="ot">=</span> <span class="op">...</span> <span class="co">-- inductive case</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>                     <span class="co">-- (recursive call goes here)</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span><span class="ot"> ::</span> <span class="dt">IntList</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span> <span class="dt">INil</span>         <span class="ot">=</span> <span class="op">...</span> <span class="co">-- base case</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span> (<span class="dt">ICons</span> x xs) <span class="ot">=</span> <span class="op">...</span> <span class="co">-- recursive case</span></span></code></pre></div>
 <p><strong>Step 2:</strong> fill in base case:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toInt</span><span class="ot"> ::</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">toInt</span> <span class="dt">Zero</span>     <span class="ot">=</span> <span class="dv">0</span>   <span class="co">-- base case</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">toInt</span> (<span class="dt">Succ</span> n) <span class="ot">=</span> <span class="op">...</span> <span class="co">-- inductive case</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                     <span class="co">-- (recursive call goes here)</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span><span class="ot"> ::</span> <span class="dt">IntList</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span> <span class="dt">INil</span>         <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span> (<span class="dt">ICons</span> x xs) <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
 <p><strong>Step 3:</strong> fill in inductive case using a recursive call:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toInt</span><span class="ot"> ::</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">toInt</span> <span class="dt">Zero</span>     <span class="ot">=</span> <span class="dv">0</span>           <span class="co">-- base case</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">toInt</span> (<span class="dt">Succ</span> n) <span class="ot">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="fu">toInt</span> n <span class="co">-- inductive case</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span><span class="ot"> ::</span> <span class="dt">IntList</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span> <span class="dt">INil</span>         <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span> (<span class="dt">ICons</span> x xs) <span class="ot">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="fu">length</span> xs</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co">--                        ^ recursive call on the &quot;nested box&quot;</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -806,72 +858,29 @@ for building up types to represent complex data</p>
 <br>
 <br>
 <br></p>
-<h2 id="quiz-4">QUIZ</h2>
-<p>What does this evaluate to?</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> foo i <span class="ot">=</span> <span class="kw">if</span> i <span class="op">&lt;=</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dt">Zero</span> <span class="kw">else</span> <span class="dt">Succ</span> (foo (i <span class="op">-</span> <span class="dv">1</span>))</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span> foo <span class="dv">2</span> </span></code></pre></div>
-<p><strong>A.</strong> Syntax error</p>
-<p><strong>B.</strong> Type error</p>
-<p><strong>C.</strong> <code class="sourceCode haskell"><span class="dv">2</span></code></p>
-<p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">Succ</span> <span class="dt">Zero</span></code></p>
-<p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">Succ</span> (<span class="dt">Succ</span> <span class="dt">Zero</span>)</code></p>
-<p><br></p>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
-<h3 id="recursive-type-as-a-result">2. Recursive type as a result</h3>
-<div class="sourceCode" id="cb40"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Nat</span> <span class="ot">=</span> <span class="dt">Zero</span>     <span class="co">-- base constructor</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">Succ</span> <span class="dt">Nat</span> <span class="co">-- inductive constructor</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>         </span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fromInt</span><span class="ot"> ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Nat</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">fromInt</span> n</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> n <span class="op">&lt;=</span> <span class="dv">0</span>    <span class="ot">=</span> <span class="dt">Zero</span>                   <span class="co">-- base case</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="fu">otherwise</span> <span class="ot">=</span> <span class="dt">Succ</span> (<span class="fu">fromInt</span> (n <span class="op">-</span> <span class="dv">1</span>)) <span class="co">-- inductive case</span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>                                       <span class="co">-- (recursive call goes here)</span></span></code></pre></div>
+<h3 id="exercise-append">EXERCISE: Append</h3>
+<p>Write an <code class="sourceCode haskell">append</code> function that appends two <code class="sourceCode haskell"><span class="dt">IntList</span></code>s:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">IntList</span> <span class="ot">=</span> <span class="dt">INil</span> <span class="op">|</span> <span class="dt">ICons</span> <span class="dt">Int</span> <span class="dt">IntList</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="ot">append ::</span> <span class="dt">IntList</span> <span class="ot">-&gt;</span> <span class="dt">IntList</span> <span class="ot">-&gt;</span> <span class="dt">IntList</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>append <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p>so that we can call:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- [1,2] ++ [3,4] ==&gt; [1,2,3,4]</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> append (<span class="dt">ICons</span> <span class="dv">1</span> (<span class="dt">ICons</span> <span class="dv">2</span> <span class="dt">INil</span>))  (<span class="dt">ICons</span> <span class="dv">3</span> (<span class="dt">ICons</span> <span class="dv">4</span> <span class="dt">INil</span>))</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>(<span class="dt">ICons</span> <span class="dv">1</span> (<span class="dt">ICons</span> <span class="dv">2</span> (<span class="dt">ICons</span> <span class="dv">3</span> (<span class="dt">ICons</span> <span class="dv">4</span> <span class="dt">INil</span>))))</span></code></pre></div>
 <p><br>
 <br>
 <br>
 <br>
 <br>
 <br></p>
-<h3 id="putting-the-two-together">3. Putting the two together</h3>
-<div class="sourceCode" id="cb41"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Nat</span> <span class="ot">=</span> <span class="dt">Zero</span>     <span class="co">-- base constructor</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">Succ</span> <span class="dt">Nat</span> <span class="co">-- inductive constructor</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>         </span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="ot">add ::</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> <span class="dt">Nat</span></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>add n m <span class="ot">=</span> <span class="op">???</span></span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="ot">sub ::</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> <span class="dt">Nat</span></span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>sub n m <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
 <br></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Nat</span> <span class="ot">=</span> <span class="dt">Zero</span>     <span class="co">-- base constructor</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">Succ</span> <span class="dt">Nat</span> <span class="co">-- inductive constructor</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>         </span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="ot">add ::</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> <span class="dt">Nat</span></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>add <span class="dt">Zero</span>     m <span class="ot">=</span> m              <span class="co">-- base case</span></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>add (<span class="dt">Succ</span> n) m <span class="ot">=</span> <span class="dt">Succ</span> (add n m) <span class="co">-- inductive case</span></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="ot">sub ::</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> <span class="dt">Nat</span></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>sub n        <span class="dt">Zero</span>     <span class="ot">=</span> n       <span class="co">-- base case 1</span></span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>sub <span class="dt">Zero</span>     _        <span class="ot">=</span> <span class="dt">Zero</span>    <span class="co">-- base case 2</span></span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>sub (<span class="dt">Succ</span> n) (<span class="dt">Succ</span> m) <span class="ot">=</span> sub n m <span class="co">-- inductive case</span></span></code></pre></div>
-<p>Lessons learned:</p>
+<h3 id="lessons-learned">Lessons Learned</h3>
 <ul>
 <li><strong>Recursive code mirrors recursive data</strong></li>
 <li>With <strong>multiple</strong> arguments of a recursive type,
@@ -887,45 +896,12 @@ which one should I recurse on?</li>
 <br>
 <br>
 <br></p>
-<h2 id="lists">Lists</h2>
-<p>Lists aren’t built-in! They are an <em>algebraic data type</em> like any other:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">List</span> <span class="ot">=</span> <span class="dt">Nil</span>           <span class="co">-- base constructor</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Cons</span> <span class="dt">Int</span> <span class="dt">List</span> <span class="co">-- inductive constructor</span></span></code></pre></div>
-<ul>
-<li><p>List <code class="sourceCode haskell">[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</code> is <em>represented</em> as <code class="sourceCode haskell"><span class="dt">Cons</span> <span class="dv">1</span> (<span class="dt">Cons</span> <span class="dv">2</span> (<span class="dt">Cons</span> <span class="dv">3</span> <span class="dt">Nil</span>))</code></p></li>
-<li><p>Built-in list constructors <code class="sourceCode haskell">[]</code> and <code class="sourceCode haskell">(<span class="op">:</span>)</code>
-are just fancy syntax for <code class="sourceCode haskell"><span class="dt">Nil</span></code> and <code class="sourceCode haskell"><span class="dt">Cons</span></code></p></li>
-</ul>
-<p><br>
-<br></p>
-<p>Functions on lists follow the same general strategy:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span><span class="ot"> ::</span> <span class="dt">List</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span> <span class="dt">Nil</span>         <span class="ot">=</span> <span class="dv">0</span>              <span class="co">-- base case</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span> (<span class="dt">Cons</span> _ xs) <span class="ot">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="fu">length</span> xs  <span class="co">-- inductive case</span></span></code></pre></div>
-<p><br>
-<br>
-<br>
-<br>
-<br></p>
-<p>What is the right <em>inductive strategy</em> for appending two lists?</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="ot">append ::</span> <span class="dt">List</span> <span class="ot">-&gt;</span> <span class="dt">List</span> <span class="ot">-&gt;</span> <span class="dt">List</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>append xs ys <span class="ot">=</span> <span class="op">??</span></span></code></pre></div>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
 <h2 id="trees">Trees</h2>
 <p>Lists are <em>unary trees</em>:</p>
 <figure>
 <img src="../static/img/list-tree.png" id="fig:boxes" class="align-center" style="width:50.0%" alt="Unary tree (aka list)" />
 <figcaption aria-hidden="true">Unary tree (aka list)</figcaption>
 </figure>
-<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">List</span> <span class="ot">=</span> <span class="dt">Nil</span> <span class="op">|</span> <span class="dt">Cons</span> <span class="dt">Int</span> <span class="dt">List</span></span></code></pre></div>
 <p><br>
 <br>
 <br></p>
@@ -943,17 +919,17 @@ are just fancy syntax for <code class="sourceCode haskell"><span class="dt">Nil<
 <br>
 <br>
 <br></p>
-<h2 id="quiz-binary-trees-i">QUIZ: Binary trees I</h2>
-<p>What is a Haskell datatype that can represent this <em>binary tree</em>?</p>
+<h2 id="quiz-binary-trees">QUIZ: Binary trees</h2>
+<p>How do you represent this <em>binary tree</em> as a recursive datatype?</p>
 <figure>
 <img src="../static/img/tree-data-node.png" id="fig:boxes" class="align-center" style="width:50.0%" alt="Binary tree" />
 <figcaption aria-hidden="true">Binary tree</figcaption>
 </figure>
-<p><strong>(A)</strong> <code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Tree</span> <span class="ot">=</span> <span class="dt">Leaf</span> <span class="op">|</span> <span class="dt">Node</span> <span class="dt">Int</span> <span class="dt">Tree</span></code></p>
-<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Tree</span> <span class="ot">=</span> <span class="dt">Leaf</span> <span class="op">|</span> <span class="dt">Node</span> <span class="dt">Tree</span> <span class="dt">Tree</span></code></p>
-<p><strong>(C)</strong> <code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Tree</span> <span class="ot">=</span> <span class="dt">Leaf</span> <span class="op">|</span> <span class="dt">Node</span> <span class="dt">Int</span> <span class="dt">Tree</span> <span class="dt">Tree</span></code></p>
-<p><strong>(D)</strong> <code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Tree</span> <span class="ot">=</span> <span class="dt">Leaf</span> <span class="dt">Int</span> <span class="op">|</span> <span class="dt">Node</span> <span class="dt">Tree</span> <span class="dt">Tree</span></code></p>
-<p><strong>(E)</strong> <code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Tree</span> <span class="ot">=</span> <span class="dt">Leaf</span> <span class="dt">Int</span> <span class="op">|</span> <span class="dt">Node</span> <span class="dt">Int</span> <span class="dt">Tree</span> <span class="dt">Tree</span></code></p>
+<p><strong>(A)</strong> <code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">ITree</span> <span class="ot">=</span> <span class="dt">ILeaf</span> <span class="op">|</span> <span class="dt">INode</span> <span class="dt">Int</span> <span class="dt">ITree</span></code></p>
+<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">ITree</span> <span class="ot">=</span> <span class="dt">ILeaf</span> <span class="op">|</span> <span class="dt">INode</span> <span class="dt">ITree</span> <span class="dt">ITree</span></code></p>
+<p><strong>(C)</strong> <code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">ITree</span> <span class="ot">=</span> <span class="dt">ILeaf</span> <span class="op">|</span> <span class="dt">INode</span> <span class="dt">Int</span> <span class="dt">ITree</span> <span class="dt">ITree</span></code></p>
+<p><strong>(D)</strong> <code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">ITree</span> <span class="ot">=</span> <span class="dt">ILeaf</span> <span class="dt">Int</span> <span class="op">|</span> <span class="dt">INode</span> <span class="dt">ITree</span> <span class="dt">ITree</span></code></p>
+<p><strong>(E)</strong> <code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">ITree</span> <span class="ot">=</span> <span class="dt">ILeaf</span> <span class="dt">Int</span> <span class="op">|</span> <span class="dt">INode</span> <span class="dt">Int</span> <span class="dt">ITree</span> <span class="dt">ITree</span></code></p>
 <p><br></p>
 <p><br>
 <br>
@@ -968,11 +944,12 @@ are just fancy syntax for <code class="sourceCode haskell"><span class="dt">Nil<
 <img src="../static/img/tree-data-node.png" id="fig:boxes" class="align-center" style="width:50.0%" alt="Binary tree" />
 <figcaption aria-hidden="true">Binary tree</figcaption>
 </figure>
-<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Tree</span> <span class="ot">=</span> <span class="dt">Leaf</span> <span class="op">|</span> <span class="dt">Node</span> <span class="dt">Int</span> <span class="dt">Tree</span> <span class="dt">Tree</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>t1234 <span class="ot">=</span> <span class="dt">Node</span> <span class="dv">1</span> </span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>          (<span class="dt">Node</span> <span class="dv">2</span> (<span class="dt">Node</span> <span class="dv">3</span> <span class="dt">Leaf</span> <span class="dt">Leaf</span>) <span class="dt">Leaf</span>) </span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>          (<span class="dt">Node</span> <span class="dv">4</span> <span class="dt">Leaf</span> <span class="dt">Leaf</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Binary tree of integers</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">ITree</span> <span class="ot">=</span> <span class="dt">ILeaf</span> <span class="op">|</span> <span class="dt">INode</span> <span class="dt">Int</span> <span class="dt">ITree</span> <span class="dt">ITree</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>t1234 <span class="ot">=</span> <span class="dt">INode</span> <span class="dv">1</span> </span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>          (<span class="dt">INode</span> <span class="dv">2</span> (<span class="dt">INode</span> <span class="dv">3</span> <span class="dt">ILeaf</span> <span class="dt">ILeaf</span>) <span class="dt">ILeaf</span>) </span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>          (<span class="dt">INode</span> <span class="dv">4</span> <span class="dt">ILeaf</span> <span class="dt">ILeaf</span>)</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -980,32 +957,23 @@ are just fancy syntax for <code class="sourceCode haskell"><span class="dt">Nil<
 <br>
 <br>
 <br></p>
-<!--
+<!-- ## Functions on trees
 
-BTW, answer D is also a binary tree, but with values stored in leaves!
-
-![Leaf tree](/static/img/tree-data-leaf.png){#fig:boxes .align-center width=50%}
-
-```haskell
-data Tree = Leaf Int | Node Tree Tree
-
-t12345 = Node
-          (Node (Node (Leaf 1) (Leaf 2)) (Leaf 3))
-          (Node (Leaf 4) (Leaf 5))
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
+(I) lecture
+    
+    ```haskell
+    height :: Tree -> Int
+    height t = ??
+    ```
+    
+(I) final
+    
+    ```haskell
+    height :: Tree -> Int
+    height Leaf = 0
+    height (Node _ l r) = 1 + max (height l) (height r)
+    ```
 -->
-<h2 id="functions-on-trees">Functions on trees</h2>
-<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="ot">height ::</span> <span class="dt">Tree</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>height t <span class="ot">=</span> <span class="op">??</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1022,7 +990,7 @@ to evaluate expressions like:</p>
 <li><code class="sourceCode haskell">(<span class="fl">4.0</span> <span class="op">+</span> <span class="fl">2.9</span>) <span class="op">*</span> (<span class="fl">3.78</span> <span class="op">-</span> <span class="fl">5.92</span>)</code></li>
 </ul>
 <p>What is a Haskell datatype to <em>represent</em> these expressions?</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span> <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span> <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1031,15 +999,27 @@ to evaluate expressions like:</p>
 <br>
 <br>
 <br></p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span> <span class="ot">=</span> <span class="dt">Num</span> <span class="dt">Float</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Add</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Sub</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Mul</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span> <span class="ot">=</span> <span class="dt">Num</span> <span class="dt">Float</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Add</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Sub</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Mul</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span></code></pre></div>
 <p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br></p>
-<p>How do we write a function to <em>evaluate</em> an expression?</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Float</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>eval e <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<h3 id="exercise-eval">EXERCISE: Eval</h3>
+<p>With expressions defined as follows:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span> <span class="ot">=</span> <span class="dt">Num</span> <span class="dt">Float</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Add</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Sub</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Mul</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span></code></pre></div>
+<p>write a function to <em>evaluate</em> an expression</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Float</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>eval e <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
