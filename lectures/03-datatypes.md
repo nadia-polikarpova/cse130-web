@@ -42,6 +42,8 @@ for building up types to represent complex data
 3. *Sum Types:* types with multiple variants
 
 4. *Recursive Types:* types that contain themselves
+
+5. *Polymorphic Datatypes:* datatypes with parameters
     
 <br>
 <br>
@@ -227,6 +229,8 @@ And hence, synonyms
 3. *Sum Types:* types with multiple variants
 
 4. *Recursive Types:* types that contain themselves
+
+5. *Polymorphic Datatypes:* datatypes with parameters
 
 <br>
 <br>
@@ -743,6 +747,8 @@ distance (x1, y1) (x2, y2) = sqrt ((x2 - x1) ** 2 + (y2 - y1) ** 2)
 
 4. ***Recursive Types:* types that contain themselves**
 
+5. *Polymorphic Datatypes:* datatypes with parameters
+
 <br>
 <br>
 <br>
@@ -1055,7 +1061,7 @@ t1234 = INode 1
 <br>
 
 
-<!-- ## Functions on trees
+## Functions on trees
 
 (I) lecture
     
@@ -1071,7 +1077,7 @@ t1234 = INode 1
     height Leaf = 0
     height (Node _ l r) = 1 + max (height l) (height r)
     ```
--->
+
 
 <br>
 <br>
@@ -1151,6 +1157,337 @@ write a function to *evaluate* an expression
     eval (Sub e1 e2) = eval e1 - eval e2
     eval (Mul e1 e2) = eval e1 * eval e2
     ```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Algebraic Data Types
+
+1. *Type Synonyms:* naming existing types \[done\]
+
+2. *Product Types:* bundling things together \[done\]
+
+3. *Sum Types:* types with multiple variants  \[done\]
+
+4. *Recursive Types:* types that contain themselves  \[done\]
+
+5. ***Polymorphic Datatypes:* datatypes with parameters**
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Parameterized Types
+
+Our `IntList` datatype can only store `Int`s :-(
+
+What if we want to store `Char`s or `Double`s?
+
+```haskell
+data CharList 
+  = CNil
+  | CCons Char CharList
+
+data DoubleList 
+   = DNil
+   | DCons Char DoubleList
+``` 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Don't Repeat Yourself!
+
+Don't repeat definitions 
+- Instead *reuse* the list *structure* across *all* types!
+
+Find abstract *data* patterns by 
+
+- identifying the *different* parts and 
+- refactor those into *parameters* 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## A Refactored List
+
+Here are the three types: What is common? What is different?
+
+```haskell
+data IList = INil | ICons Int    IList
+
+data CList = CNil | CCons Char   CList
+
+data DList = DNil | DCons Double DList
+``` 
+
+<br>
+<br>
+<br>
+<br>
+
+**Common:** `Nil`/`Cons` structure
+
+**Different:** type of each "head" element
+
+<br>
+<br>
+<br>
+<br>
+
+### Refactored using Type Parameter
+
+```haskell
+-- | A list of elements of type `a`
+data List a = Nil | Cons a  (List a)
+```
+
+We can recover original types as *instances* of `List`:
+
+```haskell
+iList :: List Int      -- list where 'a' = 'Int' 
+iList = Cons 1 (Cons 2 (Cons 3 Nil))
+
+cList :: List Char     -- list where 'a' = 'Char' 
+cList = Cons 'a' (Cons 'b' (Cons 'c' Nil))
+
+dList :: List Double   -- list where 'a' = 'Double' 
+dList = Cons 1.1 (Cons 2.2 (Cons 3.3 Nil))
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ 
+
+```haskell
+data List a = Nil | Cons a  (List a)
+```
+
+What is the type of `Cons` ?
+
+**A.** `Int ->  List      -> List`
+
+**B.** `Int ->  List Int  -> List Int`
+
+**C.** `Char -> List Char -> List Char`
+
+**D.** `a    -> List      -> List`
+
+**E.** `a    -> List a    -> List a`
+
+(I) final    
+
+    *Answer:* E
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Polymorphic Data has Polymorphic Constructors
+
+Look at the types of the constructors 
+
+```haskell
+>>> :type Nil 
+Nil :: List a
+```
+
+That is, `Nil` is a value of *any* kind of list, and
+
+```haskell
+>>> :type Cons 
+Cons :: a -> List a -> List a
+```
+
+`Cons` takes an `a` *and* a `List a` and returns a `List a`.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Polymorphic Functions
+
+Let us refactor the `append` function to work on `List`s:
+
+```haskell
+data List a = Nil | Cons a  (List a)
+```
+
+```haskell
+append :: ??? -- What is the type of `append`?
+append = ???
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Polymorphic Functions over Polymorphic Data
+
+The `append` function on `List`s is polymorphic:
+
+```haskell
+append :: List a -> List a -> List a
+append Nil ys         = ys
+append (Cons x xs) ys = Cons x (append xs ys)
+``` 
+
+`append` doesn't care about the actual *values* in the list
+
+- only manipulates the *structure* of the list
+
+
+
+Hence `append :: List a -> List a -> List a` 
+
+- we can call `append` on lists **of any kind**
+- as long as both lists are of **the same kind**
+
+```haskell
+>>> append (Cons 1 (Cons 2 Nil)) (Cons 3 Nil)       -- a = Int
+Cons 1 (Cons 2 (Cons 3 Nil))
+
+>>> append (Cons 'a' (Cons 'b' Nil)) (Cons 'c' Nil)  -- a = Char
+Cons 'a' (Cons 'b' (Cons 'c' Nil))
+
+>>> append (Cons 1.1 (Cons 2.2 Nil)) (Cons 'a' Nil)  -- a = ?
+???
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Built-in Lists?
+
+This is exactly how Haskell's "built-in" lists are defined:
+
+```haskell
+data [a]    = [] | (:) a [a]
+
+data List a = Nil | Cons a (List a)
+```
+
+- `Nil` is called `[]` 
+- `Cons` is called `:`
+
+Many list manipulating functions e.g. in `Data.List` are *polymorphic*
+- Can be reused across all kinds of lists.
+
+```haskell
+(++) :: [a] -> [a] -> [a]
+head :: [a] -> a
+tail :: [a] -> [a]
+```
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Type Constructors
+
+`List a` is a *type* (of lists whose elements are of type `a`)
+
+`a` is the *type parameter*
+
+Then what is `List`? 
+
+A *type-constructor* that 
+
+- takes *as input* a type `a`
+- returns *as output* the type `List a` 
+
 
 <br>
 <br>

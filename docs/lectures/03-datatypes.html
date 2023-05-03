@@ -263,6 +263,7 @@ for building up types to represent complex data</p>
 <li><p><em>Product Types:</em> bundling things together</p></li>
 <li><p><em>Sum Types:</em> types with multiple variants</p></li>
 <li><p><em>Recursive Types:</em> types that contain themselves</p></li>
+<li><p><em>Polymorphic Datatypes:</em> datatypes with parameters</p></li>
 </ol>
 <p><br>
 <br>
@@ -395,6 +396,7 @@ for building up types to represent complex data</p>
 <li><p><strong><em>Product Types:</em> bundling things together</strong></p></li>
 <li><p><em>Sum Types:</em> types with multiple variants</p></li>
 <li><p><em>Recursive Types:</em> types that contain themselves</p></li>
+<li><p><em>Polymorphic Datatypes:</em> datatypes with parameters</p></li>
 </ol>
 <p><br>
 <br>
@@ -736,6 +738,7 @@ for building up types to represent complex data</p>
 <li><p><em>Product Types:</em> bundling things together [done]</p></li>
 <li><p><em>Sum Types:</em> types with multiple variants [done]</p></li>
 <li><p><strong><em>Recursive Types:</em> types that contain themselves</strong></p></li>
+<li><p><em>Polymorphic Datatypes:</em> datatypes with parameters</p></li>
 </ol>
 <p><br>
 <br>
@@ -957,23 +960,9 @@ which one should I recurse on?</li>
 <br>
 <br>
 <br></p>
-<!-- ## Functions on trees
-
-(I) lecture
-    
-    ```haskell
-    height :: Tree -> Int
-    height t = ??
-    ```
-    
-(I) final
-    
-    ```haskell
-    height :: Tree -> Int
-    height Leaf = 0
-    height (Node _ l r) = 1 + max (height l) (height r)
-    ```
--->
+<h2 id="functions-on-trees">Functions on trees</h2>
+<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="ot">height ::</span> <span class="dt">Tree</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>height t <span class="ot">=</span> <span class="op">??</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -990,7 +979,7 @@ to evaluate expressions like:</p>
 <li><code class="sourceCode haskell">(<span class="fl">4.0</span> <span class="op">+</span> <span class="fl">2.9</span>) <span class="op">*</span> (<span class="fl">3.78</span> <span class="op">-</span> <span class="fl">5.92</span>)</code></li>
 </ul>
 <p>What is a Haskell datatype to <em>represent</em> these expressions?</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span> <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span> <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -999,10 +988,10 @@ to evaluate expressions like:</p>
 <br>
 <br>
 <br></p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span> <span class="ot">=</span> <span class="dt">Num</span> <span class="dt">Float</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Add</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Sub</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Mul</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span> <span class="ot">=</span> <span class="dt">Num</span> <span class="dt">Float</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Add</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Sub</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Mul</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1013,13 +1002,245 @@ to evaluate expressions like:</p>
 <br></p>
 <h3 id="exercise-eval">EXERCISE: Eval</h3>
 <p>With expressions defined as follows:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span> <span class="ot">=</span> <span class="dt">Num</span> <span class="dt">Float</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Add</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Sub</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Mul</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span> <span class="ot">=</span> <span class="dt">Num</span> <span class="dt">Float</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Add</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Sub</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Mul</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span></code></pre></div>
 <p>write a function to <em>evaluate</em> an expression</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Float</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>eval e <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Float</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>eval e <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="algebraic-data-types-4">Algebraic Data Types</h2>
+<ol type="1">
+<li><p><em>Type Synonyms:</em> naming existing types [done]</p></li>
+<li><p><em>Product Types:</em> bundling things together [done]</p></li>
+<li><p><em>Sum Types:</em> types with multiple variants [done]</p></li>
+<li><p><em>Recursive Types:</em> types that contain themselves [done]</p></li>
+<li><p><strong><em>Polymorphic Datatypes:</em> datatypes with parameters</strong></p></li>
+</ol>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="parameterized-types">Parameterized Types</h2>
+<p>Our <code class="sourceCode haskell"><span class="dt">IntList</span></code> datatype can only store <code class="sourceCode haskell"><span class="dt">Int</span></code>s :-(</p>
+<p>What if we want to store <code class="sourceCode haskell"><span class="dt">Char</span></code>s or <code class="sourceCode haskell"><span class="dt">Double</span></code>s?</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">CharList</span> </span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">CNil</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">CCons</span> <span class="dt">Char</span> <span class="dt">CharList</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">DoubleList</span> </span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>   <span class="ot">=</span> <span class="dt">DNil</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span> <span class="dt">DCons</span> <span class="dt">Char</span> <span class="dt">DoubleList</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="dont-repeat-yourself">Don’t Repeat Yourself!</h2>
+<p>Don’t repeat definitions
+- Instead <em>reuse</em> the list <em>structure</em> across <em>all</em> types!</p>
+<p>Find abstract <em>data</em> patterns by</p>
+<ul>
+<li>identifying the <em>different</em> parts and</li>
+<li>refactor those into <em>parameters</em></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-refactored-list">A Refactored List</h2>
+<p>Here are the three types: What is common? What is different?</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">IList</span> <span class="ot">=</span> <span class="dt">INil</span> <span class="op">|</span> <span class="dt">ICons</span> <span class="dt">Int</span>    <span class="dt">IList</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">CList</span> <span class="ot">=</span> <span class="dt">CNil</span> <span class="op">|</span> <span class="dt">CCons</span> <span class="dt">Char</span>   <span class="dt">CList</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">DList</span> <span class="ot">=</span> <span class="dt">DNil</span> <span class="op">|</span> <span class="dt">DCons</span> <span class="dt">Double</span> <span class="dt">DList</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br></p>
+<p><strong>Common:</strong> <code class="sourceCode haskell"><span class="dt">Nil</span></code>/<code class="sourceCode haskell"><span class="dt">Cons</span></code> structure</p>
+<p><strong>Different:</strong> type of each “head” element</p>
+<p><br>
+<br>
+<br>
+<br></p>
+<h3 id="refactored-using-type-parameter">Refactored using Type Parameter</h3>
+<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | A list of elements of type `a`</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">List</span> a <span class="ot">=</span> <span class="dt">Nil</span> <span class="op">|</span> <span class="dt">Cons</span> a  (<span class="dt">List</span> a)</span></code></pre></div>
+<p>We can recover original types as <em>instances</em> of <code class="sourceCode haskell"><span class="dt">List</span></code>:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="ot">iList ::</span> <span class="dt">List</span> <span class="dt">Int</span>      <span class="co">-- list where 'a' = 'Int' </span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>iList <span class="ot">=</span> <span class="dt">Cons</span> <span class="dv">1</span> (<span class="dt">Cons</span> <span class="dv">2</span> (<span class="dt">Cons</span> <span class="dv">3</span> <span class="dt">Nil</span>))</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="ot">cList ::</span> <span class="dt">List</span> <span class="dt">Char</span>     <span class="co">-- list where 'a' = 'Char' </span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>cList <span class="ot">=</span> <span class="dt">Cons</span> <span class="ch">'a'</span> (<span class="dt">Cons</span> <span class="ch">'b'</span> (<span class="dt">Cons</span> <span class="ch">'c'</span> <span class="dt">Nil</span>))</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="ot">dList ::</span> <span class="dt">List</span> <span class="dt">Double</span>   <span class="co">-- list where 'a' = 'Double' </span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>dList <span class="ot">=</span> <span class="dt">Cons</span> <span class="fl">1.1</span> (<span class="dt">Cons</span> <span class="fl">2.2</span> (<span class="dt">Cons</span> <span class="fl">3.3</span> <span class="dt">Nil</span>))</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-5">QUIZ</h2>
+<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">List</span> a <span class="ot">=</span> <span class="dt">Nil</span> <span class="op">|</span> <span class="dt">Cons</span> a  (<span class="dt">List</span> a)</span></code></pre></div>
+<p>What is the type of <code class="sourceCode haskell"><span class="dt">Cons</span></code> ?</p>
+<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span>  <span class="dt">List</span>      <span class="ot">-&gt;</span> <span class="dt">List</span></code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span>  <span class="dt">List</span> <span class="dt">Int</span>  <span class="ot">-&gt;</span> <span class="dt">List</span> <span class="dt">Int</span></code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell"><span class="dt">Char</span> <span class="ot">-&gt;</span> <span class="dt">List</span> <span class="dt">Char</span> <span class="ot">-&gt;</span> <span class="dt">List</span> <span class="dt">Char</span></code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell">a    <span class="ot">-&gt;</span> <span class="dt">List</span>      <span class="ot">-&gt;</span> <span class="dt">List</span></code></p>
+<p><strong>E.</strong> <code class="sourceCode haskell">a    <span class="ot">-&gt;</span> <span class="dt">List</span> a    <span class="ot">-&gt;</span> <span class="dt">List</span> a</code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="polymorphic-data-has-polymorphic-constructors">Polymorphic Data has Polymorphic Constructors</h2>
+<p>Look at the types of the constructors</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">:</span><span class="kw">type</span> <span class="dt">Nil</span> </span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Nil</span><span class="ot"> ::</span> <span class="dt">List</span> a</span></code></pre></div>
+<p>That is, <code class="sourceCode haskell"><span class="dt">Nil</span></code> is a value of <em>any</em> kind of list, and</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">:</span><span class="kw">type</span> <span class="dt">Cons</span> </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Cons</span><span class="ot"> ::</span> a <span class="ot">-&gt;</span> <span class="dt">List</span> a <span class="ot">-&gt;</span> <span class="dt">List</span> a</span></code></pre></div>
+<p><code class="sourceCode haskell"><span class="dt">Cons</span></code> takes an <code class="sourceCode haskell">a</code> <em>and</em> a <code class="sourceCode haskell"><span class="dt">List</span> a</code> and returns a <code class="sourceCode haskell"><span class="dt">List</span> a</code>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="polymorphic-functions">Polymorphic Functions</h2>
+<p>Let us refactor the <code class="sourceCode haskell">append</code> function to work on <code class="sourceCode haskell"><span class="dt">List</span></code>s:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">List</span> a <span class="ot">=</span> <span class="dt">Nil</span> <span class="op">|</span> <span class="dt">Cons</span> a  (<span class="dt">List</span> a)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="ot">append ::</span> <span class="op">???</span> <span class="co">-- What is the type of `append`?</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>append <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="polymorphic-functions-over-polymorphic-data">Polymorphic Functions over Polymorphic Data</h2>
+<p>The <code class="sourceCode haskell">append</code> function on <code class="sourceCode haskell"><span class="dt">List</span></code>s is polymorphic:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="ot">append ::</span> <span class="dt">List</span> a <span class="ot">-&gt;</span> <span class="dt">List</span> a <span class="ot">-&gt;</span> <span class="dt">List</span> a</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>append <span class="dt">Nil</span> ys         <span class="ot">=</span> ys</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>append (<span class="dt">Cons</span> x xs) ys <span class="ot">=</span> <span class="dt">Cons</span> x (append xs ys)</span></code></pre></div>
+<p><code class="sourceCode haskell">append</code> doesn’t care about the actual <em>values</em> in the list</p>
+<ul>
+<li>only manipulates the <em>structure</em> of the list</li>
+</ul>
+<p>Hence <code class="sourceCode haskell"><span class="ot">append ::</span> <span class="dt">List</span> a <span class="ot">-&gt;</span> <span class="dt">List</span> a <span class="ot">-&gt;</span> <span class="dt">List</span> a</code></p>
+<ul>
+<li>we can call <code class="sourceCode haskell">append</code> on lists <strong>of any kind</strong></li>
+<li>as long as both lists are of <strong>the same kind</strong></li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> append (<span class="dt">Cons</span> <span class="dv">1</span> (<span class="dt">Cons</span> <span class="dv">2</span> <span class="dt">Nil</span>)) (<span class="dt">Cons</span> <span class="dv">3</span> <span class="dt">Nil</span>)       <span class="co">-- a = Int</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Cons</span> <span class="dv">1</span> (<span class="dt">Cons</span> <span class="dv">2</span> (<span class="dt">Cons</span> <span class="dv">3</span> <span class="dt">Nil</span>))</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> append (<span class="dt">Cons</span> <span class="ch">'a'</span> (<span class="dt">Cons</span> <span class="ch">'b'</span> <span class="dt">Nil</span>)) (<span class="dt">Cons</span> <span class="ch">'c'</span> <span class="dt">Nil</span>)  <span class="co">-- a = Char</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Cons</span> <span class="ch">'a'</span> (<span class="dt">Cons</span> <span class="ch">'b'</span> (<span class="dt">Cons</span> <span class="ch">'c'</span> <span class="dt">Nil</span>))</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> append (<span class="dt">Cons</span> <span class="fl">1.1</span> (<span class="dt">Cons</span> <span class="fl">2.2</span> <span class="dt">Nil</span>)) (<span class="dt">Cons</span> <span class="ch">'a'</span> <span class="dt">Nil</span>)  <span class="co">-- a = ?</span></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="op">???</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="built-in-lists">Built-in Lists?</h2>
+<p>This is exactly how Haskell’s “built-in” lists are defined:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> [a]    <span class="ot">=</span> [] <span class="op">|</span> (<span class="op">:</span>) a [a]</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">List</span> a <span class="ot">=</span> <span class="dt">Nil</span> <span class="op">|</span> <span class="dt">Cons</span> a (<span class="dt">List</span> a)</span></code></pre></div>
+<ul>
+<li><code class="sourceCode haskell"><span class="dt">Nil</span></code> is called <code class="sourceCode haskell">[]</code></li>
+<li><code class="sourceCode haskell"><span class="dt">Cons</span></code> is called <code class="sourceCode haskell"><span class="op">:</span></code></li>
+</ul>
+<p>Many list manipulating functions e.g. in <code class="sourceCode haskell"><span class="dt">Data.List</span></code> are <em>polymorphic</em>
+- Can be reused across all kinds of lists.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="ot">(++) ::</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [a]</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span><span class="ot"> ::</span> [a] <span class="ot">-&gt;</span> a</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span><span class="ot"> ::</span> [a] <span class="ot">-&gt;</span> [a]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="type-constructors">Type Constructors</h2>
+<p><code class="sourceCode haskell"><span class="dt">List</span> a</code> is a <em>type</em> (of lists whose elements are of type <code class="sourceCode haskell">a</code>)</p>
+<p><code class="sourceCode haskell">a</code> is the <em>type parameter</em></p>
+<p>Then what is <code class="sourceCode haskell"><span class="dt">List</span></code>?</p>
+<p>A <em>type-constructor</em> that</p>
+<ul>
+<li>takes <em>as input</em> a type <code class="sourceCode haskell">a</code></li>
+<li>returns <em>as output</em> the type <code class="sourceCode haskell"><span class="dt">List</span> a</code></li>
+</ul>
 <p><br>
 <br>
 <br>
