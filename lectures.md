@@ -21,7 +21,7 @@ Lecture schedule is subject to change!
 | 4/28       | Algebraic Data Types            | [html][lec4]              |
 | 5/1        | contd.                          |                           |
 | 5/3        | contd.                          |                           |
-| 5/5        | Higher Order Functions          |                           |
+| 5/5        | Higher Order Functions          | [html][lec5]              |
 | 5/8        | **Midterm**                     |                           |
 | 5/10       | contd.                          |                           |
 | 5/12       | Environments and Closures       |                           |

@@ -134,8 +134,8 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
                 <li><a href="https://nadia-polikarpova.github.io/cse130-web/lectures.html">Lectures</a></li>
                 <li><a href="https://nadia-polikarpova.github.io/cse130-web/assignments.html">Assignments</a></li>
                 <li><a href="https://nadia-polikarpova.github.io/cse130-web/links.html">Links</a></li>                
-                <li><a href="https://canvas.ucsd.edu/courses/36670" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
-                <li><a href="https://www.piazza.com/ucsd/spring2022/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/45541" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                <li><a href="https://www.piazza.com/ucsd/spring2023/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -194,8 +194,8 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
                               <li><a href="https://nadia-polikarpova.github.io/cse130-web/lectures.html">Lectures</a></li>
                               <li><a href="https://nadia-polikarpova.github.io/cse130-web/assignments.html">Assignments</a></li>
                               <li><a href="https://nadia-polikarpova.github.io/cse130-web/links.html">Links</a></li>
-                              <li><a href="https://canvas.ucsd.edu/courses/36670" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
-                              <li><a href="https://www.piazza.com/ucsd/spring2022/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/45541" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                              <li><a href="https://www.piazza.com/ucsd/spring2023/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
                             </p>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
                         </div>
@@ -424,7 +424,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <ul>
 <li>as long as the predicate can handle them</li>
 </ul></li>
-<li><p>It’s type is <strong>polymorphic</strong> (generic) in the type of list elements</p></li>
+<li><p>Its type is <strong>polymorphic</strong> (generic) in the type of list elements</p></li>
 </ul>
 <p><br></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- For any type `a`</span></span>
@@ -774,7 +774,6 @@ such that <code class="sourceCode haskell">map' f xs</code> returns a list whose
 <p><strong>(D)</strong> <code class="sourceCode haskell">(a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b</code></p>
 <p><strong>(E)</strong> <code class="sourceCode haskell">(b <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b</code></p>
 <p><br></p>
-<p><em>Answer:</em> D</p>
 <p><br>
 <br>
 <br>
@@ -785,7 +784,6 @@ such that <code class="sourceCode haskell">map' f xs</code> returns a list whose
 <br>
 <br></p>
 <p>Is <code class="sourceCode haskell"><span class="fu">foldr</span></code> <strong>tail recursive</strong>?</p>
-<p><em>Answer:</em> No! It calls the binary operations on the results of the recursive call</p>
 <p><br>
 <br>
 <br>
@@ -930,7 +928,6 @@ Can be rewritten as:</p>
 <p><strong>(D)</strong> <code class="sourceCode haskell">[[<span class="dv">3</span>],[<span class="dv">2</span>],[<span class="dv">1</span>]]</code></p>
 <p><strong>(E)</strong> <code class="sourceCode haskell">[[<span class="dv">1</span>],[<span class="dv">2</span>],[<span class="dv">3</span>]]</code></p>
 <p><br></p>
-<p><em>Answer:</em> A</p>
 <p><br>
 <br>
 <br>
@@ -952,7 +949,6 @@ Can be rewritten as:</p>
 <p><strong>(D)</strong> <code class="sourceCode haskell">[[<span class="dv">3</span>],[<span class="dv">2</span>],[<span class="dv">1</span>]]</code></p>
 <p><strong>(E)</strong> <code class="sourceCode haskell">[[<span class="dv">1</span>],[<span class="dv">2</span>],[<span class="dv">3</span>]]</code></p>
 <p><br></p>
-<p><em>Answer:</em> C</p>
 <p><br>
 <br>
 <br>
@@ -1033,7 +1029,7 @@ Can be rewritten as:</p>
 <span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> (<span class="fu">flip</span> (<span class="op">:</span>))        [] [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span></code></pre></div>
 <p>What is the type of <code class="sourceCode haskell"><span class="fu">flip</span></code>?</p>
 <p><br></p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flip</span><span class="ot"> ::</span> (a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> c) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> c</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flip</span><span class="ot"> ::</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1050,7 +1046,7 @@ Can be rewritten as:</p>
 <span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span> (f <span class="op">.</span> g) ys</span></code></pre></div>
 <p>What is the type of <code class="sourceCode haskell">(<span class="op">.</span>)</code>?</p>
 <p><br></p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="ot">(.) ::</span> (b <span class="ot">-&gt;</span> c) <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> c</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="ot">(.) ::</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>

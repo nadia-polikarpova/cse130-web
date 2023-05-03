@@ -250,7 +250,7 @@ filter :: (String -> Bool) -> [String] -> [String] -- ???
 
     * as long as the predicate can handle them
   
-* It's type is **polymorphic** (generic) in the type of list elements
+* Its type is **polymorphic** (generic) in the type of list elements
 
 <br>
 
