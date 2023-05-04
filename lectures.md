@@ -42,7 +42,7 @@ Lecture schedule is subject to change!
 
 **Discussions**
 
-| Date       | Topic                                           |
+<!-- | Date       | Topic                                           |
 |:----------:|:------------------------------------------------|
 | 4/5        | Tech Intro                                      |
 | 4/12       | Lambda Calculus: intro, syntax and reductions   |
@@ -53,7 +53,7 @@ Lecture schedule is subject to change!
 | 5/17       | Haskell: folds.                                 |
 | 5/24       | Nano: interpreters, lexers, and parsers         |
 | 5/31       | Type classes and Quickcheck                     |
-| 6/7        | IO Monad                                        |
+| 6/7        | IO Monad                                        | -->
 
 Discussion slides are available [here](https://drive.google.com/drive/u/0/folders/1TQhC29kVsF9Ik5Wmj6x_zYMBTAr7gCAm).
 
