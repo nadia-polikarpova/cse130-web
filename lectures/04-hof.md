@@ -464,7 +464,7 @@ shout
   =e> -- eta-contract outer lambda
 map (\x -> toUpper x) xs
   =e> -- eta-contract inner lambda
-map toUpper xs  
+map toUpper
 ```
 
 <br>
