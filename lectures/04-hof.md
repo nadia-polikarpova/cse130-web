@@ -1,22 +1,18 @@
 ---
 title: Higher-Order Functions 
-date: 2018-04-23
+date: 2022-10-18
 headerImg: books.jpg
 ---
 
-## Plan for this week
+## Bottling Computation Patterns
 
-**Last week:**
+Another way to practice **D.R.Y**:
 
-  * user-defined *data types*
-    - and how to manipulate them using *pattern matching* and *recursion* 
-  * how to make recursive functions more efficient with *tail recursion*
-  
-**This week:**
+  * spot common computation patterns
 
-  * code reuse with *higher-order functions* (HOFs)
+  * refactor them into reusable *higher-order functions* (HOFs)
 
-  * some useful HOFs: `map`, `filter`, and `fold`
+  * useful library HOFs: `map`, `filter`, and `fold`
     
 <br>
 <br>
@@ -29,36 +25,13 @@ headerImg: books.jpg
 <br>    
 
 
-## Recursion is good... 
-
-- Recursive code mirrors recursive data
-
-    - Base constructor -> Base case 
-    - Inductive constructor -> Inductive case (with recursive call)
-
-- But it can get kinda repetitive!  
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
 ## Example: evens
 
-Let's write a function `evens`:
+Let's write a function `evens` that extracts only even elements from an integer list.
 
 ```haskell
 -- evens []        ==> []
 -- evens [1,2,3,4] ==> [2,4]
-```
-
-```haskell
 evens       :: [Int] -> [Int]
 evens []     = ... 
 evens (x:xs) = ...
@@ -78,9 +51,6 @@ Let's write a function `fourChars`:
 ```haskell
 -- fourChars [] ==> []
 -- fourChars ["i","must","do","work"] ==> ["must","work"]
-```
-
-```haskell
 fourChars :: [String] -> [String]
 fourChars []     = ... 
 fourChars (x:xs) = ...
@@ -112,7 +82,7 @@ foo (x:xs)
   | otherwise     =     foo xs
 ```
 
-Only difference is **condition**
+Only difference is the **condition**
 
 - `x mod 2 == 0` vs `length x == 4`
 
@@ -183,7 +153,14 @@ Specific Operations
 
 ![`filter` instances](/static/img/filter-pattern-instance.png)
 
-**Avoid duplicating code!**
+<br>
+<br>
+<br>
+
+`filter` bottles the common pattern of selecting elements from a list that satisfy a condition:
+
+![Fairy In a Bottle](/static/img/fairy.png)
+
 
 <br>
 <br>
@@ -250,7 +227,7 @@ filter :: (String -> Bool) -> [String] -> [String] -- ???
 
     * as long as the predicate can handle them
   
-* Its type is **polymorphic** (generic) in the type of list elements
+* It's type is **polymorphic** (generic) in the type of list elements
 
 <br>
 
@@ -268,8 +245,12 @@ filter :: (a -> Bool) -> [a] -> [a]
 <br>
 <br>
 <br>
-
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 ## Example: all caps
@@ -365,19 +346,125 @@ Specific Operations
 <br>
 <br>
 <br>
+
+`map` bottles the common pattern of iteratively applying a transformation to each element of a list:
+
+![Fairy In a Bottle](/static/img/fairy.png)
+
+
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## EXERCISE: refactor with map
+
+With `map` defined as:
 
 ```haskell
 map f []     = []
 map f (x:xs) = f x : map f xs
 ```
 
-Lets refactor `shout` and `squares`
+refactor `shout` and `squares` to use `map`:
 
 ```haskell
-shout   = map ...
+shout   xs = map ...
 
-squares = map ...
+squares xs = map ...
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## The Case of the Missing Parameter 
+
+The following definitions of `shout` are equivalent:
+
+```haskell
+shout :: [Char] -> [Char]
+shout xs = map (\x -> toUpper x) xs
+```
+
+and
+
+```haskell
+shout :: [Char] -> [Char]
+shout = map toUpper
+```
+
+Where did `xs` and `x` go???
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## The Case of the Missing Parameter 
+
+Recall lambda calculus:
+
+The expressions `f` and `\x -> f x` are in some sense "equivalent"
+
+  - as long as `x not in FV(f)`
+
+because they behave the same way when applied to any argument `e`:
+
+```haskell
+(\x -> f x) e
+=b> f e
+```
+
+Transforming `\x -> f x` into `f` is called **eta contraction**
+
+  - and the reverse is called **eta expansion**
+
+<br>
+<br>
+
+In Haskell we have:
+
+```haskell
+shout xs = map (\x -> toUpper x) xs
+```
+
+is syntactic sugar for:
+
+```haskell
+shout 
+  =d> 
+\xs -> map (\x -> toUpper x) xs
+  =e> -- eta-contract outer lambda
+map (\x -> toUpper x) xs
+  =e> -- eta-contract inner lambda
+map toUpper xs  
 ```
 
 <br>
@@ -385,7 +472,20 @@ squares = map ...
 <br>
 <br>
 
-![`map` instances](/static/img/map-pattern-instance.png)
+More generally, whenever you want to define a function:
+
+```haskell
+f x y z = e x y z
+```
+
+you can save some typing, and *omit* the parameters:
+
+  - as long as `x`, `y`, and `z` are not free in `e`
+
+```haskell
+f = e
+```
+
 
 <br>
 <br>
@@ -427,6 +527,8 @@ map f (x:xs) = f x : map f xs
 <br>
 <br>
 
+## The type of "map"
+
 ```haskell
 -- For any types `a` and `b`
 --   if you give me a transformation from `a` to `b`
@@ -439,43 +541,11 @@ map :: (a -> b) -> [a] -> [b]
 
 **Type says it all!**
 
-* The only meaningful thing a function of this type can do is apply its first argument to elements of the list
+Can you think of a function that:
 
-* Hoogle it!
+* has this type
+* builds the output list *not* by applying the transformation to the input list? 
 
-<br>
-
-Things to try at home:
-
-  * can you write a function `map' :: (a -> b) -> [a] -> [b]` whose behavior is different from `map`?
-  
-  * can you write a function `map' :: (a -> b) -> [a] -> [b]`
-    such that `map' f xs` returns a list whose elements are not in `map f xs`?
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Don't Repeat Yourself
-
-Benefits of **factoring** code with HOFs:
-
-- Reuse iteration pattern
-
-    - think in terms of standard patterns
-    
-    - less to write
-  
-    - easier to communicate
-
-- Avoid bugs due to repetition
 
 <br>
 <br>
