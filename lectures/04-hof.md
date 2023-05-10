@@ -963,7 +963,7 @@ foo xs                = helper "" xs
 <br>
 
 ```haskell
-pattern = ...
+process = ...
 ```
 
 <br>
@@ -995,8 +995,8 @@ the `helper` is redundant!
 Can be rewritten as:
 
 ```haskell
-foldl f b []     = b
-foldl f b (x:xs) = foldl f (f b x) xs
+foldl op base []     = base
+foldl op base (x:xs) = foldl op (base `op` x) xs
 ```
 
 <br>
@@ -1026,12 +1026,12 @@ Factor the tail-recursion out!
 ## The "fold-left" pattern
 
 ```haskell
-foldl f b                     [x1, x2, x3, x4]
-  ==> foldl f (f b x1)             [x2, x3, x4]
-  ==> foldl f (f (f b x1) x2)          [x3, x4]
-  ==> foldl f (f (f (f b x1) x2) x3)       [x4]
-  ==> foldl f (f (f (f (f b x1) x2) x3) x4)  []
-  ==> (f (f (f (f b x1) x2) x3) x4)
+foldl op b                                  [x1, x2, x3, x4]
+  ==> foldl op (b `op` x1)                      [x2, x3, x4]
+  ==> foldl op ((b `op` x1) `op` x2)                [x3, x4]
+  ==> foldl op (((b `op` x1) `op` x2) `op` x3)          [x4]
+  ==> foldl op ((((b `op` x1) `op` x2) `op` x3) `op` x4)  []
+  ==> (((b `op` x1) `op` x2) `op` x3) `op` x4
 ```
 
 Accumulate the values from the **left**
@@ -1060,9 +1060,9 @@ foldl (+) 0                   [1, 2, 3, 4]
 ## Left vs. Right
 
 ```haskell
-foldl f b [x1, x2, x3]  ==> f (f (f b x1) x2) x3  -- Left
+foldl op b [x1, x2, x3]  ==> ((b `op` x1) `op` x2) `op` x3  -- Left
 
-foldr f b [x1, x2, x3]  ==> f x1 (f x2 (f x3 b))  -- Right
+foldr op b [x1, x2, x3]  ==> x1 `op` (x2 `op` (x3 `op` b))  -- Right
 ```
 
 For example:
@@ -1081,7 +1081,7 @@ foldl :: (b -> a -> b) -> b -> [a] -> b  -- Left
 foldr :: (a -> b -> b) -> b -> [a] -> b  -- Right
 ```
 
-<br>
+<!-- <br>
 <br>
 <br>
 <br>
@@ -1150,7 +1150,7 @@ What is the type of `(.)`?
     
     ```haskell
     (.) :: (b -> c) -> (a -> b) -> a -> c
-    ```
+    ``` -->
 
 <br>
 <br>
