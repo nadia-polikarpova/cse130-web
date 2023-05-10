@@ -632,35 +632,23 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br>
 <br></p>
-<h2 id="recall-length-of-a-list">Recall: length of a list</h2>
-<div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- len []      ==&gt; 0</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- len [&quot;carne&quot;,&quot;asada&quot;] ==&gt; 2</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ot">len ::</span> [a] <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>len []     <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>len (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="dv">1</span> <span class="op">+</span> len xs</span></code></pre></div>
-<p><br>
-<br>
-<br>
-<br>
-<br></p>
-<h2 id="recall-summing-a-list">Recall: summing a list</h2>
-<div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- sum []      ==&gt; 0</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- sum [1,2,3] ==&gt; 6</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span><span class="ot"> ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span> []     <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span> (x<span class="op">:</span>xs) <span class="ot">=</span> x <span class="op">+</span> <span class="fu">sum</span> xs</span></code></pre></div>
+<h2 id="example-summing-a-list">Example: summing a list</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- sum []      ==&gt; 0</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- sum [1,2,3] ==&gt; 6</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span><span class="ot"> ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span> []     <span class="ot">=</span> <span class="op">...</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span> (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
 <br>
 <br></p>
 <h2 id="example-string-concatenation">Example: string concatenation</h2>
-<p>Let’s write a function <code class="sourceCode haskell">cat</code>:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- cat [] ==&gt; &quot;&quot;</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- cat [&quot;carne&quot;,&quot;asada&quot;,&quot;torta&quot;] ==&gt; &quot;carneasadatorta&quot;</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="ot">cat ::</span> [<span class="dt">String</span>] <span class="ot">-&gt;</span> <span class="dt">String</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>cat []     <span class="ot">=</span> <span class="op">...</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>cat (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- cat [] ==&gt; &quot;&quot;</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- cat [&quot;carne&quot;,&quot;asada&quot;,&quot;torta&quot;] ==&gt; &quot;carneasadatorta&quot;</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ot">cat ::</span> [<span class="dt">String</span>] <span class="ot">-&gt;</span> <span class="dt">String</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>cat []     <span class="ot">=</span> <span class="op">...</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>cat (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -668,19 +656,15 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <h2 id="can-you-spot-the-pattern">Can you spot the pattern?</h2>
-<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- len</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>foo []     <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>foo (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="dv">1</span> <span class="op">+</span> foo xs</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- sum</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>foo []     <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>foo (x<span class="op">:</span>xs) <span class="ot">=</span> x <span class="op">+</span> foo xs</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">-- cat</span></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>foo []     <span class="ot">=</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>foo (x<span class="op">:</span>xs) <span class="ot">=</span> x <span class="op">++</span> foo xs</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- sum</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>foo []     <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>foo (x<span class="op">:</span>xs) <span class="ot">=</span> x <span class="op">+</span> foo xs</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- cat</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>foo []     <span class="ot">=</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>foo (x<span class="op">:</span>xs) <span class="ot">=</span> x <span class="op">++</span> foo xs</span></code></pre></div>
 <p><br></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">pattern</span> <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">pattern</span> <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -691,47 +675,106 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <h2 id="the-fold-right-pattern">The “fold-right” pattern</h2>
-<figure>
-<img src="../static/img/foldr-pattern.png" alt="The foldr Pattern" />
-<figcaption aria-hidden="true">The <code class="sourceCode haskell"><span class="fu">foldr</span></code> Pattern</figcaption>
-</figure>
+<div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> op base []     <span class="ot">=</span> base</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> op base (x<span class="op">:</span>xs) <span class="ot">=</span> op x (<span class="fu">foldr</span> op base xs)</span></code></pre></div>
 <p>General Pattern</p>
 <ul>
 <li>Recurse on tail</li>
 <li>Combine result with the head using some binary operation</li>
 </ul>
-<p><br>
-<br>
-<br>
-<br></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> f b []     <span class="ot">=</span> b</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> f b (x<span class="op">:</span>xs) <span class="ot">=</span> f x (<span class="fu">foldr</span> f b xs)</span></code></pre></div>
-<p><br>
-<br></p>
-<p>Let’s refactor <code class="sourceCode haskell"><span class="fu">sum</span></code>, <code class="sourceCode haskell">len</code> and <code class="sourceCode haskell">cat</code>:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span> <span class="ot">=</span> <span class="fu">foldr</span> <span class="op">...</span>  <span class="op">...</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>cat <span class="ot">=</span> <span class="fu">foldr</span> <span class="op">...</span>  <span class="op">...</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>len <span class="ot">=</span> <span class="fu">foldr</span> <span class="op">...</span>  <span class="op">...</span></span></code></pre></div>
-<p>Factor the recursion out!</p>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
+<p><code class="sourceCode haskell"><span class="fu">foldr</span></code> bottles the common pattern of combining/reducing a list into a single value:</p>
 <figure>
-<img src="../static/img/foldr-pattern-instance.png" alt="foldr instances" />
-<figcaption aria-hidden="true"><code class="sourceCode haskell"><span class="fu">foldr</span></code> instances</figcaption>
+<img src="../static/img/fairy.png" alt="Fairy In a Bottle" />
+<figcaption aria-hidden="true">Fairy In a Bottle</figcaption>
 </figure>
-<p>You can write it more clearly as</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span> <span class="ot">=</span> <span class="fu">foldr</span> (<span class="op">+</span>) <span class="dv">0</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>cat <span class="ot">=</span> <span class="fu">foldr</span> (<span class="op">++</span>) <span class="st">&quot;&quot;</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exercise-refactor-with-fold">EXERCISE: refactor with fold</h2>
+<p>With <code class="sourceCode haskell"><span class="fu">foldr</span></code> defined as:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> op base []     <span class="ot">=</span> base</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> op base (x<span class="op">:</span>xs) <span class="ot">=</span> op x (<span class="fu">foldr</span> op base xs)</span></code></pre></div>
+<p>refactor <code class="sourceCode haskell"><span class="fu">sum</span></code> and <code class="sourceCode haskell">cat</code> to use <code class="sourceCode haskell"><span class="fu">foldr</span></code>:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span> xs <span class="ot">=</span> <span class="fu">foldr</span> op base xs</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    base     <span class="ot">=</span> <span class="op">...</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    op x acc <span class="ot">=</span> <span class="op">...</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>cat xs <span class="ot">=</span> <span class="fu">foldr</span> op base xs</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    base     <span class="ot">=</span> <span class="op">...</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    op x acc <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
+<p>Now use eta-contraction to make your code more concise!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="solution">Solution</h2>
+<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span> xs <span class="ot">=</span> <span class="fu">foldr</span> op base xs</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    base     <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    op x acc <span class="ot">=</span> x <span class="op">+</span> acc</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>cat xs <span class="ot">=</span> <span class="fu">foldr</span> op base xs</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    base     <span class="ot">=</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    op x acc <span class="ot">=</span> x <span class="op">++</span> acc</span></code></pre></div>
+<p>or, more concisely:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span> <span class="ot">=</span> <span class="fu">foldr</span> (<span class="op">+</span>) <span class="dv">0</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>cat <span class="ot">=</span> <span class="fu">foldr</span> (<span class="op">++</span>) <span class="st">&quot;&quot;</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="executing-foldr">Executing “foldr”</h2>
+<p>To develop some intuition about <code class="sourceCode haskell"><span class="fu">foldr</span></code> lets “run” it by hand.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> op base []     <span class="ot">=</span> base</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> op base (x<span class="op">:</span>xs) <span class="ot">=</span> op x (<span class="fu">foldr</span> op base xs)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> op b (a1<span class="op">:</span>a2<span class="op">:</span>a3<span class="op">:</span>[])</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span> </span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  a1 <span class="ot">`op`</span> (<span class="fu">foldr</span> op b (a2<span class="op">:</span>a3<span class="op">:</span>[]))</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span> </span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  a1 <span class="ot">`op`</span> (a2 <span class="ot">`op`</span> (<span class="fu">foldr</span> op b (a3<span class="op">:</span>[])))</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span> </span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  a1 <span class="ot">`op`</span> (a2 <span class="ot">`op`</span> (a3 <span class="ot">`op`</span> (<span class="fu">foldr</span> op b [])))</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span> </span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  a1 <span class="ot">`op`</span> (a2 <span class="ot">`op`</span> (a3 <span class="ot">`op`</span> b))</span></code></pre></div>
+<p>Look how it <em>mirrors</em> the structure of lists!</p>
+<ul>
+<li><code class="sourceCode haskell">(<span class="op">:</span>)</code> is replaced by <code class="sourceCode haskell">op</code></li>
+<li><code class="sourceCode haskell">[]</code> is replaced by <code class="sourceCode haskell">base</code></li>
+</ul>
+<p>For example:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> (<span class="op">+</span>) <span class="dv">0</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="dv">1</span> <span class="op">+</span> (<span class="fu">foldr</span> (<span class="op">+</span>) <span class="dv">0</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="dv">1</span> <span class="op">+</span> (<span class="dv">2</span> <span class="op">+</span> (<span class="fu">foldr</span> (<span class="op">+</span>) <span class="dv">0</span> [<span class="dv">3</span>, <span class="dv">4</span>]))</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="dv">1</span> <span class="op">+</span> (<span class="dv">2</span> <span class="op">+</span> (<span class="dv">3</span> <span class="op">+</span> (<span class="fu">foldr</span> (<span class="op">+</span>) <span class="dv">0</span> [<span class="dv">4</span>])))</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="dv">1</span> <span class="op">+</span> (<span class="dv">2</span> <span class="op">+</span> (<span class="dv">3</span> <span class="op">+</span> (<span class="dv">4</span> <span class="op">+</span> (<span class="fu">foldr</span> (<span class="op">+</span>) <span class="dv">0</span> []))))</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="dv">1</span> <span class="op">+</span> (<span class="dv">2</span> <span class="op">+</span> (<span class="dv">3</span> <span class="op">+</span> (<span class="dv">4</span> <span class="op">+</span> <span class="dv">0</span>)))</span></code></pre></div>
+<p>Accumulate the values from the <strong>right</strong>!</p>
 <p><br>
 <br>
 <br>
@@ -742,60 +785,18 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <h2 id="quiz-1">QUIZ</h2>
-<p>What does this evaluate to?</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> f b []     <span class="ot">=</span> b</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> f b (x<span class="op">:</span>xs) <span class="ot">=</span> f x (<span class="fu">foldr</span> f b xs)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> <span class="fu">foldr</span> (<span class="op">:</span>) [] [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span></code></pre></div>
-<p><strong>(A)</strong> Type error</p>
-<p><strong>(B)</strong> <code class="sourceCode haskell">[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</code></p>
-<p><strong>(C)</strong> <code class="sourceCode haskell">[<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>]</code></p>
-<p><strong>(D)</strong> <code class="sourceCode haskell">[[<span class="dv">3</span>],[<span class="dv">2</span>],[<span class="dv">1</span>]]</code></p>
-<p><strong>(E)</strong> <code class="sourceCode haskell">[[<span class="dv">1</span>],[<span class="dv">2</span>],[<span class="dv">3</span>]]</code></p>
+<p>What is the most general type of <code class="sourceCode haskell"><span class="fu">foldr</span></code>?</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> op base []     <span class="ot">=</span> base</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> op base (x<span class="op">:</span>xs) <span class="ot">=</span> op x (<span class="fu">foldr</span> op base xs)</span></code></pre></div>
+<p><strong>(A)</strong> <code class="sourceCode haskell">(a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a) <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> a</code></p>
+<p><strong>(B)</strong> <code class="sourceCode haskell">(a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b</code></p>
+<p><strong>(C)</strong> <code class="sourceCode haskell">(a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> a) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b</code></p>
+<p><strong>(D)</strong> <code class="sourceCode haskell">(a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b</code></p>
+<p><strong>(E)</strong> <code class="sourceCode haskell">(b <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b</code></p>
+<p><br></p>
 <p><br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> f b []     <span class="ot">=</span> b</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> f b (x<span class="op">:</span>xs) <span class="ot">=</span> f x (<span class="fu">foldr</span> f b xs)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> (<span class="op">:</span>) [] [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> (<span class="op">:</span>) <span class="dv">1</span> (<span class="fu">foldr</span> (<span class="op">:</span>) [] [<span class="dv">2</span>, <span class="dv">3</span>])</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> (<span class="op">:</span>) <span class="dv">1</span> ((<span class="op">:</span>) <span class="dv">2</span> (<span class="fu">foldr</span> (<span class="op">:</span>) [] [<span class="dv">3</span>]))</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> (<span class="op">:</span>) <span class="dv">1</span> ((<span class="op">:</span>) <span class="dv">2</span> ((<span class="op">:</span>) <span class="dv">3</span> (<span class="fu">foldr</span> (<span class="op">:</span>) [] [])))</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> (<span class="op">:</span>) <span class="dv">1</span> ((<span class="op">:</span>) <span class="dv">2</span> ((<span class="op">:</span>) <span class="dv">3</span> []))</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">==</span>  <span class="dv">1</span> <span class="op">:</span> (<span class="dv">2</span> <span class="op">:</span> (<span class="dv">3</span> <span class="op">:</span> []))</span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">==</span>  [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span></code></pre></div>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
-<h2 id="the-fold-right-pattern-1">The “fold-right” pattern</h2>
-<div class="sourceCode" id="cb37"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> f b [x1, x2, x3, x4]</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> f x1 (<span class="fu">foldr</span> f b [x2, x3, x4])</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> f x1 (f x2 (<span class="fu">foldr</span> f b [x3, x4]))</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> f x1 (f x2 (f x3 (<span class="fu">foldr</span> f b [x4])))</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> f x1 (f x2 (f x3 (f x4 (<span class="fu">foldr</span> f b []))))</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> f x1 (f x2 (f x3 (f x4 b)))</span></code></pre></div>
-<p>Accumulate the values from the <strong>right</strong></p>
-<p>For example:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> (<span class="op">+</span>) <span class="dv">0</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="dv">1</span> <span class="op">+</span> (<span class="fu">foldr</span> (<span class="op">+</span>) <span class="dv">0</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="dv">1</span> <span class="op">+</span> (<span class="dv">2</span> <span class="op">+</span> (<span class="fu">foldr</span> (<span class="op">+</span>) <span class="dv">0</span> [<span class="dv">3</span>, <span class="dv">4</span>]))</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="dv">1</span> <span class="op">+</span> (<span class="dv">2</span> <span class="op">+</span> (<span class="dv">3</span> <span class="op">+</span> (<span class="fu">foldr</span> (<span class="op">+</span>) <span class="dv">0</span> [<span class="dv">4</span>])))</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="dv">1</span> <span class="op">+</span> (<span class="dv">2</span> <span class="op">+</span> (<span class="dv">3</span> <span class="op">+</span> (<span class="dv">4</span> <span class="op">+</span> (<span class="fu">foldr</span> (<span class="op">+</span>) <span class="dv">0</span> []))))</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="dv">1</span> <span class="op">+</span> (<span class="dv">2</span> <span class="op">+</span> (<span class="dv">3</span> <span class="op">+</span> (<span class="dv">4</span> <span class="op">+</span> <span class="dv">0</span>)))</span></code></pre></div>
-<p><br>
 <br>
 <br>
 <br>
@@ -805,15 +806,17 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <h2 id="quiz-2">QUIZ</h2>
-<p>What is the most general type of <code class="sourceCode haskell"><span class="fu">foldr</span></code>?</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> f b []     <span class="ot">=</span> b</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> f b (x<span class="op">:</span>xs) <span class="ot">=</span> f x (<span class="fu">foldr</span> f b xs)</span></code></pre></div>
-<p><strong>(A)</strong> <code class="sourceCode haskell">(a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a) <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> a</code></p>
-<p><strong>(B)</strong> <code class="sourceCode haskell">(a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b</code></p>
-<p><strong>(C)</strong> <code class="sourceCode haskell">(a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> a) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b</code></p>
-<p><strong>(D)</strong> <code class="sourceCode haskell">(a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b</code></p>
-<p><strong>(E)</strong> <code class="sourceCode haskell">(b <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b</code></p>
-<p><br></p>
+<p>Recall the function to compute the <code class="sourceCode haskell">len</code> of a list</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ot">len ::</span> [a] <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>len []     <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>len (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="dv">1</span> <span class="op">+</span> len xs</span></code></pre></div>
+<p>Which of these is a valid implementation of <code class="sourceCode haskell">len</code></p>
+<p><strong>A.</strong> <code class="sourceCode haskell">len <span class="ot">=</span> <span class="fu">foldr</span> (\n <span class="ot">-&gt;</span> n <span class="op">+</span> <span class="dv">1</span>) <span class="dv">0</span></code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell">len <span class="ot">=</span> <span class="fu">foldr</span> (\n m <span class="ot">-&gt;</span> n <span class="op">+</span> m) <span class="dv">0</span></code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell">len <span class="ot">=</span> <span class="fu">foldr</span> (\_ n <span class="ot">-&gt;</span> n <span class="op">+</span> <span class="dv">1</span>) <span class="dv">0</span></code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell">len <span class="ot">=</span> <span class="fu">foldr</span> (\x xs <span class="ot">-&gt;</span> <span class="dv">1</span> <span class="op">+</span> len xs) <span class="dv">0</span></code></p>
+<p><strong>E.</strong> All of the above</p>
+<p><strong>HINT</strong>: remember that <code class="sourceCode haskell"><span class="fu">foldr</span><span class="ot"> ::</span> (a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b</code>!</p>
 <p><br>
 <br>
 <br>
@@ -955,82 +958,21 @@ Can be rewritten as:</p>
 <br>
 <br>
 <br></p>
-<h2 id="quiz-3">QUIZ</h2>
-<p>What does this evaluate to?</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> f b []     <span class="ot">=</span> b</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> f b (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="fu">foldl</span> f (f b x) xs</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> <span class="fu">foldl</span> (<span class="op">:</span>) [] [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span></code></pre></div>
-<p><br></p>
-<p><strong>(A)</strong> Type error</p>
-<p><strong>(B)</strong> <code class="sourceCode haskell">[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</code></p>
-<p><strong>(C)</strong> <code class="sourceCode haskell">[<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>]</code></p>
-<p><strong>(D)</strong> <code class="sourceCode haskell">[[<span class="dv">3</span>],[<span class="dv">2</span>],[<span class="dv">1</span>]]</code></p>
-<p><strong>(E)</strong> <code class="sourceCode haskell">[[<span class="dv">1</span>],[<span class="dv">2</span>],[<span class="dv">3</span>]]</code></p>
-<p><br></p>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
-<h2 id="quiz-4">QUIZ</h2>
-<p>What does this evaluate to?</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> f b []     <span class="ot">=</span> b</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> f b (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="fu">foldl</span> f (f b x) xs</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> <span class="fu">foldl</span> (\xs x <span class="ot">-&gt;</span> x <span class="op">:</span> xs) [] [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span></code></pre></div>
-<p><br></p>
-<p><strong>(A)</strong> Type error</p>
-<p><strong>(B)</strong> <code class="sourceCode haskell">[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</code></p>
-<p><strong>(C)</strong> <code class="sourceCode haskell">[<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>]</code></p>
-<p><strong>(D)</strong> <code class="sourceCode haskell">[[<span class="dv">3</span>],[<span class="dv">2</span>],[<span class="dv">1</span>]]</code></p>
-<p><strong>(E)</strong> <code class="sourceCode haskell">[[<span class="dv">1</span>],[<span class="dv">2</span>],[<span class="dv">3</span>]]</code></p>
-<p><br></p>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> f b []     <span class="ot">=</span> b</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> f b (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="fu">foldl</span> f (f b x) xs</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> \xs x <span class="ot">-&gt;</span> x <span class="op">:</span> xs</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> f []                         [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> f (<span class="dv">1</span> <span class="op">:</span> [])               [<span class="dv">2</span>,<span class="dv">3</span>]</span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> f (<span class="dv">2</span> <span class="op">:</span> (<span class="dv">1</span> <span class="op">:</span> []))           [<span class="dv">3</span>]</span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> f (<span class="dv">3</span> <span class="op">:</span> (<span class="dv">2</span> <span class="op">:</span> (<span class="dv">1</span> <span class="op">:</span> [])))      []</span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="dv">3</span> <span class="op">:</span> (<span class="dv">2</span> <span class="op">:</span> (<span class="dv">1</span> <span class="op">:</span> []))</span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> [<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>]</span></code></pre></div>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
 <h2 id="the-fold-left-pattern-1">The “fold-left” pattern</h2>
-<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> f b                     [x1, x2, x3, x4]</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> f (f b x1)             [x2, x3, x4]</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> f (f (f b x1) x2)          [x3, x4]</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> f (f (f (f b x1) x2) x3)       [x4]</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> f (f (f (f (f b x1) x2) x3) x4)  []</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> (f (f (f (f b x1) x2) x3) x4)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> f b                     [x1, x2, x3, x4]</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> f (f b x1)             [x2, x3, x4]</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> f (f (f b x1) x2)          [x3, x4]</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> f (f (f (f b x1) x2) x3)       [x4]</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> f (f (f (f (f b x1) x2) x3) x4)  []</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> (f (f (f (f b x1) x2) x3) x4)</span></code></pre></div>
 <p>Accumulate the values from the <strong>left</strong></p>
 <p>For example:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> (<span class="op">+</span>) <span class="dv">0</span>                   [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> (<span class="op">+</span>) (<span class="dv">0</span> <span class="op">+</span> <span class="dv">1</span>)             [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> (<span class="op">+</span>) ((<span class="dv">0</span> <span class="op">+</span> <span class="dv">1</span>) <span class="op">+</span> <span class="dv">2</span>)          [<span class="dv">3</span>, <span class="dv">4</span>]</span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> (<span class="op">+</span>) (((<span class="dv">0</span> <span class="op">+</span> <span class="dv">1</span>) <span class="op">+</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">3</span>)       [<span class="dv">4</span>]</span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> (<span class="op">+</span>) ((((<span class="dv">0</span> <span class="op">+</span> <span class="dv">1</span>) <span class="op">+</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">3</span>) <span class="op">+</span> <span class="dv">4</span>)  []</span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> ((((<span class="dv">0</span> <span class="op">+</span> <span class="dv">1</span>) <span class="op">+</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">3</span>) <span class="op">+</span> <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> (<span class="op">+</span>) <span class="dv">0</span>                   [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> (<span class="op">+</span>) (<span class="dv">0</span> <span class="op">+</span> <span class="dv">1</span>)             [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> (<span class="op">+</span>) ((<span class="dv">0</span> <span class="op">+</span> <span class="dv">1</span>) <span class="op">+</span> <span class="dv">2</span>)          [<span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> (<span class="op">+</span>) (((<span class="dv">0</span> <span class="op">+</span> <span class="dv">1</span>) <span class="op">+</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">3</span>)       [<span class="dv">4</span>]</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="fu">foldl</span> (<span class="op">+</span>) ((((<span class="dv">0</span> <span class="op">+</span> <span class="dv">1</span>) <span class="op">+</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">3</span>) <span class="op">+</span> <span class="dv">4</span>)  []</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> ((((<span class="dv">0</span> <span class="op">+</span> <span class="dv">1</span>) <span class="op">+</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">3</span>) <span class="op">+</span> <span class="dv">4</span>)</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1041,17 +983,17 @@ Can be rewritten as:</p>
 <br>
 <br></p>
 <h2 id="left-vs.-right">Left vs. Right</h2>
-<div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> f b [x1, x2, x3]  <span class="op">==&gt;</span> f (f (f b x1) x2) x3  <span class="co">-- Left</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> f b [x1, x2, x3]  <span class="op">==&gt;</span> f x1 (f x2 (f x3 b))  <span class="co">-- Right</span></span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> f b [x1, x2, x3]  <span class="op">==&gt;</span> f (f (f b x1) x2) x3  <span class="co">-- Left</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> f b [x1, x2, x3]  <span class="op">==&gt;</span> f x1 (f x2 (f x3 b))  <span class="co">-- Right</span></span></code></pre></div>
 <p>For example:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> (<span class="op">+</span>) <span class="dv">0</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]  <span class="op">==&gt;</span> ((<span class="dv">0</span> <span class="op">+</span> <span class="dv">1</span>) <span class="op">+</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">3</span>  <span class="co">-- Left</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> (<span class="op">+</span>) <span class="dv">0</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]  <span class="op">==&gt;</span> <span class="dv">1</span> <span class="op">+</span> (<span class="dv">2</span> <span class="op">+</span> (<span class="dv">3</span> <span class="op">+</span> <span class="dv">0</span>))  <span class="co">-- Right</span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> (<span class="op">+</span>) <span class="dv">0</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]  <span class="op">==&gt;</span> ((<span class="dv">0</span> <span class="op">+</span> <span class="dv">1</span>) <span class="op">+</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">3</span>  <span class="co">-- Left</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> (<span class="op">+</span>) <span class="dv">0</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]  <span class="op">==&gt;</span> <span class="dv">1</span> <span class="op">+</span> (<span class="dv">2</span> <span class="op">+</span> (<span class="dv">3</span> <span class="op">+</span> <span class="dv">0</span>))  <span class="co">-- Right</span></span></code></pre></div>
 <p>Different types!</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span><span class="ot"> ::</span> (b <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b  <span class="co">-- Left</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span><span class="ot"> ::</span> (a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b  <span class="co">-- Right</span></span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span><span class="ot"> ::</span> (b <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b  <span class="co">-- Left</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span><span class="ot"> ::</span> (a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b  <span class="co">-- Right</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1062,14 +1004,14 @@ Can be rewritten as:</p>
 <br>
 <br></p>
 <h3 id="useful-hof-flip">Useful HOF: flip</h3>
-<div class="sourceCode" id="cb56"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- you can write</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> (\xs x <span class="ot">-&gt;</span> x <span class="op">:</span> xs) [] [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- more concisely like so:</span></span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> (<span class="fu">flip</span> (<span class="op">:</span>))        [] [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- you can write</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> (\xs x <span class="ot">-&gt;</span> x <span class="op">:</span> xs) [] [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- more concisely like so:</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> (<span class="fu">flip</span> (<span class="op">:</span>))        [] [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span></code></pre></div>
 <p>What is the type of <code class="sourceCode haskell"><span class="fu">flip</span></code>?</p>
 <p><br></p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flip</span><span class="ot"> ::</span> <span class="op">???</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flip</span><span class="ot"> ::</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1079,14 +1021,14 @@ Can be rewritten as:</p>
 <br>
 <br></p>
 <h3 id="useful-hof-compose">Useful HOF: compose</h3>
-<div class="sourceCode" id="cb58"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- you can write</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span> (\x <span class="ot">-&gt;</span> f (g x)) ys</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- more concisely like so:</span></span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span> (f <span class="op">.</span> g) ys</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- you can write</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span> (\x <span class="ot">-&gt;</span> f (g x)) ys</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- more concisely like so:</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span> (f <span class="op">.</span> g) ys</span></code></pre></div>
 <p>What is the type of <code class="sourceCode haskell">(<span class="op">.</span>)</code>?</p>
 <p><br></p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="ot">(.) ::</span> <span class="op">???</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="ot">(.) ::</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>

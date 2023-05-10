@@ -557,31 +557,14 @@ Can you think of a function that:
 <br>
 <br>
 
-## Recall: length of a list
-
-```haskell
--- len []      ==> 0
--- len ["carne","asada"] ==> 2
-len :: [a] -> Int
-len []     = 0
-len (x:xs) = 1 + len xs
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-## Recall: summing a list
+## Example: summing a list
 
 ```haskell
 -- sum []      ==> 0
 -- sum [1,2,3] ==> 6
 sum :: [Int] -> Int
-sum []     = 0
-sum (x:xs) = x + sum xs
+sum []     = ...
+sum (x:xs) = ...
 ```
 
 <br>
@@ -591,8 +574,6 @@ sum (x:xs) = x + sum xs
 <br>
 
 ## Example: string concatenation
-
-Let's write a function `cat`:
 
 ```haskell
 -- cat [] ==> ""
@@ -613,10 +594,6 @@ cat (x:xs) = ...
 ## Can you spot the pattern?
 
 ```haskell
--- len
-foo []     = 0
-foo (x:xs) = 1 + foo xs
-
 -- sum
 foo []     = 0
 foo (x:xs) = x + foo xs
@@ -644,37 +621,59 @@ pattern = ...
 
 ## The "fold-right" pattern
 
-![The `foldr` Pattern](/static/img/foldr-pattern.png)
+```haskell
+foldr op base []     = base
+foldr op base (x:xs) = op x (foldr op base xs)
+```
 
 General Pattern
 
 - Recurse on tail
 - Combine result with the head using some binary operation
 
+`foldr` bottles the common pattern of combining/reducing a list into a single value:
+
+![Fairy In a Bottle](/static/img/fairy.png)
+
+
 <br>
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## EXERCISE: refactor with fold
+
+With `foldr` defined as:
 
 ```haskell
-foldr f b []     = b
-foldr f b (x:xs) = f x (foldr f b xs)
+foldr op base []     = base
+foldr op base (x:xs) = op x (foldr op base xs)
 ```
 
-<br>
-<br>
-
-Let's refactor `sum`, `len` and `cat`: 
+refactor `sum` and `cat` to use `foldr`:
 
 ```haskell
-sum = foldr ...  ...
+sum xs = foldr op base xs
+  where
+    base     = ...
+    op x acc = ...
 
-cat = foldr ...  ...
-
-len = foldr ...  ...
+cat xs = foldr op base xs
+  where
+    base     = ...
+    op x acc = ...
 ```
 
-Factor the recursion out!
+Now use eta-contraction to make your code more concise!
 
 <br>
 <br>
@@ -686,10 +685,21 @@ Factor the recursion out!
 <br>
 <br>
 
+## Solution
 
-![`foldr` instances](/static/img/foldr-pattern-instance.png)
+```haskell
+sum xs = foldr op base xs
+  where
+    base     = 0
+    op x acc = x + acc
 
-You can write it more clearly as
+cat xs = foldr op base xs
+  where
+    base     = ""
+    op x acc = x ++ acc
+```
+
+or, more concisely:
 
 ```haskell
 sum = foldr (+) 0
@@ -706,75 +716,33 @@ cat = foldr (++) ""
 <br>
 <br>
 <br>
-
-## QUIZ
-
-What does this evaluate to?
-
-```haskell
-foldr f b []     = b
-foldr f b (x:xs) = f x (foldr f b xs)
-
-quiz = foldr (:) [] [1,2,3]
-```
-
-
-**(A)** Type error
-
-**(B)** `[1,2,3]`
-
-**(C)** `[3,2,1]`
-
-**(D)** `[[3],[2],[1]]`
-
-**(E)** `[[1],[2],[3]]`
-
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+## Executing "foldr"
+
+To develop some intuition about `foldr` lets "run" it by hand.
 
 ```haskell
-foldr f b []     = b
-foldr f b (x:xs) = f x (foldr f b xs)
+foldr op base []     = base
+foldr op base (x:xs) = op x (foldr op base xs)
 
-foldr (:) [] [1,2,3]
-  ==> (:) 1 (foldr (:) [] [2, 3])
-  ==> (:) 1 ((:) 2 (foldr (:) [] [3]))
-  ==> (:) 1 ((:) 2 ((:) 3 (foldr (:) [] [])))
-  ==> (:) 1 ((:) 2 ((:) 3 []))
-  ==  1 : (2 : (3 : []))
-  ==  [1,2,3]
+foldr op b (a1:a2:a3:[])
+==> 
+  a1 `op` (foldr op b (a2:a3:[]))
+==> 
+  a1 `op` (a2 `op` (foldr op b (a3:[])))
+==> 
+  a1 `op` (a2 `op` (a3 `op` (foldr op b [])))
+==> 
+  a1 `op` (a2 `op` (a3 `op` b))
 ```
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+Look how it *mirrors* the structure of lists!
 
-
-## The "fold-right" pattern
-
-```haskell
-foldr f b [x1, x2, x3, x4]
-  ==> f x1 (foldr f b [x2, x3, x4])
-  ==> f x1 (f x2 (foldr f b [x3, x4]))
-  ==> f x1 (f x2 (f x3 (foldr f b [x4])))
-  ==> f x1 (f x2 (f x3 (f x4 (foldr f b []))))
-  ==> f x1 (f x2 (f x3 (f x4 b)))
-```
-
-Accumulate the values from the **right**
+- `(:)` is replaced by `op` 
+- `[]` is replaced by `base`
 
 For example:
 
@@ -786,6 +754,8 @@ foldr (+) 0 [1, 2, 3, 4]
   ==> 1 + (2 + (3 + (4 + (foldr (+) 0 []))))
   ==> 1 + (2 + (3 + (4 + 0)))
 ```
+
+Accumulate the values from the **right**!
 
 <br>
 <br>
@@ -802,8 +772,8 @@ foldr (+) 0 [1, 2, 3, 4]
 What is the most general type of `foldr`?
 
 ```haskell
-foldr f b []     = b
-foldr f b (x:xs) = f x (foldr f b xs)
+foldr op base []     = base
+foldr op base (x:xs) = op x (foldr op base xs)
 ```
 
 
@@ -822,6 +792,43 @@ foldr f b (x:xs) = f x (foldr f b xs)
 (I) final
     
     *Answer:* D
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ
+
+Recall the function to compute the `len` of a list
+
+```haskell
+len :: [a] -> Int
+len []     = 0
+len (x:xs) = 1 + len xs
+```
+
+Which of these is a valid implementation of `len`
+
+**A.** `len = foldr (\n -> n + 1) 0`
+
+**B.** `len = foldr (\n m -> n + m) 0`
+
+**C.** `len = foldr (\_ n -> n + 1) 0`
+
+**D.** `len = foldr (\x xs -> 1 + len xs) 0`
+
+**E.** All of the above
+
+**HINT**: remember that `foldr :: (a -> b -> b) -> b -> [a] -> b`!
 
 <br>
 <br>
@@ -1005,105 +1012,6 @@ catTR = foldl ...  ...
 
 Factor the tail-recursion out!
 
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## QUIZ
-
-What does this evaluate to?
-
-```haskell
-foldl f b []     = b
-foldl f b (x:xs) = foldl f (f b x) xs
-
-quiz = foldl (:) [] [1,2,3]
-```
-
-<br>
-
-**(A)** Type error
-
-**(B)** `[1,2,3]`
-
-**(C)** `[3,2,1]`
-
-**(D)** `[[3],[2],[1]]`
-
-**(E)** `[[1],[2],[3]]`
-
-<br>
-
-(I) final
-    
-    *Answer:* A
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## QUIZ
-
-What does this evaluate to?
-
-```haskell
-foldl f b []     = b
-foldl f b (x:xs) = foldl f (f b x) xs
-
-quiz = foldl (\xs x -> x : xs) [] [1,2,3]
-```
-
-<br>
-
-**(A)** Type error
-
-**(B)** `[1,2,3]`
-
-**(C)** `[3,2,1]`
-
-**(D)** `[[3],[2],[1]]`
-
-**(E)** `[[1],[2],[3]]`
-
-<br>
-
-(I) final
-    
-    *Answer:* C
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-```haskell
-foldl f b []     = b
-foldl f b (x:xs) = foldl f (f b x) xs
-
-f = \xs x -> x : xs
-
-foldl f []                         [1,2,3]
-  ==> foldl f (1 : [])               [2,3]
-  ==> foldl f (2 : (1 : []))           [3]
-  ==> foldl f (3 : (2 : (1 : [])))      []
-  ==> 3 : (2 : (1 : []))
-  = [3,2,1]
-```
 
 <br>
 <br>
