@@ -1171,11 +1171,6 @@ Iteration patterns over collections:
 - **Map** (iterate) a given *transformation* over a collection
 - **Fold** (reduce) a collection into a value, given a *binary operation* to combine results
 
-Useful helper HOFs:
-
-- **Flip** the order of function's (first two) arguments 
-- **Compose** two functions
-
 <br>
 
 HOFs can be put into libraries to enable modularity
