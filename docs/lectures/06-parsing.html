@@ -134,8 +134,8 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
                 <li><a href="https://nadia-polikarpova.github.io/cse130-web/lectures.html">Lectures</a></li>
                 <li><a href="https://nadia-polikarpova.github.io/cse130-web/assignments.html">Assignments</a></li>
                 <li><a href="https://nadia-polikarpova.github.io/cse130-web/links.html">Links</a></li>                
-                <li><a href="https://canvas.ucsd.edu/courses/36670" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
-                <li><a href="https://www.piazza.com/ucsd/spring2022/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/45541" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                <li><a href="https://www.piazza.com/ucsd/spring2023/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -194,8 +194,8 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
                               <li><a href="https://nadia-polikarpova.github.io/cse130-web/lectures.html">Lectures</a></li>
                               <li><a href="https://nadia-polikarpova.github.io/cse130-web/assignments.html">Assignments</a></li>
                               <li><a href="https://nadia-polikarpova.github.io/cse130-web/links.html">Links</a></li>
-                              <li><a href="https://canvas.ucsd.edu/courses/36670" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
-                              <li><a href="https://www.piazza.com/ucsd/spring2022/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/45541" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                              <li><a href="https://www.piazza.com/ucsd/spring2023/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
                             </p>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
                         </div>
@@ -452,7 +452,6 @@ so we only care about how to describe the token format and the grammar</p>
 <p><strong>(D)</strong> <code class="sourceCode haskell">x</code></p>
 <p><strong>(E)</strong> C and D</p>
 <p><br></p>
-<p><em>Answer:</em> E</p>
 <p><br>
 <br>
 <br>
@@ -524,7 +523,6 @@ so we only care about how to describe the token format and the grammar</p>
 <p><strong>(C)</strong> <code class="sourceCode haskell">[<span class="dt">NUM</span> <span class="st">&quot;92&quot;</span>]</code></p>
 <p><strong>(D)</strong> <code class="sourceCode haskell">[<span class="dt">NUM</span> <span class="st">&quot;92&quot;</span>, <span class="dt">ID</span> <span class="st">&quot;zoo&quot;</span>]</code></p>
 <p><br></p>
-<p><em>Answer:</em> D</p>
 <p><br>
 <br>
 <br>
@@ -619,7 +617,6 @@ so we only care about how to describe the token format and the grammar</p>
 <p><strong>(D)</strong> <code class="sourceCode haskell">x <span class="op">+</span> <span class="dv">5</span> <span class="op">+</span> <span class="dv">1</span></code></p>
 <p><strong>(E)</strong> B and C</p>
 <p><br></p>
-<p><em>Answer:</em> E</p>
 <p><br>
 <br>
 <br>
@@ -723,7 +720,6 @@ correspond to which tokens from the <code class="sourceCode haskell"><span class
 <p><strong>(C)</strong> <code class="sourceCode haskell"><span class="dt">APlus</span> (<span class="dt">APlus</span> (<span class="dt">AConst</span> <span class="dv">1</span>) (<span class="dt">AConst</span> <span class="dv">2</span>)) (<span class="dt">AConst</span> <span class="dv">3</span>)</code></p>
 <p><strong>(D)</strong> <code class="sourceCode haskell"><span class="dt">APlus</span> (<span class="dt">AConst</span> <span class="dv">1</span>) (<span class="dt">APlus</span> (<span class="dt">AConst</span> <span class="dv">2</span>) (<span class="dt">AConst</span> <span class="dv">3</span>))</code></p>
 <p><br></p>
-<p><em>Answer:</em> Could be C or D</p>
 <p><br>
 <br>
 <br>
@@ -745,13 +741,13 @@ correspond to which tokens from the <code class="sourceCode haskell"><span class
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> evalString [(<span class="st">&quot;x&quot;</span>, <span class="dv">100</span>), (<span class="st">&quot;y&quot;</span>, <span class="dv">20</span>)] <span class="st">&quot;x - y&quot;</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="dv">80</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="op">???</span></span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> evalString [] <span class="st">&quot;2 * 5 + 5&quot;</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="dv">20</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="op">???</span></span>
 <span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> evalString [] <span class="st">&quot;2 - 1 - 1&quot;</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span></span></code></pre></div>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -862,7 +858,6 @@ correspond to which tokens from the <code class="sourceCode haskell"><span class
 <p><strong>(A)</strong> Yes</p>
 <p><strong>(B)</strong> No</p>
 <p><br></p>
-<p><em>Answer:</em> A</p>
 <p><br>
 <br>
 <br>

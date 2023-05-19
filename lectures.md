@@ -27,7 +27,7 @@ Lecture schedule is subject to change!
 | 5/12       | Environments and Closures       | [html][lec6]              |
 | 5/15       | contd.                          |                           |
 | 5/17       | contd.                          |                           |
-| 5/19       | Lexing and Parsing              |                           |
+| 5/19       | Lexing and Parsing              | [html][lec7]  [tutorial][parsing]  |
 | 5/22       | contd.                          |                           |
 | 5/24       | contd.                          |                           |
 | 5/26       | Overloading & TypeClasses       |                           |
