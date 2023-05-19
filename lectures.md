@@ -87,5 +87,5 @@ Discussion slides are available [here](https://drive.google.com/drive/u/0/folder
 [disc8code]: /static/raw/discussion-week-08.hs
 [disc9]: /static/raw/discussion-week-09.pdf
  -->
-[parsing]: https://github.com/cse130-sp18/arith
+[parsing]: https://github.com/cse130-assignments/arith
 [elsa]: https://github.com/ucsd-progsys/elsa
