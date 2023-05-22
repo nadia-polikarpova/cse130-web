@@ -764,7 +764,7 @@ We can test the function like so:
 <br>
 <br>
 
-## Precedence and associativity
+## Precedence
 
 ```haskell
 λ> evalString [] "2 * 5 + 5"
@@ -793,14 +793,84 @@ Aexpr '*' Aexpr   '5'         '2'    Aexpr '+' Aexpr
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
 
+
+### Solution 1: Grammar factoring
+
+We can split the `AExpr` non-terminal into multiple "levels"
+
+```haskell
+Aexpr : Aexpr '+' Aexpr
+      | Aexpr '-' Aexpr
+      | Factor
+
+Factor : Factor '*' Factor
+       | Factor '/' Factor
+       | TNUM
+       | ID
+       | '(' Aexpr ')'
+```
+
+Intuition: 
+
+- Only a `Factor` can be multiplied / divided
+- Any `Factor` can be promoted to an `AExpr`
+- But to turn an `AExpr` into a `Factor`, we need parentheses
+
+
+<br>
+<br>
+
+Now the only way to parse `2 * 5 + 5` is:
+
+```
+--           Good:
+
+             Aexpr
+          /    |    \
+       Aexpr  '+'   Aexpr
+         |            |
+       Factor       Factor
+    /    |    \       |
+Factor  '*'  Factor  '5'
+  |            |    
+ '2'          '5'
+```
+
+If we start parsing the wrong way, we get:
+
+```
+--     Bad???
+
+       Aexpr
+         |
+       Factor
+    /    |    \
+Factor  '*'  Factor
+  |            | 
+ '2'   -- cannot parse "5 + 5" as Factor!
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Associativity
 
 ```haskell
 λ> evalString [] "2 - 1 - 1"
 2
 ```
 
-There are multiple ways of parsing `2 - 1 - 1`, namely
+With our original grammar,
+there are multiple ways of parsing `2 - 1 - 1`, namely
 
 ```
 --         Good:                    Bad:
@@ -818,90 +888,24 @@ Aexpr '-' Aexpr   '1'         '2'    Aexpr '-' Aexpr
 
 <br>
 <br>
-
-How do we communicate precedence and associativity to `happy`?
-
 <br>
 <br>
 <br>
 <br>
 
-### Solution 1: Grammar factoring
-
-We can split the `AExpr` non-terminal into multiple "levels"
-
-```haskell
-Aexpr : Aexpr '+' Aexpr
-      | Aexpr '-' Aexpr
-      | Aexpr2
-
-Aexpr2 : Aexpr2 '*' Aexpr2
-       | Aexpr2 '/' Aexpr2
-       | Aexpr3
-
-Aexpr3 : TNUM
-       | ID
-       | '(' Aexpr ')'
-```
-
-Intuition: `AExpr2` "binds tighter" than `AExpr`, and `AExpr3` is the tightest
-
-
-Now the only way to parse `2 * 5 + 5` is:
-
-```
---           Good:
-
-             Aexpr
-          /    |    \
-       Aexpr  '+'   Aexpr
-         |            |
-       Aexpr2       Aexpr2
-    /    |    \       |
-Aexpr2  '*'  Aexpr2 Aexpr3
-  |            |      |
-Aexpr3       Aexpr3  '5' 
-  |            |
- '2'          '5'
-```
-
-If we start parsing the wrong way, we get:
-
-```
---     Bad???
-
-       Aexpr
-         |
-       Aexpr2
-    /    |    \
-Aexpr2  '*'  Aexpr2
-  |            | 
-Aexpr3    -- cannot parse "5 + 5" as Aexpr2!
-  |
- '2'
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 ## QUIZ
 
-With this new grammar, can we parse `2 - 1 - 1` the wrong way?
+Can our new grammar still parse `2 - 1 - 1` the wrong way?
 
 ```haskell
 Aexpr : Aexpr '+' Aexpr
       | Aexpr '-' Aexpr
-      | Aexpr2
+      | Factor
 
-Aexpr2 : Aexpr2 '*' Aexpr2
-       | Aexpr2 '/' Aexpr2
-       | Aexpr3
-
-Aexpr3 : TNUM
+Factor : Factor '*' Factor
+       | Factor '/' Factor
+       | TNUM
        | ID
        | '(' Aexpr ')'
 ```
@@ -934,12 +938,10 @@ There are **still** multiple ways of parsing `2 - 1 - 1`, namely
           /  |  \                 /  |  \
      Aexpr  '-'  Aexpr       Aexpr  '-'   Aexpr
     /  |  \        |           |         /  |  \
-Aexpr '-' Aexpr  AExpr2      AExpr2   Aexpr '-' Aexpr
+Aexpr '-' Aexpr  Factor      Factor   Aexpr '-' Aexpr
   |         |      |           |        |         |
-AExpr2    AExpr2 AExpr3      AExpr3   AExpr2    AExpr2
-  |         |      |           |        |         |
-AExpr3    AExpr3  '1'         '2'     AExpr3    AExpr3
-  |         |                           |         | 
+Factor    Factor  '1'         '2'   Factor    Factor
+  |         |                           |         |
  '2'       '1'                         '1'       '1'
 ```
 
@@ -958,21 +960,57 @@ How do we fix this?
 <br>
 <br>
 
-Grammar factoring can encode **both** precedence and associativity!
+More grammar factoring!
 
 
 ```haskell
-Aexpr : Aexpr '+' Aexpr2
-      | Aexpr '-' Aexpr2
-      | Aexpr2
+Aexpr : Aexpr '+' Factor
+      | Aexpr '-' Factor
+      | Factor
 
-Aexpr2 : Aexpr2 '*' Aexpr3
-       | Aexpr2 '/' Aexpr3
-       | Aexpr3
+Factor : Factor '*' Atom
+       | Factor '/' Atom
+       | Atom
 
-Aexpr3 : TNUM
+Atom : TNUM
        | ID
        | '(' Aexpr ')'
+```
+
+<br>
+<br>
+
+```
+--         Good: 
+
+           Aexpr 
+          /  |  \ 
+     Aexpr  '-'  Factor
+    /  |  \        |
+Aexpr '-' Factor  Atom
+  |         |      |
+Factor    Atom    '1'
+  |         |     
+Atom       '1'    
+  |         
+ '2'
+```
+
+<br>
+<br>
+
+```
+--      Bad???
+
+        Aexpr
+       /  |  \
+  Aexpr  '-'   Factor
+    |       -- cannot parse "1 - 1" as Factor!     
+  Factor
+    | 
+  Atom
+    | 
+   '2'
 ```
 
 <br>
