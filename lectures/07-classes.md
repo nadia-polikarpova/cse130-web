@@ -693,43 +693,6 @@ class  Eq a  where
 <br>
 
 
-## Automatic Derivation
-
-This is silly: we _should_ be able to compare and view `Color`s "automatically"!
-
-Haskell lets us _automatically derive_ functions for some classes in the standard library.
-
-To do so, we simply dress up the data type definition with
-
-```haskell
-data Color = Red | Green
-  deriving (Eq, Show) -- please generate instances automatically!
-```
-
-Now we have
-
-```haskell
-λ> let col = Red
-
-λ> col
-Red
-
-λ> col == Red
-True
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
 ## QUIZ 
 
 Which of the following `Eq` instances for `Color` are valid?
@@ -837,6 +800,43 @@ what will the following evaluate to?
 (I) final
 
     *Answer:* C
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Automatic Derivation
+
+This is silly: we _should_ be able to compare and view `Color`s "automatically"!
+
+Haskell lets us _automatically derive_ functions for some classes in the standard library.
+
+To do so, we simply dress up the data type definition with
+
+```haskell
+data Color = Red | Green
+  deriving (Eq, Show) -- please generate instances automatically!
+```
+
+Now we have
+
+```haskell
+λ> let col = Red
+
+λ> col
+Red
+
+λ> col == Red
+True
+```
 
 <br>
 <br>
