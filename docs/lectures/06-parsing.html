@@ -452,6 +452,7 @@ so we only care about how to describe the token format and the grammar</p>
 <p><strong>(D)</strong> <code class="sourceCode haskell">x</code></p>
 <p><strong>(E)</strong> C and D</p>
 <p><br></p>
+<p><em>Answer:</em> E</p>
 <p><br>
 <br>
 <br>
@@ -523,6 +524,7 @@ so we only care about how to describe the token format and the grammar</p>
 <p><strong>(C)</strong> <code class="sourceCode haskell">[<span class="dt">NUM</span> <span class="st">&quot;92&quot;</span>]</code></p>
 <p><strong>(D)</strong> <code class="sourceCode haskell">[<span class="dt">NUM</span> <span class="st">&quot;92&quot;</span>, <span class="dt">ID</span> <span class="st">&quot;zoo&quot;</span>]</code></p>
 <p><br></p>
+<p><em>Answer:</em> D</p>
 <p><br>
 <br>
 <br>
@@ -617,6 +619,7 @@ so we only care about how to describe the token format and the grammar</p>
 <p><strong>(D)</strong> <code class="sourceCode haskell">x <span class="op">+</span> <span class="dv">5</span> <span class="op">+</span> <span class="dv">1</span></code></p>
 <p><strong>(E)</strong> B and C</p>
 <p><br></p>
+<p><em>Answer:</em> E</p>
 <p><br>
 <br>
 <br>
@@ -720,6 +723,7 @@ correspond to which tokens from the <code class="sourceCode haskell"><span class
 <p><strong>(C)</strong> <code class="sourceCode haskell"><span class="dt">APlus</span> (<span class="dt">APlus</span> (<span class="dt">AConst</span> <span class="dv">1</span>) (<span class="dt">AConst</span> <span class="dv">2</span>)) (<span class="dt">AConst</span> <span class="dv">3</span>)</code></p>
 <p><strong>(D)</strong> <code class="sourceCode haskell"><span class="dt">APlus</span> (<span class="dt">AConst</span> <span class="dv">1</span>) (<span class="dt">APlus</span> (<span class="dt">AConst</span> <span class="dv">2</span>) (<span class="dt">AConst</span> <span class="dv">3</span>))</code></p>
 <p><br></p>
+<p><em>Answer:</em> Could be C or D</p>
 <p><br>
 <br>
 <br>
@@ -741,13 +745,13 @@ correspond to which tokens from the <code class="sourceCode haskell"><span class
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> evalString [(<span class="st">&quot;x&quot;</span>, <span class="dv">100</span>), (<span class="st">&quot;y&quot;</span>, <span class="dv">20</span>)] <span class="st">&quot;x - y&quot;</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="op">???</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="dv">80</span></span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> evalString [] <span class="st">&quot;2 * 5 + 5&quot;</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="op">???</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="dv">20</span></span>
 <span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> evalString [] <span class="st">&quot;2 - 1 - 1&quot;</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="op">???</span></span></code></pre></div>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -862,6 +866,7 @@ there are multiple ways of parsing <code class="sourceCode haskell"><span class=
 <p><strong>(A)</strong> Yes</p>
 <p><strong>(B)</strong> No</p>
 <p><br></p>
+<p><em>Answer:</em> A</p>
 <p><br>
 <br>
 <br>

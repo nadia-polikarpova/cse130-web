@@ -29,7 +29,7 @@ Lecture schedule is subject to change!
 | 5/17       | contd.                          |                           |
 | 5/19       | Lexing and Parsing              | [html][lec7]  [tutorial][parsing]  |
 | 5/22       | contd.                          |                           |
-| 5/24       | Overloading & TypeClasses       |                           |
+| 5/24       | Overloading & TypeClasses       | [html][lec8]              |
 | 5/26       | contd.                          |                           |
 | 5/29       | *No lecture: Memorial Day*      |                           | 
 | 5/31       | contd.                          |                           |

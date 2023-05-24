@@ -269,7 +269,9 @@ Read it as:
   - `(+)` takes in two `a` values and returns an `a` value  
   - for any type `a` that 
   - _is an instance of_ the `Num` type class  
-    - or, in Java terms: _implements_ the `Num` interface
+  
+  - or, in Java terms: _implements_ the `Num` interface
+  - [similar but not the same idea!](https://www.parsonsmatt.org/2017/01/07/how_do_type_classes_differ_from_interfaces.html)
 
 The "`(Num a) =>`" part is called the *constraint*
 
@@ -663,6 +665,33 @@ instance Eq Color where
 <br>
 <br>
 
+## EXERCISE: Creating Instances
+
+Create an instance of `Eq` for `Color`:
+
+```haskell
+data Color = Red | Green
+  
+instance Eq Color where
+  ???
+
+-- Reminder:
+class  Eq a  where
+  (==) :: a -> a -> Bool
+  (/=) :: a -> a -> Bool
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 ## Automatic Derivation
 
@@ -846,23 +875,12 @@ Now let's see how to write code that uses type classes!
 <br>
 <br>
 
-Let's build a small library for *Environments* mapping keys `k` to values `v`
-
-  - In Nano, we represented environments as `[(Id, Value)]`
-  
-  - But what if I want to have keys that are *not* `Id` and values that are *not* `Value`?
-  
-  - What if I want to change the representation to something more *efficient*?
-
-<br>
-<br>
-  
-Let's define a new *polymorphic* datatype `Env`!
+Let's build a small library for dictionaries mapping keys `k` to values `v`
 
 ```haskell
-data Env k v
-  = Def  v              -- default value to be used for missing keys
-  | Bind k v (Env k v)  -- bind key `k` to the value `v`
+data Dict k v
+  = Empty                -- empty dictionary
+  | Bind k v (Dict k v)  -- bind key `k` to the value `v`
   deriving (Show)
 ```
 
@@ -876,19 +894,19 @@ data Env k v
 
 ## The API
 
-We want to be able to do the following with `Env`:
+We want to be able to do the following with `Dict`:
 
 ```haskell
--- >>> let env0 = add "cat" 10.0 (add "dog" 20.0 (Def 0))
+-- >>> let dict0 = add "cat" 10.0 (add "dog" 20.0 empty)
 
--- >>> get "cat" env0
+-- >>> get "cat" dict0
 -- 10
 
--- >>> get "dog" env0
+-- >>> get "dog" dict0
 -- 20
 
--- >>> get "horse" env0
--- 0
+-- >>> get "horse" dict0
+-- error: key not found
 ```
 
 <br>
@@ -897,15 +915,14 @@ We want to be able to do the following with `Env`:
 Okay, lets implement!
 
 ```haskell
--- | 'add key val env' returns a new env 
+-- | 'add key val dict' returns a new dictionary
 -- | that additionally maps `key` to `val`
-add :: k -> v -> Env k v -> Env k v
-add key val env = ???
+add :: k -> v -> Dict k v -> Dict k v
+add key val dict = ???
 
--- | 'get key env' returns the value of `key` 
--- | and the "default" if no value is found
-get :: k -> Env k v -> v
-get key env = ???
+-- | 'get key dict' returns the value of `key` 
+get :: k -> Dict k v -> v
+get key dict = ???
 ```
 
 <br>
@@ -938,7 +955,7 @@ Lets _delete_ the types of `add` and `get` and see what Haskell says their types
 
 ```haskell
 λ> :type get
-get :: (Eq k) => k -> v -> Env k v -> Env k v
+get :: (Eq k) => k -> v -> Dict k v -> Dict k v
 ```
 
 Haskell tells us that we can use any `k` type as a *key*
@@ -955,15 +972,13 @@ How, did GHC figure this out?
 <br>
 <br>
 
-## Exercise
+## EXERCISE: A Faster Dictionary
 
 Write an optimized version of
 
 - `add` that ensures the keys are in _increasing_ order
-- `get` that gives up and returns the "default" the moment
+- `get` that gives up the moment
    we see a key that's larger than the one we're looking for
-
-_(How) do you need to change the type of `Env`?_
 
 _(How) do you need to change the types of `get` and `add`?_
 
@@ -1164,7 +1179,7 @@ The above JSON value would be represented by the `JVal`
 ```haskell
 js1 =
   JObj [("name", JStr "Nadia")
-       ,("age",  JNum 36.0)
+       ,("age",  JNum 37.0)
        ,("likes",   JArr [ JStr "poke", JStr "coffee", JStr "pasta"])
        ,("hates",   JArr [ JStr "beets", JStr "milk"])
        ,("lunches", JArr [ JObj [("day",  JStr "mon")
@@ -1425,7 +1440,7 @@ Now, we can simply write
 
 ```haskell
 hs = (("name"   , "Nadia")
-     ,("age"    , 36.0)
+     ,("age"    , 37.0)
      ,("likes"  , ["poke", "coffee", "pasta"])
      ,("hates"  , ["beets", "milk"])
      ,("lunches", lunches)
@@ -1445,36 +1460,49 @@ js2 = toJSON hs
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-## Serializing Environments
+## EXERCISE: Dictionary with Default Values
 
-To wrap everything up, lets write a serializer for environments `Env` with `String` keys:
+Modify our implementation of fast dictionaries
+so that `get` returns a default value if the key is not found.
 
+You should get the following behavior:
+  
 ```haskell
-instance JSON (Env String v) where
-  toJSON env = ???
+-- Note: the default value is NOT passed into `get`
+λ> get 2       (add 5 "five"   (add 10 "ten"  (add 3 "three" empty)))
+""
+
+λ> get "horse" (add "cat" 10.0 (add "dog" 20.1 empty))
+0.0
 ```
 
-and presto! our serializer *just works*
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-```haskell
-λ> env0
-Bind "cat" 10.0 (Bind "dog" 20.0 (Def 0))
-
-λ> toJSON env0
-JObj [ ("cat", JNum 10.0)
-     , ("dog", JNum 20.0)
-     , ("def", JNum 0.0)
-     ]
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 That's all folks! 

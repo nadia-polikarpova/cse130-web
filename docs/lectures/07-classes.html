@@ -134,8 +134,8 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
                 <li><a href="https://nadia-polikarpova.github.io/cse130-web/lectures.html">Lectures</a></li>
                 <li><a href="https://nadia-polikarpova.github.io/cse130-web/assignments.html">Assignments</a></li>
                 <li><a href="https://nadia-polikarpova.github.io/cse130-web/links.html">Links</a></li>                
-                <li><a href="https://canvas.ucsd.edu/courses/36670" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
-                <li><a href="https://www.piazza.com/ucsd/spring2022/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/45541" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                <li><a href="https://www.piazza.com/ucsd/spring2023/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -194,8 +194,8 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
                               <li><a href="https://nadia-polikarpova.github.io/cse130-web/lectures.html">Lectures</a></li>
                               <li><a href="https://nadia-polikarpova.github.io/cse130-web/assignments.html">Assignments</a></li>
                               <li><a href="https://nadia-polikarpova.github.io/cse130-web/links.html">Links</a></li>
-                              <li><a href="https://canvas.ucsd.edu/courses/36670" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
-                              <li><a href="https://www.piazza.com/ucsd/spring2022/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/45541" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                              <li><a href="https://www.piazza.com/ucsd/spring2023/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
                             </p>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
                         </div>
@@ -338,7 +338,6 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p><strong>(D)</strong> <em>Any</em> of the above</p>
 <p><strong>(E)</strong> <em>None</em> of the above</p>
 <p><br></p>
-<p><em>Answer:</em> E</p>
 <p><br>
 <br>
 <br>
@@ -428,13 +427,12 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <p>Read it as:</p>
 <ul>
-<li><code class="sourceCode haskell">(<span class="op">+</span>)</code> takes in two <code class="sourceCode haskell">a</code> values and returns an <code class="sourceCode haskell">a</code> value<br />
-</li>
-<li>for any type <code class="sourceCode haskell">a</code> that</li>
-<li><em>is an instance of</em> the <code class="sourceCode haskell"><span class="dt">Num</span></code> type class
-<ul>
-<li>or, in Java terms: <em>implements</em> the <code class="sourceCode haskell"><span class="dt">Num</span></code> interface</li>
-</ul></li>
+<li><p><code class="sourceCode haskell">(<span class="op">+</span>)</code> takes in two <code class="sourceCode haskell">a</code> values and returns an <code class="sourceCode haskell">a</code> value<br />
+</p></li>
+<li><p>for any type <code class="sourceCode haskell">a</code> that</p></li>
+<li><p><em>is an instance of</em> the <code class="sourceCode haskell"><span class="dt">Num</span></code> type class</p></li>
+<li><p>or, in Java terms: <em>implements</em> the <code class="sourceCode haskell"><span class="dt">Num</span></code> interface</p></li>
+<li><p><a href="https://www.parsonsmatt.org/2017/01/07/how_do_type_classes_differ_from_interfaces.html">similar but not the same idea!</a></p></li>
 </ul>
 <p>The “<code class="sourceCode haskell">(<span class="dt">Num</span> a) <span class="ot">=&gt;</span></code>” part is called the <em>constraint</em></p>
 <p><br>
@@ -484,7 +482,6 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p><strong>(D)</strong> <code class="sourceCode haskell"><span class="ot">(==) ::</span> (<span class="dt">Eq</span> a) <span class="ot">=&gt;</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></code></p>
 <p><strong>(E)</strong> None of the above</p>
 <p><br></p>
-<p><em>Answer:</em> D. Not B because we can’t compare functions!</p>
 <p><br>
 <br>
 <br>
@@ -727,20 +724,41 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <br>
 <br>
 <br></p>
+<h2 id="exercise-creating-instances">EXERCISE: Creating Instances</h2>
+<p>Create an instance of <code class="sourceCode haskell"><span class="dt">Eq</span></code> for <code class="sourceCode haskell"><span class="dt">Color</span></code>:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Color</span> <span class="ot">=</span> <span class="dt">Red</span> <span class="op">|</span> <span class="dt">Green</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">???</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- Reminder:</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span>  <span class="dt">Eq</span> a  <span class="kw">where</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  (==) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="ot">  (/=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="automatic-derivation">Automatic Derivation</h2>
 <p>This is silly: we <em>should</em> be able to compare and view <code class="sourceCode haskell"><span class="dt">Color</span></code>s “automatically”!</p>
 <p>Haskell lets us <em>automatically derive</em> functions for some classes in the standard library.</p>
 <p>To do so, we simply dress up the data type definition with</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Color</span> <span class="ot">=</span> <span class="dt">Red</span> <span class="op">|</span> <span class="dt">Green</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Show</span>) <span class="co">-- please generate instances automatically!</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Color</span> <span class="ot">=</span> <span class="dt">Red</span> <span class="op">|</span> <span class="dt">Green</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Show</span>) <span class="co">-- please generate instances automatically!</span></span></code></pre></div>
 <p>Now we have</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="kw">let</span> col <span class="ot">=</span> <span class="dt">Red</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> col</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="dt">Red</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> col <span class="op">==</span> <span class="dt">Red</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="dt">True</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="kw">let</span> col <span class="ot">=</span> <span class="dt">Red</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> col</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="dt">Red</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> col <span class="op">==</span> <span class="dt">Red</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="dt">True</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -753,23 +771,22 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <br></p>
 <h2 id="quiz-2">QUIZ</h2>
 <p>Which of the following <code class="sourceCode haskell"><span class="dt">Eq</span></code> instances for <code class="sourceCode haskell"><span class="dt">Color</span></code> are valid?</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- (A)</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) <span class="dt">Red</span>   <span class="dt">Red</span>   <span class="ot">=</span> <span class="dt">True</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) <span class="dt">Green</span> <span class="dt">Green</span> <span class="ot">=</span> <span class="dt">True</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) _     _     <span class="ot">=</span> <span class="dt">False</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- (B)</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) <span class="dt">Red</span>   <span class="dt">Red</span>   <span class="ot">=</span> <span class="dt">False</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) <span class="dt">Green</span> <span class="dt">Green</span> <span class="ot">=</span> <span class="dt">False</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) _     _     <span class="ot">=</span> <span class="dt">True</span></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">-- (C) Neither of the above</span></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co">-- (D) Either of the above</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- (A)</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) <span class="dt">Red</span>   <span class="dt">Red</span>   <span class="ot">=</span> <span class="dt">True</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) <span class="dt">Green</span> <span class="dt">Green</span> <span class="ot">=</span> <span class="dt">True</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) _     _     <span class="ot">=</span> <span class="dt">False</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- (B)</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) <span class="dt">Red</span>   <span class="dt">Red</span>   <span class="ot">=</span> <span class="dt">False</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) <span class="dt">Green</span> <span class="dt">Green</span> <span class="ot">=</span> <span class="dt">False</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) _     _     <span class="ot">=</span> <span class="dt">True</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co">-- (C) Neither of the above</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co">-- (D) Either of the above</span></span></code></pre></div>
 <p><br></p>
-<p><em>Answer:</em> D</p>
 <p><br>
 <br>
 <br>
@@ -782,12 +799,12 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <br></p>
 <h2 id="default-method-implementations">Default Method Implementations</h2>
 <p>The <code class="sourceCode haskell"><span class="dt">Eq</span></code> class is actually defined like this:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span>  <span class="dt">Eq</span> a  <span class="kw">where</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  (==) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) x y <span class="ot">=</span> <span class="fu">not</span> (x <span class="op">/=</span> y) <span class="co">-- Default implementation!</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  (/=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) x y <span class="ot">=</span> <span class="fu">not</span> (x <span class="op">==</span> y) <span class="co">-- Default implementation!</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span>  <span class="dt">Eq</span> a  <span class="kw">where</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  (==) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) x y <span class="ot">=</span> <span class="fu">not</span> (x <span class="op">/=</span> y) <span class="co">-- Default implementation!</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  (/=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) x y <span class="ot">=</span> <span class="fu">not</span> (x <span class="op">==</span> y) <span class="co">-- Default implementation!</span></span></code></pre></div>
 <p><br>
 <br></p>
 <p>The class provides <strong>default implementations</strong> for its methods</p>
@@ -795,11 +812,11 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <li><p>An instance can define <em>any</em> of the two methods and get the other one for free</p></li>
 <li><p>Use <code class="sourceCode haskell"><span class="op">:</span>info</code> to find out which methods you have to define:</p></li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span>info <span class="dt">Eq</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span>  <span class="dt">Eq</span> a  <span class="kw">where</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  (==) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  (/=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="ot">{-# MINIMAL (==) | (/=) #-}</span> <span class="co">-- HERE HERE!!!</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span>info <span class="dt">Eq</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span>  <span class="dt">Eq</span> a  <span class="kw">where</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  (==) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  (/=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="ot">{-# MINIMAL (==) | (/=) #-}</span> <span class="co">-- HERE HERE!!!</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -809,17 +826,16 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <br></p>
 <h2 id="quiz-3">QUIZ</h2>
 <p>If you define:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">-- Nothing here!</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">-- Nothing here!</span></span></code></pre></div>
 <p>what will the following evaluate to?</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="dt">Red</span> <span class="op">==</span> <span class="dt">Green</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="dt">Red</span> <span class="op">==</span> <span class="dt">Green</span></span></code></pre></div>
 <p><strong>(A)</strong> Type error</p>
 <p><strong>(B)</strong> Runtime error</p>
 <p><strong>(C)</strong> Runs forever</p>
 <p><strong>(D)</strong> <code class="sourceCode haskell"><span class="dt">False</span></code></p>
 <p><strong>(E)</strong> <code class="sourceCode haskell"><span class="dt">True</span></code></p>
 <p><br></p>
-<p><em>Answer:</em> C</p>
 <p><br>
 <br>
 <br>
@@ -852,19 +868,11 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <p>Now let’s see how to write code that uses type classes!</p>
 <p><br>
 <br></p>
-<p>Let’s build a small library for <em>Environments</em> mapping keys <code class="sourceCode haskell">k</code> to values <code class="sourceCode haskell">v</code></p>
-<ul>
-<li><p>In Nano, we represented environments as <code class="sourceCode haskell">[(<span class="dt">Id</span>, <span class="dt">Value</span>)]</code></p></li>
-<li><p>But what if I want to have keys that are <em>not</em> <code class="sourceCode haskell"><span class="dt">Id</span></code> and values that are <em>not</em> <code class="sourceCode haskell"><span class="dt">Value</span></code>?</p></li>
-<li><p>What if I want to change the representation to something more <em>efficient</em>?</p></li>
-</ul>
-<p><br>
-<br></p>
-<p>Let’s define a new <em>polymorphic</em> datatype <code class="sourceCode haskell"><span class="dt">Env</span></code>!</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Env</span> k v</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">Def</span>  v              <span class="co">-- default value to be used for missing keys</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">Bind</span> k v (<span class="dt">Env</span> k v)  <span class="co">-- bind key `k` to the value `v`</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
+<p>Let’s build a small library for dictionaries mapping keys <code class="sourceCode haskell">k</code> to values <code class="sourceCode haskell">v</code></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Dict</span> k v</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">Empty</span>                <span class="co">-- empty dictionary</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">Bind</span> k v (<span class="dt">Dict</span> k v)  <span class="co">-- bind key `k` to the value `v`</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -873,29 +881,28 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <br>
 <br></p>
 <h2 id="the-api">The API</h2>
-<p>We want to be able to do the following with <code class="sourceCode haskell"><span class="dt">Env</span></code>:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt; let env0 = add &quot;cat&quot; 10.0 (add &quot;dog&quot; 20.0 (Def 0))</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt; get &quot;cat&quot; env0</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- 10</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt; get &quot;dog&quot; env0</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- 20</span></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt; get &quot;horse&quot; env0</span></span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co">-- 0</span></span></code></pre></div>
+<p>We want to be able to do the following with <code class="sourceCode haskell"><span class="dt">Dict</span></code>:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt; let dict0 = add &quot;cat&quot; 10.0 (add &quot;dog&quot; 20.0 empty)</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt; get &quot;cat&quot; dict0</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- 10</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt; get &quot;dog&quot; dict0</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- 20</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt; get &quot;horse&quot; dict0</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co">-- error: key not found</span></span></code></pre></div>
 <p><br>
 <br></p>
 <p>Okay, lets implement!</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | 'add key val env' returns a new env </span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- | that additionally maps `key` to `val`</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="ot">add ::</span> k <span class="ot">-&gt;</span> v <span class="ot">-&gt;</span> <span class="dt">Env</span> k v <span class="ot">-&gt;</span> <span class="dt">Env</span> k v</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>add key val env <span class="ot">=</span> <span class="op">???</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- | 'get key env' returns the value of `key` </span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- | and the &quot;default&quot; if no value is found</span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> k <span class="ot">-&gt;</span> <span class="dt">Env</span> k v <span class="ot">-&gt;</span> v</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>get key env <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | 'add key val dict' returns a new dictionary</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- | that additionally maps `key` to `val`</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="ot">add ::</span> k <span class="ot">-&gt;</span> v <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>add key val dict <span class="ot">=</span> <span class="op">???</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- | 'get key dict' returns the value of `key` </span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> k <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v <span class="ot">-&gt;</span> v</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>get key dict <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -919,8 +926,8 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <br></p>
 <h2 id="constraint-propagation">Constraint Propagation</h2>
 <p>Lets <em>delete</em> the types of <code class="sourceCode haskell">add</code> and <code class="sourceCode haskell">get</code> and see what Haskell says their types are!</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span><span class="kw">type</span> get</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> (<span class="dt">Eq</span> k) <span class="ot">=&gt;</span> k <span class="ot">-&gt;</span> v <span class="ot">-&gt;</span> <span class="dt">Env</span> k v <span class="ot">-&gt;</span> <span class="dt">Env</span> k v</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span><span class="kw">type</span> get</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> (<span class="dt">Eq</span> k) <span class="ot">=&gt;</span> k <span class="ot">-&gt;</span> v <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v</span></code></pre></div>
 <p>Haskell tells us that we can use any <code class="sourceCode haskell">k</code> type as a <em>key</em>
 as long as this type is an instance of the <code class="sourceCode haskell"><span class="dt">Eq</span></code> typeclass.</p>
 <p>How, did GHC figure this out?</p>
@@ -933,14 +940,13 @@ as long as this type is an instance of the <code class="sourceCode haskell"><spa
 <br>
 <br>
 <br></p>
-<h2 id="exercise">Exercise</h2>
+<h2 id="exercise-a-faster-dictionary">EXERCISE: A Faster Dictionary</h2>
 <p>Write an optimized version of</p>
 <ul>
 <li><code class="sourceCode haskell">add</code> that ensures the keys are in <em>increasing</em> order</li>
-<li><code class="sourceCode haskell">get</code> that gives up and returns the “default” the moment
+<li><code class="sourceCode haskell">get</code> that gives up the moment
 we see a key that’s larger than the one we’re looking for</li>
 </ul>
-<p><em>(How) do you need to change the type of <code class="sourceCode haskell"><span class="dt">Env</span></code>?</em></p>
 <p><em>(How) do you need to change the types of <code class="sourceCode haskell">get</code> and <code class="sourceCode haskell">add</code>?</em></p>
 <p><br>
 <br>
@@ -955,9 +961,9 @@ we see a key that’s larger than the one we’re looking for</li>
 <h2 id="explicit-type-annotations">Explicit Type Annotations</h2>
 <!-- Move this up to standard type classes -->
 <p>Consider the standard typeclass <code class="sourceCode haskell"><span class="dt">Read</span></code>:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Not the actual definition, but almost:</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Read</span> a <span class="kw">where</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  read ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> a</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Not the actual definition, but almost:</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Read</span> a <span class="kw">where</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  read ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> a</span></code></pre></div>
 <p><code class="sourceCode haskell"><span class="dt">Read</span></code> is the <em>opposite</em> of <code class="sourceCode haskell"><span class="dt">Show</span></code></p>
 <ul>
 <li><p>It requires that every instance <code class="sourceCode haskell"><span class="dt">T</span></code> can parse a string and turn it into <code class="sourceCode haskell"><span class="dt">T</span></code></p></li>
@@ -998,14 +1004,14 @@ we see a key that’s larger than the one we’re looking for</li>
 <br></p>
 <p>Thus, here an <strong>explicit type annotation</strong> is needed to tell Haskell
 what to convert the string to:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">Int</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">Float</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fl">2.0</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">String</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="op">???</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">Int</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">Float</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fl">2.0</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">String</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="op">???</span></span></code></pre></div>
 <p>Note the different results due to the different types.</p>
 <p><br>
 <br>
@@ -1055,16 +1061,16 @@ what to convert the string to:</p>
 <h2 id="json">JSON</h2>
 <p><em>JavaScript Object Notation</em> or <a href="http://www.json.org/">JSON</a> is a simple format for
 transferring data around. Here is an example:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;name&quot;</span>    <span class="fu">:</span> <span class="st">&quot;Nadia&quot;</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;age&quot;</span>     <span class="fu">:</span> <span class="fl">37.0</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;likes&quot;</span>   <span class="fu">:</span> <span class="ot">[</span> <span class="st">&quot;poke&quot;</span><span class="ot">,</span> <span class="st">&quot;coffee&quot;</span><span class="ot">,</span> <span class="st">&quot;pasta&quot;</span> <span class="ot">]</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;hates&quot;</span>   <span class="fu">:</span> <span class="ot">[</span> <span class="st">&quot;beets&quot;</span> <span class="ot">,</span> <span class="st">&quot;milk&quot;</span> <span class="ot">]</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;lunches&quot;</span> <span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;mon&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;rubios&quot;</span><span class="fu">}</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;tue&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;home&quot;</span><span class="fu">}</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;wed&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;curry up now&quot;</span><span class="fu">}</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;thu&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;home&quot;</span><span class="fu">}</span></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;fri&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;santorini&quot;</span><span class="fu">}</span> <span class="ot">]</span></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;name&quot;</span>    <span class="fu">:</span> <span class="st">&quot;Nadia&quot;</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;age&quot;</span>     <span class="fu">:</span> <span class="fl">37.0</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;likes&quot;</span>   <span class="fu">:</span> <span class="ot">[</span> <span class="st">&quot;poke&quot;</span><span class="ot">,</span> <span class="st">&quot;coffee&quot;</span><span class="ot">,</span> <span class="st">&quot;pasta&quot;</span> <span class="ot">]</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;hates&quot;</span>   <span class="fu">:</span> <span class="ot">[</span> <span class="st">&quot;beets&quot;</span> <span class="ot">,</span> <span class="st">&quot;milk&quot;</span> <span class="ot">]</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;lunches&quot;</span> <span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;mon&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;rubios&quot;</span><span class="fu">}</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;tue&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;home&quot;</span><span class="fu">}</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;wed&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;curry up now&quot;</span><span class="fu">}</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;thu&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;home&quot;</span><span class="fu">}</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;fri&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;santorini&quot;</span><span class="fu">}</span> <span class="ot">]</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <p>Each JSON value is either</p>
 <ul>
 <li><p>a <em>base</em> value like a string, a number or a boolean,</p></li>
@@ -1080,33 +1086,33 @@ transferring data around. Here is an example:</p>
 <br></p>
 <h2 id="a-json-datatype">A JSON Datatype</h2>
 <p>We can represent (a subset of) JSON values with the Haskell datatype</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">JVal</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">JStr</span>  <span class="dt">String</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">JNum</span>  <span class="dt">Double</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">JBool</span> <span class="dt">Bool</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">JObj</span>  [(<span class="dt">String</span>, <span class="dt">JVal</span>)]</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">JArr</span>  [<span class="dt">JVal</span>]</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Ord</span>, <span class="dt">Show</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">JVal</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">JStr</span>  <span class="dt">String</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">JNum</span>  <span class="dt">Double</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">JBool</span> <span class="dt">Bool</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">JObj</span>  [(<span class="dt">String</span>, <span class="dt">JVal</span>)]</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">JArr</span>  [<span class="dt">JVal</span>]</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Ord</span>, <span class="dt">Show</span>)</span></code></pre></div>
 <p><br>
 <br></p>
 <p>The above JSON value would be represented by the <code class="sourceCode haskell"><span class="dt">JVal</span></code></p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>js1 <span class="ot">=</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">JObj</span> [(<span class="st">&quot;name&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;Nadia&quot;</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>       ,(<span class="st">&quot;age&quot;</span>,  <span class="dt">JNum</span> <span class="fl">36.0</span>)</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>       ,(<span class="st">&quot;likes&quot;</span>,   <span class="dt">JArr</span> [ <span class="dt">JStr</span> <span class="st">&quot;poke&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;coffee&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;pasta&quot;</span>])</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>       ,(<span class="st">&quot;hates&quot;</span>,   <span class="dt">JArr</span> [ <span class="dt">JStr</span> <span class="st">&quot;beets&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;milk&quot;</span>])</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>       ,(<span class="st">&quot;lunches&quot;</span>, <span class="dt">JArr</span> [ <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;mon&quot;</span>)</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;rubios&quot;</span>)]</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>                         , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;tue&quot;</span>)</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;home&quot;</span>)]</span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>                         , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;wed&quot;</span>)</span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;curry up now&quot;</span>)]</span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>                         , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;thu&quot;</span>)</span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;home&quot;</span>)]</span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>                         , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;fri&quot;</span>)</span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;santorini&quot;</span>)]</span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>                         ])</span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>       ]  </span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>js1 <span class="ot">=</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">JObj</span> [(<span class="st">&quot;name&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;Nadia&quot;</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>       ,(<span class="st">&quot;age&quot;</span>,  <span class="dt">JNum</span> <span class="fl">37.0</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>       ,(<span class="st">&quot;likes&quot;</span>,   <span class="dt">JArr</span> [ <span class="dt">JStr</span> <span class="st">&quot;poke&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;coffee&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;pasta&quot;</span>])</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>       ,(<span class="st">&quot;hates&quot;</span>,   <span class="dt">JArr</span> [ <span class="dt">JStr</span> <span class="st">&quot;beets&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;milk&quot;</span>])</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>       ,(<span class="st">&quot;lunches&quot;</span>, <span class="dt">JArr</span> [ <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;mon&quot;</span>)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;rubios&quot;</span>)]</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>                         , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;tue&quot;</span>)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;home&quot;</span>)]</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>                         , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;wed&quot;</span>)</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;curry up now&quot;</span>)]</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>                         , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;thu&quot;</span>)</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;home&quot;</span>)]</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>                         , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;fri&quot;</span>)</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;santorini&quot;</span>)]</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>                         ])</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>       ]  </span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1124,14 +1130,14 @@ transferring data around. Here is an example:</p>
 <p><br>
 <br></p>
 <p>We could write a bunch of functions like</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ot">doubleToJSON ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>doubleToJSON <span class="ot">=</span> <span class="dt">JNum</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="ot">stringToJSON ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>stringToJSON <span class="ot">=</span> <span class="dt">JStr</span></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="ot">boolToJSON   ::</span> <span class="dt">Bool</span> <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>boolToJSON   <span class="ot">=</span> <span class="dt">JBool</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ot">doubleToJSON ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>doubleToJSON <span class="ot">=</span> <span class="dt">JNum</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="ot">stringToJSON ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>stringToJSON <span class="ot">=</span> <span class="dt">JStr</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="ot">boolToJSON   ::</span> <span class="dt">Bool</span> <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>boolToJSON   <span class="ot">=</span> <span class="dt">JBool</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1141,14 +1147,14 @@ transferring data around. Here is an example:</p>
 <br></p>
 <h2 id="serializing-lists">Serializing Lists</h2>
 <p>But what about collections, namely <em>lists</em> of things?</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ot">doublesToJSON    ::</span> [<span class="dt">Double</span>] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>doublesToJSON xs <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> doubleToJSON xs)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="ot">boolsToJSON      ::</span> [<span class="dt">Bool</span>] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>boolsToJSON xs   <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> boolToJSON xs)</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="ot">stringsToJSON    ::</span> [<span class="dt">String</span>] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>stringsToJSON xs <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> stringToJSON xs)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ot">doublesToJSON    ::</span> [<span class="dt">Double</span>] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>doublesToJSON xs <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> doubleToJSON xs)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="ot">boolsToJSON      ::</span> [<span class="dt">Bool</span>] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>boolsToJSON xs   <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> boolToJSON xs)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="ot">stringsToJSON    ::</span> [<span class="dt">String</span>] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>stringsToJSON xs <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> stringToJSON xs)</span></code></pre></div>
 <p><br>
 <br></p>
 <p>This is <strong>getting rather tedious</strong></p>
@@ -1163,34 +1169,34 @@ transferring data around. Here is an example:</p>
 <br></p>
 <h2 id="serializing-collections-refactored-with-hofs">Serializing Collections (refactored with HOFs)</h2>
 <p>You could abstract by making the <em>element-converter</em> a parameter</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ot">listToJSON ::</span> (a <span class="ot">-&gt;</span> <span class="dt">JVal</span>) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>listToJSON f xs <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> f xs)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="ot">mapToJSON ::</span> (a <span class="ot">-&gt;</span> <span class="dt">JVal</span>) <span class="ot">-&gt;</span> [(<span class="dt">String</span>, a)] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>mapToJSON f kvs <span class="ot">=</span> <span class="dt">JObj</span> [ (k, f v) <span class="op">|</span> (k, v) <span class="ot">&lt;-</span> kvs ]</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ot">listToJSON ::</span> (a <span class="ot">-&gt;</span> <span class="dt">JVal</span>) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>listToJSON f xs <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> f xs)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="ot">mapToJSON ::</span> (a <span class="ot">-&gt;</span> <span class="dt">JVal</span>) <span class="ot">-&gt;</span> [(<span class="dt">String</span>, a)] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>mapToJSON f kvs <span class="ot">=</span> <span class="dt">JObj</span> [ (k, f v) <span class="op">|</span> (k, v) <span class="ot">&lt;-</span> kvs ]</span></code></pre></div>
 <p><br>
 <br></p>
 <p>But this is <em>still rather tedious</em> as you have to pass
 in the individual data converter (yuck)</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> doubleToJSON <span class="dv">4</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JNum</span> <span class="fl">4.0</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> listToJSON stringToJSON [<span class="st">&quot;poke&quot;</span>, <span class="st">&quot;coffee&quot;</span>, <span class="st">&quot;pasta&quot;</span>]</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [<span class="dt">JStr</span> <span class="st">&quot;poke&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;coffee&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;pasta&quot;</span>]</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> mapToJSON stringToJSON [(<span class="st">&quot;day&quot;</span>, <span class="st">&quot;mon&quot;</span>), (<span class="st">&quot;loc&quot;</span>, <span class="st">&quot;rubios&quot;</span>)]</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;mon&quot;</span>),(<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;rubios&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> doubleToJSON <span class="dv">4</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JNum</span> <span class="fl">4.0</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> listToJSON stringToJSON [<span class="st">&quot;poke&quot;</span>, <span class="st">&quot;coffee&quot;</span>, <span class="st">&quot;pasta&quot;</span>]</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [<span class="dt">JStr</span> <span class="st">&quot;poke&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;coffee&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;pasta&quot;</span>]</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> mapToJSON stringToJSON [(<span class="st">&quot;day&quot;</span>, <span class="st">&quot;mon&quot;</span>), (<span class="st">&quot;loc&quot;</span>, <span class="st">&quot;rubios&quot;</span>)]</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;mon&quot;</span>),(<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;rubios&quot;</span>)]</span></code></pre></div>
 <p><br>
 <br></p>
 <p>This gets more hideous when you have richer objects like</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>lunches <span class="ot">=</span> [ [(<span class="st">&quot;day&quot;</span>, <span class="st">&quot;mon&quot;</span>), (<span class="st">&quot;loc&quot;</span>, <span class="st">&quot;rubios&quot;</span>)]</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>          , [(<span class="st">&quot;day&quot;</span>, <span class="st">&quot;tue&quot;</span>), (<span class="st">&quot;loc&quot;</span>, <span class="st">&quot;home&quot;</span>)]</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>          ]</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>lunches <span class="ot">=</span> [ [(<span class="st">&quot;day&quot;</span>, <span class="st">&quot;mon&quot;</span>), (<span class="st">&quot;loc&quot;</span>, <span class="st">&quot;rubios&quot;</span>)]</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>          , [(<span class="st">&quot;day&quot;</span>, <span class="st">&quot;tue&quot;</span>), (<span class="st">&quot;loc&quot;</span>, <span class="st">&quot;home&quot;</span>)]</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>          ]</span></code></pre></div>
 <p>because we have to go through gymnastics like</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> listToJSON (mapToJSON stringToJSON) lunches</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [ <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;monday&quot;</span>)   ,(<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;rubios&quot;</span>)]</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>     , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;tuesday&quot;</span>)  ,(<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;home&quot;</span>)]</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>     ]</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> listToJSON (mapToJSON stringToJSON) lunches</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [ <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;monday&quot;</span>)   ,(<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;rubios&quot;</span>)]</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>     , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;tuesday&quot;</span>)  ,(<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;home&quot;</span>)]</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>     ]</span></code></pre></div>
 <p>Yikes. So much for <em>readability</em></p>
 <p>Is it too much to ask for a magical <code class="sourceCode haskell">toJSON</code> that <em>just works?</em></p>
 <p><br>
@@ -1201,26 +1207,26 @@ in the individual data converter (yuck)</p>
 <br></p>
 <h2 id="typeclasses-to-the-rescue">Typeclasses To The Rescue</h2>
 <p>Lets <em>define</em> a typeclass that describes types <code class="sourceCode haskell">a</code> that can be converted to JSON.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">JSON</span> a <span class="kw">where</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  toJSON ::</span> a <span class="ot">-&gt;</span> <span class="dt">JVal</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">JSON</span> a <span class="kw">where</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  toJSON ::</span> a <span class="ot">-&gt;</span> <span class="dt">JVal</span></span></code></pre></div>
 <p>Now, just make all the above instances of <code class="sourceCode haskell"><span class="dt">JSON</span></code> like so</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">JSON</span> <span class="dt">Double</span> <span class="kw">where</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  toJSON <span class="ot">=</span> <span class="dt">JNum</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">JSON</span> <span class="dt">Bool</span> <span class="kw">where</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  toJSON <span class="ot">=</span> <span class="dt">JBool</span></span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">JSON</span> <span class="dt">String</span> <span class="kw">where</span></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  toJSON <span class="ot">=</span> <span class="dt">JStr</span></span></code></pre></div>
-<p>This lets us uniformly write</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON <span class="dv">4</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JNum</span> <span class="fl">4.0</span></span>
+<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">JSON</span> <span class="dt">Double</span> <span class="kw">where</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  toJSON <span class="ot">=</span> <span class="dt">JNum</span></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON <span class="dt">True</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="dt">JBool</span> <span class="dt">True</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">JSON</span> <span class="dt">Bool</span> <span class="kw">where</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  toJSON <span class="ot">=</span> <span class="dt">JBool</span></span>
 <span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON <span class="st">&quot;guacamole&quot;</span></span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="dt">JStr</span> <span class="st">&quot;guacamole&quot;</span></span></code></pre></div>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">JSON</span> <span class="dt">String</span> <span class="kw">where</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  toJSON <span class="ot">=</span> <span class="dt">JStr</span></span></code></pre></div>
+<p>This lets us uniformly write</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON <span class="dv">4</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JNum</span> <span class="fl">4.0</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON <span class="dt">True</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="dt">JBool</span> <span class="dt">True</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON <span class="st">&quot;guacamole&quot;</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="dt">JStr</span> <span class="st">&quot;guacamole&quot;</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1230,78 +1236,93 @@ in the individual data converter (yuck)</p>
 <h2 id="bootstrapping-instances">Bootstrapping Instances</h2>
 <p>The real fun begins when we get Haskell to automatically
 bootstrap the above functions to work for lists and key-value lists!</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">JSON</span> a <span class="ot">=&gt;</span> <span class="dt">JSON</span> [a] <span class="kw">where</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  toJSON xs <span class="ot">=</span> <span class="dt">JArr</span> [toJSON x <span class="op">|</span> x <span class="ot">&lt;-</span> xs]</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">JSON</span> a <span class="ot">=&gt;</span> <span class="dt">JSON</span> [a] <span class="kw">where</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  toJSON xs <span class="ot">=</span> <span class="dt">JArr</span> [toJSON x <span class="op">|</span> x <span class="ot">&lt;-</span> xs]</span></code></pre></div>
 <p>The above says, if <code class="sourceCode haskell">a</code> is an instance of <code class="sourceCode haskell"><span class="dt">JSON</span></code>, that is,
 if you can convert <code class="sourceCode haskell">a</code> to <code class="sourceCode haskell"><span class="dt">JVal</span></code> then here’s a generic
 recipe to convert lists of <code class="sourceCode haskell">a</code> values!</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON [<span class="dt">True</span>, <span class="dt">False</span>, <span class="dt">True</span>]</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [<span class="dt">JBln</span> <span class="dt">True</span>, <span class="dt">JBln</span> <span class="dt">False</span>, <span class="dt">JBln</span> <span class="dt">True</span>]</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON [<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;Mouse&quot;</span>]</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [<span class="dt">JStr</span> <span class="st">&quot;cat&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;dog&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;Mouse&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON [<span class="dt">True</span>, <span class="dt">False</span>, <span class="dt">True</span>]</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [<span class="dt">JBln</span> <span class="dt">True</span>, <span class="dt">JBln</span> <span class="dt">False</span>, <span class="dt">JBln</span> <span class="dt">True</span>]</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON [<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;Mouse&quot;</span>]</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [<span class="dt">JStr</span> <span class="st">&quot;cat&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;dog&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;Mouse&quot;</span>]</span></code></pre></div>
 <p>or even lists-of-lists!</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON [[<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>], [<span class="st">&quot;mouse&quot;</span>, <span class="st">&quot;rabbit&quot;</span>]]</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [<span class="dt">JArr</span> [<span class="dt">JStr</span> <span class="st">&quot;cat&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;dog&quot;</span>],<span class="dt">JArr</span> [<span class="dt">JStr</span> <span class="st">&quot;mouse&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;rabbit&quot;</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON [[<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>], [<span class="st">&quot;mouse&quot;</span>, <span class="st">&quot;rabbit&quot;</span>]]</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [<span class="dt">JArr</span> [<span class="dt">JStr</span> <span class="st">&quot;cat&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;dog&quot;</span>],<span class="dt">JArr</span> [<span class="dt">JStr</span> <span class="st">&quot;mouse&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;rabbit&quot;</span>]]</span></code></pre></div>
 <p>We can pull the same trick with key-value lists</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a) <span class="ot">=&gt;</span> <span class="dt">JSON</span> [(<span class="dt">String</span>, a)] <span class="kw">where</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  toJSON kvs <span class="ot">=</span> <span class="dt">JObj</span> [ (k, toJSON v) <span class="op">|</span> (k, v) <span class="ot">&lt;-</span> kvs ]</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a) <span class="ot">=&gt;</span> <span class="dt">JSON</span> [(<span class="dt">String</span>, a)] <span class="kw">where</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  toJSON kvs <span class="ot">=</span> <span class="dt">JObj</span> [ (k, toJSON v) <span class="op">|</span> (k, v) <span class="ot">&lt;-</span> kvs ]</span></code></pre></div>
 <p>after which, we are all set!</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON lunches</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [ <span class="dt">JObj</span> [ (<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;monday&quot;</span>), (<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;zanzibar&quot;</span>)]</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>     , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;tuesday&quot;</span>), (<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;farmers market&quot;</span>)]</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>     ]</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON lunches</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [ <span class="dt">JObj</span> [ (<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;monday&quot;</span>), (<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;zanzibar&quot;</span>)]</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>     , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;tuesday&quot;</span>), (<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;farmers market&quot;</span>)]</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>     ]</span></code></pre></div>
 <p><br>
 <br>
 <br></p>
 <p>It is also useful to bootstrap the serialization for tuples (upto some
 fixed size) so we can easily write “non-uniform” JSON objects where keys
 are bound to values with different shapes.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b)) <span class="kw">where</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2)) <span class="ot">=</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">JObj</span> [(k1, toJSON v1), (k2, toJSON v2)]</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b, <span class="dt">JSON</span> c) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b), (<span class="dt">String</span>, c)) <span class="kw">where</span></span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3)) <span class="ot">=</span></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">JObj</span> [(k1, toJSON v1), (k2, toJSON v2), (k3, toJSON v3)]</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b, <span class="dt">JSON</span> c, <span class="dt">JSON</span> d) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b), (<span class="dt">String</span>, c), (<span class="dt">String</span>,d)) <span class="kw">where</span></span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3), (k4, v4)) <span class="ot">=</span></span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">JObj</span> [(k1, toJSON v1), (k2, toJSON v2), (k3, toJSON v3), (k4, toJSON v4)]</span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b, <span class="dt">JSON</span> c, <span class="dt">JSON</span> d, <span class="dt">JSON</span> e) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b), (<span class="dt">String</span>, c), (<span class="dt">String</span>,d), (<span class="dt">String</span>, e)) <span class="kw">where</span></span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3), (k4, v4), (k5, v5)) <span class="ot">=</span></span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">JObj</span> [(k1, toJSON v1), (k2, toJSON v2), (k3, toJSON v3), (k4, toJSON v4), (k5, toJSON v5)]</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b)) <span class="kw">where</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2)) <span class="ot">=</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">JObj</span> [(k1, toJSON v1), (k2, toJSON v2)]</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b, <span class="dt">JSON</span> c) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b), (<span class="dt">String</span>, c)) <span class="kw">where</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3)) <span class="ot">=</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">JObj</span> [(k1, toJSON v1), (k2, toJSON v2), (k3, toJSON v3)]</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b, <span class="dt">JSON</span> c, <span class="dt">JSON</span> d) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b), (<span class="dt">String</span>, c), (<span class="dt">String</span>,d)) <span class="kw">where</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3), (k4, v4)) <span class="ot">=</span></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">JObj</span> [(k1, toJSON v1), (k2, toJSON v2), (k3, toJSON v3), (k4, toJSON v4)]</span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b, <span class="dt">JSON</span> c, <span class="dt">JSON</span> d, <span class="dt">JSON</span> e) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b), (<span class="dt">String</span>, c), (<span class="dt">String</span>,d), (<span class="dt">String</span>, e)) <span class="kw">where</span></span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3), (k4, v4), (k5, v5)) <span class="ot">=</span></span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">JObj</span> [(k1, toJSON v1), (k2, toJSON v2), (k3, toJSON v3), (k4, toJSON v4), (k5, toJSON v5)]</span></code></pre></div>
 <p>Now, we can simply write</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>hs <span class="ot">=</span> ((<span class="st">&quot;name&quot;</span>   , <span class="st">&quot;Nadia&quot;</span>)</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>     ,(<span class="st">&quot;age&quot;</span>    , <span class="fl">36.0</span>)</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>     ,(<span class="st">&quot;likes&quot;</span>  , [<span class="st">&quot;poke&quot;</span>, <span class="st">&quot;coffee&quot;</span>, <span class="st">&quot;pasta&quot;</span>])</span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>     ,(<span class="st">&quot;hates&quot;</span>  , [<span class="st">&quot;beets&quot;</span>, <span class="st">&quot;milk&quot;</span>])</span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>     ,(<span class="st">&quot;lunches&quot;</span>, lunches)</span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>     )     </span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>hs <span class="ot">=</span> ((<span class="st">&quot;name&quot;</span>   , <span class="st">&quot;Nadia&quot;</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>     ,(<span class="st">&quot;age&quot;</span>    , <span class="fl">37.0</span>)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>     ,(<span class="st">&quot;likes&quot;</span>  , [<span class="st">&quot;poke&quot;</span>, <span class="st">&quot;coffee&quot;</span>, <span class="st">&quot;pasta&quot;</span>])</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>     ,(<span class="st">&quot;hates&quot;</span>  , [<span class="st">&quot;beets&quot;</span>, <span class="st">&quot;milk&quot;</span>])</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>     ,(<span class="st">&quot;lunches&quot;</span>, lunches)</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>     )     </span></code></pre></div>
 <p>which is a Haskell value that describes our running JSON example,
 and can convert it directly like so</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>js2 <span class="ot">=</span> toJSON hs</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>js2 <span class="ot">=</span> toJSON hs</span></code></pre></div>
 <p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
 <br>
 <br></p>
-<h2 id="serializing-environments">Serializing Environments</h2>
-<p>To wrap everything up, lets write a serializer for environments <code class="sourceCode haskell"><span class="dt">Env</span></code> with <code class="sourceCode haskell"><span class="dt">String</span></code> keys:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">JSON</span> (<span class="dt">Env</span> <span class="dt">String</span> v) <span class="kw">where</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  toJSON env <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
-<p>and presto! our serializer <em>just works</em></p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> env0</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Bind</span> <span class="st">&quot;cat&quot;</span> <span class="fl">10.0</span> (<span class="dt">Bind</span> <span class="st">&quot;dog&quot;</span> <span class="fl">20.0</span> (<span class="dt">Def</span> <span class="dv">0</span>))</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON env0</span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="dt">JObj</span> [ (<span class="st">&quot;cat&quot;</span>, <span class="dt">JNum</span> <span class="fl">10.0</span>)</span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>     , (<span class="st">&quot;dog&quot;</span>, <span class="dt">JNum</span> <span class="fl">20.0</span>)</span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>     , (<span class="st">&quot;def&quot;</span>, <span class="dt">JNum</span> <span class="fl">0.0</span>)</span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>     ]</span></code></pre></div>
+<h2 id="exercise-dictionary-with-default-values">EXERCISE: Dictionary with Default Values</h2>
+<p>Modify our implementation of fast dictionaries
+so that <code class="sourceCode haskell">get</code> returns a default value if the key is not found.</p>
+<p>You should get the following behavior:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Note: the default value is NOT passed into `get`</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> get <span class="dv">2</span>       (add <span class="dv">5</span> <span class="st">&quot;five&quot;</span>   (add <span class="dv">10</span> <span class="st">&quot;ten&quot;</span>  (add <span class="dv">3</span> <span class="st">&quot;three&quot;</span> empty)))</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;&quot;</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> get <span class="st">&quot;horse&quot;</span> (add <span class="st">&quot;cat&quot;</span> <span class="fl">10.0</span> (add <span class="st">&quot;dog&quot;</span> <span class="fl">20.1</span> empty))</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="fl">0.0</span></span></code></pre></div>
 <p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
