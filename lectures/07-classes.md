@@ -787,9 +787,9 @@ what will the following evaluate to?
 
 **(A)** Type error
 
-**(B)** Runtime error
+**(B)** Stack overflow
 
-**(C)** Runs forever
+**(C)** Other runtime error
 
 **(D)** `False`
 
@@ -799,7 +799,7 @@ what will the following evaluate to?
 
 (I) final
 
-    *Answer:* C
+    *Answer:* B
 
 <br>
 <br>
