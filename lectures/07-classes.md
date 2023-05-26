@@ -972,7 +972,7 @@ How, did GHC figure this out?
 <br>
 <br>
 
-## EXERCISE: A Faster Dictionary
+## TRY AT HOME: A Faster Dictionary
 
 Write an optimized version of
 
