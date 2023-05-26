@@ -1130,7 +1130,7 @@ transferring data around. Here is an example:
 
 ```json
 { "name"    : "Nadia"
-, "age"     : 37.0
+, "age"     : 38.0
 , "likes"   : [ "poke", "coffee", "pasta" ]
 , "hates"   : [ "beets" , "milk" ]
 , "lunches" : [ {"day" : "mon", "loc" : "rubios"}
@@ -1179,7 +1179,7 @@ The above JSON value would be represented by the `JVal`
 ```haskell
 js1 =
   JObj [("name", JStr "Nadia")
-       ,("age",  JNum 37.0)
+       ,("age",  JNum 38.0)
        ,("likes",   JArr [ JStr "poke", JStr "coffee", JStr "pasta"])
        ,("hates",   JArr [ JStr "beets", JStr "milk"])
        ,("lunches", JArr [ JObj [("day",  JStr "mon")
@@ -1440,7 +1440,7 @@ Now, we can simply write
 
 ```haskell
 hs = (("name"   , "Nadia")
-     ,("age"    , 37.0)
+     ,("age"    , 38.0)
      ,("likes"  , ["poke", "coffee", "pasta"])
      ,("hates"  , ["beets", "milk"])
      ,("lunches", lunches)
