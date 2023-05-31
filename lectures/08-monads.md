@@ -24,8 +24,9 @@ In this lecture we will see advanced ways to *abstract code patterns*
 ## Outline
 
 1. **Functors**
-2. Monads
+2. A Monad for Error Handling
 3. Writing apps with monads
+4. A Monad for Mutable State
 
 <br>
 <br>
@@ -62,7 +63,7 @@ data List a
 -- >>> showList [1, 2, 3]
 -- ["1", "2", "3"]
 
-showList        :: [Int] -> [String]
+showList        :: List Int -> List String
 showList []     =  []
 showList (n:ns) =  show n : showList ns
 ```
@@ -77,7 +78,7 @@ showList (n:ns) =  show n : showList ns
 -- >>> sqrList [1, 2, 3]
 -- 1, 4, 9
 
-sqrList        :: [Int] -> [Int]
+sqrList        :: List Int -> List Int
 sqrList []     =  []
 sqrList (n:ns) =  n^2 : sqrList ns
 ```
@@ -91,7 +92,7 @@ sqrList (n:ns) =  n^2 : sqrList ns
 Refactor iteration into `mapList`
 
 ```haskell
-mapList :: (a -> b) -> [a] -> [b]
+mapList :: (a -> b) -> List a -> List b
 mapList f []     = []
 mapList f (x:xs) = f x : mapList f xs
 ```
@@ -195,8 +196,8 @@ what should its type be?
 ```haskell
 mapTree :: ???
 
-showTree t = mapTree (\n -> show n) t
-sqrTree  t = mapTree (\n -> n ^ 2)  t
+showTree t = mapTree show t
+sqrTree  t = mapTree (^ 2)  t
 ```
 
 **(A)** `(Int -> Int)    -> Tree Int -> Tree Int`
@@ -261,7 +262,6 @@ mapTree f (Node v l r) = ???
 Wait, this looks familiar...
 
 ```haskell
-type List a = [a]
 mapList :: (a -> b) -> List a -> List b    -- List
 mapTree :: (a -> b) -> Tree a -> Tree b    -- Tree
 ```
@@ -323,6 +323,30 @@ class Functor t where
 
 **(E)** None of the above
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+```haskell
+class Functor t where
+  fmap :: (a -> b) -> t a -> t b
+```
+
+Unlike other typeclasses we have seen before, here `t`:
+
+  - does not stand for a *type*
+  - but for a *type constructor*
+  - it is called a **higher-kinded type variable**
+
 
 <br>
 <br>
@@ -364,28 +388,26 @@ And now we can do
 <br>
 <br>
 
-### Exercise
 
-Write a `Functor` instance for `Result`:
+### EXERCISE: the Maybe Functor
+
+Write a `Functor` instance for `Maybe`:
 
 ```haskell
-data Result  a
-  = Error String
-  | Ok    a
+data Maybe a = Nothing | Just a
 
-instance Functor Result where
-  fmap f (Error msg) = ???
-  fmap f (Ok val)    = ???
+instance Functor Maybe where
+  fmap = ???
 ```
 
 When you're done you should see
 
 ```haskell
--- >>> fmap (^ 2) (Ok 3)
-Ok 9
+-- >>> fmap (^ 2) (Just 3)
+Just 9
 
--- >>> fmap (^ 2) (Error "oh no")
-Error "oh no"
+-- >>> fmap (^ 2) Nothing
+Nothing
 ```
 
 <br>
@@ -402,13 +424,9 @@ Error "oh no"
 ## Outline
 
 1. Functors [done]
-2. Monads for
-
-    2.1. **Error Handling**
-    
-    2.2. Mutable State
-    
+2. **A Monad for Error Handling**
 3. Writing apps with monads
+4. A Monad for Mutable State
 
 <br>
 <br>
@@ -927,13 +945,455 @@ and the `eval` above will just work out of the box!
 ## Outline
 
 1. Functors [done]
-2. Monads for
+2. A Monad for Error Handling [done]    
+3. **Writing apps with monads**
+4. A Monad for Mutable State
 
-    2.1. Error Handling [done]
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Writing Applications
+
+In most programming classes, they _start_ with a "Hello world!" program.
+
+In 130, we will _end_ with it.
+
+<br>
+<br>
+
+Why is it hard to write a program that prints "Hello world!" in Haskell?
+
+<!-- 
+For example, in Python you may write:
+
+```python
+def main():
+    print "hello, world!"
+
+main()
+```
+
+and then you can run it:
+
+```sh
+$ python hello.py
+hello world!
+```
+-->
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### Haskell is pure
+
+Haskell programs don't **do** things!
+
+A program is an expression that evaluates to a value (and *nothing else happens*)
     
-    2.2. **Mutable State**
+  - A function of type `Int -> Int`
+    computes a *single integer output* from a *single integer input*
+    and does **nothing else**
     
-3. Writing apps with monads
+  - Moreover, it always returns the same output given the same input
+    (*referential transparency*)
+  
+    
+Specifically, evaluation must not have any **side effects**
+
+- _change_ a global variable or
+
+- _print_ to screen or
+
+- _read_ a file or
+
+- _send_ an email or
+
+- _launch_ a missile.
+    
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## But... how to write "Hello, world!"
+
+But, we _want_ to ...
+
+- print to screen
+- read a file
+- send an email
+
+A language that only lets you write `factorial` and `fibonacci` is ... _not very useful_!
+
+Thankfully, you _can_ do all the above via a very clever idea: `Recipe`
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Recipes
+
+[This analogy is due to Joachim Brietner][brietner]
+
+Haskell has a special type called `IO` -- which you can think of as `Recipe` 
+
+```haskell
+type Recipe a = IO a
+```
+
+<br>
+<br>
+
+A _value_ of type `Recipe a` is
+
+- a **description** of a computation
+
+- that **when executed** (possibly) performs side effects and
+
+- **produces** a value of type `a`
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Recipes are Pure
+
+Baking a cake can have side effects:
+
+- make your oven _hot_
+
+- make your floor _dirty_
+
+- set off your fire alarm
+
+![Cake vs. Recipe](/static/img/cake.png){#fig:types .align-center width=80%}
+
+*But:* merely writing down a cake recipe does not cause any side effects
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Executing Recipes
+
+When executing a program, Haskell looks for a special value:
+
+```haskell
+main :: Recipe ()
+```
+
+This is a recipe for everything a program should do
+
+  - that returns a unit `()`
+  - i.e. does not return any useful value
+  
+<br>
+<br>
+<br>  
+
+The value of `main` is handed to the runtime system and *executed*
+
+![Baker Aker](/static/img/baker-aker.jpg){#fig:types .align-center width=70%}
+
+The Haskell runtime is a _master chef_ who is the only one allowed to produce effects!
+
+<br>
+<br>
+
+Importantly:
+
+  - A function of type `Int -> Int`
+    **still** computes a *single integer output* from a *single integer input*
+    and does **nothing else**
+    
+  - A function of type `Int -> Recipe Int`
+    computes an `Int`-recipe from a single integer input
+    and does **nothing else**
+    
+  - Only if I hand this recipe to `main` will any effects be produced
+
+<br>
+<br>
+<br>
+
+## Writing Apps
+
+To write an app in Haskell, you define your own recipe `main`!
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Hello World
+
+```haskell
+main :: Recipe ()
+main = putStrLn "Hello, world!"
+```
+
+<br>
+<br>
+
+```haskell
+putStrLn :: String -> Recipe ()
+```
+
+The function `putStrLn`
+
+- takes as input a `String`
+- returns a `Recipe ()` for printing things to screen
+
+<br>
+<br>
+
+... and we can compile and run it
+
+```sh
+$ ghc hello.hs
+$ ./hello
+Hello, world!
+```
+
+<br>
+<br>
+
+This was a one-step recipe
+
+Most interesting recipes have multiple steps
+
+  - How do I write those?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ: Combining Recipes
+
+Assume we had a function `combine` that lets us combine recipes like so:
+
+```haskell
+main :: Recipe ()
+main = combine (putStrLn "Hello,") (putStrLn "World!")
+
+-- putStrLn :: String -> Recipe ()
+-- combine  :: ???
+```
+
+What should the _type_ of `combine` be?
+
+**(A)** `() -> () -> ()`
+
+**(B)** `Recipe () -> Recipe () -> Recipe ()`
+
+**(C)** `Recipe a  -> Recipe a  -> Recipe a`
+
+**(D)** `Recipe a  -> Recipe b  -> Recipe b`
+
+**(E)** `Recipe a  -> Recipe b  -> Recipe a`
+
+<br>
+
+(I) final
+
+    *Answer:* D
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Using Intermediate Results
+
+Next, lets write a program that
+
+1. **Asks** for the user's `name` using
+
+```haskell
+    getLine :: Recipe String
+```
+
+2. **Prints** out a greeting with that `name` using
+
+```haskell
+    putStrLn :: String -> Recipe ()
+```
+
+**Problem:** How to pass the **output** of _first_ recipe into the _second_ recipe?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ: Using Yolks to Make Batter
+
+Suppose you have two recipes
+
+```haskell
+crack     :: Recipe Yolk
+eggBatter :: Yolk -> Recipe Batter
+```
+
+and we want to get 
+
+```haskell
+mkBatter :: Recipe Batter
+mkBatter = crack `combineWithResult` eggBatter
+```
+
+What should the type of `combineWithResult` be?
+
+**(A)** `Yolk -> Batter -> Batter`
+
+**(B)** `Recipe Yolk -> (Yolk  -> Recipe Batter) -> Recipe Batter`
+
+**(C)** `Recipe a    -> (a     -> Recipe a     ) -> Recipe a`
+
+**(D)** `Recipe a    -> (a     -> Recipe b     ) -> Recipe b`
+
+**(E)** `Recipe Yolk -> (Yolk  -> Recipe Batter) -> Recipe ()`
+
+<br>
+
+(I) final
+
+    *Answer:* D
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Recipes are Monads
+
+Wait a second, the signature:
+
+```haskell
+combineWithResult :: Recipe a -> (a -> Recipe b) -> Recipe b
+```
+
+looks just like:
+
+```haskell
+(>>=)             :: m a      -> (a -> m b)      -> m b
+```
+
+<br>
+<br>
+
+In fact, in the standard library `Recipe` is an instance of `Monad`!
+
+```haskell
+instance Monad Recipe where
+  (>>=) = {-... combineWithResult... -}
+```
+
+<br>
+<br>
+
+So we can put this together with `putStrLn` to get:
+
+```haskell
+main :: Recipe ()
+main = getLine >>= \name -> putStrLn ("Hello, " ++ name ++ "!")
+```
+
+or, using `do` notation the above becomes
+
+```haskell
+main :: Recipe ()
+main = do name <- getLine
+          putStrLn ("Hello, " ++ name ++ "!")
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Exercise
+
+Experiment with this code at home:
+
+1. _Compile_ and run.
+2. _Modify_ to repeatedly ask for names.
+3. _Extend_ to print a "prompt" that tells you how many iterations have occurred.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Outline
+
+1. Functors [done]
+2. A Monad for Error Handling [done]    
+3. Writing apps with monads [done]
+4. **A Monad for Mutable State**
 
 <br>
 <br>
@@ -1490,456 +1950,6 @@ and the `eval` above will just work out of the box!
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Outline
-
-1. Functors [done]
-2. Monads for
-
-    2.1. Error Handling [done]
-    
-    2.2. Mutable State [done]
-    
-3. **Writing apps with monads**
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Writing Applications
-
-In most programming classes, they _start_ with a "Hello world!" program.
-
-In 130, we will _end_ with it.
-
-<br>
-<br>
-
-Why is it hard to write a program that prints "Hello world!" in Haskell?
-
-<!-- 
-For example, in Python you may write:
-
-```python
-def main():
-    print "hello, world!"
-
-main()
-```
-
-and then you can run it:
-
-```sh
-$ python hello.py
-hello world!
-```
--->
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-### Haskell is pure
-
-Haskell programs don't **do** things!
-
-A program is an expression that evaluates to a value (and *nothing else happens*)
-    
-  - A function of type `Int -> Int`
-    computes a *single integer output* from a *single integer input*
-    and does **nothing else**
-    
-  - Moreover, it always returns the same output given the same input
-    (*referential transparency*)
-  
-    
-Specifically, evaluation must not have any **side effects**
-
-- _change_ a global variable or
-
-- _print_ to screen or
-
-- _read_ a file or
-
-- _send_ an email or
-
-- _launch_ a missile.
-    
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-## But... how to write "Hello, world!"
-
-But, we _want_ to ...
-
-- print to screen
-- read a file
-- send an email
-
-A language that only lets you write `factorial` and `fibonacci` is ... _not very useful_!
-
-Thankfully, you _can_ do all the above via a very clever idea: `Recipe`
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Recipes
-
-[This analogy is due to Joachim Brietner][brietner]
-
-Haskell has a special type called `IO` -- which you can think of as `Recipe` 
-
-```haskell
-type Recipe a = IO a
-```
-
-<br>
-<br>
-
-A _value_ of type `Recipe a` is
-
-- a **description** of a computation
-
-- that **when executed** (possibly) performs side effects and
-
-- **produces** a value of type `a`
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Recipes are Pure
-
-Baking a cake can have side effects:
-
-- make your oven _hot_
-
-- make your floor _dirty_
-
-- set off your fire alarm
-
-![Cake vs. Recipe](/static/img/cake.png){#fig:types .align-center width=80%}
-
-*But:* merely writing down a cake recipe does not cause any side effects
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Executing Recipes
-
-When executing a program, Haskell looks for a special value:
-
-```haskell
-main :: Recipe ()
-```
-
-This is a recipe for everything a program should do
-
-  - that returns a unit `()`
-  - i.e. does not return any useful value
-  
-<br>
-<br>
-<br>  
-
-The value of `main` is handed to the runtime system and *executed*
-
-![Baker Aker](/static/img/baker-aker.jpg){#fig:types .align-center width=70%}
-
-The Haskell runtime is a _master chef_ who is the only one allowed to produce effects!
-
-<br>
-<br>
-
-Importantly:
-
-  - A function of type `Int -> Int`
-    **still** computes a *single integer output* from a *single integer input*
-    and does **nothing else**
-    
-  - A function of type `Int -> Recipe Int`
-    computes an `Int`-recipe from a single integer input
-    and does **nothing else**
-    
-  - Only if I hand this recipe to `main` will any effects be produced
-
-<br>
-<br>
-<br>
-
-## Writing Apps
-
-To write an app in Haskell, you define your own recipe `main`!
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Hello World
-
-```haskell
-main :: Recipe ()
-main = putStrLn "Hello, world!"
-```
-
-<br>
-<br>
-
-```haskell
-putStrLn :: String -> Recipe ()
-```
-
-The function `putStrLn`
-
-- takes as input a `String`
-- returns a `Recipe ()` for printing things to screen
-
-<br>
-<br>
-
-... and we can compile and run it
-
-```sh
-$ ghc hello.hs
-$ ./hello
-Hello, world!
-```
-
-<br>
-<br>
-
-This was a one-step recipe
-
-Most interesting recipes have multiple steps
-
-  - How do I write those?
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## QUIZ: Combining Recipes
-
-Assume we had a function `combine` that lets us combine recipes like so:
-
-```haskell
-main :: Recipe ()
-main = combine (putStrLn "Hello,") (putStrLn "World!")
-
--- putStrLn :: String -> Recipe ()
--- combine  :: ???
-```
-
-What should the _type_ of `combine` be?
-
-**(A)** `() -> () -> ()`
-
-**(B)** `Recipe () -> Recipe () -> Recipe ()`
-
-**(C)** `Recipe a  -> Recipe a  -> Recipe a`
-
-**(D)** `Recipe a  -> Recipe b  -> Recipe b`
-
-**(E)** `Recipe a  -> Recipe b  -> Recipe a`
-
-<br>
-
-(I) final
-
-    *Answer:* D
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Using Intermediate Results
-
-Next, lets write a program that
-
-1. **Asks** for the user's `name` using
-
-```haskell
-    getLine :: Recipe String
-```
-
-2. **Prints** out a greeting with that `name` using
-
-```haskell
-    putStrLn :: String -> Recipe ()
-```
-
-**Problem:** How to pass the **output** of _first_ recipe into the _second_ recipe?
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## QUIZ: Using Yolks to Make Batter
-
-Suppose you have two recipes
-
-```haskell
-crack     :: Recipe Yolk
-eggBatter :: Yolk -> Recipe Batter
-```
-
-and we want to get 
-
-```haskell
-mkBatter :: Recipe Batter
-mkBatter = crack `combineWithResult` eggBatter
-```
-
-What should the type of `combineWithResult` be?
-
-**(A)** `Yolk -> Batter -> Batter`
-
-**(B)** `Recipe Yolk -> (Yolk  -> Recipe Batter) -> Recipe Batter`
-
-**(C)** `Recipe a    -> (a     -> Recipe a     ) -> Recipe a`
-
-**(D)** `Recipe a    -> (a     -> Recipe b     ) -> Recipe b`
-
-**(E)** `Recipe Yolk -> (Yolk  -> Recipe Batter) -> Recipe ()`
-
-<br>
-
-(I) final
-
-    *Answer:* D
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Recipes are Monads
-
-Wait a second, the signature:
-
-```haskell
-combineWithResult :: Recipe a -> (a -> Recipe b) -> Recipe b
-```
-
-looks just like:
-
-```haskell
-(>>=)             :: m a      -> (a -> m b)      -> m b
-```
-
-<br>
-<br>
-
-In fact, in the standard library `Recipe` is an instance of `Monad`!
-
-```haskell
-instance Monad Recipe where
-  (>>=) = {-... combineWithResult... -}
-```
-
-<br>
-<br>
-
-So we can put this together with `putStrLn` to get:
-
-```haskell
-main :: Recipe ()
-main = getLine >>= \name -> putStrLn ("Hello, " ++ name ++ "!")
-```
-
-or, using `do` notation the above becomes
-
-```haskell
-main :: Recipe ()
-main = do name <- getLine
-          putStrLn ("Hello, " ++ name ++ "!")
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Exercise
-
-Experiment with this code at home:
-
-1. _Compile_ and run.
-2. _Modify_ to repeatedly ask for names.
-3. _Extend_ to print a "prompt" that tells you how many iterations have occurred.
-
 <br>
 <br>
 <br>
