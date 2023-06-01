@@ -26,7 +26,7 @@ pre-populated with starter code and a README file with all the instructions.
 - [Midterm Wi 19](/static/raw/130-midterm-wi19.pdf) ([solution](/static/raw/130-midterm-wi19-solution.pdf)),
   [Midterm Fa 19](/static/raw/130-midterm-fa19.pdf) ([solution](/static/raw/130-midterm-fa19-solution.pdf)).
 
-- [Mock Final](https://classroom.github.com/a/BwalVRr6)
+- [Practice Final](https://classroom.github.com/a/BwalVRr6)
 
 <!--
 - [Final Fa 19](/static/raw/130-final-fa19.pdf) ([solution](/static/raw/130-final-fa19-solution.pdf)),
