@@ -1331,8 +1331,61 @@ What is your name?
 # user hits return
 What is your name? 
 Nadia  # user enters
-Was that so hard Nadia???
+Hello, Nadia!
 ```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Recipes with Results
+
+Let's write a function that asks the user maximum `n` times,
+and if they fail to provide a non-empty string, it returns a default value `d`:
+
+```haskell
+main :: Recipe ()
+main = do name <- askMany 3 "dummy"
+          putStrLn $ printf "Hello %s!" name
+
+askMany :: Int -> String -> Recipe String
+askMany = ???
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+To return a result from a recipe, use the `return` function of `Monad`!
+
+```haskell
+askMany :: Int -> String -> Recipe String
+askMany 0 d = return d
+askMany n d = do putStrLn "What is your name?"
+                 name <- getLine
+                 if null name
+                   then askMany (n-1) d
+                   else return name
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <br>
 <br>
