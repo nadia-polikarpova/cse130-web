@@ -971,24 +971,6 @@ In 130, we will _end_ with it.
 
 Why is it hard to write a program that prints "Hello world!" in Haskell?
 
-<!-- 
-For example, in Python you may write:
-
-```python
-def main():
-    print "hello, world!"
-
-main()
-```
-
-and then you can run it:
-
-```sh
-$ python hello.py
-hello world!
-```
--->
-
 
 <br>
 <br>
@@ -1199,48 +1181,13 @@ Hello, world!
 
 This was a one-step recipe
 
-Most interesting recipes have multiple steps
+Most interesting recipes 
 
-  - How do I write those?
+  - have multiple steps
+  - pass intermediate results between steps
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+How do I write those?
 
-## QUIZ: Combining Recipes
-
-Assume we had a function `combine` that lets us combine recipes like so:
-
-```haskell
-main :: Recipe ()
-main = combine (putStrLn "Hello,") (putStrLn "World!")
-
--- putStrLn :: String -> Recipe ()
--- combine  :: ???
-```
-
-What should the _type_ of `combine` be?
-
-**(A)** `() -> () -> ()`
-
-**(B)** `Recipe () -> Recipe () -> Recipe ()`
-
-**(C)** `Recipe a  -> Recipe a  -> Recipe a`
-
-**(D)** `Recipe a  -> Recipe b  -> Recipe b`
-
-**(E)** `Recipe a  -> Recipe b  -> Recipe a`
-
-<br>
-
-(I) final
-
-    *Answer:* D
 
 <br>
 <br>
@@ -1250,8 +1197,9 @@ What should the _type_ of `combine` be?
 <br>
 <br>
 <br>
+<br>
 
-## Using Intermediate Results
+## Multi-Step Recipes
 
 Next, lets write a program that
 
@@ -1278,39 +1226,36 @@ Next, lets write a program that
 <br>
 <br>
 
-## QUIZ: Using Yolks to Make Batter
 
-Suppose you have two recipes
+## QUIZ: Multi-Step Recipes
 
-```haskell
-crack     :: Recipe Yolk
-eggBatter :: Yolk -> Recipe Batter
-```
-
-and we want to get 
+If I had a function `andThen` for sequencing recipes, e.g.:
 
 ```haskell
-mkBatter :: Recipe Batter
-mkBatter = crack `combineWithResult` eggBatter
+getLine  :: Recipe String
+putStrLn :: String -> Recipe ()
+
+main :: Recipe ()
+main = getLine `andThen` putStrLn
 ```
 
-What should the type of `combineWithResult` be?
+What should the type of `andThen` be?
 
-**(A)** `Yolk -> Batter -> Batter`
+**(A)** `String        -> ()                   -> ()`
 
-**(B)** `Recipe Yolk -> (Yolk  -> Recipe Batter) -> Recipe Batter`
+**(B)** `Recipe String -> Recipe ()            -> Recipe ()`
 
-**(C)** `Recipe a    -> (a     -> Recipe a     ) -> Recipe a`
+**(C)** `Recipe String -> (String -> Recipe ()) -> Recipe ()`
 
-**(D)** `Recipe a    -> (a     -> Recipe b     ) -> Recipe b`
+**(D)** `Recipe a      -> (a      -> Recipe a ) -> Recipe a`
 
-**(E)** `Recipe Yolk -> (Yolk  -> Recipe Batter) -> Recipe ()`
+**(E)** `Recipe a      -> (a      -> Recipe b ) -> Recipe b`
 
 <br>
 
 (I) final
 
-    *Answer:* D
+    *Answer:* E
 
 <br>
 <br>
@@ -1326,24 +1271,19 @@ What should the type of `combineWithResult` be?
 Wait a second, the signature:
 
 ```haskell
-combineWithResult :: Recipe a -> (a -> Recipe b) -> Recipe b
+andThen :: Recipe a -> (a -> Recipe b) -> Recipe b
 ```
 
 looks just like:
 
 ```haskell
-(>>=)             :: m a      -> (a -> m b)      -> m b
+(>>=)   :: m a      -> (a -> m b)      -> m b
 ```
 
 <br>
 <br>
 
 In fact, in the standard library `Recipe` is an instance of `Monad`!
-
-```haskell
-instance Monad Recipe where
-  (>>=) = {-... combineWithResult... -}
-```
 
 <br>
 <br>
@@ -1372,14 +1312,29 @@ main = do name <- getLine
 <br>
 <br>
 
-## Exercise
+## EXERCISE 
 
-Experiment with this code at home:
+Modify the above code so that the program _repeatedly_ 
+asks for the users's name _until_ they provide a _non-empty_ string.
 
-1. _Compile_ and run.
-2. _Modify_ to repeatedly ask for names.
-3. _Extend_ to print a "prompt" that tells you how many iterations have occurred.
+When you are done you should get the following behavior
 
+```sh
+$ ghc hello.hs
+
+$ ./hello
+What is your name? 
+# user hits return
+What is your name? 
+# user hits return
+What is your name? 
+# user hits return
+What is your name? 
+Nadia  # user enters
+Was that so hard Nadia???
+```
+
+<br>
 <br>
 <br>
 <br>
