@@ -37,7 +37,7 @@ Lecture schedule is subject to change!
 | 6/5        | contd.                          |                           |
 | 6/7        | contd.                          |                           |
 | 6/9        | Final Review                    |                           |
-| 6/10       | **Final**                       |                           |
+| 6/15       | **Final**                       |                           |
 
 
 **Discussions**
