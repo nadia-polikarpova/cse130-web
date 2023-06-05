@@ -1387,14 +1387,6 @@ askMany n d = do putStrLn "What is your name?"
 <br>
 <br>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 ## Outline
 
@@ -1440,7 +1432,7 @@ Behavior we want:
 
 --              0          1    2
 λ> eval 0 (Plus Next (Plus Next Next))
-3
+???
 ```
 
 <br>
