@@ -5,12 +5,12 @@ headerImg: angles.jpg
 
 ## Course Resources
 
-- **Lectures:**             MWF 1:00-1:50pm PCYNH 106 and on [Zoom](https://ucsd.zoom.us/j/934813358)
-- **Discussion section:**   W 7:00-7:50pm PCYNH 106 and on [Zoom](https://ucsd.zoom.us/j/934813358)
+- **Lectures:**             MWF 1:00-1:50pm CENTR 109 and on [Zoom](https://ucsd.zoom.us/j/934813358)
+- **Discussion section:**   F 2:00-2:50pm CENTR 109 and on [Zoom](https://ucsd.zoom.us/j/934813358)
 - **Calendar:**             Check [here](calendar.html) for office hours, deadlines, etc.
-- **Piazza:**               Check [here](https://piazza.com/ucsd/spring2023/cse130) for announcement and discussions
-- **Canvas:**               Check [here](https://canvas.ucsd.edu/courses/45541) for lecture recordings 
-- **Gradescope:**           Submit assignments [here](https://www.gradescope.com/courses/527932) (code: XV6YV4)
+- **Piazza:**               Check [here](https://piazza.com/ucsd/fall2023/cse130) for announcement and discussions
+- **Canvas:**               Check [here](https://canvas.ucsd.edu/courses/49365) for lecture recordings 
+- **Gradescope:**           Submit assignments [here](https://www.gradescope.com/courses/635130) (code: PWGBYK)
 - **ClassQuestion:**        Sign up [here](https://classquestion.com/students) (code: GXJVJ)
 
 
@@ -23,12 +23,12 @@ headerImg: angles.jpg
 
 ### Teaching Assistants
 
-* [Shraddha Barke](https://shraddhabarke.github.io/)
-* Aidan Denlinger
 * [Zheng Guo](https://aaronguo1996.github.io/)
+* [Kasra Ferdowsi](https://weirdmachine.me/)
 
 ### Tutors
 
+* Mark Barbone
 * Justin Du
 * Rana Lulla
 * Melody Ruth

@@ -7,55 +7,43 @@ Lecture schedule is subject to change!
 
 | Date       | Topic                           | Material                  |
 |:----------:|:--------------------------------|:-------------------------:|
-| 4/3        | Hello, World!                   | [html][lec0]              |
-| 4/5        | The Lambda Calculus             | [html][lec1]              |
-| 4/7        | contd.                          |                           |
-| 4/10       | contd.                          |                           |
-| 4/12       | contd.                          |                           |
-| 4/14       | contd.                          |                           |
-| 4/17       | A crash course in Haskell       | [html][lec2]              |
-| 4/19       | contd.                          |                           |
-| 4/21       | contd.                          |                           |
-| 4/24       | contd.                          |                           |
-| 4/26       | Tail Recursion                  | [html][lec3]              |
-| 4/28       | Algebraic Data Types            | [html][lec4]              |
-| 5/1        | contd.                          |                           |
-| 5/3        | contd.                          |                           |
-| 5/5        | Higher Order Functions          | [html][lec5]              |
-| 5/8        | **Midterm**                     |                           |
-| 5/10       | contd.                          |                           |
-| 5/12       | Environments and Closures       | [html][lec6]              |
-| 5/15       | contd.                          |                           |
-| 5/17       | contd.                          |                           |
-| 5/19       | Lexing and Parsing              | [html][lec7]  [tutorial][parsing]  |
-| 5/22       | contd.                          |                           |
-| 5/24       | Overloading & TypeClasses       | [html][lec8]              |
-| 5/26       | contd.                          |                           |
-| 5/29       | *No lecture: Memorial Day*      |                           | 
-| 5/31       | Monads                          | [html][lec9]              |
-| 6/2        | contd.                          |                           |
-| 6/5        | contd.                          |                           |
-| 6/7        | contd.                          |                           |
-| 6/9        | Final Review                    |                           |
-| 6/15       | **Final**                       |                           |
+| 9/29       | Hello, World!                   | [html][lec0]              |
+| 10/2       | The Lambda Calculus             |                           |
+| 10/4       | contd.                          |                           |
+| 10/6       | contd.                          |                           |
+| 10/9       | contd.                          |                           |
+| 10/11      | contd.                          |                           |
+| 10/13      | A crash course in Haskell       |                           |
+| 10/16      | contd.                          |                           |
+| 10/18      | contd.                          |                           |
+| 10/20      | contd.                          |                           |
+| 10/23      | Tail Recursion                  |                           |
+| 10/25      | Algebraic Data Types            |                           |
+| 10/27      | contd.                          |                           |
+| 10/30      | contd.                          |                           |
+| 11/1       | Higher Order Functions          |                           |
+| 11/3       | contd.                          |                           |
+| 11/6       | **Midterm**                     |                           |
+| 11/8       | Environments and Closures       |                           |
+| 11/10      | *No lecture: Veterans Day*      |                           |
+| 11/13      | contd.                          |                           |
+| 11/15      | contd.                          |                           |
+| 11/17      | Lexing and Parsing              |                           |
+| 11/20      | contd.                          |                           |
+| 11/22      | Overloading & TypeClasses       |                           |
+| 11/24      | *No lecture: Thanksgiving*      |                           |
+| 11/27      | contd.                          |                           |
+| 11/29      | Monads                          |                           |
+| 12/1       | contd.                          |                           |
+| 12/4       | contd.                          |                           |
+| 12/6       | contd.                          |                           |
+| 12/8       | Final Review                    |                           |
+| 12/11      | **Final**                       |                           |
 
 
 **Discussions**
 
-<!-- | Date       | Topic                                           |
-|:----------:|:------------------------------------------------|
-| 4/5        | Tech Intro                                      |
-| 4/12       | Lambda Calculus: intro, syntax and reductions   |
-| 4/19       | Lambda Calculus: data type encodings            |
-| 4/26       | Haskell: intro and simple recursion             |
-| 5/3        | Haskell: recursive data types                   |
-| 5/10       | Midterm review                                  |
-| 5/17       | Haskell: folds.                                 |
-| 5/24       | Nano: interpreters, lexers, and parsers         |
-| 5/31       | Type classes and Quickcheck                     |
-| 6/7        | IO Monad                                        | -->
-
-Discussion slides are available [here](https://drive.google.com/drive/u/0/folders/1TQhC29kVsF9Ik5Wmj6x_zYMBTAr7gCAm).
+Discussion slides are available [here](https://drive.google.com/drive/folders/1opFddP9rLr6rZe-OPjc-GE4c3u2ui2S0?usp=sharing).
 
 [lec0]: lectures/00-hello.html
 [lec1]: lectures/01-lambda.html
@@ -71,21 +59,5 @@ Discussion slides are available [here](https://drive.google.com/drive/u/0/folder
 [soundness]: lectures/soundness.html
 [mock-final]: https://github.com/cse130-assignments/mock-final
 
-<!-- [disc0]: https://docs.google.com/presentation/d/1q7qqYXfmxBbdaRYhupJFp93XVvwnpZyEQAZlcbr0Hs4/edit?usp=sharing
-[disc1]: /static/raw/discussion-week-01.pdf
-[disc2]: /static/raw/discussion-week-02.pdf
-[disc3]: /static/raw/discussion-week-03.pdf
-[disc3code]: /static/raw/discussion-week-03.hs
-[disc4]: /static/raw/discussion-week-04.pdf
-[disc4code]: /static/raw/discussion-week-04.hs
-[disc5]: /static/raw/discussion-week-05.pdf
-[disc5code]: /static/raw/discussion-week-05.hs
-[disc6]: /static/raw/discussion-week-06.pdf
-[disc6code]: /static/raw/discussion-week-06.hs
-[disc7]: /static/raw/discussion-week-07.pdf
-[disc8]: /static/raw/discussion-week-08.pdf
-[disc8code]: /static/raw/discussion-week-08.hs
-[disc9]: /static/raw/discussion-week-09.pdf
- -->
 [parsing]: https://github.com/cse130-assignments/arith
 [elsa]: https://github.com/ucsd-progsys/elsa

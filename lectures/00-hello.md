@@ -8,7 +8,8 @@ date: 2017-03-28
 
 ![Nadia Polikarpova](https://cseweb.ucsd.edu/~npolikarpova/images/nadia_polikarpova.jpg){#fig:nadia .align-center width=25%}
 
-- Assistant professor at CSE since 2017
+- Associate professor 
+- UCSD CSE since 2017
 - PhD at ETH Zurich
 - Postdoc at MIT
 
@@ -31,12 +32,12 @@ date: 2017-03-28
 
 ### Teaching Assistants
 
-* [Shraddha Barke](https://shraddhabarke.github.io/)
-* Aidan Denlinger
 * [Zheng Guo](https://aaronguo1996.github.io/)
+* [Kasra Ferdowsi](https://weirdmachine.me/)
 
 ### Tutors
 
+* Mark Barbone
 * Justin Du
 * Rana Lulla
 * Melody Ruth
@@ -387,11 +388,11 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 - [webpage](https://nadia-polikarpova.github.io/cse130-web)
     - calendar, lecture notes, programming assignments, ...
-- [canvas](https://canvas.ucsd.edu/courses/36670)
+- [canvas](https://canvas.ucsd.edu/courses/49365)
     - lecture recordings  
-- [piazza](https://www.piazza.com/ucsd/spring2023/cse130/home)
+- [piazza](https://www.piazza.com/ucsd/fall2023/cse130/home)
     - announcements and discussions
-- [gradescope](https://www.gradescope.com/courses/527932) (code: XV6YV4)
+- [gradescope](https://www.gradescope.com/courses/635130) (code: PWGBYK)
     - homework/exam submissions, grades
 - [classquestion](https://classquestion.com/students) (code: GXJVJ)
     - anonymous questions during lecture
@@ -423,8 +424,9 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 - 6 programming assignments
 - Released [online](https://nadia-polikarpova.github.io/cse130-web/assignments.html), at least a week before due date
-- Due on **Wednesday at 11:59pm**
-    - no assignment Weeks 1 and 2
+- Due at **11:59pm**
+    - Usually on a **Wednesday**, but not always, check the calendar
+    - No assignment Weeks 1 and 2
 - 8 late days, no more than 4 late days per assignment
     - used atomically (5 mins late = 1 late day)
 - Submitted via Gradescope
@@ -441,20 +443,21 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
     
 ## Exams    
 
-- Midterm on *May 8*
+- Midterm on *November 6*
     - Gradescope multiple choice
     - individual
     - 24h timespan
-- Final: *June 15*
+- Final: *December 11*
     - programming assignment
     - individual
     - 24h timespan
 - Formats subject to change!    
-- You can use any general resources you want (class material, Wikipedia), but **do not**:
-    - search or post Chegg etc
-    - post on StackOverflow etc
+- You can use general resources (class material, Wikipedia), but everything you submit should be **do not**:
+    - use AI assistants
+    - search or post Chegg, StackOverflow etc
     - try to find past exams that are not publicly posted    
     - communicate with each other during the exam
+    - **general policy:** everything you submit for a grade should be your own work, or else you should cite the source
 - The final is cumulative
 - Midterm grade is calculated as `midterm > 0 ?  max(final, midterm) : 0`
     - you get a second chance if you don’t do well on the midterm
@@ -522,9 +525,9 @@ How can you earn 5% extra credit for this class?
 
 ## Your Resources
 
-- Discussion section: Wed 7pm
-    - PCYNH 106 and/or on Zoom
-    - same Zoom link as lecture
+- Discussion section: Fri 2pm
+    - CENTR 109 and/or on Zoom
+    - same room/Zoom link as lecture
 - Office hours
     - every day, check calendar
 - Piazza
