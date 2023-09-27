@@ -452,12 +452,6 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
     - individual
     - 24h timespan
 - Formats subject to change!    
-- You can use general resources (class material, Wikipedia), but everything you submit should be **do not**:
-    - use AI assistants
-    - search or post Chegg, StackOverflow etc
-    - try to find past exams that are not publicly posted    
-    - communicate with each other during the exam
-    - **general policy:** everything you submit for a grade should be your own work, or else you should cite the source
 - The final is cumulative
 - Midterm grade is calculated as `midterm > 0 ?  max(final, midterm) : 0`
     - you get a second chance if you don’t do well on the midterm
@@ -551,13 +545,18 @@ How can you earn 5% extra credit for this class?
 
 ## Academic Integrity
 
-Programming assignments: do not copy from classmates or from previous years
+**General policy:** everything you submit for a grade should be your own work, or else you should cite the source
 
-Exams done **alone**
+For details, please see academic integrity statement on the website
 
-  - Zero Tolerance
-  - Offenders punished ruthlessly
-  - Please see academic integrity statement
+For programming assignments **do not**:
+  - use AI assistants (they might work for assignments, but will fail you on exams)
+  - search or post Chegg, StackOverflow etc
+  - try to find solutions from previous years
+
+For exams **additionally do not**:
+  - communicate with your classmates during the exam
+  - try to find past exams that are not publicly posted    
 
 
 <br>
