@@ -155,20 +155,20 @@ But good luck writing
 
 Learning... 
 
-- JavaScript in March
-- Haskell in April
-- C++ in May
+- JavaScript in September
+- Haskell in October
+- C++ in November
 - etc. 
 
 ### New languages come (and go ...)
 
 There was no
 
-- Python      35 years ago
-- Java        30 years ago
-- C#          25 years ago
-- Rust        12 years ago
-- WebAssembly 5 years ago
+- Python      before 1991
+- Java        before 1995
+- C#          before 2000
+- Rust        before 2006
+- WebAssembly before 2015
 
 
 <br>
@@ -432,7 +432,7 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 - Submitted via Gradescope
     - submission instructions in the assignment
 - Solve **alone or in groups of two**
-    - user this [piazza thread](https://piazza.com/class/lfyrhbkf5nw3os/post/5) to find a partner
+    - user this [piazza thread](https://piazza.com/class/ln0wufeeb7pod/post/5) to find a partner
 
 <br>
 <br>
@@ -550,11 +550,13 @@ How can you earn 5% extra credit for this class?
 For details, please see academic integrity statement on the website
 
 For programming assignments **do not**:
+
   - use AI assistants (they might work for assignments, but will fail you on exams)
   - search or post Chegg, StackOverflow etc
   - try to find solutions from previous years
 
 For exams **additionally do not**:
+
   - communicate with your classmates during the exam
   - try to find past exams that are not publicly posted    
 
