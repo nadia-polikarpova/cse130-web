@@ -1209,14 +1209,14 @@ What does the following term _evaluate_ to?
 
 ## EXERCISE: Non-Terminating Evaluation
 
-Can you come up with term `fill_this_in` such that the evaluation of
-`(\x -> x x) fill_this_in` *loops*, i.e.:
+Can you come up with an expression `E` such that the evaluation of
+`(\x -> x x) E` *loops*, i.e.:
 
 ```haskell
 eval loop : 
-  (\x -> x x) fill_this_in
-  =b> (\x -> x x) fill_this_in
-  =b> (\x -> x x) fill_this_in
+  (\x -> x x) E
+  =b> (\x -> x x) E
+  =b> (\x -> x x) E
   =b> ...
 ```
 

@@ -1087,12 +1087,12 @@ and <code class="sourceCode haskell"><span class="dt">N</span> <span class="op">
 <br>
 <br></p>
 <h2 id="exercise-non-terminating-evaluation">EXERCISE: Non-Terminating Evaluation</h2>
-<p>Can you come up with term <code class="sourceCode haskell">fill_this_in</code> such that the evaluation of
-<code class="sourceCode haskell">(\x <span class="ot">-&gt;</span> x x) fill_this_in</code> <em>loops</em>, i.e.:</p>
+<p>Can you come up with an expression <code class="sourceCode haskell"><span class="dt">E</span></code> such that the evaluation of
+<code class="sourceCode haskell">(\x <span class="ot">-&gt;</span> x x) <span class="dt">E</span></code> <em>loops</em>, i.e.:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>eval loop <span class="op">:</span> </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  (\x <span class="ot">-&gt;</span> x x) fill_this_in</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span>b<span class="op">&gt;</span> (\x <span class="ot">-&gt;</span> x x) fill_this_in</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span>b<span class="op">&gt;</span> (\x <span class="ot">-&gt;</span> x x) fill_this_in</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  (\x <span class="ot">-&gt;</span> x x) <span class="dt">E</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span>b<span class="op">&gt;</span> (\x <span class="ot">-&gt;</span> x x) <span class="dt">E</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span>b<span class="op">&gt;</span> (\x <span class="ot">-&gt;</span> x x) <span class="dt">E</span></span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span>b<span class="op">&gt;</span> <span class="op">...</span></span></code></pre></div>
 <p>ELSA: https://elsa.goto.ucsd.edu/index.html</p>
 <p><a href="https://elsa.goto.ucsd.edu/index.html#?demo=permalink%2F1664296539_173491.lc">Click here to try this exercise</a></p>
