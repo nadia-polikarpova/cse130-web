@@ -1687,9 +1687,9 @@ let SND  = \p -> p FALSE  -- call w/ FALSE, get second value
 
 How can we implement a record that contains **three** values?
 
-ELSA: https://goto.ucsd.edu/elsa/index.html
+ELSA: https://elsa.goto.ucsd.edu/index.html
 
-[Click here to try this exercise](https://goto.ucsd.edu/elsa/index.html#?demo=permalink%2F1585434814_24436.lc)
+[Click here to try this exercise](https://elsa.goto.ucsd.edu/index.html#?demo=permalink%2F1585434814_24436.lc)
 
 (I) lecture
 
@@ -1926,7 +1926,7 @@ eval inc_zero :
 Fill in the implementation of `ADD` so that you get the following behavior
 
 
-[Click here to try this exercise](https://goto.ucsd.edu/elsa/index.html#?demo=permalink%2F1585436042_24449.lc)
+[Click here to try this exercise](https://elsa.goto.ucsd.edu/index.html#?demo=permalink%2F1585436042_24449.lc)
 
 ```haskell
 let ZERO = \f x -> x
@@ -2329,6 +2329,6 @@ eval fix_step:
 That's all folks!
 
 
-[elsa-ite]: http://goto.ucsd.edu:8095/index.html#?demo=ite.lc
+[elsa-ite]: http://elsa.goto.ucsd.edu/index.html#?demo=ite.lc
 
-[elsa-not]: http://goto.ucsd.edu:8095/index.html#?demo=permalink%2F1491005489_149.lc
+[elsa-not]: http://elsa.goto.ucsd.edu/index.html#?demo=permalink%2F1491005489_149.lc

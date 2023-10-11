@@ -1412,8 +1412,8 @@ with the <span class="math inline"><em>λ</em></span>-calculus.</p>
 <br></p>
 <h2 id="exercise-triples">EXERCISE: Triples</h2>
 <p>How can we implement a record that contains <strong>three</strong> values?</p>
-<p>ELSA: https://goto.ucsd.edu/elsa/index.html</p>
-<p><a href="https://goto.ucsd.edu/elsa/index.html#?demo=permalink%2F1585434814_24436.lc">Click here to try this exercise</a></p>
+<p>ELSA: https://elsa.goto.ucsd.edu/index.html</p>
+<p><a href="https://elsa.goto.ucsd.edu/index.html#?demo=permalink%2F1585434814_24436.lc">Click here to try this exercise</a></p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="dt">TRIPLE</span> <span class="ot">=</span> \x y z <span class="ot">-&gt;</span> <span class="op">???</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="dt">FST3</span>   <span class="ot">=</span> \t <span class="ot">-&gt;</span> <span class="op">???</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="dt">SND3</span>   <span class="ot">=</span> \t <span class="ot">-&gt;</span> <span class="op">???</span></span>
@@ -1577,7 +1577,7 @@ is encoded as a combinator that
 <br></p>
 <h2 id="exercise">EXERCISE</h2>
 <p>Fill in the implementation of <code class="sourceCode haskell"><span class="dt">ADD</span></code> so that you get the following behavior</p>
-<p><a href="https://goto.ucsd.edu/elsa/index.html#?demo=permalink%2F1585436042_24449.lc">Click here to try this exercise</a></p>
+<p><a href="https://elsa.goto.ucsd.edu/index.html#?demo=permalink%2F1585436042_24449.lc">Click here to try this exercise</a></p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="dt">ZERO</span> <span class="ot">=</span> \f x <span class="ot">-&gt;</span> x</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="dt">ONE</span>  <span class="ot">=</span> \f x <span class="ot">-&gt;</span> f x</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="dt">TWO</span>  <span class="ot">=</span> \f x <span class="ot">-&gt;</span> f (f x)</span>
