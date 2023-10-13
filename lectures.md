@@ -13,7 +13,7 @@ Lecture schedule is subject to change!
 | 10/6       | contd.                          |                           |
 | 10/9       | contd.                          |                           |
 | 10/11      | contd.                          |                           |
-| 10/13      | A crash course in Haskell       |                           |
+| 10/13      | A crash course in Haskell       | [html][lec2]              |
 | 10/16      | contd.                          |                           |
 | 10/18      | contd.                          |                           |
 | 10/20      | contd.                          |                           |
