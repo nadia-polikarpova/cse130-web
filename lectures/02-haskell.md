@@ -271,7 +271,7 @@ cmpSquare x y  |  x > y*y   =  "bigger :)"
 <br>
 <br>
 
-## Recusion
+## Recursion
 
 Recursion is built-in, so you can write:
 
