@@ -1165,7 +1165,7 @@ or is *ill-typed* and rejected at compile time
 **Why is this good?**
 
   * easier to reason about (`e1 + e2`: no need to worry about order of evaluation!)
-  * enables compiler optimizations (`e1 + e2`: only need to compute `e1` once!)
+  * enables compiler optimizations (`e1 + e1`: only need to compute `e1` once!)
   * great for parallelization (`e1 + e2`: we can always compute `e1` and `e2` in parallel!)
   
 <br>
