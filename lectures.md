@@ -17,9 +17,9 @@ Lecture schedule is subject to change!
 | 10/16      | contd.                          |                           |
 | 10/18      | contd.                          |                           |
 | 10/20      | contd.                          |                           |
-| 10/23      | Tail Recursion                  | [html][lec3]              |
-| 10/25      | Algebraic Data Types            |                           |
-| 10/27      | contd.                          |                           |
+| 10/23      | contd.                          |                           |
+| 10/25      | Tail Recursion                  | [html][lec3]              |
+| 10/27      | Algebraic Data Types            | [html][lec4]              |
 | 10/30      | contd.                          |                           |
 | 11/1       | Higher Order Functions          |                           |
 | 11/3       | contd.                          |                           |
