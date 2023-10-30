@@ -1140,6 +1140,30 @@ to evaluate expressions like:</p>
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="type-constructors">Type Constructors</h2>
+<p>Note: <code class="sourceCode haskell"><span class="dt">List</span></code> is <em>not</em> a type!</p>
+<p><code class="sourceCode haskell"><span class="dt">List</span> a</code> is a <em>type</em> (of lists whose elements are of type <code class="sourceCode haskell">a</code>)</p>
+<p><code class="sourceCode haskell">a</code> is the <em>type parameter</em></p>
+<p>Then what is <code class="sourceCode haskell"><span class="dt">List</span></code>?</p>
+<p>A <em>type-constructor</em> that</p>
+<ul>
+<li>takes <em>as input</em> a type <code class="sourceCode haskell">a</code></li>
+<li>returns <em>as output</em> the type <code class="sourceCode haskell"><span class="dt">List</span> a</code></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br></p>
 <h2 id="polymorphic-data-has-polymorphic-constructors">Polymorphic Data has Polymorphic Constructors</h2>
 <p>Look at the types of the constructors</p>
@@ -1252,29 +1276,6 @@ to evaluate expressions like:</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="ot">(++) ::</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [a]</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span><span class="ot"> ::</span> [a] <span class="ot">-&gt;</span> a</span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span><span class="ot"> ::</span> [a] <span class="ot">-&gt;</span> [a]</span></code></pre></div>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
-<h2 id="type-constructors">Type Constructors</h2>
-<p><code class="sourceCode haskell"><span class="dt">List</span> a</code> is a <em>type</em> (of lists whose elements are of type <code class="sourceCode haskell">a</code>)</p>
-<p><code class="sourceCode haskell">a</code> is the <em>type parameter</em></p>
-<p>Then what is <code class="sourceCode haskell"><span class="dt">List</span></code>?</p>
-<p>A <em>type-constructor</em> that</p>
-<ul>
-<li>takes <em>as input</em> a type <code class="sourceCode haskell">a</code></li>
-<li>returns <em>as output</em> the type <code class="sourceCode haskell"><span class="dt">List</span> a</code></li>
-</ul>
 <p><br>
 <br>
 <br>

@@ -1315,6 +1315,35 @@ What is the type of `Cons` ?
 
     *Answer:* E
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Type Constructors
+
+Note: `List` is *not* a type!
+
+`List a` is a *type* (of lists whose elements are of type `a`)
+
+`a` is the *type parameter*
+
+Then what is `List`? 
+
+A *type-constructor* that 
+
+- takes *as input* a type `a`
+- returns *as output* the type `List a`
 
 <br>
 <br>
@@ -1492,36 +1521,6 @@ Many list manipulating functions e.g. in `Data.List` are *polymorphic*
 head :: [a] -> a
 tail :: [a] -> [a]
 ```
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Type Constructors
-
-`List a` is a *type* (of lists whose elements are of type `a`)
-
-`a` is the *type parameter*
-
-Then what is `List`? 
-
-A *type-constructor* that 
-
-- takes *as input* a type `a`
-- returns *as output* the type `List a` 
-
 
 <br>
 <br>
