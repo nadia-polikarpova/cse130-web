@@ -1416,10 +1416,44 @@ Cons 1 (Cons 2 (Cons 3 Nil))
 
 >>> append (Cons 'a' (Cons 'b' Nil)) (Cons 'c' Nil)  -- a = Char
 Cons 'a' (Cons 'b' (Cons 'c' Nil))
-
->>> append (Cons 1.1 (Cons 2.2 Nil)) (Cons 'a' Nil)  -- a = ?
-???
 ```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ 
+
+With the type of `append` defined as
+
+`append :: List a -> List a -> List a`
+
+what would be result of
+
+```haskell
+append (Cons 'a' (Cons 'b' Nil)) (Cons True Nil)
+```
+
+**A.** `Cons 'a' (Cons 'b' (Cons True Nil))`
+
+**B.** `Cons 'a' (Cons 'b' Nil)`
+
+**C.** Type error
+
+(I) final    
+
+    *Answer:* C
 
 <br>
 <br>
