@@ -1334,9 +1334,9 @@ What is the type of `Cons` ?
 
 Note: `List` is *not* a type!
 
-`List a` is a *type* (of lists whose elements are of type `a`)
+`List a`, `List Int`, ... are types
 
-`a` is the *type parameter*
+`a` is a *type parameter*
 
 Then what is `List`? 
 
