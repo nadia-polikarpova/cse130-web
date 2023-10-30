@@ -325,7 +325,6 @@ from solutions for <em>sub-problems</em></p>
 <p><strong>A.</strong> Yes</p>
 <p><strong>B.</strong> No</p>
 <p><br></p>
-<p><em>Answer:</em> B</p>
 <p><br>
 <br>
 <br>
@@ -336,12 +335,7 @@ from solutions for <em>sub-problems</em></p>
 <h2 id="tail-recursive-factorial">Tail recursive factorial</h2>
 <p>Let’s write a tail-recursive factorial!</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ot">facTR ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>facTR n <span class="ot">=</span> loop <span class="dv">1</span> n</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ot">    loop ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    loop acc n</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="op">|</span> n <span class="op">&lt;=</span> <span class="dv">1</span>    <span class="ot">=</span> acc</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="op">|</span> <span class="fu">otherwise</span> <span class="ot">=</span> loop (acc <span class="op">*</span> n) (n <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>facTR n <span class="ot">=</span> <span class="op">...</span> </span></code></pre></div>
 <p><br>
 <br>
 <br>
