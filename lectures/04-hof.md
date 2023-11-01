@@ -431,18 +431,18 @@ Where did `xs` and `x` go???
 
 Recall lambda calculus:
 
-The expressions `f` and `\x -> f x` are in some sense "equivalent"
+The expressions `F` and `\x -> F x` are in some sense "equivalent"
 
-  - as long as `x not in FV(f)`
+  - as long as `x not in FV(F)`
 
-because they behave the same way when applied to any argument `e`:
+because they behave the same way when applied to any argument `E`:
 
 ```haskell
-(\x -> f x) e
-=b> f e
+(\x -> F x) E
+=b> F E
 ```
 
-Transforming `\x -> f x` into `f` is called **eta contraction**
+Transforming `\x -> F x` into `F` is called **eta contraction**
 
   - and the reverse is called **eta expansion**
 
@@ -475,15 +475,15 @@ map toUpper
 More generally, whenever you want to define a function:
 
 ```haskell
-f x y z = e x y z
+f x y z = E x y z
 ```
 
 you can save some typing, and *omit* the parameters:
 
-  - as long as `x`, `y`, and `z` are not free in `e`
+  - as long as `x`, `y`, and `z` are not free in `E`
 
 ```haskell
-f = e
+f = E
 ```
 
 

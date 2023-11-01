@@ -549,14 +549,14 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="the-case-of-the-missing-parameter-1">The Case of the Missing Parameter</h2>
 <p>Recall lambda calculus:</p>
-<p>The expressions <code class="sourceCode haskell">f</code> and <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> f x</code> are in some sense “equivalent”</p>
+<p>The expressions <code class="sourceCode haskell"><span class="dt">F</span></code> and <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> <span class="dt">F</span> x</code> are in some sense “equivalent”</p>
 <ul>
-<li>as long as <code class="sourceCode haskell">x <span class="fu">not</span> <span class="kw">in</span> <span class="dt">FV</span>(f)</code></li>
+<li>as long as <code class="sourceCode haskell">x <span class="fu">not</span> <span class="kw">in</span> <span class="dt">FV</span>(<span class="dt">F</span>)</code></li>
 </ul>
-<p>because they behave the same way when applied to any argument <code class="sourceCode haskell">e</code>:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(\x <span class="ot">-&gt;</span> f x) e</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ot">=</span>b<span class="op">&gt;</span> f e</span></code></pre></div>
-<p>Transforming <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> f x</code> into <code class="sourceCode haskell">f</code> is called <strong>eta contraction</strong></p>
+<p>because they behave the same way when applied to any argument <code class="sourceCode haskell"><span class="dt">E</span></code>:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(\x <span class="ot">-&gt;</span> <span class="dt">F</span> x) <span class="dt">E</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ot">=</span>b<span class="op">&gt;</span> <span class="dt">F</span> <span class="dt">E</span></span></code></pre></div>
+<p>Transforming <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> <span class="dt">F</span> x</code> into <code class="sourceCode haskell"><span class="dt">F</span></code> is called <strong>eta contraction</strong></p>
 <ul>
 <li>and the reverse is called <strong>eta expansion</strong></li>
 </ul>
@@ -577,12 +577,12 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <p>More generally, whenever you want to define a function:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>f x y z <span class="ot">=</span> e x y z</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>f x y z <span class="ot">=</span> <span class="dt">E</span> x y z</span></code></pre></div>
 <p>you can save some typing, and <em>omit</em> the parameters:</p>
 <ul>
-<li>as long as <code class="sourceCode haskell">x</code>, <code class="sourceCode haskell">y</code>, and <code class="sourceCode haskell">z</code> are not free in <code class="sourceCode haskell">e</code></li>
+<li>as long as <code class="sourceCode haskell">x</code>, <code class="sourceCode haskell">y</code>, and <code class="sourceCode haskell">z</code> are not free in <code class="sourceCode haskell"><span class="dt">E</span></code></li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> e</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="dt">E</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
