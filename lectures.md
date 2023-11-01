@@ -21,7 +21,7 @@ Lecture schedule is subject to change!
 | 10/25      | Tail Recursion                  | [html][lec3]              |
 | 10/27      | Algebraic Data Types            | [html][lec4]              |
 | 10/30      | contd.                          |                           |
-| 11/1       | Higher Order Functions          |                           |
+| 11/1       | Higher Order Functions          | [html][lec5]              |
 | 11/3       | contd.                          |                           |
 | 11/6       | **Midterm**                     |                           |
 | 11/8       | Environments and Closures       |                           |
