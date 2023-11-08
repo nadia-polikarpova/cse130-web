@@ -309,7 +309,7 @@ x + 1
 
 An expression is evaluated in an **environment**
 
-  - It's like a phone book that maps *variables* to *values*
+  - It's a dictionary that maps *variables* to *values*
   
 ```
 ["x" := 0, "y" := 12, ...]
@@ -547,7 +547,7 @@ Let's develop intuition with examples!
 What should this evaluate to?
 
 ```haskell
-let x = 5 
+let x = 2 + 3 
 in
   x + 1
 ```
@@ -673,11 +673,13 @@ Every variable *use* (occurrence) gets its value from the most local *definition
 **Example 1**:
 
 ```haskell
-            -- environment:
-let x = 5   -- []
-in          --   [x := 5]
-  x + 1     --   |
+               -- environment:
+let x = 2 + 3  -- []
+in             --   [x := 5]
+  x + 1        --   |
 ```
+
+*Note:* first *evaluate* `2 + 3` and *bind* `x` to the resulting value in the environment
 
 <br>
 <br>

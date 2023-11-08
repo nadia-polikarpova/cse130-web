@@ -468,7 +468,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <h2 id="environment">Environment</h2>
 <p>An expression is evaluated in an <strong>environment</strong></p>
 <ul>
-<li>It’s like a phone book that maps <em>variables</em> to <em>values</em></li>
+<li>It’s a dictionary that maps <em>variables</em> to <em>values</em></li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">&quot;x&quot;</span> <span class="op">:=</span> <span class="dv">0</span>, <span class="st">&quot;y&quot;</span> <span class="op">:=</span> <span class="dv">12</span>, <span class="op">...</span>]</span></code></pre></div>
 <p><br></p>
@@ -662,7 +662,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="quiz-3">QUIZ</h2>
 <p>What should this evaluate to?</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">5</span> </span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span> </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  x <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
 <p><strong>(A)</strong> <code class="sourceCode haskell"><span class="dv">1</span></code></p>
@@ -734,10 +734,11 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="implementing-lexical-scoping">Implementing Lexical Scoping</h2>
 <p><strong>Example 1</strong>:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>            <span class="co">-- environment:</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">5</span>   <span class="co">-- []</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span>          <span class="co">--   [x := 5]</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  x <span class="op">+</span> <span class="dv">1</span>     <span class="co">--   |</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>               <span class="co">-- environment:</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span>  <span class="co">-- []</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span>             <span class="co">--   [x := 5]</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  x <span class="op">+</span> <span class="dv">1</span>        <span class="co">--   |</span></span></code></pre></div>
+<p><em>Note:</em> first <em>evaluate</em> <code class="sourceCode haskell"><span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span></code> and <em>bind</em> <code class="sourceCode haskell">x</code> to the resulting value in the environment</p>
 <p><br>
 <br></p>
 <p><strong>Example 2</strong>:</p>
