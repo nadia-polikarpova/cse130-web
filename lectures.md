@@ -24,7 +24,7 @@ Lecture schedule is subject to change!
 | 11/1       | Higher Order Functions          | [html][lec5]              |
 | 11/3       | contd.                          |                           |
 | 11/6       | **Midterm**                     |                           |
-| 11/8       | Environments and Closures       |                           |
+| 11/8       | Environments and Closures       | [html][lec6]              |
 | 11/10      | *No lecture: Veterans Day*      |                           |
 | 11/13      | contd.                          |                           |
 | 11/15      | contd.                          |                           |
