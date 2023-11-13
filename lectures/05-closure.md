@@ -1353,12 +1353,10 @@ Which scoping does our `eval` function implement?
 
 ```haskell
 ...
-eval env (Lam x body) = VFun x body
-eval env (App fun arg) = eval env' body
+eval env (Lam x body)   = VFun x body
+eval env (App fun arg)  = evalApp env (eval env e1) (eval env e1)
   where
-    VFun x body = eval env fun
-    vArg        = eval env arg
-    env'        = (x, vArg) : env
+    evalApp env (VFun x body) vArg = eval ((x,vArg):env) body
 ```
 
 **(A)** Static
@@ -1792,7 +1790,7 @@ in -- [f := <[], n, n * f (n - 1)>]
 
 
 **Lesson learned:** to support recursion, 
-you need to figure out a way to put the function itself *back* into its closure environment
+you need to put the function itself *back* into its closure environment
 before the body gets evaluated!
 
 <br>

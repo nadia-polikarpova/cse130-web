@@ -1210,12 +1210,10 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <h2 id="quiz-9">QUIZ</h2>
 <p>Which scoping does our <code class="sourceCode haskell">eval</code> function implement?</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">Lam</span> x body) <span class="ot">=</span> <span class="dt">VFun</span> x body</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">App</span> fun arg) <span class="ot">=</span> eval env' body</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">Lam</span> x body)   <span class="ot">=</span> <span class="dt">VFun</span> x body</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">App</span> fun arg)  <span class="ot">=</span> evalApp env (eval env e1) (eval env e1)</span>
 <span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">VFun</span> x body <span class="ot">=</span> eval env fun</span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    vArg        <span class="ot">=</span> eval env arg</span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    env'        <span class="ot">=</span> (x, vArg) <span class="op">:</span> env</span></code></pre></div>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    evalApp env (<span class="dt">VFun</span> x body) vArg <span class="ot">=</span> eval ((x,vArg)<span class="op">:</span>env) body</span></code></pre></div>
 <p><strong>(A)</strong> Static</p>
 <p><strong>(B)</strong> Dynamic</p>
 <p><strong>(C)</strong> Neither</p>
@@ -1529,7 +1527,7 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  f <span class="dv">5</span> <span class="co">-- eval [n := 5] (n * f (n - 1))</span></span>
 <span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>      <span class="co">--  ==&gt; unbound variable f!!!</span></span></code></pre></div>
 <p><strong>Lesson learned:</strong> to support recursion,
-you need to figure out a way to put the function itself <em>back</em> into its closure environment
+you need to put the function itself <em>back</em> into its closure environment
 before the body gets evaluated!</p>
 <p><br>
 <br>
