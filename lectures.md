@@ -27,8 +27,8 @@ Lecture schedule is subject to change!
 | 11/8       | Environments and Closures       | [html][lec6]              |
 | 11/10      | *No lecture: Veterans Day*      |                           |
 | 11/13      | contd.                          |                           |
-| 11/15      | contd.                          |                           |
-| 11/17      | Lexing and Parsing              |                           |
+| 11/15      | Lexing and Parsing              | [html][lec7] [tutorial][parsing] |
+| 11/17      | contd.                          |                           |
 | 11/20      | contd.                          |                           |
 | 11/22      | Overloading & TypeClasses       |                           |
 | 11/24      | *No lecture: Thanksgiving*      |                           |
