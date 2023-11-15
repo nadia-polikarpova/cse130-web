@@ -426,11 +426,13 @@ so we only care about how to describe the token format and the grammar</p>
 <ul>
 <li><p><code class="sourceCode haskell">[c1 c2 <span class="op">...</span> cn]</code> matches <em>any of</em> the characters <code class="sourceCode haskell">c1 <span class="op">..</span> cn</code></p>
 <ul>
-<li><code class="sourceCode haskell">[<span class="dv">0</span><span class="op">-</span><span class="dv">9</span>]</code> matches <em>any digit</em></li>
-<li><code class="sourceCode haskell">[a<span class="op">-</span>z]</code> matches <em>any lower-case letter</em><br />
+<li><code class="sourceCode haskell">[<span class="dv">0</span><span class="op">-</span><span class="dv">9</span>]</code> matches any <em>digit</em></li>
+<li><code class="sourceCode haskell">[a<span class="op">-</span>z]</code> matches any <em>lower-case letter</em><br />
 </li>
-<li><code class="sourceCode haskell">[<span class="dt">A</span><span class="op">-</span><span class="dt">Z</span>]</code> matches <em>any upper-case letter</em></li>
-<li><code class="sourceCode haskell">[a<span class="op">-</span>z <span class="dt">A</span><span class="op">-</span><span class="dt">Z</span>]</code> matches <em>any letter</em></li>
+<li><code class="sourceCode haskell">[<span class="dt">A</span><span class="op">-</span><span class="dt">Z</span>]</code> matches any <em>upper-case letter</em></li>
+<li><code class="sourceCode haskell">[a<span class="op">-</span>z <span class="dt">A</span><span class="op">-</span><span class="dt">Z</span>]</code> matches any <em>letter</em><br />
+</li>
+<li><code class="sourceCode haskell">[a<span class="op">-</span>z <span class="dt">A</span><span class="op">-</span><span class="dt">Z</span> <span class="dv">0</span><span class="op">-</span><span class="dv">9</span>]</code> matches any <em>alpha-numeric character</em></li>
 </ul></li>
 <li><p><code class="sourceCode haskell"><span class="dt">R1</span> <span class="dt">R2</span></code> matches a string <code class="sourceCode haskell">s1 <span class="op">++</span> s2</code> where <code class="sourceCode haskell">s1</code> matches <code class="sourceCode haskell"><span class="dt">R1</span></code> and <code class="sourceCode haskell">s2</code> matches <code class="sourceCode haskell"><span class="dt">R2</span></code></p>
 <ul>
@@ -444,14 +446,35 @@ so we only care about how to describe the token format and the grammar</p>
 </ul>
 <p><br>
 <br></p>
-<h2 id="quiz">QUIZ</h2>
-<p>Which of the following strings are matched by <code class="sourceCode haskell">[a<span class="op">-</span>z <span class="dt">A</span><span class="op">-</span><span class="dt">Z</span>] [a<span class="op">-</span>z <span class="dt">A</span><span class="op">-</span><span class="dt">Z</span> <span class="dv">0</span><span class="op">-</span><span class="dv">9</span>]<span class="op">*</span></code>?</p>
-<p><strong>(A)</strong> (empty string)</p>
-<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="dv">5</span></code></p>
-<p><strong>(C)</strong> <code class="sourceCode haskell">x5</code></p>
-<p><strong>(D)</strong> <code class="sourceCode haskell">x</code></p>
-<p><strong>(E)</strong> C and D</p>
-<p><br></p>
+<h2 id="exercise">EXERCISE</h2>
+<p>Write a regular expression for <em>identifiers</em>, which</p>
+<ul>
+<li>must have only alphanumeric characters</li>
+<li>must start with a letter</li>
+<li>cannot be empty</li>
+</ul>
+<!--
+## QUIZ
+
+Which of the following strings are matched by `[a-z A-Z] [a-z A-Z 0-9]*`?
+
+**(A)** (empty string)
+
+**(B)** `5`
+
+**(C)** `x5`
+
+**(D)** `x`
+
+**(E)** C and D
+
+
+<br>
+
+(I) final
+
+    *Answer:* E
+-->
 <p><br>
 <br>
 <br>
@@ -515,7 +538,7 @@ so we only care about how to describe the token format and the grammar</p>
 <br>
 <br>
 <br></p>
-<h2 id="quiz-1">QUIZ</h2>
+<h2 id="quiz">QUIZ</h2>
 <p>What is the result of <code class="sourceCode haskell">parseTokens <span class="st">&quot;92zoo&quot;</span></code>
 (positions omitted for readability)?</p>
 <p><strong>(A)</strong> Lexical error</p>
@@ -603,7 +626,7 @@ so we only care about how to describe the token format and the grammar</p>
 <br>
 <br>
 <br></p>
-<h2 id="quiz-2">QUIZ</h2>
+<h2 id="quiz-1">QUIZ</h2>
 <p>Which string <em>cannot</em> be parsed as <code class="sourceCode haskell"><span class="dt">Aexpr</span></code>?</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dt">Aexpr</span> <span class="op">:</span> <span class="dt">TNUM</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>      <span class="op">|</span> <span class="dt">ID</span></span>
@@ -707,7 +730,7 @@ correspond to which tokens from the <code class="sourceCode haskell"><span class
 <br>
 <br>
 <br></p>
-<h2 id="quiz-3">QUIZ</h2>
+<h2 id="quiz-2">QUIZ</h2>
 <p>What is the value of the root <code class="sourceCode haskell"><span class="dt">AExpr</span></code> node when parsing <code class="sourceCode haskell"><span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span></code>?</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dt">Aexpr</span> <span class="op">:</span> <span class="dt">TNUM</span>                    { <span class="dt">AConst</span> <span class="op">$</span><span class="dv">1</span>    }</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>      <span class="op">|</span> <span class="dt">ID</span>                      { <span class="dt">AVar</span>   <span class="op">$</span><span class="dv">1</span>    }</span>
@@ -848,7 +871,7 @@ there are multiple ways of parsing <code class="sourceCode haskell"><span class=
 <br>
 <br>
 <br></p>
-<h2 id="quiz-4">QUIZ</h2>
+<h2 id="quiz-3">QUIZ</h2>
 <p>Can our new grammar still parse <code class="sourceCode haskell"><span class="dv">2</span> <span class="op">-</span> <span class="dv">1</span> <span class="op">-</span> <span class="dv">1</span></code> the wrong way?</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="dt">Aexpr</span> <span class="op">:</span> <span class="dt">Aexpr</span> <span class="ch">'+'</span> <span class="dt">Aexpr</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>      <span class="op">|</span> <span class="dt">Aexpr</span> <span class="ch">'-'</span> <span class="dt">Aexpr</span></span>

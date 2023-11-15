@@ -261,10 +261,11 @@ A regular expression has one of the following forms:
 
 * `[c1 c2 ... cn]` matches *any of* the characters `c1 .. cn`
     
-    * `[0-9]` matches *any digit*
-    * `[a-z]` matches *any lower-case letter*    
-    * `[A-Z]` matches *any upper-case letter*
-    * `[a-z A-Z]` matches *any letter*    
+    * `[0-9]` matches any *digit*
+    * `[a-z]` matches any *lower-case letter*    
+    * `[A-Z]` matches any *upper-case letter*
+    * `[a-z A-Z]` matches any *letter*    
+    * `[a-z A-Z 0-9]` matches any *alpha-numeric character*   
     
 * `R1 R2` matches a string `s1 ++ s2` where `s1` matches `R1` and `s2` matches `R2`
     
@@ -280,6 +281,15 @@ A regular expression has one of the following forms:
 <br>
 <br>
 
+## EXERCISE
+
+Write a regular expression for *identifiers*, which
+
+- must have only alphanumeric characters 
+- must start with a letter
+- cannot be empty
+
+<!--
 ## QUIZ
 
 Which of the following strings are matched by `[a-z A-Z] [a-z A-Z 0-9]*`?
@@ -300,6 +310,7 @@ Which of the following strings are matched by `[a-z A-Z] [a-z A-Z 0-9]*`?
 (I) final
 
     *Answer:* E
+-->
 
 <br>
 <br>
