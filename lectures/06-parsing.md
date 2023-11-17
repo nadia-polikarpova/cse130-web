@@ -289,6 +289,13 @@ Write a regular expression for *identifiers*, which
 - must start with a letter
 - cannot be empty
 
+<br>
+
+(I) final
+
+    *Answer:* `[a-z A-Z] [a-z A-Z 0-9]*`
+
+
 <!--
 ## QUIZ
 
@@ -468,9 +475,9 @@ Now we need to describe *concrete syntax*
 <br>
 <br>
 
-## Grammars
+## Context-Free Grammars
 
-A grammar is a recursive definition of a set of *parse trees*
+A context-free grammar (CFG) is a recursive definition of a set of *parse trees*
   
 <br>
 <br>  
