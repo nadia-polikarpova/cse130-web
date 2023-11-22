@@ -972,7 +972,7 @@ How, did GHC figure this out?
 <br>
 <br>
 
-## TRY AT HOME: A Faster Dictionary
+## EXERCISE: A Faster Dictionary
 
 Write an optimized version of
 
@@ -994,8 +994,6 @@ _(How) do you need to change the types of `get` and `add`?_
 <br>
 
 ## Explicit Type Annotations
-
-<!-- Move this up to standard type classes -->
 
 Consider the standard typeclass `Read`:
 
