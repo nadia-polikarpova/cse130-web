@@ -515,6 +515,11 @@ A type `T` _is an instance of_ `Ord` if
 1. `T` is *also* an instance of `Eq`, and
 2. It defines functions for comparing values for inequality
 
+<!--
+  TODO
+  - Move Read and type annotations here
+  - Rename "Using Typeclasses" to "Type Classes and Polymorphism"
+-->
 
 <br>
 <br>
@@ -972,7 +977,7 @@ How, did GHC figure this out?
 <br>
 <br>
 
-## EXERCISE: A Faster Dictionary
+## TRY AT HOME: A Faster Dictionary
 
 Write an optimized version of
 
