@@ -33,7 +33,7 @@ Lecture schedule is subject to change!
 | 11/22      | contd.                          |                           |
 | 11/24      | *No lecture: Thanksgiving*      |                           |
 | 11/27      | contd.                          |                           |
-| 11/29      | Monads                          |                           |
+| 11/29      | Monads                          | [html][lec9]              |
 | 12/1       | contd.                          |                           |
 | 12/4       | contd.                          |                           |
 | 12/6       | contd.                          |                           |
