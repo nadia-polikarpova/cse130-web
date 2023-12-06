@@ -1430,7 +1430,7 @@ Behavior we want:
 λ> eval 0 (Plus Next Next)
 1
 
---              0          1    2
+--              ?          ?    ?
 λ> eval 0 (Plus Next (Plus Next Next))
 ???
 ```
