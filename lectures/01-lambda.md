@@ -666,6 +666,7 @@ Computation by _search-and-replace_:
 - If you see an _abstraction_ applied to an _argument_,
 take the _body_ of the abstraction and
 replace all free occurrences of the _formal_ by that _argument_
+- Abstraction applied to an argument is called a **redex** (REDucible EXpression)
 
 - We say that `(\x -> E1) E2` $\beta$-steps to `E1[x := E2]`
 
@@ -1041,7 +1042,7 @@ To avoid getting confused, you can always rename formals, so that different vari
 
 ## Normal Forms
 
-A **redex** is a $\lambda$-term of the form
+Recall that a **redex** is a $\lambda$-term of the form
 
 `(\x -> E1) E2`
 

@@ -759,6 +759,7 @@ where <code class="sourceCode haskell"><span class="dt">E1</span>[x <span class=
 <li><p>If you see an <em>abstraction</em> applied to an <em>argument</em>,
 take the <em>body</em> of the abstraction and
 replace all free occurrences of the <em>formal</em> by that <em>argument</em></p></li>
+<li><p>Abstraction applied to an argument is called a <strong>redex</strong> (REDucible EXpression)</p></li>
 <li><p>We say that <code class="sourceCode haskell">(\x <span class="ot">-&gt;</span> <span class="dt">E1</span>) <span class="dt">E2</span></code> <span class="math inline"><em>β</em></span>-steps to <code class="sourceCode haskell"><span class="dt">E1</span>[x <span class="op">:=</span> <span class="dt">E2</span>]</code></p></li>
 </ul>
 <p><br>
@@ -980,7 +981,7 @@ where <code class="sourceCode haskell"><span class="dt">E1</span>[x <span class=
 <br>
 <br></p>
 <h2 id="normal-forms">Normal Forms</h2>
-<p>A <strong>redex</strong> is a <span class="math inline"><em>λ</em></span>-term of the form</p>
+<p>Recall that a <strong>redex</strong> is a <span class="math inline"><em>λ</em></span>-term of the form</p>
 <p><code class="sourceCode haskell">(\x <span class="ot">-&gt;</span> <span class="dt">E1</span>) <span class="dt">E2</span></code></p>
 <p>A <span class="math inline"><em>λ</em></span>-term is in <strong>normal form</strong> if it contains no redexes.</p>
 <p><br>
