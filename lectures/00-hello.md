@@ -32,8 +32,10 @@ date: 2017-03-28
 
 ### Teaching Assistants
 
-* [Zheng Guo](https://aaronguo1996.github.io/)
-* [Kasra Ferdowsi](https://weirdmachine.me/)
+* [Yousef Alhessi](https://yalhessi.github.io/)
+* [Emmanuel Anaya González](https://eanayag.com/)
+* [Shraddha Barke](https://shraddhabarke.github.io/)
+* [George Sakkas](https://gsakkas.github.io/)
 
 ### Tutors
 
@@ -388,11 +390,11 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 - [webpage](https://nadia-polikarpova.github.io/cse130-web)
     - calendar, lecture notes, programming assignments, ...
-- [canvas](https://canvas.ucsd.edu/courses/49365)
+- [canvas](https://canvas.ucsd.edu/courses/54610)
     - lecture recordings  
-- [piazza](https://www.piazza.com/ucsd/fall2023/cse130/home)
+- [piazza](https://www.piazza.com/ucsd/spring2024/cse130/home)
     - announcements and discussions
-- [gradescope](https://www.gradescope.com/courses/635130) (code: PWGBYK)
+- [gradescope](https://www.gradescope.com/courses/759922) (code: ZWNRWX)
     - homework/exam submissions, grades
 - [classquestion](https://classquestion.com/students) (code: GXJVJ)
     - anonymous questions during lecture
@@ -443,11 +445,11 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
     
 ## Exams    
 
-- Midterm on *November 6*
+- Midterm on *May 6*
     - Gradescope multiple choice
     - individual
     - 24h timespan
-- Final: *December 11*
+- Final: *June 13*
     - programming assignment
     - individual
     - 24h timespan
@@ -520,7 +522,7 @@ How can you earn 5% extra credit for this class?
 ## Your Resources
 
 - Discussion section: Fri 2pm
-    - CENTR 109 and/or on Zoom
+    - PCYNH 109 and/or on Zoom
     - same room/Zoom link as lecture
 - Office hours
     - every day, check calendar
