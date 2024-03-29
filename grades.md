@@ -29,7 +29,7 @@ but no more than *four late days* per assignment.
 
 ### Final (30%)
   
-- Will be held on **Monday, June 13**.
+- Will be held on **Thursday, June 13**.
 - Format: programming assignment. Solved individually in the course of 24 hours, but otherwise similar to homeworks.
   
 Since the final is cumulative, your midterm grade will be calculated as 
