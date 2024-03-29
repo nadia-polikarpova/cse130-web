@@ -1,5 +1,5 @@
-resolver: lts-20.16
-ghc: ghc-9.2.7
+resolver: lts-21.25
+system-ghc: true
 
 flags: {}
 

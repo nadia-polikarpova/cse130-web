@@ -5,7 +5,9 @@ headerImg: angles.jpg
 
 ## Assignments
 
-Click the Github Classroom link next to the assignment. 
+Coming soon!
+
+<!-- Click the Github Classroom link next to the assignment. 
 This will automatically create your assignment repository, 
 pre-populated with starter code and a README file with all the instructions.
 If you get an error when creating a team, **try a different team name**
@@ -19,16 +21,16 @@ If you get an error when creating a team, **try a different team name**
 | [HW2](https://classroom.github.com/a/HGsNvaSr)   | Random Art                      | 11/3                      |
 | [HW3](https://classroom.github.com/a/0jVZ5UUr)   | All about Fold                  | 11/13                     |
 | [HW4](https://classroom.github.com/a/UbWfqVjR)   | Nano                            | 11/22                     |
-| [HW5](https://classroom.github.com/a/RLvZfnKy)   | Type Classes                    | 12/6                      |  
+| [HW5](https://classroom.github.com/a/RLvZfnKy)   | Type Classes                    | 12/6                      |   -->
 
 
 
 
-## Practice Exams
+<!-- ## Practice Exams
 
 - [Midterm Wi 19](/static/raw/130-midterm-wi19.pdf) ([solution](/static/raw/130-midterm-wi19-solution.pdf)),
   [Midterm Fa 19](/static/raw/130-midterm-fa19.pdf) ([solution](/static/raw/130-midterm-fa19-solution.pdf)).
 
-- [Practice Final](https://classroom.github.com/a/saxraEZW)
+- [Practice Final](https://classroom.github.com/a/saxraEZW) -->
 
   
