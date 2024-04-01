@@ -56,19 +56,13 @@ date: 2017-03-28
 
 ## Lecture Format
 
-In-person + live on Zoom
+- I encourage you to attend **in person**
+- Live Zoom option available **as a backup**
+- Lecture recordings available on canvas and/or [podcast](https://podcast.ucsd.edu/)
 
-For those joining on Zoom:
+- I do not take attendance, you are adults
+- but: you are expected to have attended or watched all previous lectures before asking questions on Piazza or OH
 
-- Keep your *mic* off unless you are talking
-- Keep your *video* on if you can
-- Two ways to ask a question:
-    1. "Raise your hand" in zoom and I will call on you
-    2. Type into zoom chat
-- Please do not use public Zoom chat for random commentary, it's distracting   
-- Same if I ask you a question    
-    
-Lectures will also be recorded and published on canvas and/or [podcast](https://podcast.ucsd.edu/)   
 
 <br>
 <br>
