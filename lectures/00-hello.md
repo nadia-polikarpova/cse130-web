@@ -447,7 +447,6 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
     - programming assignment
     - individual
     - 24h timespan
-- Formats subject to change!    
 - The final is cumulative
 - Midterm grade is calculated as `midterm > 0 ?  max(final, midterm) : 0`
     - you get a second chance if you don’t do well on the midterm
