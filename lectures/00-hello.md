@@ -151,9 +151,9 @@ But good luck writing
 
 Learning... 
 
-- JavaScript in September
-- Haskell in October
-- C++ in November
+- JavaScript in March
+- Haskell in April
+- C++ in May
 - etc. 
 
 ### New languages come (and go ...)
