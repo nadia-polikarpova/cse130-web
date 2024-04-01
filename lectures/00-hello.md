@@ -474,8 +474,7 @@ We will do quizzes in class via ClassQuestion
 
 1. *Discuss*
     - I show the quiz on screen
-    - If in class: discuss with your neighbor 
-    - If remote: discuss with a friend on zoom chat (or any other chat)
+    - Discuss with your neighbor 
     - Try to reach consensus
 
 3. *Vote*
