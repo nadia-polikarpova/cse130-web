@@ -546,7 +546,7 @@ For details, please see academic integrity statement on the website
 For programming assignments **do not**:
 
   - use AI assistants (they might work for assignments, but will fail you on exams)
-  - search or post Chegg, StackOverflow etc
+  - search or post on Chegg, StackOverflow etc
   - try to find solutions from previous years
 
 For exams **additionally do not**:
