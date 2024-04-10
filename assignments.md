@@ -8,7 +8,7 @@ headerImg: angles.jpg
 Coming soon!
 
 
-<!--
+
 Click the Github Classroom link next to the assignment. 
 This will automatically create your assignment repository, 
 pre-populated with starter code and a README file with all the instructions.
@@ -20,6 +20,7 @@ If you get an error when creating a team, **try a different team name**
 |:------------------------------------------------:|:--------------------------------|:-------------------------:|
 | [HW0](https://classroom.github.com/a/Z-citE9B)   | The Lambda Calculus             | 4/17                      |
 
+<!--
 | [HW1](https://classroom.github.com/a/9h7FLjdF)   | Introduction to Haskell         | 4/24                      |
 | [HW2](https://classroom.github.com/a/HGsNvaSr)   | Random Art                      | 5/3                       |
 | [HW3](https://classroom.github.com/a/0jVZ5UUr)   | All about Fold                  | 5/13                      |
