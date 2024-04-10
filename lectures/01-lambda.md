@@ -1637,10 +1637,10 @@ such that
 
 ```haskell
 eval ex_fst: 
-  FST (PAIR apple banana) =*> apple
+  FST (PAIR apple banana) =~> apple
 
 eval ex_snd:
-  SND (PAIR apple banana) =*> banana
+  SND (PAIR apple banana) =~> banana
 ```
 
 
@@ -1702,15 +1702,15 @@ let THD3   = \t -> ???
 
 eval ex1:
   FST3 (TRIPLE apple banana orange)
-  =*> apple
+  =~> apple
 
 eval ex2:
   SND3 (TRIPLE apple banana orange)
-  =*> banana 
+  =~> banana 
 
 eval ex3:
   THD3 (TRIPLE apple banana orange)
-  =*> orange
+  =~> orange
 ```
 
 (I) final

@@ -1377,10 +1377,10 @@ with the <span class="math inline"><em>λ</em></span>-calculus.</p>
 <span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>                          <span class="co">-- p.snd</span></span></code></pre></div>
 <p>such that</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>eval ex_fst<span class="op">:</span> </span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">FST</span> (<span class="dt">PAIR</span> apple banana) <span class="op">=*&gt;</span> apple</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">FST</span> (<span class="dt">PAIR</span> apple banana) <span class="op">=~&gt;</span> apple</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>eval ex_snd<span class="op">:</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">SND</span> (<span class="dt">PAIR</span> apple banana) <span class="op">=*&gt;</span> banana</span></code></pre></div>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">SND</span> (<span class="dt">PAIR</span> apple banana) <span class="op">=~&gt;</span> banana</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1422,15 +1422,15 @@ with the <span class="math inline"><em>λ</em></span>-calculus.</p>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>eval ex1<span class="op">:</span></span>
 <span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">FST3</span> (<span class="dt">TRIPLE</span> apple banana orange)</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">=*&gt;</span> apple</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">=~&gt;</span> apple</span>
 <span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>eval ex2<span class="op">:</span></span>
 <span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">SND3</span> (<span class="dt">TRIPLE</span> apple banana orange)</span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">=*&gt;</span> banana </span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">=~&gt;</span> banana </span>
 <span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>eval ex3<span class="op">:</span></span>
 <span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">THD3</span> (<span class="dt">TRIPLE</span> apple banana orange)</span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>  <span class="op">=*&gt;</span> orange</span></code></pre></div>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>  <span class="op">=~&gt;</span> orange</span></code></pre></div>
 <p><br>
 <br>
 <br>
