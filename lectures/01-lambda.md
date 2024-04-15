@@ -2200,13 +2200,35 @@ let STEP =
 ```
 <br>
 <br>
+<br>
+<br>
 
-**Step 2:** Do something clever to `STEP`, so that the function passed as `rec`
-itself becomes
+Note:
+
+- `STEP rec ZERO  =*> ZERO`
+- `STEP rec ONE   =*> ADD ONE   (rec ZERO)`
+- `STEP rec TWO   =*> ADD TWO   (rec ONE)`
+- `STEP rec THREE =*> ADD THREE (rec TWO)`
+
+So:
 
 ```
-\n -> ITE (ISZ n) ZERO (ADD n (rec (DEC n)))
+    STEP (STEP (STEP (STEP f))) THREE
+=*> ADD THREE (STEP (STEP (STEP f)) TWO)
+=*> ADD THREE (ADD TWO (STEP (STEP f) ONE))
+=*> ADD THREE (ADD TWO (ADD ONE (STEP f ZERO)))
+=*> ADD THREE (ADD TWO (ADD ONE ZERO))
+--  ^ Exactly what we want!
 ```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+**Step 2:** Do something clever to apply `STEP` to itself,
+i.e so that the function passed as `rec` becomes `STEP rec`
  
 <br>
 <br>
@@ -2251,25 +2273,17 @@ Then by property of `FIX` we have:
 SUM =*> STEP SUM -- (1)
 ```
 
-
 ```
-eval sum_one:
-  SUM ONE
-  =*> STEP SUM ONE                 -- (1)
-  =d> (\rec n -> ITE (ISZ n) ZERO (ADD n (rec (DEC n)))) SUM ONE
-  =b> (\n -> ITE (ISZ n) ZERO (ADD n (SUM (DEC n)))) ONE 
-                                   -- ^^^ the magic happened!
-  =b> ITE (ISZ ONE) ZERO (ADD ONE (SUM (DEC ONE)))
-  =*> ADD ONE (SUM ZERO)           -- def of ISZ, ITE, DEC, ...
-  =*> ADD ONE (STEP SUM ZERO)      -- (1)
-  =d> ADD ONE 
-        ((\rec n -> ITE (ISZ n) ZERO (ADD n (rec (DEC n)))) SUM ZERO)
-  =b> ADD ONE ((\n -> ITE (ISZ n) ZERO (ADD n (SUM (DEC n)))) ZERO)
-  =*> ADD ONE (ITE (ISZ ZERO) ZERO (ADD ZERO (SUM (DEC ZERO))))
-  =b> ADD ONE ZERO
-  =~> ONE
+eval sum_three:
+                             SUM    THREE   -- (1)
+  =*>                   STEP SUM    THREE   -- (1)
+  =*>             STEP (STEP SUM)   THREE   -- (1)
+  =*>       STEP (STEP (STEP SUM))  THREE   -- (1)
+  =*> STEP (STEP (STEP (STEP SUM))) THREE   -- we've seen this before
+  =*> ADD THREE (ADD TWO (ADD ONE ZERO))
 ```
-
+<br>
+<br>
 
 How should we define `FIX`???
 
