@@ -110,7 +110,7 @@ Like in Elsa, we can *name* terms to use them later
 let T    = \x y -> x
 let F    = \x y -> y
 
-let PAIR = \x y -> \b -> ITE b x y
+let PAIR = \x y b -> ITE b x y
 let FST  = \p -> p T
 let SND  = \p -> p F
 
@@ -124,7 +124,7 @@ eval fst:
 ```haskell
 haskellIsAwesome = True
 
-pair = \x y -> \b -> if b then x else y
+pair = \x y b -> if b then x else y
 fst = \p -> p haskellIsAwesome
 snd = \p -> p False
 
@@ -210,7 +210,7 @@ pair x y _     = y  -- Wildcard pattern `_` is like a variable
 Which of the following definitions of `pair` is **not the same** as the original?
 
 ```haskell
-pair = \x y -> \b -> if b then x else y
+pair = \x y b -> if b then x else y
 ```
 
 **A.** `pair x y = \b -> if b then x else y`
