@@ -5,10 +5,6 @@ headerImg: angles.jpg
 
 ## Assignments
 
-Coming soon!
-
-
-
 Click the Github Classroom link next to the assignment. 
 This will automatically create your assignment repository, 
 pre-populated with starter code and a README file with all the instructions.
