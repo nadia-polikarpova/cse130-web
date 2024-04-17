@@ -145,6 +145,8 @@ Their definitions are called **top-level bindings**
     
 ## Better Syntax: Equations and Patterns
 
+<!-- TODO: replace this example with Fibonacci, which I'm showing on the board -->
+
 You can define function bindings using **equations**:
 
 ```haskell
