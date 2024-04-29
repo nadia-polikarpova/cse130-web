@@ -641,7 +641,7 @@ Lets define a type for 2D shapes
 data Shape2D 
   = MkRect Double Double -- rectangle with width and height
   | MkCirc Double        -- circle with radius
-  | MkPoly [Vertex]      -- polygon with a list of vertices
+  | MkPoly [Vertex]      -- polygon with at least three vertices
 
 type Vertex = (Double, Double)
 ```

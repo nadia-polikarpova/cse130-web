@@ -667,7 +667,7 @@ for building up types to represent complex data</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Shape2D</span> </span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">MkRect</span> <span class="dt">Double</span> <span class="dt">Double</span> <span class="co">-- rectangle with width and height</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">MkCirc</span> <span class="dt">Double</span>        <span class="co">-- circle with radius</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">MkPoly</span> [<span class="dt">Vertex</span>]      <span class="co">-- polygon with a list of vertices</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">MkPoly</span> [<span class="dt">Vertex</span>]      <span class="co">-- polygon with at least three vertices</span></span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Vertex</span> <span class="ot">=</span> (<span class="dt">Double</span>, <span class="dt">Double</span>)</span></code></pre></div>
 <p>Different constructors can have different types!</p>
