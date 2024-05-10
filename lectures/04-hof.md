@@ -826,7 +826,7 @@ Which of these is a valid implementation of `len`
 
 **D.** `len = foldr (\x xs -> 1 + len xs) 0`
 
-**E.** All of the above
+**E.** None of the above
 
 **HINT**: remember that `foldr :: (a -> b -> b) -> b -> [a] -> b`!
 
