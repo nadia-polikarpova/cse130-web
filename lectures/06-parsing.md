@@ -389,13 +389,10 @@ which repeatedly calls `alexScan` until it consumes the whole input string or fa
 We can test the function like so:
 
 ```haskell
-λ> parseTokens "23 + 4 / off -"
+λ> parseTokens "23 + 4"
 Right [ NUM (AlexPosn 0 1 1) 23
       , PLUS (AlexPosn 3 1 4)
       , NUM (AlexPosn 5 1 6) 4
-      , DIV (AlexPosn 7 1 8)
-      , ID (AlexPosn 9 1 10) "off"
-      , MINUS (AlexPosn 13 1 14) 
       ]      
 ```
 
@@ -411,16 +408,16 @@ Left "lexical error at 1 line, 1 column"
 
 ## QUIZ
 
-What is the result of `parseTokens "92zoo"`
+What is the result of `parseTokens "x+"`
 (positions omitted for readability)?
 
 **(A)** Lexical error
 
-**(B)** `[ID "92zoo"]`
+**(B)** Some other error
 
-**(C)** `[NUM "92"]`
+**(C)** `[ID "x+"]`
 
-**(D)** `[NUM "92", ID "zoo"]`
+**(D)** `[ID "x", PLUS]`
 
 <br>
 
