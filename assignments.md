@@ -21,7 +21,7 @@ If you get an error when creating a team, **try a different team name**
 | [HW4](https://classroom.github.com/a/dsZotFAF)   | Nano                            | 5/22                      |
 
 <!--
-| [HW5](https://classroom.github.com/a/RLvZfnKy)   | Type Classes                    | 6/5                       |   -->
+| [HW5](https://classroom.github.com/a/YbCAACu0)   | Type Classes                    | 6/5                       |   -->
 
 
 
