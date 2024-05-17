@@ -396,11 +396,6 @@ Right [ NUM (AlexPosn 0 1 1) 23
       ]      
 ```
 
-```haskell
-λ> parseTokens "%"
-Left "lexical error at 1 line, 1 column"
-```
-
 <br>
 <br>
 <br>
@@ -424,6 +419,24 @@ What is the result of `parseTokens "x+"`
 (I) final
 
     *Answer:* D
+
+<br>
+<br>
+<br>
+<br>
+
+Give an example of a string that would result in lexical error
+
+<br>
+<br>
+<br>
+<br>
+
+
+```haskell
+λ> parseTokens "%"
+Left "lexical error at 1 line, 1 column"
+```
 
 <br>
 <br>

@@ -530,8 +530,6 @@ Which of the following strings are matched by `[a-z A-Z] [a-z A-Z 0-9]*`?
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>      , <span class="dt">PLUS</span> (<span class="dt">AlexPosn</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">4</span>)</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>      , <span class="dt">NUM</span> (<span class="dt">AlexPosn</span> <span class="dv">5</span> <span class="dv">1</span> <span class="dv">6</span>) <span class="dv">4</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>      ]      </span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> parseTokens <span class="st">&quot;%&quot;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Left</span> <span class="st">&quot;lexical error at 1 line, 1 column&quot;</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -544,6 +542,17 @@ Which of the following strings are matched by `[a-z A-Z] [a-z A-Z 0-9]*`?
 <p><strong>(C)</strong> <code class="sourceCode haskell">[<span class="dt">ID</span> <span class="st">&quot;x+&quot;</span>]</code></p>
 <p><strong>(D)</strong> <code class="sourceCode haskell">[<span class="dt">ID</span> <span class="st">&quot;x&quot;</span>, <span class="dt">PLUS</span>]</code></p>
 <p><br></p>
+<p><br>
+<br>
+<br>
+<br></p>
+<p>Give an example of a string that would result in lexical error</p>
+<p><br>
+<br>
+<br>
+<br></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> parseTokens <span class="st">&quot;%&quot;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Left</span> <span class="st">&quot;lexical error at 1 line, 1 column&quot;</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
