@@ -19,9 +19,7 @@ If you get an error when creating a team, **try a different team name**
 | [HW2](https://classroom.github.com/a/7RMcGUB-)   | Random Art                      | 5/3                       |
 | [HW3](https://classroom.github.com/a/nTP6peBZ)   | All about Fold                  | 5/13                      |
 | [HW4](https://classroom.github.com/a/dsZotFAF)   | Nano                            | 5/22                      |
-
-<!--
-| [HW5](https://classroom.github.com/a/YbCAACu0)   | Type Classes                    | 6/5                       |   -->
+| [HW5](https://classroom.github.com/a/YbCAACu0)   | Type Classes                    | 6/5                       |
 
 
 
