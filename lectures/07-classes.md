@@ -792,7 +792,7 @@ what will the following evaluate to?
 
 **(A)** Type error
 
-**(B)** Stack overflow
+**(B)** Runs forever / stack overflow
 
 **(C)** Other runtime error
 
