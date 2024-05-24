@@ -36,7 +36,7 @@ Will help us add cool features to the Nano interpreter!
 1. **Why type classes?**
 2. Standard type classes
 3. Creating new instances
-4. Using type classes
+4. Typeclasses and Polymorphism
 5. Creating new type classes
 
 <br>
@@ -361,7 +361,7 @@ What would be a reasonable type for the equality operator?
 1. Why type classes? [done]
 2. **Standard type classes**
 3. Creating new instances
-4. Using type classes
+4. Typeclasses and Polymorphism
 5. Creating new type classes
 
 <br>
@@ -425,56 +425,6 @@ instance Eq Double
 ...
 ```
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## The `Num` Type Class
-
-The type class `Num` requires that instances define a bunch of arithmetic operations
-
-```haskell
-class Num a where
-  (+) :: a -> a -> a
-  (-) :: a -> a -> a
-  (*) :: a -> a -> a
-  negate :: a -> a
-  abs :: a -> a
-  signum :: a -> a
-  fromInteger :: Integer -> a
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## The `Show` Type Class
-
-The type class `Show` requires that instances be convertible to `String`
-
-```haskell
-class Show a  where
-  show :: a -> String
-```
-
-Indeed, we can test this on different (built-in) types
-
-```haskell
-λ> show 2
-"2"
-
-λ> show 3.14
-"3.14"
-
-λ> show (1, "two", ([],[],[]))
-"(1,\"two\",([],[],[]))"
-```
 
 <br>
 <br>
@@ -515,11 +465,27 @@ A type `T` _is an instance of_ `Ord` if
 1. `T` is *also* an instance of `Eq`, and
 2. It defines functions for comparing values for inequality
 
-<!--
-  TODO
-  - Move Read and type annotations here
-  - Rename "Using Typeclasses" to "Type Classes and Polymorphism"
--->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## The `Num` Type Class
+
+The type class `Num` requires that instances define a bunch of arithmetic operations
+
+```haskell
+class Num a where
+  (+) :: a -> a -> a
+  (-) :: a -> a -> a
+  (*) :: a -> a -> a
+  negate :: a -> a
+  abs :: a -> a
+  signum :: a -> a
+  fromInteger :: Integer -> a
+```
 
 <br>
 <br>
@@ -527,6 +493,122 @@ A type `T` _is an instance of_ `Ord` if
 <br>
 <br>
 <br>
+
+
+## The `Show` Type Class
+
+The type class `Show` requires that instances be convertible to `String`
+
+```haskell
+class Show a  where
+  show :: a -> String
+```
+
+Indeed, we can test this on different (built-in) types
+
+```haskell
+λ> show 2
+"2"
+
+λ> show 3.14
+"3.14"
+
+λ> show (1, "two", ([],[],[]))
+"(1,\"two\",([],[],[]))"
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## The `Read` Typeclass
+
+```haskell
+-- Not the actual definition, but almost:
+class Read a where
+  read :: String -> a
+```
+
+`Read` is the _opposite_ of `Show`
+ 
+  - It requires that every instance `T` can parse a string and turn it into `T`
+  
+  - Just like with `Show`, most standard type are instances of `Read`:
+  
+    - `Int`, `Integer`, `Double`, `Char`, `Bool`, etc
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>  
+<br>
+<br>  
+
+## QUIZ
+
+What does the expression `read "2"` evaluate to?
+
+**(A)** Type error
+
+**(B)** `"2"`
+
+**(C)** `2`
+
+**(D)** `2.0`
+
+**(E)** Run-time error
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+Haskell is foxed!
+
+- Doesn't know _what type_ to convert the string to!
+- Doesn't know _which_ of the `read` functions to run!
+
+Did we want an `Int` or a `Double` or maybe something else altogether?
+
+<br>
+<br>
+
+Thus, here an **explicit type annotation** is needed to tell Haskell
+what to convert the string to: 
+
+```haskell
+λ> (read "2") :: Int
+2
+
+λ> (read "2") :: Float
+2.0
+
+λ> (read "2") :: String
+???
+```
+
+Note the different results due to the different types.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 
 ## Standard Typeclass Hierarchy
 
@@ -553,7 +635,7 @@ because for something to be an `Ord` it must also be an `Eq`.
 1. Why type classes? [done]
 2. Standard type classes [done]
 3. **Creating new instances**
-4. Using type classes
+4. Typeclasses and Polymorphism
 5. Creating new type classes
 
 <br>
@@ -859,7 +941,7 @@ True
 1. Why type classes? [done]
 2. Standard type classes [done]
 3. Creating new instances [done]
-4. **Using type classes**
+4. **Typeclasses and Polymorphism**
 5. Creating new type classes
 
 <br>
@@ -987,91 +1069,7 @@ Write an optimized version of
 
 _(How) do you need to change the types of `get` and `add`?_
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-## Explicit Type Annotations
-
-Consider the standard typeclass `Read`:
-
-```haskell
--- Not the actual definition, but almost:
-class Read a where
-  read :: String -> a
-```
-
-`Read` is the _opposite_ of `Show`
- 
-  - It requires that every instance `T` can parse a string and turn it into `T`
-  
-  - Just like with `Show`, most standard type are instances of `Read`:
-  
-    - `Int`, `Integer`, `Double`, `Char`, `Bool`, etc
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>  
-<br>
-<br>  
-
-## QUIZ
-
-What does the expression `read "2"` evaluate to?
-
-**(A)** Type error
-
-**(B)** `"2"`
-
-**(C)** `2`
-
-**(D)** `2.0`
-
-**(E)** Run-time error
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-Haskell is foxed!
-
-- Doesn't know _what type_ to convert the string to!
-- Doesn't know _which_ of the `read` functions to run!
-
-Did we want an `Int` or a `Double` or maybe something else altogether?
-
-<br>
-<br>
-
-Thus, here an **explicit type annotation** is needed to tell Haskell
-what to convert the string to: 
-
-```haskell
-λ> (read "2") :: Int
-2
-
-λ> (read "2") :: Float
-2.0
-
-λ> (read "2") :: String
-???
-```
-
-Note the different results due to the different types.
 
 <br>
 <br>
@@ -1089,7 +1087,7 @@ Note the different results due to the different types.
 1. Why type classes? [done]
 2. Standard type classes [done]
 3. Creating new instances [done]
-4. Using type classes [done]
+4. Typeclasses and Polymorphism [done]
 5. **Creating new type classes**
 
 <br>

@@ -260,7 +260,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li><strong>Why type classes?</strong></li>
 <li>Standard type classes</li>
 <li>Creating new instances</li>
-<li>Using type classes</li>
+<li>Typeclasses and Polymorphism</li>
 <li>Creating new type classes</li>
 </ol>
 <p><br>
@@ -497,7 +497,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>Why type classes? [done]</li>
 <li><strong>Standard type classes</strong></li>
 <li>Creating new instances</li>
-<li>Using type classes</li>
+<li>Typeclasses and Polymorphism</li>
 <li>Creating new type classes</li>
 </ol>
 <p><br>
@@ -552,54 +552,19 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br>
 <br></p>
-<h2 id="the-num-type-class">The <code class="sourceCode haskell"><span class="dt">Num</span></code> Type Class</h2>
-<p>The type class <code class="sourceCode haskell"><span class="dt">Num</span></code> requires that instances define a bunch of arithmetic operations</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Num</span> a <span class="kw">where</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  (+) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  (-) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  (*) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  negate ::</span> a <span class="ot">-&gt;</span> a</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ot">  abs ::</span> a <span class="ot">-&gt;</span> a</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ot">  signum ::</span> a <span class="ot">-&gt;</span> a</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  fromInteger ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> a</span></code></pre></div>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
-<h2 id="the-show-type-class">The <code class="sourceCode haskell"><span class="dt">Show</span></code> Type Class</h2>
-<p>The type class <code class="sourceCode haskell"><span class="dt">Show</span></code> requires that instances be convertible to <code class="sourceCode haskell"><span class="dt">String</span></code></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Show</span> a  <span class="kw">where</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  show ::</span> a <span class="ot">-&gt;</span> <span class="dt">String</span></span></code></pre></div>
-<p>Indeed, we can test this on different (built-in) types</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="fu">show</span> <span class="dv">2</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;2&quot;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="fu">show</span> <span class="fl">3.14</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;3.14&quot;</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="fu">show</span> (<span class="dv">1</span>, <span class="st">&quot;two&quot;</span>, ([],[],[]))</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;(1,\&quot;two\&quot;,([],[],[]))&quot;</span></span></code></pre></div>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
 <h2 id="the-ord-typeclass">The <code class="sourceCode haskell"><span class="dt">Ord</span></code> Typeclass</h2>
 <p>The type class <code class="sourceCode haskell"><span class="dt">Ord</span></code> is for totally ordered values:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> <span class="dt">Ord</span> a <span class="kw">where</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  (&lt;)  ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  (&lt;=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  (&gt;)  ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  (&gt;=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> <span class="dt">Ord</span> a <span class="kw">where</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  (&lt;)  ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  (&lt;=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  (&gt;)  ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  (&gt;=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span></code></pre></div>
 <p>For example:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="dv">2</span> <span class="op">&lt;</span> <span class="dv">3</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dt">True</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="st">&quot;cat&quot;</span> <span class="op">&lt;</span> <span class="st">&quot;dog&quot;</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="dt">True</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="dv">2</span> <span class="op">&lt;</span> <span class="dv">3</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="dt">True</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="st">&quot;cat&quot;</span> <span class="op">&lt;</span> <span class="st">&quot;dog&quot;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="dt">True</span></span></code></pre></div>
 <p><br>
 <br></p>
 <p>Note <code class="sourceCode haskell"><span class="dt">Eq</span> a <span class="ot">=&gt;</span></code> in the class definition!</p>
@@ -608,11 +573,104 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li><code class="sourceCode haskell"><span class="dt">T</span></code> is <em>also</em> an instance of <code class="sourceCode haskell"><span class="dt">Eq</span></code>, and</li>
 <li>It defines functions for comparing values for inequality</li>
 </ol>
-<!--
-  TODO
-  - Move Read and type annotations here
-  - Rename "Using Typeclasses" to "Type Classes and Polymorphism"
--->
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="the-num-type-class">The <code class="sourceCode haskell"><span class="dt">Num</span></code> Type Class</h2>
+<p>The type class <code class="sourceCode haskell"><span class="dt">Num</span></code> requires that instances define a bunch of arithmetic operations</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Num</span> a <span class="kw">where</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  (+) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  (-) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  (*) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  negate ::</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ot">  abs ::</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ot">  signum ::</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  fromInteger ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> a</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="the-show-type-class">The <code class="sourceCode haskell"><span class="dt">Show</span></code> Type Class</h2>
+<p>The type class <code class="sourceCode haskell"><span class="dt">Show</span></code> requires that instances be convertible to <code class="sourceCode haskell"><span class="dt">String</span></code></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Show</span> a  <span class="kw">where</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  show ::</span> a <span class="ot">-&gt;</span> <span class="dt">String</span></span></code></pre></div>
+<p>Indeed, we can test this on different (built-in) types</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="fu">show</span> <span class="dv">2</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;2&quot;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="fu">show</span> <span class="fl">3.14</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;3.14&quot;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="fu">show</span> (<span class="dv">1</span>, <span class="st">&quot;two&quot;</span>, ([],[],[]))</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;(1,\&quot;two\&quot;,([],[],[]))&quot;</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="the-read-typeclass">The <code class="sourceCode haskell"><span class="dt">Read</span></code> Typeclass</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Not the actual definition, but almost:</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Read</span> a <span class="kw">where</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  read ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> a</span></code></pre></div>
+<p><code class="sourceCode haskell"><span class="dt">Read</span></code> is the <em>opposite</em> of <code class="sourceCode haskell"><span class="dt">Show</span></code></p>
+<ul>
+<li><p>It requires that every instance <code class="sourceCode haskell"><span class="dt">T</span></code> can parse a string and turn it into <code class="sourceCode haskell"><span class="dt">T</span></code></p></li>
+<li><p>Just like with <code class="sourceCode haskell"><span class="dt">Show</span></code>, most standard type are instances of <code class="sourceCode haskell"><span class="dt">Read</span></code>:</p>
+<ul>
+<li><code class="sourceCode haskell"><span class="dt">Int</span></code>, <code class="sourceCode haskell"><span class="dt">Integer</span></code>, <code class="sourceCode haskell"><span class="dt">Double</span></code>, <code class="sourceCode haskell"><span class="dt">Char</span></code>, <code class="sourceCode haskell"><span class="dt">Bool</span></code>, etc</li>
+</ul></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br />
+<br>
+<br></p>
+<h2 id="quiz-2">QUIZ</h2>
+<p>What does the expression <code class="sourceCode haskell"><span class="fu">read</span> <span class="st">&quot;2&quot;</span></code> evaluate to?</p>
+<p><strong>(A)</strong> Type error</p>
+<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="st">&quot;2&quot;</span></code></p>
+<p><strong>(C)</strong> <code class="sourceCode haskell"><span class="dv">2</span></code></p>
+<p><strong>(D)</strong> <code class="sourceCode haskell"><span class="fl">2.0</span></code></p>
+<p><strong>(E)</strong> Run-time error</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p>Haskell is foxed!</p>
+<ul>
+<li>Doesn’t know <em>what type</em> to convert the string to!</li>
+<li>Doesn’t know <em>which</em> of the <code class="sourceCode haskell"><span class="fu">read</span></code> functions to run!</li>
+</ul>
+<p>Did we want an <code class="sourceCode haskell"><span class="dt">Int</span></code> or a <code class="sourceCode haskell"><span class="dt">Double</span></code> or maybe something else altogether?</p>
+<p><br>
+<br></p>
+<p>Thus, here an <strong>explicit type annotation</strong> is needed to tell Haskell
+what to convert the string to:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">Int</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">Float</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fl">2.0</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">String</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="op">???</span></span></code></pre></div>
+<p>Note the different results due to the different types.</p>
 <p><br>
 <br>
 <br>
@@ -642,7 +700,7 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <li>Why type classes? [done]</li>
 <li>Standard type classes [done]</li>
 <li><strong>Creating new instances</strong></li>
-<li>Using type classes</li>
+<li>Typeclasses and Polymorphism</li>
 <li>Creating new type classes</li>
 </ol>
 <p><br>
@@ -657,19 +715,19 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <h2 id="showing-your-colors">Showing Your Colors</h2>
 <!-- Add parameters? Nice to show deriving -->
 <p>Let’s create a new datatype:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Color</span> <span class="ot">=</span> <span class="dt">Red</span> <span class="op">|</span> <span class="dt">Green</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Color</span> <span class="ot">=</span> <span class="dt">Red</span> <span class="op">|</span> <span class="dt">Green</span></span></code></pre></div>
 <p>and play with it in GHCi:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="kw">let</span> col <span class="ot">=</span> <span class="dt">Red</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span><span class="kw">type</span> col</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ot">x ::</span> <span class="dt">Color</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="kw">let</span> col <span class="ot">=</span> <span class="dt">Red</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span><span class="kw">type</span> col</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="ot">x ::</span> <span class="dt">Color</span></span></code></pre></div>
 <p>So far, so good… but we <strong>cannot view</strong> them!</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> col</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>interactive<span class="op">&gt;:</span><span class="dv">1</span><span class="op">:</span><span class="dv">0</span><span class="op">:</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">No</span> <span class="kw">instance</span> for (<span class="dt">Show</span> <span class="dt">Color</span>)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>      arising from a use <span class="kw">of</span> <span class="ot">`print' at &lt;interactive&gt;:1:0</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    Possible fix: add an instance declaration for (Show Color)</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    In a stmt of a 'do' expression: print it</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> col</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>interactive<span class="op">&gt;:</span><span class="dv">1</span><span class="op">:</span><span class="dv">0</span><span class="op">:</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">No</span> <span class="kw">instance</span> for (<span class="dt">Show</span> <span class="dt">Color</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>      arising from a use <span class="kw">of</span> <span class="ot">`print' at &lt;interactive&gt;:1:0</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    Possible fix: add an instance declaration for (Show Color)</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    In a stmt of a 'do' expression: print it</span></span></code></pre></div>
 <p>Why is this happening?</p>
 <p><br>
 <br>
@@ -687,14 +745,14 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <br>
 <br></p>
 <p>We also <strong>cannot compare</strong> colors!</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> col <span class="op">==</span> <span class="dt">Green</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>interactive<span class="op">&gt;:</span><span class="dv">1</span><span class="op">:</span><span class="dv">0</span><span class="op">:</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">No</span> <span class="kw">instance</span> for (<span class="dt">Eq</span> <span class="dt">Color</span>)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>      arising from a use <span class="kw">of</span> <span class="ot">`==' at &lt;interactive&gt;:1:0-5</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    Possible fix: add an instance declaration for (Eq Color)</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    In the expression: col == Green</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="ot">    In the definition of `</span>it'<span class="op">:</span> it <span class="ot">=</span> col <span class="op">==</span> <span class="dt">Green</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> col <span class="op">==</span> <span class="dt">Green</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>interactive<span class="op">&gt;:</span><span class="dv">1</span><span class="op">:</span><span class="dv">0</span><span class="op">:</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">No</span> <span class="kw">instance</span> for (<span class="dt">Eq</span> <span class="dt">Color</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>      arising from a use <span class="kw">of</span> <span class="ot">`==' at &lt;interactive&gt;:1:0-5</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    Possible fix: add an instance declaration for (Eq Color)</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    In the expression: col == Green</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="ot">    In the definition of `</span>it'<span class="op">:</span> it <span class="ot">=</span> col <span class="op">==</span> <span class="dt">Green</span></span></code></pre></div>
 <p><br>
 <br></p>
 <p>How do we <em>add an instance declaration</em> for <code class="sourceCode haskell"><span class="dt">Show</span> <span class="dt">Color</span></code> and <code class="sourceCode haskell"><span class="dt">Eq</span> <span class="dt">Color</span></code>?</p>
@@ -713,12 +771,12 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <ul>
 <li><strong>create instances</strong> of <code class="sourceCode haskell"><span class="dt">Eq</span></code> and <code class="sourceCode haskell"><span class="dt">Show</span></code> for that type:</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Color</span> <span class="kw">where</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show</span> <span class="dt">Red</span>   <span class="ot">=</span> <span class="st">&quot;Red&quot;</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show</span> <span class="dt">Green</span> <span class="ot">=</span> <span class="st">&quot;Green&quot;</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">???</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Color</span> <span class="kw">where</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show</span> <span class="dt">Red</span>   <span class="ot">=</span> <span class="st">&quot;Red&quot;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show</span> <span class="dt">Green</span> <span class="ot">=</span> <span class="st">&quot;Green&quot;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -731,15 +789,15 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <br></p>
 <h2 id="exercise-creating-instances">EXERCISE: Creating Instances</h2>
 <p>Create an instance of <code class="sourceCode haskell"><span class="dt">Eq</span></code> for <code class="sourceCode haskell"><span class="dt">Color</span></code>:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Color</span> <span class="ot">=</span> <span class="dt">Red</span> <span class="op">|</span> <span class="dt">Green</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">???</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- Reminder:</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span>  <span class="dt">Eq</span> a  <span class="kw">where</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  (==) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="ot">  (/=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Color</span> <span class="ot">=</span> <span class="dt">Red</span> <span class="op">|</span> <span class="dt">Green</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">???</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- Reminder:</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span>  <span class="dt">Eq</span> a  <span class="kw">where</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  (==) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="ot">  (/=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -750,23 +808,23 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <br>
 <br>
 <br></p>
-<h2 id="quiz-2">QUIZ</h2>
+<h2 id="quiz-3">QUIZ</h2>
 <p>Which of the following <code class="sourceCode haskell"><span class="dt">Eq</span></code> instances for <code class="sourceCode haskell"><span class="dt">Color</span></code> are valid?</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- (A)</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) <span class="dt">Red</span>   <span class="dt">Red</span>   <span class="ot">=</span> <span class="dt">True</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) <span class="dt">Green</span> <span class="dt">Green</span> <span class="ot">=</span> <span class="dt">True</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) _     _     <span class="ot">=</span> <span class="dt">False</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- (B)</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) <span class="dt">Red</span>   <span class="dt">Red</span>   <span class="ot">=</span> <span class="dt">False</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) <span class="dt">Green</span> <span class="dt">Green</span> <span class="ot">=</span> <span class="dt">False</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) _     _     <span class="ot">=</span> <span class="dt">True</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">-- (C) Neither of the above</span></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co">-- (D) Either of the above</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- (A)</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) <span class="dt">Red</span>   <span class="dt">Red</span>   <span class="ot">=</span> <span class="dt">True</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) <span class="dt">Green</span> <span class="dt">Green</span> <span class="ot">=</span> <span class="dt">True</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) _     _     <span class="ot">=</span> <span class="dt">False</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- (B)</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) <span class="dt">Red</span>   <span class="dt">Red</span>   <span class="ot">=</span> <span class="dt">False</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) <span class="dt">Green</span> <span class="dt">Green</span> <span class="ot">=</span> <span class="dt">False</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) _     _     <span class="ot">=</span> <span class="dt">True</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co">-- (C) Neither of the above</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co">-- (D) Either of the above</span></span></code></pre></div>
 <p><br></p>
 <p><br>
 <br>
@@ -780,12 +838,12 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <br></p>
 <h2 id="default-method-implementations">Default Method Implementations</h2>
 <p>The <code class="sourceCode haskell"><span class="dt">Eq</span></code> class is actually defined like this:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span>  <span class="dt">Eq</span> a  <span class="kw">where</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  (==) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) x y <span class="ot">=</span> <span class="fu">not</span> (x <span class="op">/=</span> y) <span class="co">-- Default implementation!</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  (/=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) x y <span class="ot">=</span> <span class="fu">not</span> (x <span class="op">==</span> y) <span class="co">-- Default implementation!</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span>  <span class="dt">Eq</span> a  <span class="kw">where</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  (==) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) x y <span class="ot">=</span> <span class="fu">not</span> (x <span class="op">/=</span> y) <span class="co">-- Default implementation!</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  (/=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) x y <span class="ot">=</span> <span class="fu">not</span> (x <span class="op">==</span> y) <span class="co">-- Default implementation!</span></span></code></pre></div>
 <p><br>
 <br></p>
 <p>The class provides <strong>default implementations</strong> for its methods</p>
@@ -793,11 +851,11 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <li><p>An instance can define <em>any</em> of the two methods and get the other one for free</p></li>
 <li><p>Use <code class="sourceCode haskell"><span class="op">:</span>info</code> to find out which methods you have to define:</p></li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span>info <span class="dt">Eq</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span>  <span class="dt">Eq</span> a  <span class="kw">where</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  (==) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  (/=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="ot">{-# MINIMAL (==) | (/=) #-}</span> <span class="co">-- HERE HERE!!!</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span>info <span class="dt">Eq</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span>  <span class="dt">Eq</span> a  <span class="kw">where</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  (==) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  (/=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="ot">{-# MINIMAL (==) | (/=) #-}</span> <span class="co">-- HERE HERE!!!</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -805,12 +863,12 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <br>
 <br>
 <br></p>
-<h2 id="quiz-3">QUIZ</h2>
+<h2 id="quiz-4">QUIZ</h2>
 <p>If you define:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">-- Nothing here!</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">-- Nothing here!</span></span></code></pre></div>
 <p>what will the following evaluate to?</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="dt">Red</span> <span class="op">==</span> <span class="dt">Green</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="dt">Red</span> <span class="op">==</span> <span class="dt">Green</span></span></code></pre></div>
 <p><strong>(A)</strong> Type error</p>
 <p><strong>(B)</strong> Runs forever / stack overflow</p>
 <p><strong>(C)</strong> Other runtime error</p>
@@ -831,16 +889,16 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <p>This is silly: we <em>should</em> be able to compare and view <code class="sourceCode haskell"><span class="dt">Color</span></code>s “automatically”!</p>
 <p>Haskell lets us <em>automatically derive</em> functions for some classes in the standard library.</p>
 <p>To do so, we simply dress up the data type definition with</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Color</span> <span class="ot">=</span> <span class="dt">Red</span> <span class="op">|</span> <span class="dt">Green</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Show</span>) <span class="co">-- please generate instances automatically!</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Color</span> <span class="ot">=</span> <span class="dt">Red</span> <span class="op">|</span> <span class="dt">Green</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Show</span>) <span class="co">-- please generate instances automatically!</span></span></code></pre></div>
 <p>Now we have</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="kw">let</span> col <span class="ot">=</span> <span class="dt">Red</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> col</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="dt">Red</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> col <span class="op">==</span> <span class="dt">Red</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="dt">True</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="kw">let</span> col <span class="ot">=</span> <span class="dt">Red</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> col</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="dt">Red</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> col <span class="op">==</span> <span class="dt">Red</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="dt">True</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -856,7 +914,7 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <li>Why type classes? [done]</li>
 <li>Standard type classes [done]</li>
 <li>Creating new instances [done]</li>
-<li><strong>Using type classes</strong></li>
+<li><strong>Typeclasses and Polymorphism</strong></li>
 <li>Creating new type classes</li>
 </ol>
 <p><br>
@@ -874,10 +932,10 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <p><br>
 <br></p>
 <p>Let’s build a small library for dictionaries mapping keys <code class="sourceCode haskell">k</code> to values <code class="sourceCode haskell">v</code></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Dict</span> k v</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">Empty</span>                <span class="co">-- empty dictionary</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">Bind</span> k v (<span class="dt">Dict</span> k v)  <span class="co">-- bind key `k` to the value `v`</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Dict</span> k v</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">Empty</span>                <span class="co">-- empty dictionary</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">Bind</span> k v (<span class="dt">Dict</span> k v)  <span class="co">-- bind key `k` to the value `v`</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -887,27 +945,27 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <br></p>
 <h2 id="the-api">The API</h2>
 <p>We want to be able to do the following with <code class="sourceCode haskell"><span class="dt">Dict</span></code>:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">let</span> dict0 <span class="ot">=</span> add <span class="st">&quot;cat&quot;</span> <span class="fl">10.0</span> (add <span class="st">&quot;dog&quot;</span> <span class="fl">20.0</span> empty)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get <span class="st">&quot;cat&quot;</span> dict0</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get <span class="st">&quot;dog&quot;</span> dict0</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="dv">20</span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get <span class="st">&quot;horse&quot;</span> dict0</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span><span class="op">:</span> key <span class="fu">not</span> found</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">let</span> dict0 <span class="ot">=</span> add <span class="st">&quot;cat&quot;</span> <span class="fl">10.0</span> (add <span class="st">&quot;dog&quot;</span> <span class="fl">20.0</span> empty)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get <span class="st">&quot;cat&quot;</span> dict0</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get <span class="st">&quot;dog&quot;</span> dict0</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="dv">20</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get <span class="st">&quot;horse&quot;</span> dict0</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span><span class="op">:</span> key <span class="fu">not</span> found</span></code></pre></div>
 <p><br>
 <br></p>
 <p>Okay, lets implement!</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | 'add key val dict' returns a new dictionary</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- | that additionally maps `key` to `val`</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="ot">add ::</span> k <span class="ot">-&gt;</span> v <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>add key val dict <span class="ot">=</span> <span class="op">???</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- | 'get key dict' returns the value of `key` </span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> k <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v <span class="ot">-&gt;</span> v</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>get key dict <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | 'add key val dict' returns a new dictionary</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- | that additionally maps `key` to `val`</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ot">add ::</span> k <span class="ot">-&gt;</span> v <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>add key val dict <span class="ot">=</span> <span class="op">???</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- | 'get key dict' returns the value of `key` </span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> k <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v <span class="ot">-&gt;</span> v</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>get key dict <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -931,8 +989,8 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <br></p>
 <h2 id="constraint-propagation">Constraint Propagation</h2>
 <p>Lets <em>delete</em> the types of <code class="sourceCode haskell">add</code> and <code class="sourceCode haskell">get</code> and see what Haskell says their types are!</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span><span class="kw">type</span> get</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> (<span class="dt">Eq</span> k) <span class="ot">=&gt;</span> k <span class="ot">-&gt;</span> v <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span><span class="kw">type</span> get</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> (<span class="dt">Eq</span> k) <span class="ot">=&gt;</span> k <span class="ot">-&gt;</span> v <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v</span></code></pre></div>
 <p>Haskell tells us that we can use any <code class="sourceCode haskell">k</code> type as a <em>key</em>
 as long as this type is an instance of the <code class="sourceCode haskell"><span class="dt">Eq</span></code> typeclass.</p>
 <p>How, did GHC figure this out?</p>
@@ -963,76 +1021,12 @@ we see a key that’s larger than the one we’re looking for</li>
 <br>
 <br>
 <br></p>
-<h2 id="explicit-type-annotations">Explicit Type Annotations</h2>
-<p>Consider the standard typeclass <code class="sourceCode haskell"><span class="dt">Read</span></code>:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Not the actual definition, but almost:</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Read</span> a <span class="kw">where</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  read ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> a</span></code></pre></div>
-<p><code class="sourceCode haskell"><span class="dt">Read</span></code> is the <em>opposite</em> of <code class="sourceCode haskell"><span class="dt">Show</span></code></p>
-<ul>
-<li><p>It requires that every instance <code class="sourceCode haskell"><span class="dt">T</span></code> can parse a string and turn it into <code class="sourceCode haskell"><span class="dt">T</span></code></p></li>
-<li><p>Just like with <code class="sourceCode haskell"><span class="dt">Show</span></code>, most standard type are instances of <code class="sourceCode haskell"><span class="dt">Read</span></code>:</p>
-<ul>
-<li><code class="sourceCode haskell"><span class="dt">Int</span></code>, <code class="sourceCode haskell"><span class="dt">Integer</span></code>, <code class="sourceCode haskell"><span class="dt">Double</span></code>, <code class="sourceCode haskell"><span class="dt">Char</span></code>, <code class="sourceCode haskell"><span class="dt">Bool</span></code>, etc</li>
-</ul></li>
-</ul>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><br />
-<br>
-<br></p>
-<h2 id="quiz-4">QUIZ</h2>
-<p>What does the expression <code class="sourceCode haskell"><span class="fu">read</span> <span class="st">&quot;2&quot;</span></code> evaluate to?</p>
-<p><strong>(A)</strong> Type error</p>
-<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="st">&quot;2&quot;</span></code></p>
-<p><strong>(C)</strong> <code class="sourceCode haskell"><span class="dv">2</span></code></p>
-<p><strong>(D)</strong> <code class="sourceCode haskell"><span class="fl">2.0</span></code></p>
-<p><strong>(E)</strong> Run-time error</p>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
-<p>Haskell is foxed!</p>
-<ul>
-<li>Doesn’t know <em>what type</em> to convert the string to!</li>
-<li>Doesn’t know <em>which</em> of the <code class="sourceCode haskell"><span class="fu">read</span></code> functions to run!</li>
-</ul>
-<p>Did we want an <code class="sourceCode haskell"><span class="dt">Int</span></code> or a <code class="sourceCode haskell"><span class="dt">Double</span></code> or maybe something else altogether?</p>
-<p><br>
-<br></p>
-<p>Thus, here an <strong>explicit type annotation</strong> is needed to tell Haskell
-what to convert the string to:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">Int</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">Float</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fl">2.0</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">String</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="op">???</span></span></code></pre></div>
-<p>Note the different results due to the different types.</p>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
 <h2 id="type-classes-outline-4">Type Classes: Outline</h2>
 <ol type="1">
 <li>Why type classes? [done]</li>
 <li>Standard type classes [done]</li>
 <li>Creating new instances [done]</li>
-<li>Using type classes [done]</li>
+<li>Typeclasses and Polymorphism [done]</li>
 <li><strong>Creating new type classes</strong></li>
 </ol>
 <p><br>
