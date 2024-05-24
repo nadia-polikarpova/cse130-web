@@ -955,13 +955,6 @@ True
 <br>
 <br>
 
-## Using Typeclasses
-
-Now let's see how to write code that uses type classes!
-
-<br>
-<br>
-
 Let's build a small library for dictionaries mapping keys `k` to values `v`
 
 ```haskell
