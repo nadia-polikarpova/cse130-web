@@ -902,16 +902,16 @@ data Dict k v
 We want to be able to do the following with `Dict`:
 
 ```haskell
--- >>> let dict0 = add "cat" 10.0 (add "dog" 20.0 empty)
+>>> let dict0 = add "cat" 10.0 (add "dog" 20.0 empty)
 
--- >>> get "cat" dict0
--- 10
+>>> get "cat" dict0
+10
 
--- >>> get "dog" dict0
--- 20
+>>> get "dog" dict0
+20
 
--- >>> get "horse" dict0
--- error: key not found
+>>> get "horse" dict0
+error: key not found
 ```
 
 <br>
@@ -1133,14 +1133,14 @@ transferring data around. Here is an example:
 
 ```json
 { "name"    : "Nadia"
-, "age"     : 38.0
-, "likes"   : [ "poke", "coffee", "pasta" ]
+, "age"     : 39.0
+, "likes"   : [ "poke", "tea", "pasta" ]
 , "hates"   : [ "beets" , "milk" ]
-, "lunches" : [ {"day" : "mon", "loc" : "rubios"}
+, "lunches" : [ {"day" : "mon", "loc" : "fan fan"}
               , {"day" : "tue", "loc" : "home"}
               , {"day" : "wed", "loc" : "curry up now"}
               , {"day" : "thu", "loc" : "home"}
-              , {"day" : "fri", "loc" : "santorini"} ]
+              , {"day" : "fri", "loc" : "rubios"} ]
 }
 ```
 
@@ -1186,7 +1186,7 @@ js1 =
        ,("likes",   JArr [ JStr "poke", JStr "coffee", JStr "pasta"])
        ,("hates",   JArr [ JStr "beets", JStr "milk"])
        ,("lunches", JArr [ JObj [("day",  JStr "mon")
-                                ,("loc",  JStr "rubios")]
+                                ,("loc",  JStr "fan fan")]
                          , JObj [("day",  JStr "tue")
                                 ,("loc",  JStr "home")]
                          , JObj [("day",  JStr "wed")
@@ -1194,7 +1194,7 @@ js1 =
                          , JObj [("day",  JStr "thu")
                                 ,("loc",  JStr "home")]
                          , JObj [("day",  JStr "fri")
-                                ,("loc",  JStr "santorini")]
+                                ,("loc",  JStr "rubios")]
                          ])
        ]  
 ```
@@ -1293,8 +1293,8 @@ JNum 4.0
 λ> listToJSON stringToJSON ["poke", "coffee", "pasta"]
 JArr [JStr "poke",JStr "coffee",JStr "pasta"]
 
-λ> mapToJSON stringToJSON [("day", "mon"), ("loc", "rubios")]
-JObj [("day",JStr "mon"),("loc",JStr "rubios")]
+λ> mapToJSON stringToJSON [("day", "mon"), ("loc", "fan fan")]
+JObj [("day",JStr "mon"),("loc",JStr "fan fan")]
 ```
 <br>
 <br>
@@ -1302,7 +1302,7 @@ JObj [("day",JStr "mon"),("loc",JStr "rubios")]
 This gets more hideous when you have richer objects like
 
 ```haskell
-lunches = [ [("day", "mon"), ("loc", "rubios")]
+lunches = [ [("day", "mon"), ("loc", "fan fan")]
           , [("day", "tue"), ("loc", "home")]
           ]
 ```
@@ -1311,7 +1311,7 @@ because we have to go through gymnastics like
 
 ```haskell
 λ> listToJSON (mapToJSON stringToJSON) lunches
-JArr [ JObj [("day",JStr "monday")   ,("loc",JStr "rubios")]
+JArr [ JObj [("day",JStr "monday")   ,("loc",JStr "fan fan")]
      , JObj [("day",JStr "tuesday")  ,("loc",JStr "home")]
      ]
 ```

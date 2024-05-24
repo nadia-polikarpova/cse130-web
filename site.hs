@@ -55,7 +55,7 @@ main = hakyll $ do
   match "lectures/03-*"    $ crunchWithCtxCustom "final" postCtx
   match "lectures/04-*"    $ crunchWithCtxCustom "final" postCtx
   match "lectures/05-*"    $ crunchWithCtxCustom "final" postCtx
-  match "lectures/06-*"    $ crunchWithCtxCustom "lecture" postCtx
+  match "lectures/06-*"    $ crunchWithCtxCustom "final" postCtx
   match "lectures/07-*"    $ crunchWithCtxCustom "lecture" postCtx
   match "lectures/08-*"    $ crunchWithCtxCustom "lecture" postCtx
   match "assignments/*"    $ crunchWithCtx postCtx
