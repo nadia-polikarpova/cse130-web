@@ -32,8 +32,8 @@ Lecture schedule is subject to change!
 | 5/22       | contd.                          |                           |
 | 5/24       | contd.                          |                           |
 | 5/27       | *No lecture: Memorial Day*      |                           |
-| 5/29       | contd.                          |                           |
-| 5/31       | Monads                          |                           |
+| 5/29       | Monads                          | [html][lec9]              |
+| 5/31       | contd.                          |                           |
 | 6/3        | contd.                          |                           |
 | 6/5        | contd.                          |                           |
 | 6/7        | Final Review                    |                           |
