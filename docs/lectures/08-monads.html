@@ -1459,15 +1459,23 @@ and if they fail to provide a non-empty string, it returns a default value <code
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>                    put (c <span class="op">+</span> <span class="dv">1</span>) <span class="op">&gt;&gt;=</span> \_ <span class="ot">-&gt;</span></span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">return</span> c</span></code></pre></div>
 <p><br>
+<br>
+<br>
+<br>
+<br>
 <br></p>
-<p>How should we define these?</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Computation whose return value is the current counter value</span></span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> <span class="dt">Counting</span> <span class="dt">Cnt</span></span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>get <span class="ot">=</span> <span class="op">???</span></span>
-<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Computation that updates the counter value to `newCnt`</span></span>
-<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a><span class="ot">put ::</span> <span class="dt">Cnt</span> <span class="ot">-&gt;</span> <span class="dt">Counting</span> ()</span>
-<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a>put newCnt <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<h3 id="exercise-get-and-put">EXERCISE: get and put</h3>
+<p>Implement functions <code class="sourceCode haskell">get</code> and <code class="sourceCode haskell">put</code>, which would allow us to implement <code class="sourceCode haskell"><span class="dt">Next</span></code> as</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>eval <span class="dt">Next</span> <span class="ot">=</span> get         <span class="op">&gt;&gt;=</span> \c <span class="ot">-&gt;</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>            put (c <span class="op">+</span> <span class="dv">1</span>) <span class="op">&gt;&gt;=</span> \_ <span class="ot">-&gt;</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">return</span> c</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Computation whose return value is the current counter value</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> <span class="dt">Counting</span> <span class="dt">Cnt</span></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>get <span class="ot">=</span> <span class="op">???</span></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Computation that updates the counter value to `newCnt`</span></span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a><span class="ot">put ::</span> <span class="dt">Cnt</span> <span class="ot">-&gt;</span> <span class="dt">Counting</span> ()</span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a>put newCnt <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1476,13 +1484,13 @@ and if they fail to provide a non-empty string, it returns a default value <code
 <br>
 <br>
 <br></p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Computation whose return value is the current counter value</span></span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> <span class="dt">Counting</span> <span class="dt">Cnt</span></span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>get <span class="ot">=</span> \cnt <span class="ot">-&gt;</span> (cnt, cnt)</span>
-<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Computation that updates the counter value to `newCnt`</span></span>
-<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a><span class="ot">put ::</span> <span class="dt">Cnt</span> <span class="ot">-&gt;</span> <span class="dt">Counting</span> ()</span>
-<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a>put newCnt <span class="ot">=</span> \_ <span class="ot">-&gt;</span> (newCnt, ())</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Computation whose return value is the current counter value</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> <span class="dt">Counting</span> <span class="dt">Cnt</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>get <span class="ot">=</span> \cnt <span class="ot">-&gt;</span> (cnt, cnt)</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Computation that updates the counter value to `newCnt`</span></span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="ot">put ::</span> <span class="dt">Cnt</span> <span class="ot">-&gt;</span> <span class="dt">Counting</span> ()</span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>put newCnt <span class="ot">=</span> \_ <span class="ot">-&gt;</span> (newCnt, ())</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1496,27 +1504,27 @@ and if they fail to provide a non-empty string, it returns a default value <code
 <ul>
 <li>To do that, we need to make it a new datatype</li>
 </ul>
-<div class="sourceCode" id="cb78"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Counting</span> a <span class="ot">=</span> <span class="dt">C</span> (<span class="dt">Cnt</span> <span class="ot">-&gt;</span> (<span class="dt">Cnt</span>, a))</span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Monad</span> <span class="dt">Counting</span> <span class="kw">where</span></span>
-<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  (&gt;&gt;=) ::</span> <span class="dt">Counting</span> a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">Counting</span> b) <span class="ot">-&gt;</span> <span class="dt">Counting</span> b</span>
-<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>  (<span class="op">&gt;&gt;=</span>) (<span class="dt">C</span> step) process <span class="ot">=</span> <span class="dt">C</span> final</span>
-<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">where</span></span>
-<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>      final cnt <span class="ot">=</span> <span class="kw">let</span> </span>
-<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>                    (cnt', v) <span class="ot">=</span> step cnt</span>
-<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">C</span> nextStep <span class="ot">=</span> process v      </span>
-<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a>                  <span class="kw">in</span> nextStep cnt' </span>
-<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a><span class="ot">  return ::</span> a <span class="ot">-&gt;</span> <span class="dt">Result</span> a</span>
-<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> v <span class="ot">=</span> <span class="dt">C</span> (\cnt <span class="ot">-&gt;</span> (cnt, v))</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Counting</span> a <span class="ot">=</span> <span class="dt">C</span> (<span class="dt">Cnt</span> <span class="ot">-&gt;</span> (<span class="dt">Cnt</span>, a))</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Monad</span> <span class="dt">Counting</span> <span class="kw">where</span></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  (&gt;&gt;=) ::</span> <span class="dt">Counting</span> a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">Counting</span> b) <span class="ot">-&gt;</span> <span class="dt">Counting</span> b</span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>  (<span class="op">&gt;&gt;=</span>) (<span class="dt">C</span> step) process <span class="ot">=</span> <span class="dt">C</span> final</span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">where</span></span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>      final cnt <span class="ot">=</span> <span class="kw">let</span> </span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>                    (cnt', v) <span class="ot">=</span> step cnt</span>
+<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">C</span> nextStep <span class="ot">=</span> process v      </span>
+<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a>                  <span class="kw">in</span> nextStep cnt' </span>
+<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a><span class="ot">  return ::</span> a <span class="ot">-&gt;</span> <span class="dt">Result</span> a</span>
+<span id="cb79-13"><a href="#cb79-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> v <span class="ot">=</span> <span class="dt">C</span> (\cnt <span class="ot">-&gt;</span> (cnt, v))</span></code></pre></div>
 <p>We also need to update <code class="sourceCode haskell">get</code> and <code class="sourceCode haskell">put</code> slightly:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Computation whose return value is the current counter value</span></span>
-<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> <span class="dt">Counting</span> <span class="dt">Cnt</span></span>
-<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>get <span class="ot">=</span> <span class="dt">C</span> (\cnt <span class="ot">-&gt;</span> (cnt, cnt))</span>
-<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Computation that updates the counter value to `newCnt`</span></span>
-<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a><span class="ot">put ::</span> <span class="dt">Cnt</span> <span class="ot">-&gt;</span> <span class="dt">Counting</span> ()</span>
-<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>put newCnt <span class="ot">=</span> <span class="dt">C</span> (\_ <span class="ot">-&gt;</span> (newCnt, ()))</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Computation whose return value is the current counter value</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> <span class="dt">Counting</span> <span class="dt">Cnt</span></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>get <span class="ot">=</span> <span class="dt">C</span> (\cnt <span class="ot">-&gt;</span> (cnt, cnt))</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Computation that updates the counter value to `newCnt`</span></span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a><span class="ot">put ::</span> <span class="dt">Cnt</span> <span class="ot">-&gt;</span> <span class="dt">Counting</span> ()</span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>put newCnt <span class="ot">=</span> <span class="dt">C</span> (\_ <span class="ot">-&gt;</span> (newCnt, ()))</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1529,15 +1537,15 @@ and if they fail to provide a non-empty string, it returns a default value <code
 <br></p>
 <h2 id="cleaned-up-evaluator-1">Cleaned-up Evaluator</h2>
 <p>Now we can use the <code class="sourceCode haskell"><span class="kw">do</span></code> notation!</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Counting</span> <span class="dt">Int</span></span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Num</span> n)      <span class="ot">=</span> <span class="fu">return</span> n</span>
-<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Plus</span> e1 e2) <span class="ot">=</span> <span class="kw">do</span> v1 <span class="ot">&lt;-</span> eval e1</span>
-<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>                       v2 <span class="ot">&lt;-</span> eval e2</span>
-<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">return</span> (v1 <span class="op">+</span> v2)</span>
-<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>eval <span class="dt">Next</span>         <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>                      cnt <span class="ot">&lt;-</span> get</span>
-<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a>                      _ <span class="ot">&lt;-</span> put (cnt <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">return</span> (cnt)                      </span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Counting</span> <span class="dt">Int</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Num</span> n)      <span class="ot">=</span> <span class="fu">return</span> n</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Plus</span> e1 e2) <span class="ot">=</span> <span class="kw">do</span> v1 <span class="ot">&lt;-</span> eval e1</span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>                       v2 <span class="ot">&lt;-</span> eval e2</span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">return</span> (v1 <span class="op">+</span> v2)</span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>eval <span class="dt">Next</span>         <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a>                      cnt <span class="ot">&lt;-</span> get</span>
+<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a>                      _ <span class="ot">&lt;-</span> put (cnt <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb81-9"><a href="#cb81-9" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">return</span> (cnt)                      </span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1552,13 +1560,13 @@ and if they fail to provide a non-empty string, it returns a default value <code
 <p>Threading state is a very common task!</p>
 <p>Instead of defining your own type <code class="sourceCode haskell"><span class="dt">Counting</span> a</code>,
 you can use <code class="sourceCode haskell"><span class="dt">State</span> s a</code> from the Haskell standard library:</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">State</span> s a <span class="ot">=</span> <span class="dt">State</span> (s <span class="ot">-&gt;</span> (s, a))</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">State</span> s a <span class="ot">=</span> <span class="dt">State</span> (s <span class="ot">-&gt;</span> (s, a))</span></code></pre></div>
 <p><code class="sourceCode haskell"><span class="dt">State</span></code> is already an instance of <code class="sourceCode haskell"><span class="dt">Monad</span></code>,
 so no need to define your own <code class="sourceCode haskell"><span class="op">&gt;&gt;=</span></code>!</p>
 <p><br>
 <br></p>
 <p>Now we can simply define</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Counting</span> a <span class="ot">=</span> <span class="dt">State</span> <span class="dt">Cnt</span> a</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Counting</span> a <span class="ot">=</span> <span class="dt">State</span> <span class="dt">Cnt</span> a</span></code></pre></div>
 <p>and the <code class="sourceCode haskell">eval</code> above will just work out of the box!</p>
 <p><br>
 <br>
@@ -1572,12 +1580,12 @@ so no need to define your own <code class="sourceCode haskell"><span class="op">
 <br></p>
 <h2 id="monads-are-amazing">Monads are Amazing</h2>
 <p>This code stays <em>the same</em>:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Interpreter</span> <span class="dt">Int</span></span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Num</span> n)      <span class="ot">=</span> <span class="fu">return</span> n</span>
-<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Plus</span> e1 e2) <span class="ot">=</span> <span class="kw">do</span> v1 <span class="ot">&lt;-</span> eval e1</span>
-<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>                       v2 <span class="ot">&lt;-</span> eval e2</span>
-<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">return</span> (v1 <span class="op">+</span> v2)</span>
-<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="op">...</span>                       </span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Interpreter</span> <span class="dt">Int</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Num</span> n)      <span class="ot">=</span> <span class="fu">return</span> n</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Plus</span> e1 e2) <span class="ot">=</span> <span class="kw">do</span> v1 <span class="ot">&lt;-</span> eval e1</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>                       v2 <span class="ot">&lt;-</span> eval e2</span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">return</span> (v1 <span class="op">+</span> v2)</span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a><span class="op">...</span>                       </span></code></pre></div>
 <p>We can change the type <code class="sourceCode haskell"><span class="dt">Interpreter</span></code> to implement different <strong>effects</strong>:</p>
 <ul>
 <li><code class="sourceCode haskell"><span class="kw">type</span> <span class="dt">Interpreter</span> a <span class="ot">=</span> <span class="dt">Except</span> <span class="dt">String</span> a</code> if we want to handle errors</li>

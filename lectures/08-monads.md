@@ -1805,8 +1805,21 @@ eval Next         = get         >>= \c ->
 
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
 
-How should we define these?
+
+### EXERCISE: get and put
+
+Implement functions `get` and `put`, which would allow us to implement `Next` as
+
+```haskell
+eval Next = get         >>= \c ->
+            put (c + 1) >>= \_ ->
+            return c
+```
 
 ```haskell
 -- | Computation whose return value is the current counter value
