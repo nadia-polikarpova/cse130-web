@@ -411,7 +411,7 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 - Submitted via Gradescope
     - submission instructions in the assignment
 - Solve **alone or in groups of two**
-    - user this [piazza thread](https://piazza.com/class/lubvnheu7sp51h/post/5) to find a partner
+    - user this [piazza thread](https://piazza.com/class/m8usoopybn1t8/post/5) to find a partner
 
 <br>
 <br>
