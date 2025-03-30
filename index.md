@@ -5,14 +5,13 @@ headerImg: angles.jpg
 
 ## Course Resources
 
-- **Lectures:**             MWF 1:00-1:50pm PCYNH 109 and on [Zoom](https://ucsd.zoom.us/j/934813358)
-- **Discussion section:**   F 2:00-2:50pm PCYNH 109 and on [Zoom](https://ucsd.zoom.us/j/934813358)
+- **Lectures:**             MWF 2:00-2:50pm PCYNH 106
+- **Discussion section:**   M 1:00-1:50pm PCYNH 106
 - **Calendar:**             Check [here](calendar.html) for office hours, deadlines, etc.
-- **Piazza:**               Check [here](https://piazza.com/ucsd/spring2024/cse130) for announcement and discussions
-- **Canvas:**               Check [here](https://canvas.ucsd.edu/courses/54610) for lecture recordings 
-- **Gradescope:**           Submit assignments [here](https://www.gradescope.com/courses/759922) (code: ZWNRWX)
+- **Piazza:**               Check [here](https://piazza.com/ucsd/spring2025/cse130) for announcement and discussions
+<!-- - **Canvas:**               Check [here](https://canvas.ucsd.edu/courses/64516)  -->
+- **Gradescope:**           Submit assignments [here](https://www.gradescope.com/courses/1012632) (code: X2GEG5)
 - **ClassQuestion:**        Sign up [here](https://classquestion.com/students) (code: GXJVJ)
-
 
 
 ## Team
@@ -21,20 +20,14 @@ headerImg: angles.jpg
 
 * [Nadia Polikarpova](https://cseweb.ucsd.edu/~npolikarpova/)
 
-### Teaching Assistants
+### TA/Tutor Team
 
-* [Yousef Alhessi](https://yalhessi.github.io/)
 * [Emmanuel Anaya González](https://eanayag.com/)
-* [Shraddha Barke](https://shraddhabarke.github.io/)
-* [George Sakkas](https://gsakkas.github.io/)
+* [Ilana Shapiro](https://ilanashapiro.github.io/)
+* Alexander Zhang
+* Shaurya Raswan
+* Hisham Baobaid
 
-
-### Tutors
-
-* Mark Barbone
-* Justin Du
-* Rana Lulla
-* Melody Ruth
 
 ## Overview
 
@@ -45,7 +38,7 @@ been developed, expressing radically different perspectives
 of the idea of computation. CSE 130 is an introduction to
 some of these perspectives, as well as the fundamental concepts of
 languages. We shall focus in particular on one paradigm -- functional
-programming as embodied in the lambda calculus and the Haskell language. 
+programming as embodied in the lambda calculus and the Haskell language.
 Many students will be encountering this
 paradigm and these languages for the first time. As with
 spoken languages, these are best absorbed by immersing yourself

@@ -7,37 +7,38 @@ Lecture schedule is subject to change!
 
 | Date       | Topic                           | Material                  |
 |:----------:|:--------------------------------|:-------------------------:|
-| 4/1        | Hello, World!                   | [html][lec0]              |
-| 4/3        | The Lambda Calculus             | [html][lec1]              |
-| 4/5        | contd.                          |                           |
-| 4/8        | contd.                          |                           |
-| 4/10       | contd.                          |                           |
-| 4/12       | contd.                          |                           |
-| 4/15       | A crash course in Haskell       | [html][lec2]              |
-| 4/17       | contd.                          |                           |
-| 4/19       | contd.                          |                           |
-| 4/22       | contd.                          |                           |
-| 4/24       | Tail Recursion                  | [html][lec3]              |
-| 4/26       | Algebraic Data Types            | [html][lec4]              |
-| 4/29       | contd.                          |                           |
-| 5/1        | Higher Order Functions          | [html][lec5]              |
-| 5/3        | contd.                          |                           |
-| 5/6        | **Midterm**                     |                           |
-| 5/8        | Environments and Closures       | [html][lec6]              |
-| 5/10       | contd.                          |                           |
-| 5/13       | contd.                          |                           |
-| 5/15       | Lexing and Parsing              | [html][lec7] [tutorial][parsing] |
-| 5/17       | contd.                          |                           |
-| 5/20       | Overloading & TypeClasses       | [html][lec8]              |
-| 5/22       | contd.                          |                           |
-| 5/24       | contd.                          |                           |
-| 5/27       | *No lecture: Memorial Day*      |                           |
-| 5/29       | Monads                          | [html][lec9]              |
-| 5/31       | contd.                          |                           |
-| 6/3        | contd.                          |                           |
-| 6/5        | contd.                          |                           |
-| 6/7        | Final Review                    |                           |
-| 6/13       | **Final**                       |                           |
+| 31/3       | Hello, World!                   | [html][lec0]              |
+| 4/2        | The Lambda Calculus             |                           |
+| 4/4        | contd.                          |                           |
+| 4/7        | contd.                          |                           |
+| 4/9        | contd.                          |                           |
+| 4/11       | contd.                          |                           |
+| 4/14       | A crash course in Haskell       |                           |
+| 4/16       | contd.                          |                           |
+| 4/18       | contd.                          |                           |
+| 4/21       | contd.                          |                           |
+| 4/23       | Algebraic Data Types            |                           |
+| 4/25       | contd.                          |                           |
+| 4/28       | contd.                          |                           |
+| 4/30       | Higher Order Functions          |                           |
+| 5/2        | contd.                          |                           |
+| 5/5        | **Midterm quiz**                |                           |
+| 5/7        | Interpreters                    |                           |
+| 5/9        | contd.                          |                           |
+| 5/12       | contd.                          |                           |
+| 5/14       | Parsing                         |                           |
+| 5/16       | contd.                          |                           |
+| 5/19       | Type Classes                    |                           |
+| 5/21       | contd.                          |                           |
+| 5/23       | contd.                          |                           |
+| 5/26       | *No lecture: Memorial Day*      |                           |
+| 5/28       | Monads                          |                           |
+| 5/30       | contd.                          |                           |
+| 6/2        | contd.                          |                           |
+| 6/4        | contd.                          |                           |
+| 6/6        | **Final quiz**                  |                           |
+| 6/13       | **Project presentations**       |                           |
+
 
 
 **Discussions**
