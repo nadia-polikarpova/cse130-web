@@ -1,22 +1,23 @@
 ---
 title: Hello, world!
 headerImg: sea.jpg
-date: 2017-03-28
+date: 2025-03-31
 ---
 
 ## Who am I?
 
 ![Nadia Polikarpova](https://cseweb.ucsd.edu/~npolikarpova/images/nadia_polikarpova.jpg){#fig:nadia .align-center width=25%}
 
-- Associate professor 
+- Associate professor
 - UCSD CSE since 2017
 - PhD at ETH Zurich
 - Postdoc at MIT
 
 ### My Research
 
-- Program Verification: how to *prove* the program is doing the right thing?
+- *In the past:* Program Verification: how to *prove* the program is doing the right thing?
 - Program Synthesis: how to *generate* a program that does the right thing?
+- Usability of AI assistants: how do programmers use AI assistants and how can we make them better?
 
 <br>
 <br>
@@ -32,17 +33,14 @@ date: 2017-03-28
 
 ### Teaching Assistants
 
-* [Yousef Alhessi](https://yalhessi.github.io/)
 * [Emmanuel Anaya González](https://eanayag.com/)
-* [Shraddha Barke](https://shraddhabarke.github.io/)
-* [George Sakkas](https://gsakkas.github.io/)
+* [Ilana Shapiro](https://ilanashapiro.github.io/)
 
 ### Tutors
 
-* Mark Barbone
-* Justin Du
-* Rana Lulla
-* Melody Ruth
+* Alexander Zhang
+* Shaurya Raswan
+* Hisham Baobaid
 
 <br>
 <br>
@@ -56,9 +54,8 @@ date: 2017-03-28
 
 ## Lecture Format
 
-- I encourage you to attend **in person**
-- Live Zoom option available **as a backup**
-- Lecture recordings available on canvas and/or [podcast](https://podcast.ucsd.edu/)
+- In person
+- Recordings available on [podcast](https://podcast.ucsd.edu/)
 
 - I do not take attendance, you are adults
 - but: you are expected to have attended or watched all previous lectures before asking questions on Piazza or OH
@@ -123,7 +120,7 @@ L2: ...
 
 (See [wikipedia](https://en.wikipedia.org/wiki/Counter_machine))
 
-But good luck writing 
+But good luck writing
 
 - QuickSort
 - Fortnite
@@ -149,12 +146,12 @@ But good luck writing
 
 ## What is CSE 130 **not** about?
 
-Learning... 
+Learning...
 
 - JavaScript in March
 - Haskell in April
 - C++ in May
-- etc. 
+- etc.
 
 ### New languages come (and go ...)
 
@@ -187,19 +184,6 @@ There was no
 <br>
 
 
-### If you don't trust me, ask PL Twitter!
-
-![Two schools](/static/img/tweet2.png){#fig:tweet2 .align-center}
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
 ## Course Goals
 
 ![130 Brain](https://ucsd-cse130.github.io/wi20/static/img/galaxy-brain-130.jpg){#fig:morpheus .align-center width=40%}
@@ -221,7 +205,7 @@ There was no
 
 
 - What makes a programming language?
-- Which features are **fundamental** and which are **syntactic sugar**? 
+- Which features are **fundamental** and which are **syntactic sugar**?
 
 
 
@@ -265,7 +249,7 @@ to create programs that are:
 
 New hot languages being designed in industry as we speak:
 
-- Hack, Flow, React @ Facebook     
+- Hack, Flow, React @ Facebook
 - Rust @ Mozilla (now The Rust Foundation)
 - TypeScript @ Microsoft
 - Swift @ Apple
@@ -294,12 +278,12 @@ If you work on a large system, you **will** design a new PL!
 
 - Lambda calculus (2 weeks)
     - The simplest language on Earth
-- Haskell (5 weeks)
-    - A cool functional language
-- Build your own language (3 weeks)
+- Haskell (3 weeks)
+    - A practical functional language
+- Build your own language (5 weeks)
     - How do we implement a new language (in Haksell)?
-    - How do we formalize a language and prove things about it?
-    
+    - Fun project: how do we make LLMs generate code in our language?
+
 
 <br>
 <br>
@@ -384,11 +368,9 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 - [webpage](https://nadia-polikarpova.github.io/cse130-web)
     - calendar, lecture notes, programming assignments, ...
-- [canvas](https://canvas.ucsd.edu/courses/54610)
-    - lecture recordings  
-- [piazza](https://www.piazza.com/ucsd/spring2024/cse130/home)
+- [piazza](https://www.piazza.com/ucsd/spring2025/cse130/home)
     - announcements and discussions
-- [gradescope](https://www.gradescope.com/courses/759922) (code: ZWNRWX)
+- [gradescope](https://www.gradescope.com/courses/1012632) (code: X2GEG5)
     - homework/exam submissions, grades
 - [classquestion](https://classquestion.com/students) (code: GXJVJ)
     - anonymous questions during lecture
@@ -403,22 +385,23 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 ## Grading
 
-- 45% Homework assignments
-- 25% Midterm
-- 30% Final
+- 50% Homework assignments
+- 20% Project (aka "the last assignment")
+- 15% Midterm quiz
+- 15% Final quiz
 - 05% Extra credit for Piazza discussion
     - To **top 20** best participants
-    
+
 <br>
 <br>
 <br>
 <br>
 <br>
-<br>    
+<br>
 
 ## Assignments
 
-- 6 programming assignments
+- 5 programming assignments
 - Released [online](https://nadia-polikarpova.github.io/cse130-web/assignments.html), at least a week before due date
 - Due at **11:59pm**
     - Usually on a **Wednesday**, but not always, check the calendar
@@ -435,24 +418,30 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 <br>
 <br>
 <br>
-<br>     
-    
-## Exams    
+<br>
 
-- Midterm on *May 6*
-    - Gradescope multiple choice
-    - individual
-    - 24h timespan
-- Final: *June 13*
-    - programming assignment
-    - individual
-    - 24h timespan
-- The final is cumulative
-- Midterm grade is calculated as `midterm > 0 ?  max(final, midterm) : 0`
-    - you get a second chance if you don’t do well on the midterm
-    - you must turn in both the midterm and the final
+## Project
 
+- Bigger and more open-ended than the other assignments
+- You will work in groups of 2-3
+- You are allowed (and even encouraged) to use AI assistants (e.g., Copilot, ChatGPT) in your project,
+    but you must understand (and will be asked to explain) the code you submit.
+- More details coming soon
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Exams
+
+- Midterm on *May 5*
+- Final: *June 6*
+- Gradescope multiple choice
+- Individual
+- Done during class
 
 
 <br>
@@ -464,23 +453,23 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 ## In-class Quizzes
 
-We will do quizzes in class via ClassQuestion 
+We will do quizzes in class via ClassQuestion
 
   - Make class interactive
   - Help *you* and *me* understand what's tricky
-    
+
 **Protocol**
 
 1. *Discuss*
     - I show the quiz on screen
-    - Discuss with your neighbor 
+    - Discuss with your neighbor
     - Try to reach consensus
 
 3. *Vote*
     - On the ClassQuestion website
 
 4. *Class Discuss*
-    - What was easy or tricky?    
+    - What was easy or tricky?
 
 <br>
 <br>
@@ -513,14 +502,13 @@ How can you earn 5% extra credit for this class?
 
 ## Your Resources
 
-- Discussion section: Fri 2pm
-    - PCYNH 109 and/or on Zoom
-    - same room/Zoom link as lecture
+- Discussion section: Mon 1pm
+    - PCYNH 106
 - Office hours
     - every day, check calendar
 - Piazza
     - we answer during work hours
-- **No text**        
+- **No text**
     - online lecture notes and links
 
 
@@ -545,14 +533,23 @@ For details, please see academic integrity statement on the website
 
 For programming assignments **do not**:
 
-  - use AI assistants (they might work for assignments, but will fail you on exams)
   - search or post on Chegg, StackOverflow etc
   - try to find solutions from previous years
 
 For exams **additionally do not**:
 
+  - use AI assistants
   - communicate with your classmates during the exam
-  - try to find past exams that are not publicly posted    
+  - try to find past exams that are not publicly posted
+
+Policy on using AI assistants (e.g., Copilot, ChatGPT):
+  - using AI assistants is allowed for coding (not quizzes), as long as you acknowledge them in your submission
+  - you are responsible for understanding *all the code* you submit
+  - in the final project, you *are encouraged* to use AI assistants
+  - in the assignments, you *are discouraged* to use AI assistants because the purpose
+    of the assignments is to practice new coding skills on simple problems
+
+
 
 
 <br>
@@ -565,10 +562,10 @@ For exams **additionally do not**:
 
 ## Students with Disabilites
 
-Students requesting accommodations for this course due to a disability or current functional limitation must provide 
-a current **Authorization for Accommodation (AFA)** letter issued by the Office for Students with Disabilities (OSD). 
+Students requesting accommodations for this course due to a disability or current functional limitation must provide
+a current **Authorization for Accommodation (AFA)** letter issued by the Office for Students with Disabilities (OSD).
 
-Students are required to present their AFA letters to Faculty (please make arrangements to contact me privately) 
+Students are required to present their AFA letters to Faculty (please make arrangements to contact me privately)
 and to the CSE OSD Liaison in advance so that accommodations may be arranged.
 
 <br>
@@ -583,8 +580,8 @@ and to the CSE OSD Liaison in advance so that accommodations may be arranged.
 
 **Goal**
 
-- Create a diverse and inclusive learning environment 
-- Where all students feel comfortable and can thrive 
+- Create a diverse and inclusive learning environment
+- Where all students feel comfortable and can thrive
 - If there is a way we can make you feel more included, please let one of the course staff know
 
 **Expectations**
