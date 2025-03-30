@@ -43,7 +43,7 @@ Lecture schedule is subject to change!
 
 **Discussions**
 
-Discussion slides are available [here](https://drive.google.com/drive/folders/1OuObUaMyMs8TODtOAXogdMmy6NzYqRU5?usp=sharing).
+Discussion slides are available [here](https://drive.google.com/drive/folders/19tf2PcwbijZjTaziPZ_og-cdWHJuag1M?usp=sharing).
 
 [lec0]: lectures/00-hello.html
 [lec1]: lectures/01-lambda.html
