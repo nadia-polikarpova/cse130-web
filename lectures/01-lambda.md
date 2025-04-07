@@ -64,10 +64,10 @@ What is the **smallest universal language**?
 (I) final
 
     The [**Turing Machine**](https://en.wikipedia.org/wiki/Turing_machine)
-    
+
 <br>
-<br>    
- 
+<br>
+
 ![Alonzo Church](https://upload.wikimedia.org/wikipedia/en/a/a6/Alonzo_Church.jpg){#fig:church .align-center width=40%}
 
 (I) final
@@ -210,7 +210,7 @@ of one of three kinds:
     - `x`, `y`, `z`
 - **Abstraction** (aka _nameless_ function definition)
     - `\x -> E`
-    - `x` is the _formal_ parameter, `E` is the _body_ 
+    - `x` is the _formal_ parameter, `E` is the _body_
     - "for any `x` compute `E`"
 - **Application** (aka function call)
     - `E1 E2`
@@ -240,13 +240,13 @@ apple banana        -- Application of variable "apple"
 
 \x -> x             -- The identity function
                     -- ("for any x compute x")
-                    
+
 (\x -> x) apple     -- Application of the identity function
-                    -- to variable "apple"                    
+                    -- to variable "apple"
 
 \x -> (\y -> y)     -- A function that returns the identity function
- 
-\f -> f (\x -> x)   -- A function that applies its argument 
+
+\f -> f (\x -> x)   -- A function that applies its argument
                     -- to the identity function
 ```
 
@@ -304,8 +304,8 @@ Which of the following terms are syntactically **incorrect**?
                     -- ("for any x compute x")
 
 \x -> (\y -> y)     -- A function that returns the identity function
- 
-\f -> f (\x -> x)   -- A function that applies its argument 
+
+\f -> f (\x -> x)   -- A function that applies its argument
                     -- to the identity function
 ```
 
@@ -402,7 +402,7 @@ instead of                |  we write
 ```haskell
 \x y -> y     -- A function that that takes two arguments
               -- and returns the second one...
-              
+
 (\x y -> y) apple banana -- ... applied to two arguments
 ```
 
@@ -436,7 +436,7 @@ Think of middle-school algebra:
  => -- RULE: mult. polynomials
   3x^2 - x + 6x - 2
  => -- RULE: add monomials
-  3x^2 + 5x - 2 -- no more rules to apply  
+  3x^2 + 5x - 2 -- no more rules to apply
 ```
 
 <br>
@@ -494,7 +494,7 @@ For example, `x` is bound in:
 ```
   \x -> x
   \x -> (\y -> x)
-  \x -> (\x -> x)   -- by which binder is x bound? 
+  \x -> (\x -> x)   -- by which binder is x bound?
 ```
 
 <br>
@@ -506,7 +506,7 @@ An occurrence of `x` in `E` is **free** if it's _not bound_ by an enclosing abst
 For example, `x` is free in:
 
 ```
-  x y                -- no binders at all!  
+  x y                -- no binders at all!
   \y -> x y          -- no \x binder
   (\x -> \y -> y) x  -- x is outside the scope of the \x binder;
                      -- intuition: it's not "the same" x
@@ -544,7 +544,7 @@ is `x` _bound_ or _free_?
 <br>
 
 (I) final
-    
+
     _Correct answer:_ **C**
 
 <br>
@@ -690,7 +690,7 @@ replace all free occurrences of the _formal_ by that _argument_
 <br>
 
 ```haskell
-(\x -> x) apple     
+(\x -> x) apple
 =b> apple
 ```
 
@@ -789,7 +789,7 @@ Is this right? Ask [Elsa](http://elsa.goto.ucsd.edu/index.html)!
 (I) final
 
     _Correct answer:_ **A.**
-    
+
 <br>
 <br>
 <br>
@@ -840,7 +840,7 @@ Is this right?
 **Problem**: the _free_ `y` in the argument has been **captured** by `\y`!
 
 **Solution**: make sure that all _free variables_ of the argument
-are different from the binders in the body. 
+are different from the binders in the body.
 
 <br>
 <br>
@@ -870,7 +870,7 @@ where `E1[x := E2]` means
    **as long as** no free variables of `E2` get captured
   - undefined otherwise
 
-<br>  
+<br>
 
 Formally:
 
@@ -879,15 +879,15 @@ x[x := E']            = E'
 y[x := E']            = y            -- assuming x /= y
 (E1 E2)[x := E']      = (E1[x := E']) (E2[x := E'])
 (\x -> E)[x := E']    = \x -> E      -- why do we leave `E` alone?
-(\y -> E)[x := E'] 
+(\y -> E)[x := E']
   | not (y in FV(E')) = \y -> E[x := E']
   | otherise          = undefined    -- wait, but what do we do then???
 
 ```
 
 (I) final
-    
-    *Answer*: We leave `E` above alone even though it might contain `x`, 
+
+    *Answer*: We leave `E` above alone even though it might contain `x`,
     because in `\x -> E` every occurrence of `x` is bound by `\x`
     (hence, there are *no free occurrences* of `x`)
 
@@ -965,7 +965,7 @@ What's wrong with these?
 
 (I) final
 
-    *Answer:* it violates the side-condition that the new formal (`x`) must not occur freely in the body 
+    *Answer:* it violates the side-condition that the new formal (`x`) must not occur freely in the body
 
 ```haskell
 -- (B)
@@ -973,16 +973,16 @@ What's wrong with these?
 ```
 
 (I) final
-     
-    *Answer:* we should only rename within the body of the abstraction; the second `y` is a free variable, and hence must remain unchanged     
+
+    *Answer:* we should only rename within the body of the abstraction; the second `y` is a free variable, and hence must remain unchanged
 
 ```haskell
 -- (C)
 \x -> (\y -> x y)   =a>    \y -> (\y -> y y)
 ```
-     
+
 (I) final
-     
+
     *Answer:* the new formal `y` does not occur freely in the body, but the substitution is not capture-avoiding
 
 <br>
@@ -1010,7 +1010,7 @@ What's wrong with these?
     (\x -> (\y -> x)) y
     =a> ???
     ```
-    
+
 (I) final
 
     ```haskell
@@ -1018,7 +1018,7 @@ What's wrong with these?
     =a> (\x -> (\z -> x)) y
     =b> \z -> y
     ```
-    
+
 <br>
 <br>
 
@@ -1067,19 +1067,19 @@ A $\lambda$-term is in **normal form** if it contains no redexes.
 
 Which of the following term are **not** in _normal form_ (i.e. contains a _redex_)?
 
-**A.** `x y`
+**A.** `(\x -> x) y`
 
-**B.** `(\x -> x) y`
+**B.** `x (\y -> y) z`
 
-**C.** `x (\y -> y) z`
+**C.** `x ((\y -> y) z)`
 
-**D.** `x ((\y -> y) z)`
+**D.** A and C
 
-**E.** B and D
+**E.** all of the above
 
 (I) final
-     
-    *Answer:* E
+
+    *Answer:* D
 
 <br>
 <br>
@@ -1104,7 +1104,7 @@ A $\lambda$-term `E` **evaluates to** `E'` if
 E =?> E_1 =?> ... =?> E_N =?> E'
 ```
 
-   where each `=?>` is either `=a>` or `=b>` 
+   where each `=?>` is either `=a>` or `=b>`
    and `N >= 0`
 
 2. `E'` is in _normal form_
@@ -1125,34 +1125,34 @@ E =?> E_1 =?> ... =?> E_N =?> E'
   =b> apple
 ```
 
-<br> 
+<br>
 
 (I) lecture
-         
+
     ```haskell
     (\f -> (\x -> x) f) (\x -> x)
       =?> ???
     ```
-    
+
 (I) final
-         
+
     ```haskell
     (\f -> f (\x -> x)) (\x -> x)
       =b> (\x -> x) (\x -> x)
       =b> \x -> x
     ```
-    
-<!-- <br>    
+
+<!-- <br>
 
 (I) lecture
-    
+
     ```haskell
     (\x -> x x) (\x -> x)
       =?> ???
     ```
 
 (I) final
-         
+
     ```haskell
     (\x -> x x) (\x -> x)
       =b> (\x -> x) (\x -> x)
@@ -1191,7 +1191,7 @@ What does the following term _evaluate_ to?
 **E.** cannot be evaluated
 
 (I) final
-     
+
     *Answer:* C
 
 <br>
@@ -1214,7 +1214,7 @@ Can you come up with an expression `E` such that the evaluation of
 `(\x -> x x) E` *loops*, i.e.:
 
 ```haskell
-eval loop : 
+eval loop :
   (\x -> x x) E
   =b> (\x -> x x) E
   =b> (\x -> x x) E
@@ -1418,7 +1418,7 @@ let ITE   = \b x y -> b x y  -- Applies condition to branches
 ```haskell
 eval ite_true:
   ITE TRUE egg ham
-  =d> (\b x y -> b    x   y)  TRUE egg ham    -- expand def ITE  
+  =d> (\b x y -> b    x   y)  TRUE egg ham    -- expand def ITE
   =b>   (\x y -> TRUE x   y)       egg ham    -- beta-step
   =b>     (\y -> TRUE egg y)           ham    -- beta-step
   =b>            TRUE egg ham                 -- expand def TRUE
@@ -1451,7 +1451,7 @@ Now you try it!
 
       -- fill the steps in!
 
-      =b> ham  
+      =b> ham
     ```
 
 (I) final
@@ -1459,7 +1459,7 @@ Now you try it!
     ```haskell
     eval ite_false:
       ITE FALSE egg ham
-      =d> (\b x y -> b     x   y) FALSE egg ham   -- expand def ITE  
+      =d> (\b x y -> b     x   y) FALSE egg ham   -- expand def ITE
       =b>   (\x y -> FALSE x   y)       egg ham   -- beta-step
       =b>     (\y -> FALSE egg y)           ham   -- beta-step
       =b>            FALSE egg ham                -- expand def FALSE
@@ -1517,13 +1517,13 @@ Now that we have `ITE` it's easy to define other Boolean operators:
     let AND = \b1 b2 -> ???
     ```
 
-(I) final 
+(I) final
 
     ```haskell
-    let NOT = \b     -> ITE b FALSE TRUE 
-    
+    let NOT = \b     -> ITE b FALSE TRUE
+
     let AND = \b1 b2 -> ITE b1 b2 FALSE
-    
+
     let OR  = \b1 b2 -> ITE b1 TRUE b2
     ```
 
@@ -1532,28 +1532,28 @@ When you are done, you should get the following behavior:
 ```haskell
 eval ex_not_t:
   NOT TRUE =*> FALSE
-  
+
 eval ex_not_f:
-  NOT FALSE =*> TRUE 
-  
+  NOT FALSE =*> TRUE
+
 eval ex_or_ff:
   OR FALSE FALSE =*> FALSE
 
 eval ex_or_ft:
   OR FALSE TRUE =*> TRUE
-  
+
 eval ex_or_ft:
   OR TRUE FALSE =*> TRUE
 
 eval ex_or_tt:
   OR TRUE TRUE =*> TRUE
-  
+
 eval ex_and_ff:
   AND FALSE FALSE =*> FALSE
 
 eval ex_and_ft:
   AND FALSE TRUE =*> FALSE
-  
+
 eval ex_and_ft:
   AND TRUE FALSE =*> FALSE
 
@@ -1625,9 +1625,9 @@ What do we *do* with a pair?
 We need to define three functions
 
 ```haskell
-let PAIR = \x y -> ???    -- Make a pair with elements x and y 
+let PAIR = \x y -> ???    -- Make a pair with elements x and y
                           -- { fst : x, snd : y }
-let FST  = \p -> ???      -- Return first element 
+let FST  = \p -> ???      -- Return first element
                           -- p.fst
 let SND  = \p -> ???      -- Return second element
                           -- p.snd
@@ -1636,7 +1636,7 @@ let SND  = \p -> ???      -- Return second element
 such that
 
 ```haskell
-eval ex_fst: 
+eval ex_fst:
   FST (PAIR apple banana) =~> apple
 
 eval ex_snd:
@@ -1661,7 +1661,7 @@ eval ex_snd:
 ## Pairs: Implementation
 
 A pair of `x` and `y` is just something that lets you pick between `x` and `y`!
-(i.e. a function that takes a boolean and returns either `x` or `y`)  
+(i.e. a function that takes a boolean and returns either `x` or `y`)
 
 ```haskell
 let PAIR = \x y -> (\b -> ITE b x y)
@@ -1706,7 +1706,7 @@ eval ex1:
 
 eval ex2:
   SND3 (TRIPLE apple banana orange)
-  =~> banana 
+  =~> banana
 
 eval ex3:
   THD3 (TRIPLE apple banana orange)
@@ -1876,14 +1876,14 @@ Does this function look familiar?
     -- Call `f` on `x` one more time than `n` does
     let INC   = \n -> (\f x -> ???)
     ```
-    
+
 (I) final
 
     ```haskell
     -- Call `f` on `x` one more time than `n` does
     let INC   = \n -> (\f x -> f (n f x))
     ```
-    
+
 
 <br>
 <br>
@@ -1922,7 +1922,7 @@ eval inc_zero :
 <br>
 <br>
 
-## EXERCISE 
+## EXERCISE
 
 Fill in the implementation of `ADD` so that you get the following behavior
 
@@ -1935,25 +1935,25 @@ let ONE  = \f x -> f x
 let TWO  = \f x -> f (f x)
 let INC  = \n f x -> f (n f x)
 
-let ADD  = fill_this_in 
+let ADD  = fill_this_in
 
-eval add_zero_zero: 
+eval add_zero_zero:
   ADD ZERO ZERO =~> ZERO
 
-eval add_zero_one: 
+eval add_zero_one:
   ADD ZERO ONE =~> ONE
 
-eval add_zero_two: 
-  ADD ZERO TWO =~> TWO 
+eval add_zero_two:
+  ADD ZERO TWO =~> TWO
 
-eval add_one_zero: 
+eval add_one_zero:
   ADD ONE ZERO =~> ONE
 
-eval add_one_zero: 
+eval add_one_zero:
   ADD ONE ONE =~> TWO
 
-eval add_two_zero: 
-  ADD TWO ZERO =~> TWO  
+eval add_two_zero:
+  ADD TWO ZERO =~> TWO
 ```
 
 
@@ -2114,8 +2114,8 @@ I want to write a function that sums up natural numbers up to `n`:
 Is this a correct implementation of `SUM`?
 
 ```
-let SUM = \n -> ITE (ISZ n) 
-            ZERO 
+let SUM = \n -> ITE (ISZ n)
+            ZERO
             (ADD n (SUM (DEC n)))
 ```
 
@@ -2134,21 +2134,21 @@ let SUM = \n -> ITE (ISZ n)
 <br>
 <br>
 
-No! 
+No!
 
   * Named terms in Elsa are just syntactic sugar
   * To translate an Elsa term to $\lambda$-calculus: replace each name with its definition
 
 ```
-\n -> ITE (ISZ n) 
-        ZERO 
+\n -> ITE (ISZ n)
+        ZERO
         (ADD n (SUM (DEC n))) -- But SUM is not a thing!
 ```
 
 <br>
 <br>
 
-**Recursion:** 
+**Recursion:**
 
  - Inside this function I want to call *the same function* on `DEC n`
 
@@ -2181,21 +2181,21 @@ Think again!
 <br>
 <br>
 
-**Recursion:** 
+**Recursion:**
 
  - ~~Inside this function I want to call *the same function* on `DEC n`~~
  - Inside this function I want to call *a function* on `DEC n`
- - *And BTW,* I want it to be the same function 
- 
+ - *And BTW,* I want it to be the same function
+
 <br>
 <br>
 
 **Step 1:** Pass in the function to call "recursively"
- 
+
 ```
-let STEP = 
-  \rec -> \n -> ITE (ISZ n) 
-                  ZERO 
+let STEP =
+  \rec -> \n -> ITE (ISZ n)
+                  ZERO
                   (ADD n (rec (DEC n))) -- Call some rec
 ```
 <br>
@@ -2229,7 +2229,7 @@ So:
 
 **Step 2:** Do something clever to apply `STEP` to itself,
 i.e so that the function passed as `rec` becomes `STEP rec`
- 
+
 <br>
 <br>
 <br>
@@ -2242,8 +2242,8 @@ i.e so that the function passed as `rec` becomes `STEP rec`
 <br>
 <br>
 <br>
- 
-## $\lambda$-calculus: Fixpoint Combinator 
+
+## $\lambda$-calculus: Fixpoint Combinator
 
 **Wanted:** a combinator `FIX` such that `FIX STEP`
 calls `STEP` with itself as the first argument:
@@ -2300,15 +2300,15 @@ How should we define `FIX`???
 <br>
 <br>
 
-## The Y combinator 
- 
+## The Y combinator
+
 Remember $\Omega$?
- 
+
 ```haskell
 (\x -> x x) (\x -> x x)
 =b> (\x -> x x) (\x -> x x)
-``` 
- 
+```
+
 This is *self-replicating code*! We need something like this but a bit more involved...
 
 <br>
@@ -2320,7 +2320,7 @@ The Y combinator discovered by Haskell Curry:
 
 ```haskell
 let FIX   = \stp -> (\x -> stp (x x)) (\x -> stp (x x))
-``` 
+```
 <br>
 <br>
 
@@ -2333,7 +2333,7 @@ eval fix_step:
   =b> (\x -> STEP (x x)) (\x -> STEP (x x))
   =b> STEP ((\x -> STEP (x x)) (\x -> STEP (x x)))
   --       ^^^^^^^^^^ this is FIX STEP ^^^^^^^^^^^
-``` 
+```
 
 <br>
 <br>
