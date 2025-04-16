@@ -17,9 +17,9 @@ If you get an error when creating a team, **try a different team name**
 | Link                                             | Name                            | Deadline (11:59pm)        |
 |:------------------------------------------------:|:--------------------------------|:-------------------------:|
 | [HW0](https://classroom.github.com/a/67Y1mx1i)   | The Lambda Calculus             | 4/16                      |
+| [HW1](https://classroom.github.com/a/sg9y_nMn)   | Introduction to Haskell         | 4/23                      |
 
-<!-- | [HW1](https://classroom.github.com/a/Ck-VrNIv)   | Introduction to Haskell         | 4/23                      |
-| [HW2](https://classroom.github.com/a/7RMcGUB-)   | Random Art                      | 5/2                       |
+<!-- | [HW2](https://classroom.github.com/a/gltg-BcE)   | Random Art                      | 5/2                       |
 | [HW3](https://classroom.github.com/a/nTP6peBZ)   | All about Fold                  | 5/12                      |
 | [HW4](https://classroom.github.com/a/dsZotFAF)   | Nano                            | 5/21                      |
 | [HW5](https://classroom.github.com/a/YbCAACu0)   | Type Classes                    | 6/4                       | -->
