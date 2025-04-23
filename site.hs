@@ -51,7 +51,7 @@ main = hakyll $ do
   match (fromList tops)    $ crunchWithCtx siteCtx
   match "lectures/00-*"    $ crunchWithCtxCustom "final" postCtx
   match "lectures/01-*"    $ crunchWithCtxCustom "final" postCtx
-  match "lectures/02-*"    $ crunchWithCtxCustom "lecture" postCtx
+  match "lectures/02-*"    $ crunchWithCtxCustom "final" postCtx
   match "lectures/03-*"    $ crunchWithCtxCustom "lecture" postCtx
   match "lectures/04-*"    $ crunchWithCtxCustom "lecture" postCtx
   match "lectures/05-*"    $ crunchWithCtxCustom "lecture" postCtx
