@@ -27,12 +27,12 @@ If you get an error when creating a team, **try a different team name**
 
 
 
-<!-- ## Practice Exams
+## Practice Exams
 
 - [Midterm Wi 19](/static/raw/130-midterm-wi19.pdf) ([solution](/static/raw/130-midterm-wi19-solution.pdf)),
   [Midterm Fa 19](/static/raw/130-midterm-fa19.pdf) ([solution](/static/raw/130-midterm-fa19-solution.pdf)).
 
-
+<!--
 - [Practice Final](https://classroom.github.com/a/8Md6lTLp) -->
 
 
