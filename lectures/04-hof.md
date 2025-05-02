@@ -1091,6 +1091,39 @@ foldr :: (a -> b -> b) -> b -> [a] -> b  -- Right
 <br>
 <br>
 
+
+## EXERCISE: list reversal
+
+Use `foldl` to write a function `reverse` that reverses a list:
+
+```haskell
+reverse :: [a] -> [a]
+reverse = foldl op base
+  where
+    base = ...
+    op   = ...
+```
+
+Recall:
+
+```haskell
+-- Type of foldl:
+foldl :: (b -> a -> b) -> b -> [a] -> b
+
+-- Computation pattern of foldl:
+foldl op b [x1, x2, x3]  ==> ((b `op` x1) `op` x2) `op` x3
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ### Useful HOF: flip
 
 ```haskell
