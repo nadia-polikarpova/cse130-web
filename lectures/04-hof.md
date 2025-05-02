@@ -1,5 +1,5 @@
 ---
-title: Higher-Order Functions 
+title: Higher-Order Functions
 date: 2022-10-18
 headerImg: books.jpg
 ---
@@ -13,7 +13,7 @@ Another way to practice **D.R.Y**:
   * refactor them into reusable *higher-order functions* (HOFs)
 
   * useful library HOFs: `map`, `filter`, and `fold`
-    
+
 <br>
 <br>
 <br>
@@ -22,7 +22,7 @@ Another way to practice **D.R.Y**:
 <br>
 <br>
 <br>
-<br>    
+<br>
 
 
 ## Example: evens
@@ -33,7 +33,7 @@ Let's write a function `evens` that extracts only even elements from an integer 
 -- evens []        ==> []
 -- evens [1,2,3,4] ==> [2,4]
 evens       :: [Int] -> [Int]
-evens []     = ... 
+evens []     = ...
 evens (x:xs) = ...
 ```
 
@@ -52,7 +52,7 @@ Let's write a function `fourChars`:
 -- fourChars [] ==> []
 -- fourChars ["i","must","do","work"] ==> ["must","work"]
 fourChars :: [String] -> [String]
-fourChars []     = ... 
+fourChars []     = ...
 fourChars (x:xs) = ...
 ```
 
@@ -104,7 +104,7 @@ Only difference is the **condition**
 
 <br>
 
-Can we 
+Can we
 
   * *reuse* the general pattern and
   * *substitute in* the custom condition?
@@ -122,9 +122,9 @@ Can we
 ## HOFs to the rescue!
 
 General **Pattern**
-  
+
   - expressed as a *higher-order function*
-  - takes customizable operations as *arguments* 
+  - takes customizable operations as *arguments*
 
 Specific **Operation**
 
@@ -144,7 +144,7 @@ Specific **Operation**
 
 General Pattern
 
-- HOF `filter` 
+- HOF `filter`
 - Recursively traverse list and pick out elements that satisfy a predicate
 
 Specific Operations
@@ -226,7 +226,7 @@ filter :: (String -> Bool) -> [String] -> [String] -- ???
 * It *does not care* what the list elements are
 
     * as long as the predicate can handle them
-  
+
 * It's type is **polymorphic** (generic) in the type of list elements
 
 <br>
@@ -235,7 +235,7 @@ filter :: (String -> Bool) -> [String] -> [String] -- ???
 -- For any type `a`
 --   if you give me a predicate on `a`s
 --   and a list of `a`s,
---   I'll give you back a list of `a`s 
+--   I'll give you back a list of `a`s
 filter :: (a -> Bool) -> [a] -> [a]
 ```
 
@@ -259,13 +259,13 @@ Lets write a function `shout`:
 
 ```haskell
 -- shout []                    ==> []
--- shout ['h','e','l','l','o'] ==> ['H','E','L','L','O'] 
+-- shout ['h','e','l','l','o'] ==> ['H','E','L','L','O']
 ```
 
 ```haskell
 shout :: [Char] -> [Char]
 shout []     = ...
-shout (x:xs) = ... 
+shout (x:xs) = ...
 ```
 
 <br>
@@ -281,13 +281,13 @@ Lets write a function `squares`:
 
 ```haskell
 -- squares []        ==> []
--- squares [1,2,3,4] ==> [1,4,9,16] 
+-- squares [1,2,3,4] ==> [1,4,9,16]
 ```
 
 ```haskell
 squares :: [Int] -> [Int]
 squares []     = ...
-squares (x:xs) = ... 
+squares (x:xs) = ...
 ```
 
 <br>
@@ -336,7 +336,7 @@ pattern = ...
 
 General Pattern
 
-- HOF `map` 
+- HOF `map`
 - Apply a transformation `f` to each element of a list
 
 Specific Operations
@@ -397,7 +397,7 @@ squares xs = map ...
 <br>
 
 
-## The Case of the Missing Parameter 
+## The Case of the Missing Parameter
 
 The following definitions of `shout` are equivalent:
 
@@ -427,7 +427,7 @@ Where did `xs` and `x` go???
 <br>
 <br>
 
-## The Case of the Missing Parameter 
+## The Case of the Missing Parameter
 
 Recall lambda calculus:
 
@@ -458,8 +458,8 @@ shout xs = map (\x -> toUpper x) xs
 is syntactic sugar for:
 
 ```haskell
-shout 
-  =d> 
+shout
+  =d>
 \xs -> map (\x -> toUpper x) xs
   =e> -- eta-contract outer lambda
 map (\x -> toUpper x)
@@ -516,7 +516,7 @@ map f (x:xs) = f x : map f xs
 
 **(E)** `(a -> b) -> [c] -> [d]`
 
-    
+
 <br>
 <br>
 <br>
@@ -533,7 +533,7 @@ map f (x:xs) = f x : map f xs
 -- For any types `a` and `b`
 --   if you give me a transformation from `a` to `b`
 --   and a list of `a`s,
---   I'll give you back a list of `b`s 
+--   I'll give you back a list of `b`s
 map :: (a -> b) -> [a] -> [b]
 ```
 
@@ -544,7 +544,7 @@ map :: (a -> b) -> [a] -> [b]
 Can you think of a function that:
 
 * has this type
-* builds the output list *not* by applying the transformation to the input list? 
+* builds the output list *not* by applying the transformation to the input list?
 
 
 <br>
@@ -729,19 +729,19 @@ foldr op base []     = base
 foldr op base (x:xs) = op x (foldr op base xs)
 
 foldr op b (a1:a2:a3:[])
-==> 
+==>
   a1 `op` (foldr op b (a2:a3:[]))
-==> 
+==>
   a1 `op` (a2 `op` (foldr op b (a3:[])))
-==> 
+==>
   a1 `op` (a2 `op` (a3 `op` (foldr op b [])))
-==> 
+==>
   a1 `op` (a2 `op` (a3 `op` b))
 ```
 
 Look how it *mirrors* the structure of lists!
 
-- `(:)` is replaced by `op` 
+- `(:)` is replaced by `op`
 - `[]` is replaced by `base`
 
 For example:
@@ -790,7 +790,7 @@ foldr op base (x:xs) = op x (foldr op base xs)
 <br>
 
 (I) final
-    
+
     *Answer:* D
 
 
@@ -844,7 +844,7 @@ Which of these is a valid implementation of `len`
 Is `foldr` **tail recursive**?
 
 (I) final
-    
+
     *Answer:* No! It calls the binary operations on the results of the recursive call
 
 <br>
@@ -882,11 +882,11 @@ sumTR [1,2,3]
   ==> helper 0 [1,2,3]
   ==> helper 1   [2,3]    -- 0 + 1 ==> 1
   ==> helper 3     [3]    -- 1 + 2 ==> 3
-  ==> helper 6      []    -- 3 + 3 ==> 6 
+  ==> helper 6      []    -- 3 + 3 ==> 6
   ==> 6
 ```
 
-**Note:** `helper` directly returns the result of recursive call! 
+**Note:** `helper` directly returns the result of recursive call!
 
 <br>
 <br>
@@ -901,7 +901,7 @@ sumTR [1,2,3]
 Let's write tail-recursive `cat`!
 
 ```haskell
-catTR :: [String] -> String 
+catTR :: [String] -> String
 catTR = ...
 ```
 
@@ -931,7 +931,7 @@ catTR                 ["carne", "asada", "torta"]
   ==> "carneasadatorta"
 ```
 
-**Note:** `helper` directly returns the result of recursive call! 
+**Note:** `helper` directly returns the result of recursive call!
 
 <br>
 <br>
@@ -1002,7 +1002,7 @@ foldl op base (x:xs) = foldl op (base `op` x) xs
 <br>
 <br>
 
-Let's refactor `sumTR` and `catTR`: 
+Let's refactor `sumTR` and `catTR`:
 
 ```haskell
 sumTR = foldl ...  ...
@@ -1081,7 +1081,7 @@ foldl :: (b -> a -> b) -> b -> [a] -> b  -- Left
 foldr :: (a -> b -> b) -> b -> [a] -> b  -- Right
 ```
 
-<!-- <br>
+<br>
 <br>
 <br>
 <br>
@@ -1106,17 +1106,17 @@ What is the type of `flip`?
 <br>
 
 (I) lecture
-    
+
     ```haskell
     flip :: ???
     ```
-    
+
 (I) final
-    
+
     ```haskell
     flip :: (a -> b -> c) -> b -> a -> c
     ```
-    
+
 <br>
 <br>
 <br>
@@ -1141,16 +1141,16 @@ What is the type of `(.)`?
 <br>
 
 (I) lecture
-    
+
     ```haskell
     (.) :: ???
     ```
-    
+
 (I) final
-    
+
     ```haskell
     (.) :: (b -> c) -> (a -> b) -> a -> c
-    ``` -->
+    ```
 
 <br>
 <br>
@@ -1178,14 +1178,14 @@ HOFs can be put into libraries to enable modularity
 - Data structure **library** implements `map`, `filter`, `fold` for its collections
 
     - generic efficient implementation
-    
+
     - generic optimizations: `map f (map g xs) --> map (f.g) xs`
-    
+
 
 - Data structure **clients** use HOFs with specific operations
-    
-    - no need to know the implementation of the collection 
-    
+
+    - no need to know the implementation of the collection
+
 Enabled the "big data" revolution e.g. _MapReduce_, _Spark_
 
 <br>

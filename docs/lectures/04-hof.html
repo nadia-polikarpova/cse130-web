@@ -251,7 +251,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- evens []        ==&gt; []</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- evens [1,2,3,4] ==&gt; [2,4]</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ot">evens       ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> [<span class="dt">Int</span>]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>evens []     <span class="ot">=</span> <span class="op">...</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>evens []     <span class="ot">=</span> <span class="op">...</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>evens (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
 <p><br>
 <br>
@@ -264,7 +264,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- fourChars [] ==&gt; []</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- fourChars [&quot;i&quot;,&quot;must&quot;,&quot;do&quot;,&quot;work&quot;] ==&gt; [&quot;must&quot;,&quot;work&quot;]</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ot">fourChars ::</span> [<span class="dt">String</span>] <span class="ot">-&gt;</span> [<span class="dt">String</span>]</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>fourChars []     <span class="ot">=</span> <span class="op">...</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>fourChars []     <span class="ot">=</span> <span class="op">...</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>fourChars (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
 <p><br>
 <br>
@@ -410,7 +410,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- For any type `a`</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">--   if you give me a predicate on `a`s</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">--   and a list of `a`s,</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">--   I'll give you back a list of `a`s </span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">--   I'll give you back a list of `a`s</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span><span class="ot"> ::</span> (a <span class="ot">-&gt;</span> <span class="dt">Bool</span>) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [a]</span></code></pre></div>
 <p><br>
 <br>
@@ -427,10 +427,10 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <h2 id="example-all-caps">Example: all caps</h2>
 <p>Lets write a function <code class="sourceCode haskell">shout</code>:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- shout []                    ==&gt; []</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- shout ['h','e','l','l','o'] ==&gt; ['H','E','L','L','O'] </span></span></code></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- shout ['h','e','l','l','o'] ==&gt; ['H','E','L','L','O']</span></span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ot">shout ::</span> [<span class="dt">Char</span>] <span class="ot">-&gt;</span> [<span class="dt">Char</span>]</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>shout []     <span class="ot">=</span> <span class="op">...</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>shout (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="op">...</span> </span></code></pre></div>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>shout (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -440,10 +440,10 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <h2 id="example-squares">Example: squares</h2>
 <p>Lets write a function <code class="sourceCode haskell">squares</code>:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- squares []        ==&gt; []</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- squares [1,2,3,4] ==&gt; [1,4,9,16] </span></span></code></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- squares [1,2,3,4] ==&gt; [1,4,9,16]</span></span></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ot">squares ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> [<span class="dt">Int</span>]</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>squares []     <span class="ot">=</span> <span class="op">...</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>squares (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="op">...</span> </span></code></pre></div>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>squares (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -563,8 +563,8 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p>In Haskell we have:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>shout xs <span class="ot">=</span> <span class="fu">map</span> (\x <span class="ot">-&gt;</span> <span class="fu">toUpper</span> x) xs</span></code></pre></div>
 <p>is syntactic sugar for:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>shout </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span>d<span class="op">&gt;</span> </span>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>shout</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span>d<span class="op">&gt;</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>\xs <span class="ot">-&gt;</span> <span class="fu">map</span> (\x <span class="ot">-&gt;</span> <span class="fu">toUpper</span> x) xs</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span>e<span class="op">&gt;</span> <span class="co">-- eta-contract outer lambda</span></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span> (\x <span class="ot">-&gt;</span> <span class="fu">toUpper</span> x)</span>
@@ -612,7 +612,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- For any types `a` and `b`</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">--   if you give me a transformation from `a` to `b`</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">--   and a list of `a`s,</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">--   I'll give you back a list of `b`s </span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">--   I'll give you back a list of `b`s</span></span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span><span class="ot"> ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]</span></code></pre></div>
 <p><br></p>
 <p><strong>Type says it all!</strong></p>
@@ -752,13 +752,13 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> op base (x<span class="op">:</span>xs) <span class="ot">=</span> op x (<span class="fu">foldr</span> op base xs)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span> op b (a1<span class="op">:</span>a2<span class="op">:</span>a3<span class="op">:</span>[])</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span> </span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span></span>
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  a1 <span class="ot">`op`</span> (<span class="fu">foldr</span> op b (a2<span class="op">:</span>a3<span class="op">:</span>[]))</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span> </span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span></span>
 <span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  a1 <span class="ot">`op`</span> (a2 <span class="ot">`op`</span> (<span class="fu">foldr</span> op b (a3<span class="op">:</span>[])))</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span> </span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span></span>
 <span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  a1 <span class="ot">`op`</span> (a2 <span class="ot">`op`</span> (a3 <span class="ot">`op`</span> (<span class="fu">foldr</span> op b [])))</span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span> </span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span></span>
 <span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  a1 <span class="ot">`op`</span> (a2 <span class="ot">`op`</span> (a3 <span class="ot">`op`</span> b))</span></code></pre></div>
 <p>Look how it <em>mirrors</em> the structure of lists!</p>
 <ul>
@@ -852,7 +852,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> helper <span class="dv">0</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> helper <span class="dv">1</span>   [<span class="dv">2</span>,<span class="dv">3</span>]    <span class="co">-- 0 + 1 ==&gt; 1</span></span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> helper <span class="dv">3</span>     [<span class="dv">3</span>]    <span class="co">-- 1 + 2 ==&gt; 3</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> helper <span class="dv">6</span>      []    <span class="co">-- 3 + 3 ==&gt; 6 </span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> helper <span class="dv">6</span>      []    <span class="co">-- 3 + 3 ==&gt; 6</span></span>
 <span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">==&gt;</span> <span class="dv">6</span></span></code></pre></div>
 <p><strong>Note:</strong> <code class="sourceCode haskell">helper</code> directly returns the result of recursive call!</p>
 <p><br>
@@ -865,7 +865,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <p>Let’s write tail-recursive <code class="sourceCode haskell">cat</code>!</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="ot">catTR ::</span> [<span class="dt">String</span>] <span class="ot">-&gt;</span> <span class="dt">String</span> </span>
+<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="ot">catTR ::</span> [<span class="dt">String</span>] <span class="ot">-&gt;</span> <span class="dt">String</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>catTR <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
 <p><br>
 <br>
@@ -992,7 +992,7 @@ Can be rewritten as:</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span><span class="ot"> ::</span> (b <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b  <span class="co">-- Left</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">foldr</span><span class="ot"> ::</span> (a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b  <span class="co">-- Right</span></span></code></pre></div>
-<!-- <br>
+<p><br>
 <br>
 <br>
 <br>
@@ -1000,68 +1000,33 @@ Can be rewritten as:</p>
 <br>
 <br>
 <br>
-<br>
-
-### Useful HOF: flip
-
-```haskell
--- you can write
-foldl (\xs x -> x : xs) [] [1,2,3]
-
--- more concisely like so:
-foldl (flip (:))        [] [1,2,3]
-```
-
-What is the type of `flip`?
-
-<br>
-
-(I) lecture
-    
-    ```haskell
-    flip :: ???
-    ```
-    
-(I) final
-    
-    ```haskell
-    flip :: (a -> b -> c) -> b -> a -> c
-    ```
-    
+<br></p>
+<h3 id="useful-hof-flip">Useful HOF: flip</h3>
+<div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- you can write</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> (\xs x <span class="ot">-&gt;</span> x <span class="op">:</span> xs) [] [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- more concisely like so:</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">foldl</span> (<span class="fu">flip</span> (<span class="op">:</span>))        [] [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span></code></pre></div>
+<p>What is the type of <code class="sourceCode haskell"><span class="fu">flip</span></code>?</p>
+<p><br></p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flip</span><span class="ot"> ::</span> <span class="op">???</span></span></code></pre></div>
+<p><br>
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
-<br>
-<br>
-
-### Useful HOF: compose
-
-```haskell
--- you can write
-map (\x -> f (g x)) ys
-
--- more concisely like so:
-map (f . g) ys
-```
-
-What is the type of `(.)`?
-
-<br>
-
-(I) lecture
-    
-    ```haskell
-    (.) :: ???
-    ```
-    
-(I) final
-    
-    ```haskell
-    (.) :: (b -> c) -> (a -> b) -> a -> c
-    ``` -->
+<br></p>
+<h3 id="useful-hof-compose">Useful HOF: compose</h3>
+<div class="sourceCode" id="cb55"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- you can write</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span> (\x <span class="ot">-&gt;</span> f (g x)) ys</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- more concisely like so:</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span> (f <span class="op">.</span> g) ys</span></code></pre></div>
+<p>What is the type of <code class="sourceCode haskell">(<span class="op">.</span>)</code>?</p>
+<p><br></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="ot">(.) ::</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
