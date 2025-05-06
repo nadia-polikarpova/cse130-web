@@ -12,7 +12,7 @@ headerImg: books.jpg
 - How do we *use* a functional language?
 
 
-**Next three weeks:**
+**Rest of the class:**
 
 - How do we *implement* a functional language?
 - ... in a functional language (of course)
@@ -20,9 +20,7 @@ headerImg: books.jpg
 **This week: Interpreter**
 
 - How do we *evaluate* a program given its abstract syntax tree (AST)?
-- How do we *prove properties* about our interpreter 
-  (e.g. that certain programs never crash)?  
-  
+
 <br>
 <br>
 <br>
@@ -221,8 +219,8 @@ Let's add variables!
 
 ```haskell
 e ::= n        -- OLD
-    | e1 + e2 
-    | e1 - e2 
+    | e1 + e2
+    | e1 - e2
     | e1 * e2
     | x        -- NEW
 ```
@@ -294,7 +292,7 @@ x + 1
 (I) final
 
     *Answer:* C
-    
+
 <br>
 <br>
 <br>
@@ -310,10 +308,10 @@ x + 1
 An expression is evaluated in an **environment**
 
   - It's a dictionary that maps *variables* to *values*
-  
+
 ```
 ["x" := 0, "y" := 12, ...]
-```  
+```
 
 <br>
 
@@ -468,8 +466,8 @@ Let's add let bindings!
 
 ```haskell
 e ::= n                -- OLD
-    | e1 + e2 
-    | e1 - e2 
+    | e1 + e2
+    | e1 - e2
     | e1 * e2
     | x
     | let x = e1 in e2 -- NEW
@@ -547,7 +545,7 @@ Let's develop intuition with examples!
 What should this evaluate to?
 
 ```haskell
-let x = 2 + 3 
+let x = 2 + 3
 in
   x + 1
 ```
@@ -581,9 +579,9 @@ in
 What should this evaluate to?
 
 ```haskell
-let x = 5 
+let x = 5
 in
-  let y = x + 1 
+  let y = x + 1
   in
     x * y
 ```
@@ -614,15 +612,15 @@ in
 <br>
 <br>
 
-    
+
 ## QUIZ
 
 What should this evaluate to?
 
 ```haskell
-let x = 0 
+let x = 0
 in
-  (let x = 100 
+  (let x = 100
    in
      x + 1
   ) + x
@@ -654,12 +652,12 @@ in
 <br>
 
 ## Principle: Static (Lexical) Scoping
-    
+
 Every variable *use* (occurrence) gets its value from the most local *definition* (binding)
 
   - in a *pure* language, the value never changes once defined
   - easy to tell by looking at the program, where a variable's value came from!
-    
+
 <br>
 <br>
 <br>
@@ -710,7 +708,7 @@ in               --   [x := 0]
    in            --   | [x := 100, x := 0]
      x + 1       --   | |
   )              --   | |
-  + x            --   |     
+  + x            --   |
 ```
 
 *Note:* `[x := 100]` was only added for the inner scope
@@ -731,14 +729,14 @@ To evaluate `let x = e1 in e2` in `env`:
   1. Evaluate `e1` in `env` to `val`
   2. *Extend* `env` with a mapping `["x" := val]`
   3. Evaluate `e2` in this extended environment
-  
+
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
-<br>  
+<br>
 
 ```haskell
 eval :: Env -> Expr -> Value
@@ -748,7 +746,7 @@ eval env (Var x)          = lookup x env
 eval env (Let x e1 e2)    = eval env' e2
   where
     v    = eval env e1
-    env' = (x, v) : env    
+    env' = (x, v) : env
 ```
 
 
@@ -771,7 +769,7 @@ Features of Nano:
 3. Let binding [done]
 4. **Functions**
 5. Recursion
-    
+
 <br>
 <br>
 <br>
@@ -786,21 +784,21 @@ Features of Nano:
 ## 4. Nano: Functions
 
 Let's add:
- 
-  - lambda abstraction (aka function definitions) 
+
+  - lambda abstraction (aka function definitions)
   - applications (aka function calls)
 
 
 ```haskell
 e ::= n                -- OLD
-    | e1 + e2 
-    | e1 - e2 
+    | e1 + e2
+    | e1 - e2
     | e1 * e2
     | x
     | let x = e1 in e2
                        -- NEW
     | \x -> e  -- abstraction
-    | e1 e2    -- application        
+    | e1 e2    -- application
 ```
 
 <br>
@@ -808,7 +806,7 @@ e ::= n                -- OLD
 Example:
 
 ```haskell
-let inc = \x -> x + 1 in 
+let inc = \x -> x + 1 in
 inc 10
 ```
 
@@ -827,9 +825,9 @@ inc 10
 What should this evaluate to?
 
 ```haskell
-let inc = \x -> x + 1 in 
+let inc = \x -> x + 1 in
 inc 10
-```    
+```
 
 **(A)** Undefined variable `x`
 
@@ -846,7 +844,7 @@ inc 10
 (I) final
 
     *Answer:* E
-    
+
 <br>
 <br>
 <br>
@@ -895,14 +893,14 @@ data Expr = Num Int              -- number
 Example:
 
 ```haskell
-let inc = \x -> x + 1 in 
+let inc = \x -> x + 1 in
 inc 10
 ```
 
 represented as:
 
 ```haskell
-Let "inc" 
+Let "inc"
   (Lam "x" (Bin Add (Var "x") (Num 1)))
   (App (Var "inc") (Num 10))
 ```
@@ -917,8 +915,8 @@ Let "inc"
 ## Evaluating Functions
 
 ```haskell
-                      -- environment  
-let inc = \x -> x + 1 
+                      -- environment
+let inc = \x -> x + 1
 in                    -- [inc := ???]
   inc 10              -- use the value of inc to evaluate this
 ```
@@ -968,7 +966,7 @@ f 1
 (I) final
 
     Conceptually, they both evaluate to a function that increments its argument
-    
+
 
 <br>
 <br>
@@ -980,19 +978,19 @@ f 1
 **Now:** a program evaluates to an integer or *a function* (or fails)
 
   - Remember: functions are *first-class* values
-  
+
 <br>
 
-Let's change our definition of values!  
+Let's change our definition of values!
 
 ```haskell
 data Value = VNum Int
            | VFun ??? -- What info do we need to store?
-           
+
 -- Other types stay the same
 type Env = [(Id, Value)]
 
-eval :: Env -> Expr -> Value           
+eval :: Env -> Expr -> Value
 ```
 <br>
 <br>
@@ -1009,7 +1007,7 @@ eval :: Env -> Expr -> Value
 How should we represent a function value?
 
 ```haskell
-let inc = \x -> x + 1 in 
+let inc = \x -> x + 1 in
 inc 10
 ```
 
@@ -1059,8 +1057,8 @@ data Value = VNum Int
 Let's try this!
 
 ```haskell
-                      -- environment  
-let inc = \x -> x + 1 
+                      -- environment
+let inc = \x -> x + 1
 in                    -- [inc := <x, x + 1>]
   inc 10              -- how do we evaluate this?
 ```
@@ -1078,15 +1076,15 @@ in                    -- [inc := <x, x + 1>]
 ## Evaluating applications
 
 ```haskell
-                      -- environment  
-let inc = \x -> x + 1 
+                      -- environment
+let inc = \x -> x + 1
 in                    -- [inc := <x, x + 1>]
   inc 10              -- how do we evaluate this?
 ```
 
 To evaluate `inc 10`:
-  
-  1. Evaluate `inc`, get `<x, x + 1>` 
+
+  1. Evaluate `inc`, get `<x, x + 1>`
   2. Evaluate `10`, get `10`
   3. Evaluate `x + 1` in an environment *extended* with `[x := 10]`
 
@@ -1106,7 +1104,7 @@ eval env (Bin op e1 e2)   = ???
 eval env (Var x)          = ???
 eval env (Let x e1 e2)    = ???
 eval env (Lam x e)        = ???
-eval env (App e1 e2)      = ???    
+eval env (App e1 e2)      = ???
 ```
 
 <br>
@@ -1151,7 +1149,7 @@ evalApp _ _ _                  = error "applying a non-function"
 What should this evaluate to?
 
 ```haskell
-let c = 1 
+let c = 1
 in
   let inc = \x -> x + c
   in
@@ -1188,7 +1186,7 @@ in
 And what should this evaluate to?
 
 ```haskell
-let c = 1 
+let c = 1
 in
   let inc = \x -> x + c
   in
@@ -1208,7 +1206,7 @@ in
 (I) final
 
     *Answer:* B
-    
+
 <br>
 <br>
 <br>
@@ -1223,10 +1221,10 @@ in
 The same expression must *always* evaluate to the same value
 
   - In particular: a function must *always* return the same output for a given input
-  
+
 <br>
-<br>  
-  
+<br>
+
 Why?
 
 ```haskell
@@ -1242,7 +1240,7 @@ Oh no! How do I find the bug???
   - Is it in `myFunc`?
   - Is it in a global variable?
   - Is it in a library somewhere else?
-  
+
 My worst debugging nightmare!
 
 <br>
@@ -1261,12 +1259,12 @@ What we want:
 ```haskell
 let c = 1               -- <-------------------
 in                      --                    \
-  let inc = \x -> x + c -- refers to this def \ 
+  let inc = \x -> x + c -- refers to this def \
   in
     let c = 100
     in
       inc 10
-      
+
 ==> 11
 ```
 
@@ -1282,18 +1280,18 @@ in                      --                    \
 ```haskell
 let c = 1               -- <-------------------
 in                      --                    \
-  let inc = \x -> x + c -- refers to this def \ 
+  let inc = \x -> x + c -- refers to this def \
   in
     let c = 100
     in
       let res1 = inc 10      -- ==> 11
       in
         let c = 200
-        in 
+        in
            let res2 = inc 10 -- ==> 11
            in res1 == res2   -- ==> True
 ```
-  
+
 <br>
 <br>
 <br>
@@ -1302,14 +1300,14 @@ in                      --                    \
 What we **don't** want:
 
 ```haskell
-let c = 1               
+let c = 1
 in
-  let inc = \x -> x + c -- refers to this def \ 
+  let inc = \x -> x + c -- refers to this def \
   in                    --                    \
     let c = 100         -- <-------------------
     in
       inc 10
-      
+
 ==> 110
 ```
 
@@ -1321,9 +1319,9 @@ in
   - each occurrence of a variable refers to the most recent binding *during program execution*
   - can't tell where a variable is defined just by looking at the function body
   - *violates* referential transparency:
-    
+
 ```haskell
-let c = 1               
+let c = 1
 in
   let inc = \x -> x + c     -- refers to this def \  \
   in                        --                    \  \
@@ -1332,7 +1330,7 @@ in
       let res1 = inc 10     -- ==> 110               \
       in                    --                       \
         let c = 200         -- <----------------------
-        in 
+        in
           let res2 = inc 10 -- ==> 210!!!
           in res1 == res2   -- ==> False
 ```
@@ -1370,7 +1368,7 @@ eval env (App fun arg)  = evalApp env (eval env e1) (eval env e1)
 (I) final
 
     *Answer:* B
-    
+
 <br>
 <br>
 <br>
@@ -1391,12 +1389,12 @@ in                       --                                  ["c" := 1]
     let c = 100
     in                   -- ["c" := 100, "inc" := <x, x + c>, "c" := 1]
       inc             10
-      
+
 -- 1. ==> <x, x + c>
 
 -- 2.                 ==> 10
 
--- 3. x + c      ["x" := 10, "c" := 100, "inc" := <x, x + c>, "c" := 1]      
+-- 3. x + c      ["x" := 10, "c" := 100, "inc" := <x, x + c>, "c" := 1]
 
 --    ==> 110
 ```
@@ -1446,7 +1444,7 @@ Key ideas:
  - **At definition:** Freeze the environment in the function's value
  - **At call:** Use the *frozen* environment to evaluate the body
      - instead of the *current* environment
- 
+
 ```haskell
                          -- env:
 let c = 1                --                                          []
@@ -1457,12 +1455,12 @@ in                       --                                  ["c" := 1]
     let c = 100
     in                   -- ["c" := 100, "inc" := <fro, x, x + c>, ...]
       inc             10
-      
+
 -- 1. ==> <fro, x, x + c>
 
 -- 2.                 ==> 10
 --               add "x" to fro instead of env:
--- 3. x + c      ["x" := 10, "c" := 1]      
+-- 3. x + c      ["x" := 10, "c" := 1]
 
 --    ==> 11
 ```
@@ -1484,7 +1482,7 @@ Tada!
 
 To implement lexical scoping, we will represent function values as *closures*
 
-**Closure** = *lambda abstraction* (formal + body) + *environment* at function definition 
+**Closure** = *lambda abstraction* (formal + body) + *environment* at function definition
 
 <br>
 <br>
@@ -1494,7 +1492,7 @@ To implement lexical scoping, we will represent function values as *closures*
 ```haskell
 v ::= n
     | <env, x, e>  -- NEW: frozen env + formal + body
-    
+
 env ::= []
       | (x := v) : env
 ```
@@ -1527,10 +1525,10 @@ How should we modify our `eval` for `Lam`?
 ```haskell
 data Value = VNum Int
            | VClos Env Id Expr -- env + formal + body
-           
+
 eval :: Env -> Expr -> Value
 eval env (Lam x body) = ??? -- construct a closure
-``` 
+```
 
 <br>
 
@@ -1555,10 +1553,10 @@ How should we modify our `eval` for `App`?
 ```haskell
 data Value = VNum Int
            | VClos Env Id Expr -- env + formal + body
-           
+
 eval :: Env -> Expr -> Value
 eval env (App e1 e2) = ??? -- apply the closure
-``` 
+```
 
 <br>
 
@@ -1641,7 +1639,7 @@ in
 (I) final
 
     *Answer:* D
-    
+
 <br>
 <br>
 <br>
@@ -1659,21 +1657,21 @@ Closures support functions returning functions!
 ```haskell
 let add = \x -> (\y -> x + y) --                           env0 = []
 in                         -- env1 = ["add" := <[], x, \y -> x + y>]
-  let add1 = 
-        add 1 -- eval ("x" := 1 : env0) (\y -> x + y) 
+  let add1 =
+        add 1 -- eval ("x" := 1 : env0) (\y -> x + y)
               --   ==> <["x" := 1], y, x + y>
   in       -- env2 = ["add1" := <["x" := 1], y, x + y>, "add" := ...]
-    let add10 = 
-      add 10 -- eval ("x" := 10 : env0) (\y -> x + y) 
+    let add10 =
+      add 10 -- eval ("x" := 10 : env0) (\y -> x + y)
              --   ==> <["x" := 10], y, x + y>
     in  -- env3 = ["add10" := <["x" := 10], y, x + y>, "add1" := ...]
-      add1 100 -- eval ["y" := 100, "x" := 1] (x + y) 
+      add1 100 -- eval ["y" := 100, "x" := 1] (x + y)
                --   ==> 101
-      + 
-      add10 1000 -- eval ["y" := 1000, "x" := 10] (x + y) 
+      +
+      add10 1000 -- eval ["y" := 1000, "x" := 10] (x + y)
                  --  ==> 1010
 
-==> 1111                 
+==> 1111
 ```
 
 <br>
@@ -1730,15 +1728,15 @@ in                              -- env1 = [inc := <[], x, x + 1>]
   in  -- env2 = [doTwice := <env1, f, \x -> f (f x)>, inc := ...]
     ((doTwice inc) -- eval ("f" := <[],x,x + 1> : env1) (\x -> f (f x))
                    -- ==> <("f" := <[],x,x + 1> : env1), x, f (f x)>
-                   
+
       10)          -- eval ["x" := 10, "f" := <[],x,x + 1>, ...] f (f x)
-      
+
 -- f   ==> <[], x, x + 1>
 -- x   ==> 10
 -- <[], x, x + 1> 10 ==> eval ["x" := 10] x + 1 ==> 11
 -- <[], x, x + 1> 11 ==> eval ["x" := 11] x + 1 ==> 12
-    
-==> 12    
+
+==> 12
 ```
 
 <br>
@@ -1749,14 +1747,14 @@ in                              -- env1 = [inc := <[], x, x + 1>]
 <br>
 <br>
 <br>
-<br>     
+<br>
 
 ## QUIZ
 
 What does this evaluate to?
 
 ```haskell
-let f = \n -> n * f (n - 1) 
+let f = \n -> n * f (n - 1)
 in
   f 5
 ```
@@ -1782,14 +1780,14 @@ in
 <br>
 
 ```haskell
-let f = \n -> n * f (n - 1) 
+let f = \n -> n * f (n - 1)
 in -- [f := <[], n, n * f (n - 1)>]
   f 5 -- eval [n := 5] (n * f (n - 1))
       --  ==> unbound variable f!!!
 ```
 
 
-**Lesson learned:** to support recursion, 
+**Lesson learned:** to support recursion,
 you need to put the function itself *back* into its closure environment
 before the body gets evaluated!
 

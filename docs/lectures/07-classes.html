@@ -230,11 +230,10 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			<h2 id="past-two-weeks">Past two Weeks</h2>
-<p>How to <em>implement</em> a language?</p>
+			<h2 id="last-week">Last Week</h2>
+<p>The interpreter:</p>
 <ul>
-<li>Interpreter</li>
-<li>Parser</li>
+<li>How do we <em>evaluate</em> a program given its abstract syntax tree (AST)?</li>
 </ul>
 <h2 id="next-two-weeks">Next two Weeks</h2>
 <p>Modern language features for structuring programs</p>
@@ -242,7 +241,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>Type classes</li>
 <li>Monads</li>
 </ul>
-<p>Will help us add cool features to the Nano interpreter!</p>
+<p>that will help us add cool features to the Nano interpreter!</p>
 <p><br>
 <br>
 <br>
@@ -383,7 +382,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p><br>
 <br></p>
 <p>Now we need <strong>ad-hoc polymorphism</strong>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ot">(+) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a <span class="co">-- Almost, but not really </span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ot">(+) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a <span class="co">-- Almost, but not really</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>(<span class="op">+</span>) x y <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><code class="sourceCode haskell">(<span class="op">+</span>)</code> should work for many (but not all) types</p>
 <ul>
@@ -425,8 +424,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <p>Read it as:</p>
 <ul>
-<li><p><code class="sourceCode haskell">(<span class="op">+</span>)</code> takes in two <code class="sourceCode haskell">a</code> values and returns an <code class="sourceCode haskell">a</code> value<br />
-</p></li>
+<li><p><code class="sourceCode haskell">(<span class="op">+</span>)</code> takes in two <code class="sourceCode haskell">a</code> values and returns an <code class="sourceCode haskell">a</code> value</p></li>
 <li><p>for any type <code class="sourceCode haskell">a</code> that</p></li>
 <li><p><em>is an instance of</em> the <code class="sourceCode haskell"><span class="dt">Num</span></code> type class</p></li>
 <li><p>or, in Java terms: <em>implements</em> the <code class="sourceCode haskell"><span class="dt">Num</span></code> interface</p></li>
@@ -634,7 +632,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br>
 <br>
-<br><br />
+<br>
 <br>
 <br></p>
 <h2 id="quiz-2">QUIZ</h2>
@@ -772,7 +770,7 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Color</span> <span class="kw">where</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show</span> <span class="dt">Red</span>   <span class="ot">=</span> <span class="st">&quot;Red&quot;</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show</span> <span class="dt">Green</span> <span class="ot">=</span> <span class="st">&quot;Green&quot;</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">???</span></span></code></pre></div>
 <p><br>
@@ -788,7 +786,7 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <h2 id="exercise-creating-instances">EXERCISE: Creating Instances</h2>
 <p>Create an instance of <code class="sourceCode haskell"><span class="dt">Eq</span></code> for <code class="sourceCode haskell"><span class="dt">Color</span></code>:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Color</span> <span class="ot">=</span> <span class="dt">Red</span> <span class="op">|</span> <span class="dt">Green</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Color</span> <span class="kw">where</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">???</span></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
@@ -839,7 +837,7 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <div class="sourceCode" id="cb25"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span>  <span class="dt">Eq</span> a  <span class="kw">where</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  (==) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) x y <span class="ot">=</span> <span class="fu">not</span> (x <span class="op">/=</span> y) <span class="co">-- Default implementation!</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  (/=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) x y <span class="ot">=</span> <span class="fu">not</span> (x <span class="op">==</span> y) <span class="co">-- Default implementation!</span></span></code></pre></div>
 <p><br>
@@ -957,7 +955,7 @@ because for something to be an <code class="sourceCode haskell"><span class="dt"
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ot">add ::</span> k <span class="ot">-&gt;</span> v <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>add key val dict <span class="ot">=</span> <span class="op">???</span></span>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- | 'get key dict' returns the value of `key` </span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- | 'get key dict' returns the value of `key`</span></span>
 <span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> k <span class="ot">-&gt;</span> <span class="dt">Dict</span> k v <span class="ot">-&gt;</span> v</span>
 <span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>get key dict <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
@@ -1109,7 +1107,7 @@ so that <code class="sourceCode haskell">get</code> returns a default value inst
 <br>
 <br></p>
 <p>That’s what type classes are for!</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- (&lt;) is a magical function </span></span>
+<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- (&lt;) is a magical function</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- with different implementations depending on the argument type:</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="dv">1</span> <span class="op">&lt;</span> <span class="dv">2</span></span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="dt">True</span></span>

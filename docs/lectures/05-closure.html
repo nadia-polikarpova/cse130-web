@@ -235,7 +235,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <ul>
 <li>How do we <em>use</em> a functional language?</li>
 </ul>
-<p><strong>Next three weeks:</strong></p>
+<p><strong>Rest of the class:</strong></p>
 <ul>
 <li>How do we <em>implement</em> a functional language?</li>
 <li>… in a functional language (of course)</li>
@@ -243,8 +243,6 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p><strong>This week: Interpreter</strong></p>
 <ul>
 <li>How do we <em>evaluate</em> a program given its abstract syntax tree (AST)?</li>
-<li>How do we <em>prove properties</em> about our interpreter
-(e.g. that certain programs never crash)?</li>
 </ul>
 <p><br>
 <br>
@@ -407,8 +405,8 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <h2 id="nano-variables">2. Nano: Variables</h2>
 <p>Let’s add variables!</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>e <span class="op">::=</span> n        <span class="co">-- OLD</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">+</span> e2 </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">-</span> e2 </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">+</span> e2</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">-</span> e2</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">*</span> e2</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> x        <span class="co">-- NEW</span></span></code></pre></div>
 <p><br>
@@ -593,8 +591,8 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <h2 id="nano-let-bindings">3. Nano: Let Bindings</h2>
 <p>Let’s add let bindings!</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>e <span class="op">::=</span> n                <span class="co">-- OLD</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">+</span> e2 </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">-</span> e2 </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">+</span> e2</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">-</span> e2</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">*</span> e2</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> x</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> <span class="kw">let</span> x <span class="ot">=</span> e1 <span class="kw">in</span> e2 <span class="co">-- NEW</span></span></code></pre></div>
@@ -660,7 +658,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="quiz-3">QUIZ</h2>
 <p>What should this evaluate to?</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span> </span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  x <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
 <p><strong>(A)</strong> <code class="sourceCode haskell"><span class="dv">1</span></code></p>
@@ -677,9 +675,9 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="quiz-4">QUIZ</h2>
 <p>What should this evaluate to?</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">5</span> </span>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">5</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> y <span class="ot">=</span> x <span class="op">+</span> <span class="dv">1</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> y <span class="ot">=</span> x <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    x <span class="op">*</span> y</span></code></pre></div>
 <p><strong>(A)</strong> <code class="sourceCode haskell"><span class="dv">5</span></code></p>
@@ -698,9 +696,9 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="quiz-5">QUIZ</h2>
 <p>What should this evaluate to?</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">0</span> </span>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">0</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> x <span class="ot">=</span> <span class="dv">100</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> x <span class="ot">=</span> <span class="dv">100</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">in</span></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>     x <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="op">+</span> x</span></code></pre></div>
@@ -757,7 +755,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">in</span>            <span class="co">--   | [x := 100, x := 0]</span></span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>     x <span class="op">+</span> <span class="dv">1</span>       <span class="co">--   | |</span></span>
 <span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  )              <span class="co">--   | |</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">+</span> x            <span class="co">--   |     </span></span></code></pre></div>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">+</span> x            <span class="co">--   |</span></span></code></pre></div>
 <p><em>Note:</em> <code class="sourceCode haskell">[x <span class="op">:=</span> <span class="dv">100</span>]</code> was only added for the inner scope</p>
 <p><br>
 <br>
@@ -787,7 +785,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">Let</span> x e1 e2)    <span class="ot">=</span> eval env' e2</span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    v    <span class="ot">=</span> eval env e1</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    env' <span class="ot">=</span> (x, v) <span class="op">:</span> env    </span></code></pre></div>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    env' <span class="ot">=</span> (x, v) <span class="op">:</span> env</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -820,17 +818,17 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>applications (aka function calls)</li>
 </ul>
 <div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>e <span class="op">::=</span> n                <span class="co">-- OLD</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">+</span> e2 </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">-</span> e2 </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">+</span> e2</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">-</span> e2</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 <span class="op">*</span> e2</span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> x</span>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> <span class="kw">let</span> x <span class="ot">=</span> e1 <span class="kw">in</span> e2</span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>                       <span class="co">-- NEW</span></span>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> \x <span class="ot">-&gt;</span> e  <span class="co">-- abstraction</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 e2    <span class="co">-- application        </span></span></code></pre></div>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> e1 e2    <span class="co">-- application</span></span></code></pre></div>
 <p><br></p>
 <p>Example:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span> <span class="kw">in</span> </span>
+<div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span> <span class="kw">in</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>inc <span class="dv">10</span></span></code></pre></div>
 <p><br>
 <br>
@@ -843,7 +841,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="quiz-6">QUIZ</h2>
 <p>What should this evaluate to?</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span> <span class="kw">in</span> </span>
+<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span> <span class="kw">in</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>inc <span class="dv">10</span></span></code></pre></div>
 <p><strong>(A)</strong> Undefined variable <code class="sourceCode haskell">x</code></p>
 <p><strong>(B)</strong> Undefined variable <code class="sourceCode haskell">inc</code></p>
@@ -885,10 +883,10 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">App</span> <span class="dt">Expr</span> <span class="dt">Expr</span>        <span class="co">-- application: function + actual</span></span></code></pre></div>
 <p><br></p>
 <p>Example:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span> <span class="kw">in</span> </span>
+<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span> <span class="kw">in</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>inc <span class="dv">10</span></span></code></pre></div>
 <p>represented as:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="dt">Let</span> <span class="st">&quot;inc&quot;</span> </span>
+<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="dt">Let</span> <span class="st">&quot;inc&quot;</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  (<span class="dt">Lam</span> <span class="st">&quot;x&quot;</span> (<span class="dt">Bin</span> <span class="dt">Add</span> (<span class="dt">Var</span> <span class="st">&quot;x&quot;</span>) (<span class="dt">Num</span> <span class="dv">1</span>)))</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  (<span class="dt">App</span> (<span class="dt">Var</span> <span class="st">&quot;inc&quot;</span>) (<span class="dt">Num</span> <span class="dv">10</span>))</span></code></pre></div>
 <p><br>
@@ -898,8 +896,8 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <h2 id="evaluating-functions">Evaluating Functions</h2>
-<div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>                      <span class="co">-- environment  </span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span> </span>
+<div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>                      <span class="co">-- environment</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span>                    <span class="co">-- [inc := ???]</span></span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  inc <span class="dv">10</span>              <span class="co">-- use the value of inc to evaluate this</span></span></code></pre></div>
 <p><br></p>
@@ -945,11 +943,11 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p>Let’s change our definition of values!</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Value</span> <span class="ot">=</span> <span class="dt">VNum</span> <span class="dt">Int</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>           <span class="op">|</span> <span class="dt">VFun</span> <span class="op">???</span> <span class="co">-- What info do we need to store?</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>           </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- Other types stay the same</span></span>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Env</span> <span class="ot">=</span> [(<span class="dt">Id</span>, <span class="dt">Value</span>)]</span>
 <span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Env</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Value</span>           </span></code></pre></div>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Env</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Value</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -961,7 +959,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="function-values">Function values</h2>
 <p>How should we represent a function value?</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span> <span class="kw">in</span> </span>
+<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span> <span class="kw">in</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>inc <span class="dv">10</span></span></code></pre></div>
 <p>We need to store enough information about <code class="sourceCode haskell">inc</code>
 so that we can later evaluate any <em>application</em> of <code class="sourceCode haskell">inc</code>
@@ -992,8 +990,8 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <p><br>
 <br></p>
 <p>Let’s try this!</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>                      <span class="co">-- environment  </span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span> </span>
+<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>                      <span class="co">-- environment</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span>                    <span class="co">-- [inc := &lt;x, x + 1&gt;]</span></span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  inc <span class="dv">10</span>              <span class="co">-- how do we evaluate this?</span></span></code></pre></div>
 <p><br>
@@ -1006,8 +1004,8 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <br>
 <br></p>
 <h2 id="evaluating-applications">Evaluating applications</h2>
-<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>                      <span class="co">-- environment  </span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span> </span>
+<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>                      <span class="co">-- environment</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span>                    <span class="co">-- [inc := &lt;x, x + 1&gt;]</span></span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  inc <span class="dv">10</span>              <span class="co">-- how do we evaluate this?</span></span></code></pre></div>
 <p>To evaluate <code class="sourceCode haskell">inc <span class="dv">10</span></code>:</p>
@@ -1028,7 +1026,7 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">Var</span> x)          <span class="ot">=</span> <span class="op">???</span></span>
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">Let</span> x e1 e2)    <span class="ot">=</span> <span class="op">???</span></span>
 <span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">Lam</span> x e)        <span class="ot">=</span> <span class="op">???</span></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">App</span> e1 e2)      <span class="ot">=</span> <span class="op">???</span>    </span></code></pre></div>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">App</span> e1 e2)      <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1063,7 +1061,7 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <br></p>
 <h2 id="quiz-7">QUIZ</h2>
 <p>What should this evaluate to?</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">1</span> </span>
+<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">1</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> c</span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span></span>
@@ -1084,7 +1082,7 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <br></p>
 <h2 id="quiz-8">QUIZ</h2>
 <p>And what should this evaluate to?</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">1</span> </span>
+<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">1</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> c</span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span></span>
@@ -1135,12 +1133,12 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <p>What we want:</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">1</span>               <span class="co">-- &lt;-------------------</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span>                      <span class="co">--                    \</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> c <span class="co">-- refers to this def \ </span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> c <span class="co">-- refers to this def \</span></span>
 <span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span></span>
 <span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> c <span class="ot">=</span> <span class="dv">100</span></span>
 <span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">in</span></span>
 <span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>      inc <span class="dv">10</span></span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span> <span class="dv">11</span></span></code></pre></div>
 <p><br>
 <br></p>
@@ -1152,14 +1150,14 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 </ul>
 <div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">1</span>               <span class="co">-- &lt;-------------------</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span>                      <span class="co">--                    \</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> c <span class="co">-- refers to this def \ </span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> c <span class="co">-- refers to this def \</span></span>
 <span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span></span>
 <span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> c <span class="ot">=</span> <span class="dv">100</span></span>
 <span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">in</span></span>
 <span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>      <span class="kw">let</span> res1 <span class="ot">=</span> inc <span class="dv">10</span>      <span class="co">-- ==&gt; 11</span></span>
 <span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>      <span class="kw">in</span></span>
 <span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> c <span class="ot">=</span> <span class="dv">200</span></span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">in</span> </span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">in</span></span>
 <span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>           <span class="kw">let</span> res2 <span class="ot">=</span> inc <span class="dv">10</span> <span class="co">-- ==&gt; 11</span></span>
 <span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>           <span class="kw">in</span> res1 <span class="op">==</span> res2   <span class="co">-- ==&gt; True</span></span></code></pre></div>
 <p><br>
@@ -1167,14 +1165,14 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <br>
 <br></p>
 <p>What we <strong>don’t</strong> want:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">1</span>               </span>
+<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">1</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> c <span class="co">-- refers to this def \ </span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> c <span class="co">-- refers to this def \</span></span>
 <span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span>                    <span class="co">--                    \</span></span>
 <span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> c <span class="ot">=</span> <span class="dv">100</span>         <span class="co">-- &lt;-------------------</span></span>
 <span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">in</span></span>
 <span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>      inc <span class="dv">10</span></span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span> <span class="dv">110</span></span></code></pre></div>
 <p><br>
 <br></p>
@@ -1184,7 +1182,7 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <li>can’t tell where a variable is defined just by looking at the function body</li>
 <li><em>violates</em> referential transparency:</li>
 </ul>
-<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">1</span>               </span>
+<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">1</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> inc <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> c     <span class="co">-- refers to this def \  \</span></span>
 <span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span>                        <span class="co">--                    \  \</span></span>
@@ -1193,7 +1191,7 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>      <span class="kw">let</span> res1 <span class="ot">=</span> inc <span class="dv">10</span>     <span class="co">-- ==&gt; 110               \</span></span>
 <span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>      <span class="kw">in</span>                    <span class="co">--                       \</span></span>
 <span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> c <span class="ot">=</span> <span class="dv">200</span>         <span class="co">-- &lt;----------------------</span></span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">in</span> </span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">in</span></span>
 <span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>          <span class="kw">let</span> res2 <span class="ot">=</span> inc <span class="dv">10</span> <span class="co">-- ==&gt; 210!!!</span></span>
 <span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>          <span class="kw">in</span> res1 <span class="op">==</span> res2   <span class="co">-- ==&gt; False</span></span></code></pre></div>
 <p><br>
@@ -1233,12 +1231,12 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> c <span class="ot">=</span> <span class="dv">100</span></span>
 <span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">in</span>                   <span class="co">-- [&quot;c&quot; := 100, &quot;inc&quot; := &lt;x, x + c&gt;, &quot;c&quot; := 1]</span></span>
 <span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>      inc             <span class="dv">10</span></span>
-<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="co">-- 1. ==&gt; &lt;x, x + c&gt;</span></span>
 <span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co">-- 2.                 ==&gt; 10</span></span>
 <span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="co">-- 3. x + c      [&quot;x&quot; := 10, &quot;c&quot; := 100, &quot;inc&quot; := &lt;x, x + c&gt;, &quot;c&quot; := 1]      </span></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="co">-- 3. x + c      [&quot;x&quot; := 10, &quot;c&quot; := 100, &quot;inc&quot; := &lt;x, x + c&gt;, &quot;c&quot; := 1]</span></span>
 <span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a><span class="co">--    ==&gt; 110</span></span></code></pre></div>
 <p>Ouch.</p>
@@ -1289,12 +1287,12 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> c <span class="ot">=</span> <span class="dv">100</span></span>
 <span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">in</span>                   <span class="co">-- [&quot;c&quot; := 100, &quot;inc&quot; := &lt;fro, x, x + c&gt;, ...]</span></span>
 <span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>      inc             <span class="dv">10</span></span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="co">-- 1. ==&gt; &lt;fro, x, x + c&gt;</span></span>
 <span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="co">-- 2.                 ==&gt; 10</span></span>
 <span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="co">--               add &quot;x&quot; to fro instead of env:</span></span>
-<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a><span class="co">-- 3. x + c      [&quot;x&quot; := 10, &quot;c&quot; := 1]      </span></span>
+<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a><span class="co">-- 3. x + c      [&quot;x&quot; := 10, &quot;c&quot; := 1]</span></span>
 <span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a><span class="co">--    ==&gt; 11</span></span></code></pre></div>
 <p>Tada!</p>
@@ -1315,7 +1313,7 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <p><em>Updated</em> grammar for values:</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">::=</span> n</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> <span class="op">&lt;</span>env, x, e<span class="op">&gt;</span>  <span class="co">-- NEW: frozen env + formal + body</span></span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>env <span class="op">::=</span> []</span>
 <span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>      <span class="op">|</span> (x <span class="op">:=</span> v) <span class="op">:</span> env</span></code></pre></div>
 <p><br>
@@ -1336,7 +1334,7 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <p>How should we modify our <code class="sourceCode haskell">eval</code> for <code class="sourceCode haskell"><span class="dt">Lam</span></code>?</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Value</span> <span class="ot">=</span> <span class="dt">VNum</span> <span class="dt">Int</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>           <span class="op">|</span> <span class="dt">VClos</span> <span class="dt">Env</span> <span class="dt">Id</span> <span class="dt">Expr</span> <span class="co">-- env + formal + body</span></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>           </span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Env</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Value</span></span>
 <span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">Lam</span> x body) <span class="ot">=</span> <span class="op">???</span> <span class="co">-- construct a closure</span></span></code></pre></div>
 <p><br></p>
@@ -1355,7 +1353,7 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <p>How should we modify our <code class="sourceCode haskell">eval</code> for <code class="sourceCode haskell"><span class="dt">App</span></code>?</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Value</span> <span class="ot">=</span> <span class="dt">VNum</span> <span class="dt">Int</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>           <span class="op">|</span> <span class="dt">VClos</span> <span class="dt">Env</span> <span class="dt">Id</span> <span class="dt">Expr</span> <span class="co">-- env + formal + body</span></span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>           </span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Env</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Value</span></span>
 <span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">App</span> e1 e2) <span class="ot">=</span> <span class="op">???</span> <span class="co">-- apply the closure</span></span></code></pre></div>
 <p><br></p>
@@ -1435,21 +1433,21 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <p>Closures support functions returning functions!</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> add <span class="ot">=</span> \x <span class="ot">-&gt;</span> (\y <span class="ot">-&gt;</span> x <span class="op">+</span> y) <span class="co">--                           env0 = []</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span>                         <span class="co">-- env1 = [&quot;add&quot; := &lt;[], x, \y -&gt; x + y&gt;]</span></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> add1 <span class="ot">=</span> </span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>        add <span class="dv">1</span> <span class="co">-- eval (&quot;x&quot; := 1 : env0) (\y -&gt; x + y) </span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> add1 <span class="ot">=</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>        add <span class="dv">1</span> <span class="co">-- eval (&quot;x&quot; := 1 : env0) (\y -&gt; x + y)</span></span>
 <span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>              <span class="co">--   ==&gt; &lt;[&quot;x&quot; := 1], y, x + y&gt;</span></span>
 <span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span>       <span class="co">-- env2 = [&quot;add1&quot; := &lt;[&quot;x&quot; := 1], y, x + y&gt;, &quot;add&quot; := ...]</span></span>
-<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> add10 <span class="ot">=</span> </span>
-<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>      add <span class="dv">10</span> <span class="co">-- eval (&quot;x&quot; := 10 : env0) (\y -&gt; x + y) </span></span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> add10 <span class="ot">=</span></span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>      add <span class="dv">10</span> <span class="co">-- eval (&quot;x&quot; := 10 : env0) (\y -&gt; x + y)</span></span>
 <span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>             <span class="co">--   ==&gt; &lt;[&quot;x&quot; := 10], y, x + y&gt;</span></span>
 <span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">in</span>  <span class="co">-- env3 = [&quot;add10&quot; := &lt;[&quot;x&quot; := 10], y, x + y&gt;, &quot;add1&quot; := ...]</span></span>
-<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>      add1 <span class="dv">100</span> <span class="co">-- eval [&quot;y&quot; := 100, &quot;x&quot; := 1] (x + y) </span></span>
+<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>      add1 <span class="dv">100</span> <span class="co">-- eval [&quot;y&quot; := 100, &quot;x&quot; := 1] (x + y)</span></span>
 <span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a>               <span class="co">--   ==&gt; 101</span></span>
-<span id="cb62-13"><a href="#cb62-13" aria-hidden="true" tabindex="-1"></a>      <span class="op">+</span> </span>
-<span id="cb62-14"><a href="#cb62-14" aria-hidden="true" tabindex="-1"></a>      add10 <span class="dv">1000</span> <span class="co">-- eval [&quot;y&quot; := 1000, &quot;x&quot; := 10] (x + y) </span></span>
+<span id="cb62-13"><a href="#cb62-13" aria-hidden="true" tabindex="-1"></a>      <span class="op">+</span></span>
+<span id="cb62-14"><a href="#cb62-14" aria-hidden="true" tabindex="-1"></a>      add10 <span class="dv">1000</span> <span class="co">-- eval [&quot;y&quot; := 1000, &quot;x&quot; := 10] (x + y)</span></span>
 <span id="cb62-15"><a href="#cb62-15" aria-hidden="true" tabindex="-1"></a>                 <span class="co">--  ==&gt; 1010</span></span>
 <span id="cb62-16"><a href="#cb62-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-17"><a href="#cb62-17" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span> <span class="dv">1111</span>                 </span></code></pre></div>
+<span id="cb62-17"><a href="#cb62-17" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span> <span class="dv">1111</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1486,15 +1484,15 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span>  <span class="co">-- env2 = [doTwice := &lt;env1, f, \x -&gt; f (f x)&gt;, inc := ...]</span></span>
 <span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>    ((doTwice inc) <span class="co">-- eval (&quot;f&quot; := &lt;[],x,x + 1&gt; : env1) (\x -&gt; f (f x))</span></span>
 <span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>                   <span class="co">-- ==&gt; &lt;(&quot;f&quot; := &lt;[],x,x + 1&gt; : env1), x, f (f x)&gt;</span></span>
-<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>                   </span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>      <span class="dv">10</span>)          <span class="co">-- eval [&quot;x&quot; := 10, &quot;f&quot; := &lt;[],x,x + 1&gt;, ...] f (f x)</span></span>
-<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a><span class="co">-- f   ==&gt; &lt;[], x, x + 1&gt;</span></span>
 <span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a><span class="co">-- x   ==&gt; 10</span></span>
 <span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a><span class="co">-- &lt;[], x, x + 1&gt; 10 ==&gt; eval [&quot;x&quot; := 10] x + 1 ==&gt; 11</span></span>
 <span id="cb64-13"><a href="#cb64-13" aria-hidden="true" tabindex="-1"></a><span class="co">-- &lt;[], x, x + 1&gt; 11 ==&gt; eval [&quot;x&quot; := 11] x + 1 ==&gt; 12</span></span>
-<span id="cb64-14"><a href="#cb64-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb64-15"><a href="#cb64-15" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span> <span class="dv">12</span>    </span></code></pre></div>
+<span id="cb64-14"><a href="#cb64-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-15"><a href="#cb64-15" aria-hidden="true" tabindex="-1"></a><span class="op">==&gt;</span> <span class="dv">12</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1506,7 +1504,7 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <br></p>
 <h2 id="quiz-12">QUIZ</h2>
 <p>What does this evaluate to?</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> f <span class="ot">=</span> \n <span class="ot">-&gt;</span> n <span class="op">*</span> f (n <span class="op">-</span> <span class="dv">1</span>) </span>
+<div class="sourceCode" id="cb65"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> f <span class="ot">=</span> \n <span class="ot">-&gt;</span> n <span class="op">*</span> f (n <span class="op">-</span> <span class="dv">1</span>)</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span></span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  f <span class="dv">5</span></span></code></pre></div>
 <p><strong>(A)</strong> <code class="sourceCode haskell"><span class="dv">120</span></code></p>
@@ -1520,7 +1518,7 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <br>
 <br>
 <br></p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> f <span class="ot">=</span> \n <span class="ot">-&gt;</span> n <span class="op">*</span> f (n <span class="op">-</span> <span class="dv">1</span>) </span>
+<div class="sourceCode" id="cb66"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> f <span class="ot">=</span> \n <span class="ot">-&gt;</span> n <span class="op">*</span> f (n <span class="op">-</span> <span class="dv">1</span>)</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span> <span class="co">-- [f := &lt;[], n, n * f (n - 1)&gt;]</span></span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  f <span class="dv">5</span> <span class="co">-- eval [n := 5] (n * f (n - 1))</span></span>
 <span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>      <span class="co">--  ==&gt; unbound variable f!!!</span></span></code></pre></div>

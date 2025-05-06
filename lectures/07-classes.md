@@ -4,12 +4,11 @@ date: 2019-05-29
 headerImg: books.jpg
 ---
 
-## Past two Weeks
+## Last Week
 
-How to *implement* a language?
+The interpreter:
 
-- Interpreter
-- Parser
+- How do we *evaluate* a program given its abstract syntax tree (AST)?
 
 ## Next two Weeks
 
@@ -18,7 +17,7 @@ Modern language features for structuring programs
 - Type classes
 - Monads
 
-Will help us add cool features to the Nano interpreter!
+that will help us add cool features to the Nano interpreter!
 
 <br>
 <br>
@@ -198,10 +197,10 @@ We have seen **parametric polymorphism**:
 (++) (x:xs) ys = x:(xs ++ ys)
 ```
 
-`(++)` works for all list types 
+`(++)` works for all list types
 
   - *Doesn't care* what the list elements are
-  
+
   - *The same* implementation works for `a = Int`, `a = Bool`, etc.
 
 <br>
@@ -209,7 +208,7 @@ We have seen **parametric polymorphism**:
 
 Now we need **ad-hoc polymorphism**:
 ```haskell
-(+) :: a -> a -> a -- Almost, but not really 
+(+) :: a -> a -> a -- Almost, but not really
 (+) x y = ???
 ```
 
@@ -230,11 +229,11 @@ Now we need **ad-hoc polymorphism**:
 <br>
 <br>
 
-## Type Classes for Ad Hoc Polymorphism 
+## Type Classes for Ad Hoc Polymorphism
 
 Haskell solves this problem with a mechanism called *type classes*
 
-- Introduced by [Wadler and Blott](http://portal.acm.org/citation.cfm?id=75283) 
+- Introduced by [Wadler and Blott](http://portal.acm.org/citation.cfm?id=75283)
 
 ![](/static/img/blott-wadler.png)
 
@@ -266,10 +265,10 @@ We call this a **constrained** (or **qualified**) type
 
 Read it as:
 
-  - `(+)` takes in two `a` values and returns an `a` value  
-  - for any type `a` that 
-  - _is an instance of_ the `Num` type class  
-  
+  - `(+)` takes in two `a` values and returns an `a` value
+  - for any type `a` that
+  - _is an instance of_ the `Num` type class
+
   - or, in Java terms: _implements_ the `Num` interface
   - [similar but not the same idea!](https://www.parsonsmatt.org/2017/01/07/how_do_type_classes_differ_from_interfaces.html)
 
@@ -285,14 +284,14 @@ Some types are `Num`s:
 
   - For example, `Int`, `Integer`, `Double`
   - Values of those types can be passed to `(+)`:
-  
+
 ```haskell
 λ> 2 + 3
 5
 ```
 
 <br>
-<br>  
+<br>
 
 Other types *are not* `Num`s:
 
@@ -313,7 +312,7 @@ Other types *are not* `Num`s:
 
 **Aha!** _Now_ those `no instance for` error messages should make sense!
 
-- Haskell is complaining that `True` and `False` are of type `Bool` 
+- Haskell is complaining that `True` and `False` are of type `Bool`
 - and that `Bool` is _not_ an instance of `Num`
 
 <br>
@@ -322,7 +321,7 @@ Other types *are not* `Num`s:
 <br>
 <br>
 <br>
-<br> 
+<br>
 
 ## QUIZ
 
@@ -344,7 +343,7 @@ What would be a reasonable type for the equality operator?
 (I) final
 
     *Answer:* D. Not B because we can't compare functions!
-    
+
 <br>
 <br>
 <br>
@@ -354,7 +353,7 @@ What would be a reasonable type for the equality operator?
 <br>
 <br>
 <br>
-<br>    
+<br>
 
 ## Type Classes: Outline
 
@@ -537,11 +536,11 @@ class Read a where
 ```
 
 `Read` is the _opposite_ of `Show`
- 
+
   - It requires that every instance `T` can parse a string and turn it into `T`
-  
+
   - Just like with `Show`, most standard type are instances of `Read`:
-  
+
     - `Int`, `Integer`, `Double`, `Char`, `Bool`, etc
 
 <br>
@@ -550,9 +549,9 @@ class Read a where
 <br>
 <br>
 <br>
-<br>  
 <br>
-<br>  
+<br>
+<br>
 
 ## QUIZ
 
@@ -586,7 +585,7 @@ Did we want an `Int` or a `Double` or maybe something else altogether?
 <br>
 
 Thus, here an **explicit type annotation** is needed to tell Haskell
-what to convert the string to: 
+what to convert the string to:
 
 ```haskell
 λ> (read "2") :: Int
@@ -683,12 +682,12 @@ Why is this happening?
 <br>
 <br>
 
-When we type an expression into GHCi it: 
+When we type an expression into GHCi it:
 
   1. evaluates it to a value, then
   2. calls `show` on that value to convert it to a string
-  
-But our new type is *not an instance* of `Show`!  
+
+But our new type is *not an instance* of `Show`!
 
 <br>
 <br>
@@ -736,7 +735,7 @@ To tell Haskell how to show or compare values of type `Color`
 instance Show Color where
   show Red   = "Red"
   show Green = "Green"
-  
+
 instance Eq Color where
   ???
 ```
@@ -758,7 +757,7 @@ Create an instance of `Eq` for `Color`:
 
 ```haskell
 data Color = Red | Green
-  
+
 instance Eq Color where
   ???
 
@@ -780,7 +779,7 @@ class  Eq a  where
 <br>
 
 
-## QUIZ 
+## QUIZ
 
 Which of the following `Eq` instances for `Color` are valid?
 
@@ -819,7 +818,7 @@ instance Eq Color where
 <br>
 <br>
 
-## Default Method Implementations   
+## Default Method Implementations
 
 The `Eq` class is actually defined like this:
 
@@ -827,7 +826,7 @@ The `Eq` class is actually defined like this:
 class  Eq a  where
   (==) :: a -> a -> Bool
   (==) x y = not (x /= y) -- Default implementation!
-  
+
   (/=) :: a -> a -> Bool
   (/=) x y = not (x == y) -- Default implementation!
 ```
@@ -838,16 +837,16 @@ class  Eq a  where
 The class provides **default implementations** for its methods
 
   - An instance can define *any* of the two methods and get the other one for free
-  
+
   - Use `:info` to find out which methods you have to define:
-  
+
 ```haskell
 λ> :info Eq
 class  Eq a  where
   (==) :: a -> a -> Bool
   (/=) :: a -> a -> Bool
   {-# MINIMAL (==) | (/=) #-} -- HERE HERE!!!
-```  
+```
 
 <br>
 <br>
@@ -1000,7 +999,7 @@ Okay, lets implement!
 add :: k -> v -> Dict k v -> Dict k v
 add key val dict = ???
 
--- | 'get key dict' returns the value of `key` 
+-- | 'get key dict' returns the value of `key`
 get :: k -> Dict k v -> v
 get key dict = ???
 ```
@@ -1031,7 +1030,7 @@ But we get a type error!
 
 ## Constraint Propagation
 
-Lets _delete_ the types of `add` and `get` and see what Haskell says their types are! 
+Lets _delete_ the types of `add` and `get` and see what Haskell says their types are!
 
 ```haskell
 λ> :type get
@@ -1041,7 +1040,7 @@ get :: (Eq k) => k -> v -> Dict k v -> Dict k v
 Haskell tells us that we can use any `k` type as a *key*
 as long as this type is an instance of the `Eq` typeclass.
 
-How, did GHC figure this out? 
+How, did GHC figure this out?
 
 - If you look at the code for `get` you'll see that we check if two keys _are equal_!
 
@@ -1097,7 +1096,7 @@ _(How) do you need to change the types of `get` and `add`?_
 ## Creating Typeclasses
 
 Typeclasses are useful for *many* different things
-  
+
   - Improve readability
   - Promote code reuse
 
@@ -1134,7 +1133,7 @@ get key (Bind oldK v rest)
 
 Let's modify our implementation of fast dictionaries
 so that `get` returns a default value instead:
-  
+
 ```haskell
 λ> get 2       (add 5 "five"   (add 10 "ten"  (add 3 "three" Empty)))
 ""
@@ -1213,9 +1212,9 @@ get def key (Bind oldK v rest)
 <br>
 
 That's what type classes are for!
-  
+
 ```haskell
--- (<) is a magical function 
+-- (<) is a magical function
 -- with different implementations depending on the argument type:
 λ> 1 < 2
 True
@@ -1272,4 +1271,4 @@ instance Default [a] where
 <br>
 
 
-That's all folks! 
+That's all folks!
