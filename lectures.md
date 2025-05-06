@@ -26,14 +26,14 @@ Lecture schedule is subject to change!
 | 5/7        | Interpreters                    |                           |
 | 5/9        | contd.                          |                           |
 | 5/12       | contd.                          |                           |
-| 5/14       | Parsing                         |                           |
+| 5/14       | Type Classes                    |                           |
 | 5/16       | contd.                          |                           |
-| 5/19       | Type Classes                    |                           |
+| 5/19       | Monads                          |                           |
 | 5/21       | contd.                          |                           |
 | 5/23       | contd.                          |                           |
 | 5/26       | *No lecture: Memorial Day*      |                           |
-| 5/28       | Monads                          |                           |
-| 5/30       | contd.                          |                           |
+| 5/28       | contd.                          |                           |
+| 5/30       | Parser Combinators              |                           |
 | 6/2        | contd.                          |                           |
 | 6/4        | contd.                          |                           |
 | 6/6        | **Final quiz**                  |                           |
