@@ -23,10 +23,10 @@ Lecture schedule is subject to change!
 | 4/30       | contd.                          |                           |
 | 5/2        | contd.                          |                           |
 | 5/5        | **Midterm quiz**                |                           |
-| 5/7        | Interpreters                    |                           |
+| 5/7        | Interpreters                    | [html][lec5]              |
 | 5/9        | contd.                          |                           |
 | 5/12       | contd.                          |                           |
-| 5/14       | Type Classes                    |                           |
+| 5/14       | Type Classes                    | [html][lec6]              |
 | 5/16       | contd.                          |                           |
 | 5/19       | Monads                          |                           |
 | 5/21       | contd.                          |                           |
@@ -51,10 +51,8 @@ Discussion slides are available [here](https://drive.google.com/drive/folders/19
 [lec3]: lectures/03-datatypes.html
 [lec4]: lectures/04-hof.html
 [lec5]: lectures/05-closure.html
-[lec6]: lectures/06-parsing.html
-[lec7]: lectures/07-classes.html
-[lec8]: lectures/08-monads.html
-[lec9]: lectures/09-types.html
+[lec6]: lectures/07-classes.html
+[lec7]: lectures/08-monads.html
 [soundness]: lectures/soundness.html
 [mock-final]: https://github.com/cse130-assignments/mock-final
 
