@@ -1126,13 +1126,13 @@ eval env (Let x e1 e2)  = eval env' e2
     v = eval env e1
     env' = (x, v) : env
 eval env (Lam x body)   = VFun x body
-eval env (App fun arg)  = evalApp env (eval env e1) (eval env e1)
-
-evalApp :: Env -> Value -> Value -> Value
-evalApp env (VFun x body) vArg = eval env' body
+eval env (App fun arg)  = evalApp (eval env e1) (eval env e1)
   where
-    env' = (x, vArg) : env
-evalApp _ _ _                  = error "applying a non-function"
+    evalApp :: Value -> Value -> Value
+    evalApp (VFun x body) vArg = eval env' body
+      where
+        env' = (x, vArg) : env
+    evalApp _ _                = error "applying a non-function"
 ```
 
 <br>
@@ -1352,9 +1352,9 @@ Which scoping does our `eval` function implement?
 ```haskell
 ...
 eval env (Lam x body)   = VFun x body
-eval env (App fun arg)  = evalApp env (eval env e1) (eval env e1)
+eval env (App fun arg)  = evalApp (eval env e1) (eval env e1)
   where
-    evalApp env (VFun x body) vArg = eval ((x,vArg):env) body
+    evalApp (VFun x body) vArg = eval ((x,vArg):env) body
 ```
 
 **(A)** Static

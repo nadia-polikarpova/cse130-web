@@ -1044,13 +1044,13 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    v <span class="ot">=</span> eval env e1</span>
 <span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    env' <span class="ot">=</span> (x, v) <span class="op">:</span> env</span>
 <span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">Lam</span> x body)   <span class="ot">=</span> <span class="dt">VFun</span> x body</span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">App</span> fun arg)  <span class="ot">=</span> evalApp env (eval env e1) (eval env e1)</span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="ot">evalApp ::</span> <span class="dt">Env</span> <span class="ot">-&gt;</span> <span class="dt">Value</span> <span class="ot">-&gt;</span> <span class="dt">Value</span> <span class="ot">-&gt;</span> <span class="dt">Value</span></span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>evalApp env (<span class="dt">VFun</span> x body) vArg <span class="ot">=</span> eval env' body</span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
-<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>    env' <span class="ot">=</span> (x, vArg) <span class="op">:</span> env</span>
-<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>evalApp _ _ _                  <span class="ot">=</span> <span class="fu">error</span> <span class="st">&quot;applying a non-function&quot;</span></span></code></pre></div>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">App</span> fun arg)  <span class="ot">=</span> evalApp (eval env e1) (eval env e1)</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="ot">    evalApp ::</span> <span class="dt">Value</span> <span class="ot">-&gt;</span> <span class="dt">Value</span> <span class="ot">-&gt;</span> <span class="dt">Value</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>    evalApp (<span class="dt">VFun</span> x body) vArg <span class="ot">=</span> eval env' body</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>      <span class="kw">where</span></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>        env' <span class="ot">=</span> (x, vArg) <span class="op">:</span> env</span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>    evalApp _ _                <span class="ot">=</span> <span class="fu">error</span> <span class="st">&quot;applying a non-function&quot;</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1207,9 +1207,9 @@ so that we can later evaluate any <em>application</em> of <code class="sourceCod
 <p>Which scoping does our <code class="sourceCode haskell">eval</code> function implement?</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">Lam</span> x body)   <span class="ot">=</span> <span class="dt">VFun</span> x body</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">App</span> fun arg)  <span class="ot">=</span> evalApp env (eval env e1) (eval env e1)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>eval env (<span class="dt">App</span> fun arg)  <span class="ot">=</span> evalApp (eval env e1) (eval env e1)</span>
 <span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    evalApp env (<span class="dt">VFun</span> x body) vArg <span class="ot">=</span> eval ((x,vArg)<span class="op">:</span>env) body</span></code></pre></div>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    evalApp (<span class="dt">VFun</span> x body) vArg <span class="ot">=</span> eval ((x,vArg)<span class="op">:</span>env) body</span></code></pre></div>
 <p><strong>(A)</strong> Static</p>
 <p><strong>(B)</strong> Dynamic</p>
 <p><strong>(C)</strong> Neither</p>
