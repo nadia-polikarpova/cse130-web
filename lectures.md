@@ -28,7 +28,7 @@ Lecture schedule is subject to change!
 | 5/12       | contd.                          |                           |
 | 5/14       | Type Classes                    | [html][lec6]              |
 | 5/16       | contd.                          |                           |
-| 5/19       | Monads                          |                           |
+| 5/19       | Monads                          | [html][lec7]              |
 | 5/21       | contd.                          |                           |
 | 5/23       | contd.                          |                           |
 | 5/26       | *No lecture: Memorial Day*      |                           |
