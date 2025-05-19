@@ -1,5 +1,5 @@
 ---
-title: Monads 
+title: Monads
 date: 2019-06-5
 headerImg: books.jpg
 ---
@@ -25,8 +25,9 @@ In this lecture we will see advanced ways to *abstract code patterns*
 
 1. **Functors**
 2. A Monad for Error Handling
-3. Writing apps with monads
-4. A Monad for Mutable State
+3. A Monad for Mutable State
+4. a monad for Non-Determinism
+5. Writing apps with monads
 
 <br>
 <br>
@@ -148,7 +149,7 @@ showTree (Node v l r) = ???
     showTree Leaf         = Leaf
     showTree (Node v l r) = Node (show v) (showTree l) (showTree r)
     ```
-    
+
 
 <br>
 <br>
@@ -190,7 +191,7 @@ sqrTree (Node v l r) = ???
 
 ### QUIZ: Mapping over a Tree
 
-If we refactor iteration into `mapTree`, 
+If we refactor iteration into `mapTree`,
 what should its type be?
 
 ```haskell
@@ -425,8 +426,9 @@ Nothing
 
 1. Functors [done]
 2. **A Monad for Error Handling**
-3. Writing apps with monads
-4. A Monad for Mutable State
+3. A Monad for Mutable State
+4. a monad for Non-Determinism
+5. Writing apps with monads
 
 <br>
 <br>
@@ -504,12 +506,12 @@ Our `eval` will now return `Result Int` instead of `Int`
 
   - If a _sub-expression_ had a divide by zero, return `Error "..."`
   - If all sub-expressions were safe, then return the actual `Value v`
-  
+
 <br>
 <br>
 <br>
 <br>
-<br>  
+<br>
 
 ```haskell
 eval :: Expr -> Result Int
@@ -532,18 +534,18 @@ eval (Div e1 e2)  = ???
 ```haskell
 eval :: Expr -> Result Int
 eval (Num n)      = Value n
-eval (Plus e1 e2) = 
+eval (Plus e1 e2) =
   case eval e1 of
     Error err1 -> Error err1
     Value v1   -> case eval e2 of
                     Error err2 -> Error err2
                     Value v1   -> Value (v1 + v2)
-eval (Div e1 e2)  = 
+eval (Div e1 e2)  =
   case eval e1 of
     Error err1 -> Error err1
     Value v1   -> case eval e2 of
                     Error err2 -> Error err2
-                    Value v2   -> if v2 == 0 
+                    Value v2   -> if v2 == 0
                                     then Error ("DBZ: " ++ show e2)
                                     else Value (v1 `div` v2)
 ```
@@ -673,7 +675,7 @@ What does the following evaluate to?
 (I) final
 
     *Answer:* D
-    
+
 <br>
 <br>
 <br>
@@ -718,7 +720,7 @@ What does the following evaluate to?
 (I) final
 
     *Answer:* E
-    
+
 
 
 <br>
@@ -769,8 +771,8 @@ is doing, and why it is actually just a "shorter" version of the
 
 ## A Class for bind
 
-Like `fmap` or `show` or `==`, 
-the `>>=` operator turns out to be useful across many types 
+Like `fmap` or `show` or `==`,
+the `>>=` operator turns out to be useful across many types
 (not just `Result`)
 
 <br>
@@ -790,7 +792,7 @@ class Monad m where
 `return` tells you how to wrap an `a` value in the monad
 
   - Useful for writing code that works across multiple monads
-  
+
 <br>
 <br>
 <br>
@@ -800,9 +802,9 @@ class Monad m where
 <br>
 <br>
 
-### Monad instance for Result  
+### Monad instance for Result
 
-Let's make `Result` an instance of `Monad`! 
+Let's make `Result` an instance of `Monad`!
 
 ```haskell
 class Monad m where
@@ -914,7 +916,7 @@ Instead of defining your own type `Result`,
 you can use `Either` from the Haskell standard library:
 
 ```haskell
-data Either a b = 
+data Either a b =
     Left  a  -- something has gone wrong
   | Right b  -- everything has gone RIGHT
 ```
@@ -945,9 +947,10 @@ and the `eval` above will just work out of the box!
 ## Outline
 
 1. Functors [done]
-2. A Monad for Error Handling [done]    
-3. **Writing apps with monads**
-4. A Monad for Mutable State
+2. A Monad for Error Handling [done]
+3. **A Monad for Mutable State**
+4. a monad for Non-Determinism
+5. Writing apps with monads
 
 <br>
 <br>
@@ -959,6 +962,612 @@ and the `eval` above will just work out of the box!
 <br>
 <br>
 <br>
+
+
+## Expressions with a Counter
+
+Consider implementing expressions with a counter:
+
+```haskell
+data Expr
+  = Num    Int
+  | Plus   Expr Expr
+  | Next   -- counter value
+  deriving (Show)
+```
+
+Behavior we want:
+
+- `eval` is given the initial counter value
+- every time we evaluate `Next` (within the call to `eval`), the value of the counter increases:
+
+```
+--        0
+λ> eval 0 Next
+0
+
+--              0    1
+λ> eval 0 (Plus Next Next)
+1
+
+--              ?          ?    ?
+λ> eval 0 (Plus Next (Plus Next Next))
+???
+```
+
+<br>
+<br>
+
+How should we implement `eval`?
+
+```
+eval (Num n)      cnt = ???
+eval Next         cnt = ???
+eval (Plus e1 e2) cnt = ???
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+### QUIZ: State: Take 1
+
+If we implement `eval` like this:
+
+```haskell
+eval (Num n)      cnt = n
+eval Next         cnt = cnt
+eval (Plus e1 e2) cnt = eval e1 cnt + eval e2 cnt
+```
+What would be the result of the following?
+
+```haskell
+λ> eval (Plus Next Next) 0
+```
+
+**(A)** Type error
+
+**(B)** `0`
+
+**(C)** `1`
+
+**(D)** `2`
+
+<br>
+
+(I) final
+
+    *Answer:* B
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+It's going to be `0` because we never increment the counter!
+
+   - We need to increment it every time we do `eval Next`
+   - So `eval` needs to return the new counter
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Evaluating Expressions with Counter
+
+```haskell
+type Cnt = Int
+
+eval :: Expr -> Cnt -> (Cnt, Int)
+eval (Num n)      cnt = (cnt, n)
+eval Next         cnt = (cnt + 1, cnt)
+eval (Plus e1 e2) cnt = let (cnt1, v1) = eval e1 cnt
+                        in
+                          let (cnt2, v2) = eval e2 cnt1
+                          in
+                            (cnt2, v1 + v2)
+
+topEval :: Expr -> Int
+topEval e = snd (eval e 0)
+```
+
+<br>
+<br>
+
+The **good news**: we get the right result:
+
+```haskell
+λ> topEval (Plus Next Next)
+1
+
+λ> topEval (Plus Next (Plus Next Next))
+3
+```
+
+<br>
+<br>
+
+The **bad news**: the code is super duper **gross**.
+
+The `Plus` case has to "thread" the counter through the recursive calls:
+
+```haskell
+let (cnt1, v1) = eval e1 cnt
+  in
+    let (cnt2, v2) = eval e2 cnt1
+    in
+      (cnt2, v1 + v2)
+```
+
+  1. Easy to make a mistake, e.g. pass `cnt` instead of `cnt1` into the second `eval`!
+  2. The logic of addition is obscured by all the counter-passing
+
+So unfair, since `Plus` doesn't even care about the counter!
+
+<br>
+<br>
+<br>
+<br>
+
+Is it *too much to ask* that `eval` looks like this?
+
+```haskell
+eval (Num n)      = return n
+eval (Plus e1 e2) = do v1 <- eval e1
+                       v2 <- eval e2
+                       return (v1 + v2)
+...
+```
+
+  - Cases that don't care about the counter (`Num`, `Plus`), don't even have to mention it!
+  - The counter is somehow threaded through automatically behind the scenes
+  - Looks *just like* in the error handing evaluator
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Lets spot a Pattern
+
+```haskell
+let (cnt1, v1) = eval e1 cnt
+  in
+    let (cnt2, v2) = eval e2 cnt1
+    in
+      (cnt2, v1 + v2)
+```
+
+These blocks have a **common pattern**:
+
+- Perform first step (`eval e`) using initial counter `cnt`
+- Get a result `(cnt', v)`
+- Then do further processing on `v` using the new counter `cnt'`
+
+```haskell
+let (cnt', v) = step cnt
+in process v cnt' -- do things with v and cnt'
+```
+
+<br>
+<br>
+
+Can we **bottle** this common pattern as a `>>=`?
+
+```haskell
+(>>=) step process cnt = let (cnt', v) = step cnt
+                         in process v cnt'
+```
+<br>
+<br>
+
+But what is the type of this `>>=`?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+```haskell
+(>>=) :: (Cnt -> (Cnt, a))
+         -> (a -> Cnt -> (Cnt, b))
+         -> Cnt
+         -> (Cnt, b)
+(>>=) step process cnt = let (cnt', v) = step cnt
+                         in process v cnt'
+```
+
+Wait, but this type signature looks nothing like the `Monad`'s bind!
+
+```haskell
+(>>=)  :: m a -> (a -> m b) -> m b
+```
+
+<br>
+<br>
+
+... or does it???
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+### QUIZ: Type of bind for Counting
+
+What should I replace `m t` with to make the general type of monadic bind:
+
+```haskell
+(>>=)  :: m a -> (a -> m b) -> m b
+```
+
+look like the type of bind we just defined:
+
+```haskell
+(>>=) :: (Cnt -> (Cnt, a))
+         -> (a -> Cnt -> (Cnt, b))
+         -> Cnt
+         -> (Cnt, b)
+```
+
+**(A)** It's impossible
+
+**(B)** `m t  =  Result t`
+
+**(C)** `m t  =  (Cnt, t)`
+
+**(D)** `m t  =  Cnt -> (Cnt , t)`
+
+**(E)** `m t  =  t -> (Cnt , t)`
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+```haskell
+type Counting a = Cnt -> (Cnt, a)
+
+(>>=) :: Counting a
+         -> (a -> Counting b)
+         -> Counting b
+(>>=) step process = \cnt -> let (cnt', v) = step cnt
+                             in process v cnt'
+```
+
+Mind blown.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+### QUIZ: Return for Counting
+
+How should we define `return` for `Counting`?
+
+```haskell
+type Counting a = Cnt -> (Cnt, a)
+
+-- | Represent value x as a counting computation,
+-- don't actually touch the counter
+return :: a -> Counting a
+return x = ???
+```
+
+**(A)** `x`
+
+**(B)** `(0, x)`
+
+**(C)** `\c -> (0, x)`
+
+**(D)** `\c -> (c, x)`
+
+**(E)** `\c -> (c + 1, x)`
+
+<br>
+
+(I) final
+
+    *Answer:* D
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### Cleaned-up evaluator
+
+```haskell
+eval :: Expr -> Counting Int
+eval (Num n)      = return n
+eval (Plus e1 e2) = eval e1 >>= \v1 ->
+                    eval e2 >>= \v2 ->
+                    return (v1 + v2)
+eval Next         = \cnt -> (cnt + 1, cnt)
+```
+
+Hooray! We rid the poor `Num` and `Plus` from the pesky counters!
+
+<br>
+<br>
+
+The `Next` case has to deal with counters
+
+  - but can we somehow hide the representation of `Counting a`?
+  - and make it look more like we just have mutable state that we can `get` and `put`?
+  - i.e. write:
+
+```haskell
+eval Next         = get         >>= \c ->
+                    put (c + 1) >>= \_ ->
+                    return c
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+### EXERCISE: get and put
+
+Implement functions `get` and `put`, which would allow us to implement `Next` as
+
+```haskell
+eval Next = get         >>= \c ->
+            put (c + 1) >>= \_ ->
+            return c
+```
+
+```haskell
+-- | Computation whose return value is the current counter value
+get :: Counting Cnt
+get = ???
+
+-- | Computation that updates the counter value to `newCnt`
+put :: Cnt -> Counting ()
+put newCnt = ???
+```
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+```haskell
+-- | Computation whose return value is the current counter value
+get :: Counting Cnt
+get = \cnt -> (cnt, cnt)
+
+-- | Computation that updates the counter value to `newCnt`
+put :: Cnt -> Counting ()
+put newCnt = \_ -> (newCnt, ())
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### Monad instance for Counting
+
+Let's make `Counting` an instance of `Monad`!
+
+  - To do that, we need to make it a new datatype
+
+```haskell
+data Counting a = C (Cnt -> (Cnt, a))
+
+instance Monad Counting where
+  (>>=) :: Counting a -> (a -> Counting b) -> Counting b
+  (>>=) (C step) process = C final
+    where
+      final cnt = let
+                    (cnt', v) = step cnt
+                    C nextStep = process v
+                  in nextStep cnt'
+
+  return :: a -> Result a
+  return v = C (\cnt -> (cnt, v))
+```
+
+We also need to update `get` and `put` slightly:
+
+```haskell
+-- | Computation whose return value is the current counter value
+get :: Counting Cnt
+get = C (\cnt -> (cnt, cnt))
+
+-- | Computation that updates the counter value to `newCnt`
+put :: Cnt -> Counting ()
+put newCnt = C (\_ -> (newCnt, ()))
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Cleaned-up Evaluator
+
+Now we can use the `do` notation!
+
+```haskell
+eval :: Expr -> Counting Int
+eval (Num n)      = return n
+eval (Plus e1 e2) = do v1 <- eval e1
+                       v2 <- eval e2
+                       return (v1 + v2)
+eval Next         = do
+                      cnt <- get
+                      _ <- put (cnt + 1)
+                      return (cnt)
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## The State Monad
+
+Threading state is a very common task!
+
+Instead of defining your own type `Counting a`,
+you can use `State s a` from the Haskell standard library:
+
+```haskell
+data State s a = State (s -> (s, a))
+```
+
+`State` is already an instance of `Monad`,
+so no need to define your own `>>=`!
+
+<br>
+<br>
+
+Now we can simply define
+
+```haskell
+type Counting a = State Cnt a
+```
+
+and the `eval` above will just work out of the box!
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Outline
+
+1. Functors [done]
+2. A Monad for Error Handling [done]
+3. A Monad for Mutable State [done]
+4. **A monad for Non-Determinism**
+5. Writing apps with monads
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+TODO
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Outline
+
+1. Functors [done]
+2. A Monad for Error Handling [done]
+3. A Monad for Mutable State [done]
+4. A monad for Non-Determinism [done]
+5. **Writing apps with monads**
+
 
 ## Writing Applications
 
@@ -984,15 +1593,15 @@ Why is it hard to write a program that prints "Hello world!" in Haskell?
 Haskell programs don't **do** things!
 
 A program is an expression that evaluates to a value (and *nothing else happens*)
-    
+
   - A function of type `Int -> Int`
     computes a *single integer output* from a *single integer input*
     and does **nothing else**
-    
+
   - Moreover, it always returns the same output given the same input
     (*referential transparency*)
-  
-    
+
+
 Specifically, evaluation must not have any **side effects**
 
 - _change_ a global variable or
@@ -1004,7 +1613,7 @@ Specifically, evaluation must not have any **side effects**
 - _send_ an email or
 
 - _launch_ a missile.
-    
+
 
 <br>
 <br>
@@ -1041,7 +1650,7 @@ Thankfully, you _can_ do all the above via a very clever idea: `Recipe`
 
 [This analogy is due to Joachim Brietner][brietner]
 
-Haskell has a special type called `IO` -- which you can think of as `Recipe` 
+Haskell has a special type called `IO` -- which you can think of as `Recipe`
 
 ```haskell
 type Recipe a = IO a
@@ -1103,10 +1712,10 @@ This is a recipe for everything a program should do
 
   - that returns a unit `()`
   - i.e. does not return any useful value
-  
+
 <br>
 <br>
-<br>  
+<br>
 
 The value of `main` is handed to the runtime system and *executed*
 
@@ -1122,11 +1731,11 @@ Importantly:
   - A function of type `Int -> Int`
     **still** computes a *single integer output* from a *single integer input*
     and does **nothing else**
-    
+
   - A function of type `Int -> Recipe Int`
     computes an `Int`-recipe from a single integer input
     and does **nothing else**
-    
+
   - Only if I hand this recipe to `main` will any effects be produced
 
 <br>
@@ -1181,7 +1790,7 @@ Hello, world!
 
 This was a one-step recipe
 
-Most interesting recipes 
+Most interesting recipes
 
   - have multiple steps
   - pass intermediate results between steps
@@ -1312,9 +1921,9 @@ main = do name <- getLine
 <br>
 <br>
 
-## EXERCISE 
+## EXERCISE
 
-Modify the above code so that the program _repeatedly_ 
+Modify the above code so that the program _repeatedly_
 asks for the users's name _until_ they provide a _non-empty_ string.
 
 When you are done you should get the following behavior
@@ -1323,13 +1932,13 @@ When you are done you should get the following behavior
 $ ghc hello.hs
 
 $ ./hello
-What is your name? 
+What is your name?
 # user hits return
-What is your name? 
+What is your name?
 # user hits return
-What is your name? 
+What is your name?
 # user hits return
-What is your name? 
+What is your name?
 Nadia  # user enters
 Hello, Nadia!
 ```
@@ -1388,589 +1997,6 @@ askMany n d = do putStrLn "What is your name?"
 <br>
 
 
-## Outline
-
-1. Functors [done]
-2. A Monad for Error Handling [done]    
-3. Writing apps with monads [done]
-4. **A Monad for Mutable State**
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Expressions with a Counter
-
-Consider implementing expressions with a counter:
-
-```haskell
-data Expr
-  = Num    Int
-  | Plus   Expr Expr
-  | Next   -- counter value
-  deriving (Show)
-```
-
-Behavior we want:
-
-- `eval` is given the initial counter value
-- every time we evaluate `Next` (within the call to `eval`), the value of the counter increases:
-
-```
---        0
-λ> eval 0 Next
-0
-
---              0    1
-λ> eval 0 (Plus Next Next)
-1
-
---              ?          ?    ?
-λ> eval 0 (Plus Next (Plus Next Next))
-???
-```
-
-<br>
-<br>
-
-How should we implement `eval`?
-
-```
-eval (Num n)      cnt = ???
-eval Next         cnt = ???
-eval (Plus e1 e2) cnt = ???
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-### QUIZ: State: Take 1
-
-If we implement `eval` like this:
-
-```haskell
-eval (Num n)      cnt = n
-eval Next         cnt = cnt
-eval (Plus e1 e2) cnt = eval e1 cnt + eval e2 cnt
-```
-What would be the result of the following?
-
-```haskell
-λ> eval (Plus Next Next) 0
-```
-
-**(A)** Type error
-
-**(B)** `0`
-
-**(C)** `1`
-
-**(D)** `2`
-
-<br>
-
-(I) final
-
-    *Answer:* B
-                
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-It's going to be `0` because we never increment the counter!
-
-   - We need to increment it every time we do `eval Next`
-   - So `eval` needs to return the new counter
-   
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Evaluating Expressions with Counter
-
-```haskell
-type Cnt = Int
-  
-eval :: Expr -> Cnt -> (Cnt, Int)
-eval (Num n)      cnt = (cnt, n)
-eval Next         cnt = (cnt + 1, cnt)
-eval (Plus e1 e2) cnt = let (cnt1, v1) = eval e1 cnt
-                        in 
-                          let (cnt2, v2) = eval e2 cnt1
-                          in
-                            (cnt2, v1 + v2)
-                       
-topEval :: Expr -> Int
-topEval e = snd (eval e 0)
-```
-
-<br>
-<br>
-
-The **good news**: we get the right result:
-
-```haskell
-λ> topEval (Plus Next Next)
-1
-
-λ> topEval (Plus Next (Plus Next Next))
-3
-```
-
-<br>
-<br>
-
-The **bad news**: the code is super duper **gross**.
-
-The `Plus` case has to "thread" the counter through the recursive calls:
-
-```haskell
-let (cnt1, v1) = eval e1 cnt
-  in 
-    let (cnt2, v2) = eval e2 cnt1
-    in
-      (cnt2, v1 + v2)
-```
-
-  1. Easy to make a mistake, e.g. pass `cnt` instead of `cnt1` into the second `eval`!
-  2. The logic of addition is obscured by all the counter-passing
-  
-So unfair, since `Plus` doesn't even care about the counter!
-
-<br>
-<br>
-<br>
-<br>
-
-Is it *too much to ask* that `eval` looks like this?
-
-```haskell
-eval (Num n)      = return n
-eval (Plus e1 e2) = do v1 <- eval e1
-                       v2 <- eval e2
-                       return (v1 + v2)
-...                       
-```
-  
-  - Cases that don't care about the counter (`Num`, `Plus`), don't even have to mention it!
-  - The counter is somehow threaded through automatically behind the scenes
-  - Looks *just like* in the error handing evaluator
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Lets spot a Pattern
-
-```haskell
-let (cnt1, v1) = eval e1 cnt
-  in 
-    let (cnt2, v2) = eval e2 cnt1
-    in
-      (cnt2, v1 + v2)
-```
-
-These blocks have a **common pattern**:
-
-- Perform first step (`eval e`) using initial counter `cnt`
-- Get a result `(cnt', v)`
-- Then do further processing on `v` using the new counter `cnt'`
-
-```haskell
-let (cnt', v) = step cnt
-in process v cnt' -- do things with v and cnt'
-```
-
-<br>
-<br>
-
-Can we **bottle** this common pattern as a `>>=`?
-
-```haskell
-(>>=) step process cnt = let (cnt', v) = step cnt
-                         in process v cnt'
-```
-<br>
-<br>
-
-But what is the type of this `>>=`?
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-```haskell
-(>>=) :: (Cnt -> (Cnt, a)) 
-         -> (a -> Cnt -> (Cnt, b)) 
-         -> Cnt 
-         -> (Cnt, b)
-(>>=) step process cnt = let (cnt', v) = step cnt
-                         in process v cnt'
-```
-
-Wait, but this type signature looks nothing like the `Monad`'s bind!
-
-```haskell
-(>>=)  :: m a -> (a -> m b) -> m b
-```
-
-<br>
-<br>
-
-... or does it???
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-### QUIZ: Type of bind for Counting
-
-What should I replace `m t` with to make the general type of monadic bind:
-
-```haskell
-(>>=)  :: m a -> (a -> m b) -> m b
-```
-
-look like the type of bind we just defined:
-
-```haskell
-(>>=) :: (Cnt -> (Cnt, a)) 
-         -> (a -> Cnt -> (Cnt, b)) 
-         -> Cnt 
-         -> (Cnt, b)
-```
-
-**(A)** It's impossible
-
-**(B)** `m t  =  Result t`
-
-**(C)** `m t  =  (Cnt, t)`
-
-**(D)** `m t  =  Cnt -> (Cnt , t)`
-
-**(E)** `m t  =  t -> (Cnt , t)`
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-```haskell
-type Counting a = Cnt -> (Cnt, a)
-
-(>>=) :: Counting a 
-         -> (a -> Counting b) 
-         -> Counting b
-(>>=) step process = \cnt -> let (cnt', v) = step cnt
-                             in process v cnt'
-```
-
-Mind blown.
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-### QUIZ: Return for Counting
-
-How should we define `return` for `Counting`?
-
-```haskell
-type Counting a = Cnt -> (Cnt, a)
-
--- | Represent value x as a counting computation,
--- don't actually touch the counter
-return :: a -> Counting a
-return x = ???
-```
-
-**(A)** `x`
-
-**(B)** `(0, x)`
-
-**(C)** `\c -> (0, x)`
-
-**(D)** `\c -> (c, x)`
-
-**(E)** `\c -> (c + 1, x)`
-
-<br>
-
-(I) final
-
-    *Answer:* D
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-### Cleaned-up evaluator
-
-```haskell
-eval :: Expr -> Counting Int
-eval (Num n)      = return n
-eval (Plus e1 e2) = eval e1 >>= \v1 ->
-                    eval e2 >>= \v2 ->
-                    return (v1 + v2)
-eval Next         = \cnt -> (cnt + 1, cnt)
-```
-
-Hooray! We rid the poor `Num` and `Plus` from the pesky counters!
-
-<br>
-<br>
-
-The `Next` case has to deal with counters
-
-  - but can we somehow hide the representation of `Counting a`?
-  - and make it look more like we just have mutable state that we can `get` and `put`?
-  - i.e. write:
-  
-```haskell
-eval Next         = get         >>= \c ->
-                    put (c + 1) >>= \_ ->
-                    return c
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-### EXERCISE: get and put
-
-Implement functions `get` and `put`, which would allow us to implement `Next` as
-
-```haskell
-eval Next = get         >>= \c ->
-            put (c + 1) >>= \_ ->
-            return c
-```
-
-```haskell
--- | Computation whose return value is the current counter value
-get :: Counting Cnt
-get = ???
-
--- | Computation that updates the counter value to `newCnt`
-put :: Cnt -> Counting ()
-put newCnt = ???
-```
-  
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-```haskell
--- | Computation whose return value is the current counter value
-get :: Counting Cnt
-get = \cnt -> (cnt, cnt)
-
--- | Computation that updates the counter value to `newCnt`
-put :: Cnt -> Counting ()
-put newCnt = \_ -> (newCnt, ())
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-### Monad instance for Counting  
-
-Let's make `Counting` an instance of `Monad`!
-
-  - To do that, we need to make it a new datatype 
-
-```haskell
-data Counting a = C (Cnt -> (Cnt, a))
-
-instance Monad Counting where
-  (>>=) :: Counting a -> (a -> Counting b) -> Counting b
-  (>>=) (C step) process = C final
-    where
-      final cnt = let 
-                    (cnt', v) = step cnt
-                    C nextStep = process v      
-                  in nextStep cnt' 
-
-  return :: a -> Result a
-  return v = C (\cnt -> (cnt, v))
-```
-
-We also need to update `get` and `put` slightly:
-
-```haskell
--- | Computation whose return value is the current counter value
-get :: Counting Cnt
-get = C (\cnt -> (cnt, cnt))
-
--- | Computation that updates the counter value to `newCnt`
-put :: Cnt -> Counting ()
-put newCnt = C (\_ -> (newCnt, ()))
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-## Cleaned-up Evaluator
-
-Now we can use the `do` notation!
-
-```haskell
-eval :: Expr -> Counting Int
-eval (Num n)      = return n
-eval (Plus e1 e2) = do v1 <- eval e1
-                       v2 <- eval e2
-                       return (v1 + v2)
-eval Next         = do
-                      cnt <- get
-                      _ <- put (cnt + 1)
-                      return (cnt)                      
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-## The State Monad
-
-Threading state is a very common task!
-
-Instead of defining your own type `Counting a`,
-you can use `State s a` from the Haskell standard library:
-
-```haskell
-data State s a = State (s -> (s, a))
-```
-
-`State` is already an instance of `Monad`,
-so no need to define your own `>>=`!
-
-<br>
-<br>
-
-Now we can simply define
-
-```haskell
-type Counting a = State Cnt a
-```
-
-and the `eval` above will just work out of the box!
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 ## Monads are Amazing
 
 This code stays *the same*:
@@ -1981,7 +2007,7 @@ eval (Num n)      = return n
 eval (Plus e1 e2) = do v1 <- eval e1
                        v2 <- eval e2
                        return (v1 + v2)
-...                       
+...
 ```
 
 We can change the type `Interpreter` to implement different **effects**:
@@ -1991,7 +2017,7 @@ We can change the type `Interpreter` to implement different **effects**:
   - `type Interpreter a = ExceptT String (State Int) a` if we want *both*
   - `type Interpreter a = [a]` if we want to return multiple results
   - ...
-  
+
 <br>
 <br>
 
@@ -2012,13 +2038,13 @@ Monads let us *decouple* two things:
 
 Monads have had a _revolutionary_ influence in PL, well beyond Haskell, some recent examples
 
-- **Error handling** in `go` e.g. [1](https://speakerdeck.com/rebeccaskinner/monadic-error-handling-in-go)  
+- **Error handling** in `go` e.g. [1](https://speakerdeck.com/rebeccaskinner/monadic-error-handling-in-go)
 and [2](https://www.innoq.com/en/blog/golang-errors-monads/)
 
-- **Asynchrony** in JavaScript e.g. [1](https://gist.github.com/MaiaVictor/bc0c02b6d1fbc7e3dbae838fb1376c80) 
+- **Asynchrony** in JavaScript e.g. [1](https://gist.github.com/MaiaVictor/bc0c02b6d1fbc7e3dbae838fb1376c80)
 and [2](https://medium.com/@dtipson/building-a-better-promise-3dd366f80c16)
 
-- **Big data** pipelines e.g. [LinQ](https://www.microsoft.com/en-us/research/project/dryadlinq/) 
+- **Big data** pipelines e.g. [LinQ](https://www.microsoft.com/en-us/research/project/dryadlinq/)
 and [TensorFlow](https://www.tensorflow.org/)
 
 <br>
@@ -2031,55 +2057,6 @@ and [TensorFlow](https://www.tensorflow.org/)
 
 Thats all, folks!
 
-<!--
-
-## A Silly App to End CSE 130
-
-Lets write an app called [moo](/static/raw/moo.hs) inspired by [cowsay](https://medium.com/@jasonrigden/cowsay-is-the-most-important-unix-like-command-ever-35abdbc22b7f)
-
-**A Command Line App**
-
-![`moo`](/static/img/moo1.png){#fig:types .align-center width=70%}
-
-**`moo` works with pipes**
-
-![Thanks, and good luck for the final!](/static/img/moo2.png){#fig:types .align-center width=70%}
-
-
-![](/static/img/moo3.png){#fig:types .align-center width=70%}
-
-```sh
-$ ./moo Jhala, y u no make final easy!
-
- --------------------------------
-< Jhala, y u no make final easy! >
- --------------------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-```
-
-or even using unix pipes
-
-```txt
-$ ./moo Thats all folks, thanks!
-
- ------------------------------------
-< 00-intro.pdf 01-lambda.pdf         >
-< 03-datatypes.pdf 04-hof.pdf        >
-< 05-environments.pdf 06-parsing.pdf >
-< 07-classes.pdf 08-monads.pdf       >
- ------------------------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-```
-
--->
 
 
 [brietner]: https://www.seas.upenn.edu/~cis194/fall16/lectures/06-io-and-monads.html
