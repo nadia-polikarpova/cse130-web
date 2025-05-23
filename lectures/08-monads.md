@@ -1547,8 +1547,620 @@ and the `eval` above will just work out of the box!
 <br>
 <br>
 <br>
+<br>
+<br>
 
-TODO
+### Recall: Computations that may fail
+
+```haskell
+-- | Result sans the error message
+data Result a = Value a | Error
+
+instance Monad Result where
+  Error      >>= _       = Error
+  (Value v)  >>= process = process v
+
+  return v = Value v
+```
+
+<br>
+<br>
+
+A computation of type `Result a` returns **zero or one** `a`
+
+Can we generalize this to computations that return **zero or more** `a`s?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Replacing Failure by a List of Successes
+
+Instead of `Result a` let's return `[a]`!
+
+- Instead of `Error`, return the *empty list* `[]`
+- Instead of `Value v`, return the *singleton list* `[v]`
+
+... can we do something fun with *many* elements?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ
+
+```haskell
+class Monad m where
+  return :: a -> m a
+  (>>=)  :: m a -> (a -> m b) -> m b
+
+instance Monad [] where
+  return = listReturn
+  (>>=)  = listBind
+```
+
+What must the type of `listReturn` be ?
+
+**A.** `[a]`
+
+**B.** `a -> a`
+
+**C.** `a -> [a]`
+
+**D.** `[a] -> a`
+
+**E.** `[a] -> [a]`
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Return for Lists
+
+Let's implement `return` for lists?
+
+```haskell
+listReturn :: a -> [a]
+listReturn x = ???
+```
+
+What's the only sensible implementation?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+## QUIZ
+
+```haskell
+class Monad m where
+  return :: a -> m a
+  (>>=)  :: m a -> (a -> m b) -> m b
+
+instance Monad [] where
+  return = listReturn
+  (>>=)  = listBind
+```
+
+What must the type of `listBind` be?
+
+**A.** `[a] -> [b] -> [b]`
+
+**B.** `[a] -> (a -> b) -> [b]`
+
+**C.** `[a] -> (a -> [b]) -> b`
+
+**D.** `[a] -> (a -> [b]) -> [b]`
+
+**E.** `[a] -> [b]`
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+## EXERCISE: Bind for Lists
+
+What is the most sensible implementation of `listBind`?
+
+```haskell
+listBind :: [a] -> (a -> [b]) -> [b]
+listBind = ???
+```
+
+<br>
+<br>
+
+*HINT*: What does "sensible" mean?
+
+Recall how we discussed that the implementation of `map`
+is the only sensible one for its type:
+
+```haskell
+map :: (a -> b) -> [a] -> [b]
+map f []     = []
+map f (x:xs) = f x : map f xs
+```
+
+You could of course implement:
+
+- `map f xs = []`
+- or `map f (x:xs) = [f x]`
+
+but this is silly because it doesn't use all the elements of the input list!
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Bind for Lists
+
+```haskell
+listBind :: [a] -> (a -> [b]) -> [b]
+listBind []     _ = []
+listBind (x:xs) f = f x ++ listBind xs f
+```
+
+or, without recursion:
+
+```haskell
+listBind xs f = concat (map f xs)
+```
+
+there's already a library function for this!
+
+```haskell
+listBind xs f = concatMap f xs
+```
+<br>
+<br>
+<br>
+<br>
+<br>
+
+For example:
+
+```haskell
+f = \x -> [x, x+1]
+
+
+[]      >>= f                      ==> []
+
+[1]     >>= f ==> f 1              ==> [1,2]
+
+[1,2]   >>= f ==> f 1 ++ f 2       ==> [1,2,2,3]
+
+[1,2,3] >>= f ==> f 1 ++ f 2 ++ f3 ==> [1,2,2,3,3,4]
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ
+
+What does the following program evaluate to?
+
+```haskell
+quiz = do x <- ["cat", "dog"]
+          y <- [0, 1]
+          return (x, y)
+```
+
+**A.** `[]`
+
+**B.** `[("cat", 0)]`
+
+**C.** `["cat", "dog", 0, 1]`
+
+**D.** `["cat", 0, "dog", 1]`
+
+**E.** `[("cat", 0), ("cat", 1), ("dog", 0), ("dog", 1)]`
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+Does this behavior ring a bell?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Whoa, behaves like a list comprehension!
+
+```haskell
+quiz = do x <- ["cat", "dog"]
+          y <- [0, 1]
+          return (x, y)
+```
+
+is equivalent to:
+
+```haskell
+quiz = [ (x, y) | x <- ["cat", "dog"], y <- [0, 1] ]
+```
+
+List comprehensions are just a syntactic sugar for the List Monad!
+
+<br>
+<br>
+
+For those who are not comfortable with list comprehensions, think **nested for-loops**
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+Lets work it out.
+
+```haskell
+do {x <- ["cat", "dog"]; y <- [0, 1]; return (x, y)}
+
+== ["cat", "dog"] >>= (\x -> [0, 1] >>= (\y -> return (x, y)))
+```
+
+Now lets break up the evaluation
+
+```haskell
+[0, 1] >>= (\y -> [(x, y)])
+
+==> [(x, 0)] ++ [(x, 1)]
+
+==> [(x, 0), (x, 1)]
+```
+
+So
+
+```haskell
+["cat", "dog"] >>= (\x -> [(x, 0), (x, 1)])
+
+==> [("cat", 0), ("cat", 1)] ++ [("dog", 0), ("dog", 1)]
+
+==> [("cat", 0), ("cat", 1), ("dog", 0), ("dog", 1)]
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ
+
+What does the following evaluate to?
+
+```haskell
+quiz = do x <- ["cat", "dog"]
+          y <- [0, 1]
+          []
+```
+
+**A.** `[]`
+
+**B.** `[[]]`
+
+**C.** `[()]`
+
+**D.** `[("cat", 0)]`
+
+**E.** `[("cat", 0), ("cat", 1), ("dog", 0), ("dog", 1)]`
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## EXERCISE: Co-primes
+
+Recall finding co-primes using list comprehensions:
+
+```haskell
+-- first n pairs of co-primes:
+coPrimes n = take n [(i,j) | i <- [2..],
+                             j <- [2..i],
+                             gcd i j == 1]
+```
+
+Rewrite this using the List Monad
+
+- assume that the `gcd` function is already defined
+
+```haskell
+coPrimes n = take n allCoPrimes
+  where
+    allCoPrimes = ???
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Beyond List Comprehensions
+
+List comprehensions / nested for-loops = cartesian product of a **fixed number** of lists
+
+For example:
+
+```haskell
+-- cartesian product of 2 lists
+[ (x, y) | x <- ["cat", "dog"], y <- [0, 1] ]
+>>> [("cat", 0), ("cat", 1), ("dog", 0), ("dog", 1)]
+```
+
+What if we want to do the same thing for an **arbitrary number** of lists?
+
+- this gets *REALLY HAIRY* in imperative languages
+- but *ridiculously easy* in Haskell
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### Example: All Bit Strings of Length n
+
+Let's implement a function:
+
+```haskell
+bits :: Int -> [String]
+```
+
+Such that
+
+```haskell
+>>> bits 0
+[""]
+>>> bits 1
+["0", "1"]
+>>> bits 2
+["00", "01", "10", "11"]
+
+>>> bits 3
+["000", "001", "010", "011", "100", "101", "110", "111"]
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+```haskell
+bits :: Int -> [String]
+bits 0 = return ""
+bits n = do
+            bit <- ['0', '1']
+            rest <- bits (n - 1)
+            return (bit:rest)
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### Useful Library Functions
+
+We can often eliminate recursion from monadic computations using library functions:
+
+```haskell
+-- From Control.Monad:
+
+-- | Map a monadic computation over a list, get list of results:
+mapM       :: Monad m => (a -> m b) -> [a] -> m [b]
+-- | Repeat the same monadic computation n times, get list of results:
+replicateM :: Monad m => Int -> m a -> m [a]
+
+-- For example:
+bits n = mapM (\_ -> ['0', '1']) [1..n]
+
+-- or:
+bits n = replicateM n ['0', '1']
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Summary
+
+Three monads and their meaning of sequencing:
+
+`Result` / `Either` monad for *error handling*:
+
+   - if step 1 fails, then stop
+   - if step 1 succeeds, then do step 2
+
+`State` monad for *mutable state*:
+
+    - do step 1 to get a new state
+    - do step 2 in that new state
+
+`List` monad for *non-determinism* / *enumeration*:
+
+    - do step 1 to get a list of intermediate results
+    - for each intermediate result, do step 2
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Monads are Amazing
+
+This code stays *the same*:
+
+```haskell
+eval :: Expr -> Interpreter Int
+eval (Num n)      = return n
+eval (Plus e1 e2) = do v1 <- eval e1
+                       v2 <- eval e2
+                       return (v1 + v2)
+...
+```
+
+We can change the type `Interpreter` to implement different **effects**:
+
+  - `type Interpreter a = Either String a` if we want to handle errors
+  - `type Interpreter a = State Int a` if we want to have a counter
+  - `type Interpreter a = [a]` if we want to return multiple results
+  - ...
+
+Later we will see how to *combine* effects with *monad transformers*!
+
+<br>
+<br>
+
+Monads let us *decouple* two things:
+
+  1. Application logic: the sequence of actions (implemented in `eval`)
+  2. Effects: how actions are sequenced (implemented in `>>=`)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Monads are Influential
+
+Monads have had a _revolutionary_ influence in PL, well beyond Haskell, some recent examples
+
+- **Error handling** in `go` e.g. [1](https://speakerdeck.com/rebeccaskinner/monadic-error-handling-in-go)
+and [2](https://www.innoq.com/en/blog/golang-errors-monads/)
+
+- **Asynchrony** in JavaScript e.g. [1](https://gist.github.com/MaiaVictor/bc0c02b6d1fbc7e3dbae838fb1376c80)
+and [2](https://medium.com/@dtipson/building-a-better-promise-3dd366f80c16)
+
+- **Big data** pipelines e.g. [LinQ](https://www.microsoft.com/en-us/research/project/dryadlinq/)
+and [TensorFlow](https://www.tensorflow.org/)
+
 
 <br>
 <br>
@@ -1567,6 +2179,15 @@ TODO
 3. A Monad for Mutable State [done]
 4. A monad for Non-Determinism [done]
 5. **Writing apps with monads**
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 ## Writing Applications
@@ -1996,64 +2617,6 @@ askMany n d = do putStrLn "What is your name?"
 <br>
 <br>
 
-
-## Monads are Amazing
-
-This code stays *the same*:
-
-```haskell
-eval :: Expr -> Interpreter Int
-eval (Num n)      = return n
-eval (Plus e1 e2) = do v1 <- eval e1
-                       v2 <- eval e2
-                       return (v1 + v2)
-...
-```
-
-We can change the type `Interpreter` to implement different **effects**:
-
-  - `type Interpreter a = Except String a` if we want to handle errors
-  - `type Interpreter a = State Int a` if we want to have a counter
-  - `type Interpreter a = ExceptT String (State Int) a` if we want *both*
-  - `type Interpreter a = [a]` if we want to return multiple results
-  - ...
-
-<br>
-<br>
-
-Monads let us *decouple* two things:
-
-  1. Application logic: the sequence of actions (implemented in `eval`)
-  2. Effects: how actions are sequenced (implemented in `>>=`)
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Monads are Influential
-
-Monads have had a _revolutionary_ influence in PL, well beyond Haskell, some recent examples
-
-- **Error handling** in `go` e.g. [1](https://speakerdeck.com/rebeccaskinner/monadic-error-handling-in-go)
-and [2](https://www.innoq.com/en/blog/golang-errors-monads/)
-
-- **Asynchrony** in JavaScript e.g. [1](https://gist.github.com/MaiaVictor/bc0c02b6d1fbc7e3dbae838fb1376c80)
-and [2](https://medium.com/@dtipson/building-a-better-promise-3dd366f80c16)
-
-- **Big data** pipelines e.g. [LinQ](https://www.microsoft.com/en-us/research/project/dryadlinq/)
-and [TensorFlow](https://www.tensorflow.org/)
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 Thats all, folks!
 
