@@ -1688,7 +1688,10 @@ is the only sensible one for its type:</p>
 <li><code class="sourceCode haskell"><span class="kw">type</span> <span class="dt">Interpreter</span> a <span class="ot">=</span> [a]</code> if we want to return multiple results</li>
 <li>…</li>
 </ul>
-<p>Later we will see how to <em>combine</em> effects with <em>monad transformers</em>!</p>
+<p>You can also <em>combine</em> effects with something called <em>monad transformers</em>!</p>
+<ul>
+<li><code class="sourceCode haskell"><span class="kw">type</span> <span class="dt">Interpreter</span> a <span class="ot">=</span> <span class="dt">ExceptT</span> <span class="dt">String</span> (<span class="dt">State</span> <span class="dt">Int</span>) a</code> if we want to have both errors and a counter!</li>
+</ul>
 <p><br>
 <br></p>
 <p>Monads let us <em>decouple</em> two things:</p>

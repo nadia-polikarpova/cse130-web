@@ -2130,7 +2130,9 @@ We can change the type `Interpreter` to implement different **effects**:
   - `type Interpreter a = [a]` if we want to return multiple results
   - ...
 
-Later we will see how to *combine* effects with *monad transformers*!
+You can also *combine* effects with something called *monad transformers*!
+
+  - `type Interpreter a = ExceptT String (State Int) a` if we want to have both errors and a counter!
 
 <br>
 <br>
