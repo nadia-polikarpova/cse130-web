@@ -2258,7 +2258,7 @@ But, we _want_ to ...
 
 A language that only lets you write `factorial` and `fibonacci` is ... _not very useful_!
 
-Thankfully, you _can_ do all the above via a very clever idea: `Recipe`
+Thankfully, you _can_ do all the above using a special monad called `IO`!
 
 <br>
 <br>
@@ -2269,105 +2269,57 @@ Thankfully, you _can_ do all the above via a very clever idea: `Recipe`
 <br>
 <br>
 
-## Recipes
 
-[This analogy is due to Joachim Brietner][brietner]
+## The IO Monad
 
-Haskell has a special type called `IO` -- which you can think of as `Recipe`
+Just like our other monads allowed computations to have different effects:
 
-```haskell
-type Recipe a = IO a
-```
+  - errors
+  - mutable state
+  - non-determinism
 
-<br>
-<br>
+`IO` allows the effect of *communicating with the outside world*
 
-A _value_ of type `Recipe a` is
-
-- a **description** of a computation
-
-- that **when executed** (possibly) performs side effects and
-
-- **produces** a value of type `a`
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Recipes are Pure
-
-Baking a cake can have side effects:
-
-- make your oven _hot_
-
-- make your floor _dirty_
-
-- set off your fire alarm
-
-![Cake vs. Recipe](/static/img/cake.png){#fig:types .align-center width=80%}
-
-*But:* merely writing down a cake recipe does not cause any side effects
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Executing Recipes
-
-When executing a program, Haskell looks for a special value:
-
-```haskell
-main :: Recipe ()
-```
-
-This is a recipe for everything a program should do
-
-  - that returns a unit `()`
-  - i.e. does not return any useful value
-
-<br>
-<br>
-<br>
-
-The value of `main` is handed to the runtime system and *executed*
-
-![Baker Aker](/static/img/baker-aker.jpg){#fig:types .align-center width=70%}
-
-The Haskell runtime is a _master chef_ who is the only one allowed to produce effects!
+  - you can think of it as "state on steroids", where the state type is `World`!
 
 <br>
 <br>
 
-Importantly:
+Importantly, referential transparency is preserved:
 
   - A function of type `Int -> Int`
     **still** computes a *single integer output* from a *single integer input*
     and does **nothing else**
 
-  - A function of type `Int -> Recipe Int`
-    computes an `Int`-recipe from a single integer input
-    and does **nothing else**
+  - A function of type `Int -> IO Int`, on the other hand,
+    computes *an `Int` and a new `World`* from *an `Int` and the old `World`*
+    (so it has the right to read a file, print to screen, or launch a missile)
 
-  - Only if I hand this recipe to `main` will any effects be produced
 
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
 
 ## Writing Apps
 
-To write an app in Haskell, you define your own recipe `main`!
+When executing a standalone program, Haskell looks for a special value:
+
+```haskell
+main :: IO ()
+```
+
+This is a computation that
+
+  - returns a unit `()` (i.e. does not return any useful value)
+  - potentially communicates with the outside world
+
+
+To write an app in Haskell, you define your own `main`
 
 <br>
 <br>
@@ -2381,7 +2333,7 @@ To write an app in Haskell, you define your own recipe `main`!
 ## Hello World
 
 ```haskell
-main :: Recipe ()
+main :: IO ()
 main = putStrLn "Hello, world!"
 ```
 
@@ -2389,13 +2341,13 @@ main = putStrLn "Hello, world!"
 <br>
 
 ```haskell
-putStrLn :: String -> Recipe ()
+putStrLn :: String -> IO ()
 ```
 
 The function `putStrLn`
 
 - takes as input a `String`
-- returns a `Recipe ()` for printing things to screen
+- returns a `IO ()` for printing things to screen
 
 <br>
 <br>
@@ -2411,9 +2363,9 @@ Hello, world!
 <br>
 <br>
 
-This was a one-step recipe
+This was a one-step app
 
-Most interesting recipes
+Most interesting apps
 
   - have multiple steps
   - pass intermediate results between steps
@@ -2431,23 +2383,23 @@ How do I write those?
 <br>
 <br>
 
-## Multi-Step Recipes
+## Multi-Step Apps
 
 Next, lets write a program that
 
 1. **Asks** for the user's `name` using
 
 ```haskell
-    getLine :: Recipe String
+    getLine :: IO String
 ```
 
 2. **Prints** out a greeting with that `name` using
 
 ```haskell
-    putStrLn :: String -> Recipe ()
+    putStrLn :: String -> IO ()
 ```
 
-**Problem:** How to pass the **output** of _first_ recipe into the _second_ recipe?
+**Problem:** How to pass the **output** of _first_ step into the _second_ step?
 
 <br>
 <br>
@@ -2459,29 +2411,29 @@ Next, lets write a program that
 <br>
 
 
-## QUIZ: Multi-Step Recipes
+## QUIZ: Multi-Step Apps
 
-If I had a function `andThen` for sequencing recipes, e.g.:
+If I had a function `andThen` for sequencing app steps, e.g.:
 
 ```haskell
-getLine  :: Recipe String
-putStrLn :: String -> Recipe ()
+getLine  :: IO String
+putStrLn :: String -> IO ()
 
-main :: Recipe ()
+main :: IO ()
 main = getLine `andThen` putStrLn
 ```
 
 What should the type of `andThen` be?
 
-**(A)** `String        -> ()                   -> ()`
+**(A)** `String    -> ()                -> ()`
 
-**(B)** `Recipe String -> Recipe ()            -> Recipe ()`
+**(B)** `IO String -> IO ()             -> IO ()`
 
-**(C)** `Recipe String -> (String -> Recipe ()) -> Recipe ()`
+**(C)** `IO String -> (String -> IO ()) -> IO ()`
 
-**(D)** `Recipe a      -> (a      -> Recipe a ) -> Recipe a`
+**(D)** `IO a      -> (a      -> IO a ) -> IO a`
 
-**(E)** `Recipe a      -> (a      -> Recipe b ) -> Recipe b`
+**(E)** `IO a      -> (a      -> IO b ) -> IO b`
 
 <br>
 
@@ -2498,24 +2450,19 @@ What should the type of `andThen` be?
 <br>
 <br>
 
-## Recipes are Monads
+## Multi-Step Apps via bind
 
 Wait a second, the signature:
 
 ```haskell
-andThen :: Recipe a -> (a -> Recipe b) -> Recipe b
+andThen :: IO a -> (a -> IO b) -> IO b
 ```
 
 looks just like:
 
 ```haskell
-(>>=)   :: m a      -> (a -> m b)      -> m b
+(>>=)   :: m a  -> (a -> m b)  -> m b
 ```
-
-<br>
-<br>
-
-In fact, in the standard library `Recipe` is an instance of `Monad`!
 
 <br>
 <br>
@@ -2523,14 +2470,14 @@ In fact, in the standard library `Recipe` is an instance of `Monad`!
 So we can put this together with `putStrLn` to get:
 
 ```haskell
-main :: Recipe ()
+main :: IO ()
 main = getLine >>= \name -> putStrLn ("Hello, " ++ name ++ "!")
 ```
 
 or, using `do` notation the above becomes
 
 ```haskell
-main :: Recipe ()
+main :: IO ()
 main = do name <- getLine
           putStrLn ("Hello, " ++ name ++ "!")
 ```
@@ -2575,17 +2522,17 @@ Hello, Nadia!
 <br>
 <br>
 
-## Recipes with Results
+## Steps with Results
 
 Let's write a function that asks the user maximum `n` times,
 and if they fail to provide a non-empty string, it returns a default value `d`:
 
 ```haskell
-main :: Recipe ()
+main :: IO ()
 main = do name <- askMany 3 "dummy"
           putStrLn $ printf "Hello %s!" name
 
-askMany :: Int -> String -> Recipe String
+askMany :: Int -> String -> IO String
 askMany = ???
 ```
 
@@ -2598,10 +2545,10 @@ askMany = ???
 <br>
 <br>
 
-To return a result from a recipe, use the `return` function of `Monad`!
+To return a result from a step, use the `return` function of `Monad`!
 
 ```haskell
-askMany :: Int -> String -> Recipe String
+askMany :: Int -> String -> IO String
 askMany 0 d = return d
 askMany n d = do putStrLn "What is your name?"
                  name <- getLine
@@ -2621,7 +2568,3 @@ askMany n d = do putStrLn "What is your name?"
 
 
 Thats all, folks!
-
-
-
-[brietner]: https://www.seas.upenn.edu/~cis194/fall16/lectures/06-io-and-monads.html

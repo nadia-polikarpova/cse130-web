@@ -1786,7 +1786,7 @@ and does <strong>nothing else</strong></p></li>
 <li>send an email</li>
 </ul>
 <p>A language that only lets you write <code class="sourceCode haskell">factorial</code> and <code class="sourceCode haskell">fibonacci</code> is … <em>not very useful</em>!</p>
-<p>Thankfully, you <em>can</em> do all the above via a very clever idea: <code class="sourceCode haskell"><span class="dt">Recipe</span></code></p>
+<p>Thankfully, you <em>can</em> do all the above using a special monad called <code class="sourceCode haskell"><span class="dt">IO</span></code>!</p>
 <p><br>
 <br>
 <br>
@@ -1795,80 +1795,45 @@ and does <strong>nothing else</strong></p></li>
 <br>
 <br>
 <br></p>
-<h2 id="recipes">Recipes</h2>
-<p><a href="https://www.seas.upenn.edu/~cis194/fall16/lectures/06-io-and-monads.html">This analogy is due to Joachim Brietner</a></p>
-<p>Haskell has a special type called <code class="sourceCode haskell"><span class="dt">IO</span></code> – which you can think of as <code class="sourceCode haskell"><span class="dt">Recipe</span></code></p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Recipe</span> a <span class="ot">=</span> <span class="dt">IO</span> a</span></code></pre></div>
-<p><br>
-<br></p>
-<p>A <em>value</em> of type <code class="sourceCode haskell"><span class="dt">Recipe</span> a</code> is</p>
+<h2 id="the-io-monad">The IO Monad</h2>
+<p>Just like our other monads allowed computations to have different effects:</p>
 <ul>
-<li><p>a <strong>description</strong> of a computation</p></li>
-<li><p>that <strong>when executed</strong> (possibly) performs side effects and</p></li>
-<li><p><strong>produces</strong> a value of type <code class="sourceCode haskell">a</code></p></li>
+<li>errors</li>
+<li>mutable state</li>
+<li>non-determinism</li>
+</ul>
+<p><code class="sourceCode haskell"><span class="dt">IO</span></code> allows the effect of <em>communicating with the outside world</em></p>
+<ul>
+<li>you can think of it as “state on steroids”, where the state type is <code class="sourceCode haskell"><span class="dt">World</span></code>!</li>
 </ul>
 <p><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br></p>
-<h2 id="recipes-are-pure">Recipes are Pure</h2>
-<p>Baking a cake can have side effects:</p>
-<ul>
-<li><p>make your oven <em>hot</em></p></li>
-<li><p>make your floor <em>dirty</em></p></li>
-<li><p>set off your fire alarm</p></li>
-</ul>
-<figure id="fig:types">
-<img src="../static/img/cake.png" class="align-center" style="width:80.0%" alt="Cake vs. Recipe" />
-<figcaption aria-hidden="true">Cake vs. Recipe</figcaption>
-</figure>
-<p><em>But:</em> merely writing down a cake recipe does not cause any side effects</p>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
-<h2 id="executing-recipes">Executing Recipes</h2>
-<p>When executing a program, Haskell looks for a special value:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">Recipe</span> ()</span></code></pre></div>
-<p>This is a recipe for everything a program should do</p>
-<ul>
-<li>that returns a unit <code class="sourceCode haskell">()</code></li>
-<li>i.e. does not return any useful value</li>
-</ul>
-<p><br>
-<br>
-<br></p>
-<p>The value of <code class="sourceCode haskell">main</code> is handed to the runtime system and <em>executed</em></p>
-<figure id="fig:types">
-<img src="../static/img/baker-aker.jpg" class="align-center" style="width:70.0%" alt="Baker Aker" />
-<figcaption aria-hidden="true">Baker Aker</figcaption>
-</figure>
-<p>The Haskell runtime is a <em>master chef</em> who is the only one allowed to produce effects!</p>
-<p><br>
-<br></p>
-<p>Importantly:</p>
+<p>Importantly, referential transparency is preserved:</p>
 <ul>
 <li><p>A function of type <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></code>
 <strong>still</strong> computes a <em>single integer output</em> from a <em>single integer input</em>
 and does <strong>nothing else</strong></p></li>
-<li><p>A function of type <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Recipe</span> <span class="dt">Int</span></code>
-computes an <code class="sourceCode haskell"><span class="dt">Int</span></code>-recipe from a single integer input
-and does <strong>nothing else</strong></p></li>
-<li><p>Only if I hand this recipe to <code class="sourceCode haskell">main</code> will any effects be produced</p></li>
+<li><p>A function of type <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">Int</span></code>, on the other hand,
+computes <em>an <code class="sourceCode haskell"><span class="dt">Int</span></code> and a new <code class="sourceCode haskell"><span class="dt">World</span></code></em> from <em>an <code class="sourceCode haskell"><span class="dt">Int</span></code> and the old <code class="sourceCode haskell"><span class="dt">World</span></code></em>
+(so it has the right to read a file, print to screen, or launch a missile)</p></li>
 </ul>
 <p><br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br></p>
 <h2 id="writing-apps">Writing Apps</h2>
-<p>To write an app in Haskell, you define your own recipe <code class="sourceCode haskell">main</code>!</p>
+<p>When executing a standalone program, Haskell looks for a special value:</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">IO</span> ()</span></code></pre></div>
+<p>This is a computation that</p>
+<ul>
+<li>returns a unit <code class="sourceCode haskell">()</code> (i.e. does not return any useful value)</li>
+<li>potentially communicates with the outside world</li>
+</ul>
+<p>To write an app in Haskell, you define your own <code class="sourceCode haskell">main</code></p>
 <p><br>
 <br>
 <br>
@@ -1878,26 +1843,26 @@ and does <strong>nothing else</strong></p></li>
 <br>
 <br></p>
 <h2 id="hello-world">Hello World</h2>
-<div class="sourceCode" id="cb98"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">Recipe</span> ()</span>
-<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="fu">putStrLn</span> <span class="st">&quot;Hello, world!&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">IO</span> ()</span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="fu">putStrLn</span> <span class="st">&quot;Hello, world!&quot;</span></span></code></pre></div>
 <p><br>
 <br></p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">putStrLn</span><span class="ot"> ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Recipe</span> ()</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">putStrLn</span><span class="ot"> ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span></code></pre></div>
 <p>The function <code class="sourceCode haskell"><span class="fu">putStrLn</span></code></p>
 <ul>
 <li>takes as input a <code class="sourceCode haskell"><span class="dt">String</span></code></li>
-<li>returns a <code class="sourceCode haskell"><span class="dt">Recipe</span> ()</code> for printing things to screen</li>
+<li>returns a <code class="sourceCode haskell"><span class="dt">IO</span> ()</code> for printing things to screen</li>
 </ul>
 <p><br>
 <br></p>
 <p>… and we can compile and run it</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ghc hello.hs</span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./hello</span>
-<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello,</span> world!</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ghc hello.hs</span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./hello</span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello,</span> world!</span></code></pre></div>
 <p><br>
 <br></p>
-<p>This was a one-step recipe</p>
-<p>Most interesting recipes</p>
+<p>This was a one-step app</p>
+<p>Most interesting apps</p>
 <ul>
 <li>have multiple steps</li>
 <li>pass intermediate results between steps</li>
@@ -1912,17 +1877,17 @@ and does <strong>nothing else</strong></p></li>
 <br>
 <br>
 <br></p>
-<h2 id="multi-step-recipes">Multi-Step Recipes</h2>
+<h2 id="multi-step-apps">Multi-Step Apps</h2>
 <p>Next, lets write a program that</p>
 <ol type="1">
 <li><strong>Asks</strong> for the user’s <code class="sourceCode haskell">name</code> using</li>
 </ol>
-<div class="sourceCode" id="cb101"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="ot">    getLine ::</span> <span class="dt">Recipe</span> <span class="dt">String</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="ot">    getLine ::</span> <span class="dt">IO</span> <span class="dt">String</span></span></code></pre></div>
 <ol start="2" type="1">
 <li><strong>Prints</strong> out a greeting with that <code class="sourceCode haskell">name</code> using</li>
 </ol>
-<div class="sourceCode" id="cb102"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="ot">    putStrLn ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Recipe</span> ()</span></code></pre></div>
-<p><strong>Problem:</strong> How to pass the <strong>output</strong> of <em>first</em> recipe into the <em>second</em> recipe?</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="ot">    putStrLn ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span></code></pre></div>
+<p><strong>Problem:</strong> How to pass the <strong>output</strong> of <em>first</em> step into the <em>second</em> step?</p>
 <p><br>
 <br>
 <br>
@@ -1931,19 +1896,19 @@ and does <strong>nothing else</strong></p></li>
 <br>
 <br>
 <br></p>
-<h2 id="quiz-multi-step-recipes">QUIZ: Multi-Step Recipes</h2>
-<p>If I had a function <code class="sourceCode haskell">andThen</code> for sequencing recipes, e.g.:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getLine</span><span class="ot">  ::</span> <span class="dt">Recipe</span> <span class="dt">String</span></span>
-<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">putStrLn</span><span class="ot"> ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Recipe</span> ()</span>
-<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-4"><a href="#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">Recipe</span> ()</span>
-<span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="fu">getLine</span> <span class="ot">`andThen`</span> <span class="fu">putStrLn</span></span></code></pre></div>
+<h2 id="quiz-multi-step-apps">QUIZ: Multi-Step Apps</h2>
+<p>If I had a function <code class="sourceCode haskell">andThen</code> for sequencing app steps, e.g.:</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getLine</span><span class="ot">  ::</span> <span class="dt">IO</span> <span class="dt">String</span></span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">putStrLn</span><span class="ot"> ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">IO</span> ()</span>
+<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="fu">getLine</span> <span class="ot">`andThen`</span> <span class="fu">putStrLn</span></span></code></pre></div>
 <p>What should the type of <code class="sourceCode haskell">andThen</code> be?</p>
-<p><strong>(A)</strong> <code class="sourceCode haskell"><span class="dt">String</span>        <span class="ot">-&gt;</span> ()                   <span class="ot">-&gt;</span> ()</code></p>
-<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="dt">Recipe</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Recipe</span> ()            <span class="ot">-&gt;</span> <span class="dt">Recipe</span> ()</code></p>
-<p><strong>(C)</strong> <code class="sourceCode haskell"><span class="dt">Recipe</span> <span class="dt">String</span> <span class="ot">-&gt;</span> (<span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Recipe</span> ()) <span class="ot">-&gt;</span> <span class="dt">Recipe</span> ()</code></p>
-<p><strong>(D)</strong> <code class="sourceCode haskell"><span class="dt">Recipe</span> a      <span class="ot">-&gt;</span> (a      <span class="ot">-&gt;</span> <span class="dt">Recipe</span> a ) <span class="ot">-&gt;</span> <span class="dt">Recipe</span> a</code></p>
-<p><strong>(E)</strong> <code class="sourceCode haskell"><span class="dt">Recipe</span> a      <span class="ot">-&gt;</span> (a      <span class="ot">-&gt;</span> <span class="dt">Recipe</span> b ) <span class="ot">-&gt;</span> <span class="dt">Recipe</span> b</code></p>
+<p><strong>(A)</strong> <code class="sourceCode haskell"><span class="dt">String</span>    <span class="ot">-&gt;</span> ()                <span class="ot">-&gt;</span> ()</code></p>
+<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="dt">IO</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()             <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</code></p>
+<p><strong>(C)</strong> <code class="sourceCode haskell"><span class="dt">IO</span> <span class="dt">String</span> <span class="ot">-&gt;</span> (<span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()) <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</code></p>
+<p><strong>(D)</strong> <code class="sourceCode haskell"><span class="dt">IO</span> a      <span class="ot">-&gt;</span> (a      <span class="ot">-&gt;</span> <span class="dt">IO</span> a ) <span class="ot">-&gt;</span> <span class="dt">IO</span> a</code></p>
+<p><strong>(E)</strong> <code class="sourceCode haskell"><span class="dt">IO</span> a      <span class="ot">-&gt;</span> (a      <span class="ot">-&gt;</span> <span class="dt">IO</span> b ) <span class="ot">-&gt;</span> <span class="dt">IO</span> b</code></p>
 <p><br></p>
 <p><br>
 <br>
@@ -1953,23 +1918,20 @@ and does <strong>nothing else</strong></p></li>
 <br>
 <br>
 <br></p>
-<h2 id="recipes-are-monads">Recipes are Monads</h2>
+<h2 id="multi-step-apps-via-bind">Multi-Step Apps via bind</h2>
 <p>Wait a second, the signature:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="ot">andThen ::</span> <span class="dt">Recipe</span> a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">Recipe</span> b) <span class="ot">-&gt;</span> <span class="dt">Recipe</span> b</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="ot">andThen ::</span> <span class="dt">IO</span> a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">IO</span> b) <span class="ot">-&gt;</span> <span class="dt">IO</span> b</span></code></pre></div>
 <p>looks just like:</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="ot">(&gt;&gt;=)   ::</span> m a      <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> m b)      <span class="ot">-&gt;</span> m b</span></code></pre></div>
-<p><br>
-<br></p>
-<p>In fact, in the standard library <code class="sourceCode haskell"><span class="dt">Recipe</span></code> is an instance of <code class="sourceCode haskell"><span class="dt">Monad</span></code>!</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="ot">(&gt;&gt;=)   ::</span> m a  <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> m b)  <span class="ot">-&gt;</span> m b</span></code></pre></div>
 <p><br>
 <br></p>
 <p>So we can put this together with <code class="sourceCode haskell"><span class="fu">putStrLn</span></code> to get:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">Recipe</span> ()</span>
-<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="fu">getLine</span> <span class="op">&gt;&gt;=</span> \name <span class="ot">-&gt;</span> <span class="fu">putStrLn</span> (<span class="st">&quot;Hello, &quot;</span> <span class="op">++</span> name <span class="op">++</span> <span class="st">&quot;!&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">IO</span> ()</span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="fu">getLine</span> <span class="op">&gt;&gt;=</span> \name <span class="ot">-&gt;</span> <span class="fu">putStrLn</span> (<span class="st">&quot;Hello, &quot;</span> <span class="op">++</span> name <span class="op">++</span> <span class="st">&quot;!&quot;</span>)</span></code></pre></div>
 <p>or, using <code class="sourceCode haskell"><span class="kw">do</span></code> notation the above becomes</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">Recipe</span> ()</span>
-<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="kw">do</span> name <span class="ot">&lt;-</span> <span class="fu">getLine</span></span>
-<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>          <span class="fu">putStrLn</span> (<span class="st">&quot;Hello, &quot;</span> <span class="op">++</span> name <span class="op">++</span> <span class="st">&quot;!&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">IO</span> ()</span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="kw">do</span> name <span class="ot">&lt;-</span> <span class="fu">getLine</span></span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>          <span class="fu">putStrLn</span> (<span class="st">&quot;Hello, &quot;</span> <span class="op">++</span> name <span class="op">++</span> <span class="st">&quot;!&quot;</span>)</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1982,18 +1944,18 @@ and does <strong>nothing else</strong></p></li>
 <p>Modify the above code so that the program <em>repeatedly</em>
 asks for the users’s name <em>until</em> they provide a <em>non-empty</em> string.</p>
 <p>When you are done you should get the following behavior</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ghc hello.hs</span>
-<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./hello</span>
-<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is your name<span class="pp">?</span></span>
-<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="co"># user hits return</span></span>
-<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is your name<span class="pp">?</span></span>
-<span id="cb108-7"><a href="#cb108-7" aria-hidden="true" tabindex="-1"></a><span class="co"># user hits return</span></span>
-<span id="cb108-8"><a href="#cb108-8" aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is your name<span class="pp">?</span></span>
-<span id="cb108-9"><a href="#cb108-9" aria-hidden="true" tabindex="-1"></a><span class="co"># user hits return</span></span>
-<span id="cb108-10"><a href="#cb108-10" aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is your name<span class="pp">?</span></span>
-<span id="cb108-11"><a href="#cb108-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Nadia</span>  <span class="co"># user enters</span></span>
-<span id="cb108-12"><a href="#cb108-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello,</span> Nadia!</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ghc hello.hs</span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./hello</span>
+<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is your name<span class="pp">?</span></span>
+<span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a><span class="co"># user hits return</span></span>
+<span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is your name<span class="pp">?</span></span>
+<span id="cb107-7"><a href="#cb107-7" aria-hidden="true" tabindex="-1"></a><span class="co"># user hits return</span></span>
+<span id="cb107-8"><a href="#cb107-8" aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is your name<span class="pp">?</span></span>
+<span id="cb107-9"><a href="#cb107-9" aria-hidden="true" tabindex="-1"></a><span class="co"># user hits return</span></span>
+<span id="cb107-10"><a href="#cb107-10" aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is your name<span class="pp">?</span></span>
+<span id="cb107-11"><a href="#cb107-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Nadia</span>  <span class="co"># user enters</span></span>
+<span id="cb107-12"><a href="#cb107-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello,</span> Nadia!</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -2002,15 +1964,15 @@ asks for the users’s name <em>until</em> they provide a <em>non-empty</em> str
 <br>
 <br>
 <br></p>
-<h2 id="recipes-with-results">Recipes with Results</h2>
+<h2 id="steps-with-results">Steps with Results</h2>
 <p>Let’s write a function that asks the user maximum <code class="sourceCode haskell">n</code> times,
 and if they fail to provide a non-empty string, it returns a default value <code class="sourceCode haskell">d</code>:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">Recipe</span> ()</span>
-<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="kw">do</span> name <span class="ot">&lt;-</span> askMany <span class="dv">3</span> <span class="st">&quot;dummy&quot;</span></span>
-<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>          <span class="fu">putStrLn</span> <span class="op">$</span> printf <span class="st">&quot;Hello %s!&quot;</span> name</span>
-<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="ot">askMany ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Recipe</span> <span class="dt">String</span></span>
-<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a>askMany <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">IO</span> ()</span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="kw">do</span> name <span class="ot">&lt;-</span> askMany <span class="dv">3</span> <span class="st">&quot;dummy&quot;</span></span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>          <span class="fu">putStrLn</span> <span class="op">$</span> printf <span class="st">&quot;Hello %s!&quot;</span> name</span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="ot">askMany ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">String</span></span>
+<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a>askMany <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -2019,14 +1981,14 @@ and if they fail to provide a non-empty string, it returns a default value <code
 <br>
 <br>
 <br></p>
-<p>To return a result from a recipe, use the <code class="sourceCode haskell"><span class="fu">return</span></code> function of <code class="sourceCode haskell"><span class="dt">Monad</span></code>!</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="ot">askMany ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Recipe</span> <span class="dt">String</span></span>
-<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>askMany <span class="dv">0</span> d <span class="ot">=</span> <span class="fu">return</span> d</span>
-<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>askMany n d <span class="ot">=</span> <span class="kw">do</span> <span class="fu">putStrLn</span> <span class="st">&quot;What is your name?&quot;</span></span>
-<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a>                 name <span class="ot">&lt;-</span> <span class="fu">getLine</span></span>
-<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a>                 <span class="kw">if</span> <span class="fu">null</span> name</span>
-<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a>                   <span class="kw">then</span> askMany (n<span class="op">-</span><span class="dv">1</span>) d</span>
-<span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a>                   <span class="kw">else</span> <span class="fu">return</span> name</span></code></pre></div>
+<p>To return a result from a step, use the <code class="sourceCode haskell"><span class="fu">return</span></code> function of <code class="sourceCode haskell"><span class="dt">Monad</span></code>!</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="ot">askMany ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">String</span></span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>askMany <span class="dv">0</span> d <span class="ot">=</span> <span class="fu">return</span> d</span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>askMany n d <span class="ot">=</span> <span class="kw">do</span> <span class="fu">putStrLn</span> <span class="st">&quot;What is your name?&quot;</span></span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>                 name <span class="ot">&lt;-</span> <span class="fu">getLine</span></span>
+<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a>                 <span class="kw">if</span> <span class="fu">null</span> name</span>
+<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a>                   <span class="kw">then</span> askMany (n<span class="op">-</span><span class="dv">1</span>) d</span>
+<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a>                   <span class="kw">else</span> <span class="fu">return</span> name</span></code></pre></div>
 <p><br>
 <br>
 <br>
