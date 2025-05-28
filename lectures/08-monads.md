@@ -2431,9 +2431,9 @@ What should the type of `andThen` be?
 
 **(C)** `IO String -> (String -> IO ()) -> IO ()`
 
-**(D)** `IO a      -> (a      -> IO a ) -> IO a`
+**(D)** `IO a      -> (a      -> IO a)  -> IO a`
 
-**(E)** `IO a      -> (a      -> IO b ) -> IO b`
+**(E)** `IO a      -> (a      -> IO b)  -> IO b`
 
 <br>
 
