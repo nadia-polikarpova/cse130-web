@@ -394,9 +394,9 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="parsers-can-produce-many-results">Parsers Can Produce Many Results</h2>
 <p>Sometimes we want to parse a <code class="sourceCode haskell"><span class="dt">String</span></code> like</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;2 - 3 - 4&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;2 + 3 + 4&quot;</span></span></code></pre></div>
 <p>into a <strong>list</strong> of possible results</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>[(<span class="dt">Minus</span> (<span class="dt">Minus</span> <span class="dv">2</span> <span class="dv">3</span>) <span class="dv">4</span>),   <span class="dt">Minus</span> <span class="dv">2</span> (<span class="dt">Minus</span> <span class="dv">3</span> <span class="dv">4</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>[(<span class="dt">Plus</span> (<span class="dt">Plus</span> <span class="dv">2</span> <span class="dv">3</span>) <span class="dv">4</span>),   <span class="dt">Plus</span> <span class="dv">2</span> (<span class="dt">Plus</span> <span class="dv">3</span> <span class="dv">4</span>)]</span></code></pre></div>
 <p>So we generalize the <code class="sourceCode haskell"><span class="dt">Parser</span></code> type to</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Parser</span> a <span class="ot">=</span> <span class="dt">P</span> (<span class="dt">String</span> <span class="ot">-&gt;</span> [(a, <span class="dt">String</span>)])</span></code></pre></div>
 <p><br>
