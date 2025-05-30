@@ -1,0 +1,1553 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <!--
+      loads the http over https ssl -
+      welcome to my website!
+
+	this theme is based off the Ice & Fire theme created by Lucas Gatsas
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland.
+  -->
+
+
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus -->
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+
+    IE = document.documentMode;
+    } else {
+
+        IE = 5;
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11;
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <link rel="author" title="Ranjit Jhala" href="http://ranjitjhala.github.io" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow -->
+    <meta name="robots" content="index, follow" />
+    <!-- Site Desciption -->
+    <meta name="description" content="UCSD CSE 130">
+    <!-- Site Desciption -->
+    <meta name="keywords" content="haskell, refinement types, liquid types, formal methods, type systems">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://nadia-polikarpova.github.io/cse130-web/static/img/ico.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>cse130</title>
+
+    <!--     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+-->
+    <!-- Property Metas -->
+    <meta property="og:image" content="https://nadia-polikarpova.github.io/cse130-web/static/img/ix.png" />
+    <meta property="og:title" content="UCSD CSE 130" />
+    <meta property="og:site_name" content="UCSD CSE 130" />
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseUrl | prepend: site.url }}">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="https://nadia-polikarpova.github.io/cse130-web/static/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://nadia-polikarpova.github.io/cse130-web/static/css/spaceg.stylesheets.css"> -->
+    <link rel="stylesheet" href="https://nadia-polikarpova.github.io/cse130-web/static/css/ronacher.css" type="text/css">
+
+    <link rel="stylesheet" href="https://nadia-polikarpova.github.io/cse130-web/static/css/syntax.css">
+    <link rel="stylesheet" href="https://nadia-polikarpova.github.io/cse130-web/static/css/liquid-light.css">
+
+    <!-- Fonts
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+	#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("/static/img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	ul, ol {margin-top: 0;margin-bottom: 10px;}
+	.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}
+</style>
+<!--link rel="stylesheet" href="https://nadia-polikarpova.github.io/cse130-web/static/css/prettify.css"-->
+<style>
+  /* HEADER IMAGE */
+  header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}
+
+	/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	li {list-style: none;}
+            body.modal-open
+            {overflow: hidden;padding-right: 0px;
+        }
+	article li {list-style: inherit;}
+	article .figure {text-align: center}
+    </style>
+    <!-- end Loading front stylesheet here -->
+    </head>
+
+    <body>
+	    
+	<!-- 	
+        <div id="preloader">
+	    <div id="status">
+	    </div>
+	</div>  
+	-->
+	<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://nadia-polikarpova.github.io/cse130-web" id="blog-title-left-top">cse130</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://nadia-polikarpova.github.io/cse130-web/calendar.html">Calendar</a></li>
+                <li><a href="https://nadia-polikarpova.github.io/cse130-web/grades.html">Grading</a></li>
+                <li><a href="https://nadia-polikarpova.github.io/cse130-web/lectures.html">Lectures</a></li>
+                <li><a href="https://nadia-polikarpova.github.io/cse130-web/assignments.html">Assignments</a></li>
+                <li><a href="https://nadia-polikarpova.github.io/cse130-web/links.html">Links</a></li>
+                <li><a href="https://www.piazza.com/ucsd/spring2025/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Nadia Polikarpova</h1>
+                            <hr class="star-primary">
+                            <img src="https://nadia-polikarpova.github.io/cse130-web/static/img/ico.png" class="img-responsive img-centered" alt title>
+                            <p class="font-style-inline-small">
+                                <a href="https://www.twitter.com/polikarn" target="_blank">follow me</a>. <br>
+                                <a href="https://www.github.com/nadia-polikarpova" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                                <a href="https://www.twitter.com/polikarn" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>
+                                <a href="https://plus.google.com/u/0/104385825850161331469" target="_blank"> <i class="fa fa-google-plus" id="spaceg-social-modal"></i></a>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Nadia Polikarpova</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                              <a href="https://www.twitter.com/polikarn" target="_blank">follow</a>. <br>
+                              <a href="https://www.github.com/nadia-polikarpova" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                              <li><a href="https://nadia-polikarpova.github.io/cse130-web/calendar.html">Calendar</a></li>
+                              <li><a href="https://nadia-polikarpova.github.io/cse130-web/grades.html">Grading</a></li>
+                              <li><a href="https://nadia-polikarpova.github.io/cse130-web/lectures.html">Lectures</a></li>
+                              <li><a href="https://nadia-polikarpova.github.io/cse130-web/assignments.html">Assignments</a></li>
+                              <li><a href="https://nadia-polikarpova.github.io/cse130-web/links.html">Links</a></li>
+                              <li><a href="https://www.piazza.com/ucsd/spring2025/cse130/home" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="content">
+            <!-- Post Header -->
+    <header class="intro-header" style="background-image: url('https://nadia-polikarpova.github.io/cse130-web/static/img/books.jpg')" alt title>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Parser Combinators</h1>
+                    
+                    <span class="meta">
+		    
+		    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<h2 id="parsers">Parsers</h2>
+<p>A <em>parser</em> is a function that</p>
+<ul>
+<li>converts <em>unstructured</em> data (e.g. <code class="sourceCode haskell"><span class="dt">String</span></code>, array of <code class="sourceCode haskell"><span class="dt">Byte</span></code>,…)</li>
+<li>into <em>structured</em> data (e.g. JSON object, Markdown, Video…)</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Parser</span> <span class="ot">=</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">StructuredObject</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="every-large-software-system-contains-a-parser">Every large software system contains a Parser</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>System</strong></th>
+<th style="text-align: left;"><strong>Parses</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Compiler</td>
+<td style="text-align: left;">Source code</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shell Scripts</td>
+<td style="text-align: left;">Command-line options</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Database</td>
+<td style="text-align: left;">SQL queries</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Web Browser</td>
+<td style="text-align: left;">HTML, CSS, JS, …</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Games</td>
+<td style="text-align: left;">Level descriptors</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Routers</td>
+<td style="text-align: left;">Packets</td>
+</tr>
+</tbody>
+</table>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="how-to-build-parsers">How to build Parsers?</h2>
+<p>Two standard methods</p>
+<h3 id="regular-expressions">Regular Expressions</h3>
+<ul>
+<li>Doesn’t really scale beyond simple things</li>
+<li>No nesting, recursion</li>
+</ul>
+<h3 id="parser-generators">Parser Generators</h3>
+<ol type="1">
+<li>Specify <em>grammar</em> via rules</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">Expr</span> <span class="op">:</span> <span class="dt">Var</span>            { <span class="dt">EVar</span> <span class="op">$</span><span class="dv">1</span>       }</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span> <span class="dt">Num</span>            { <span class="dt">ENum</span> <span class="op">$</span><span class="dv">1</span>       }</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span> <span class="dt">Expr</span> <span class="dt">Op</span> <span class="dt">Expr</span>   { <span class="dt">EBin</span> <span class="op">$</span><span class="dv">1</span> <span class="op">$</span><span class="dv">2</span> <span class="op">$</span><span class="dv">3</span> }</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span> <span class="ch">'('</span> <span class="dt">Expr</span> <span class="ch">')'</span>   { <span class="op">$</span><span class="dv">2</span>            }</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>     ;</span></code></pre></div>
+<ol start="2" type="1">
+<li>Tools like <code class="sourceCode haskell">yacc</code>, <code class="sourceCode haskell">bison</code>, <code class="sourceCode haskell">antlr</code>, <code class="sourceCode haskell">happy</code></li>
+</ol>
+<ul>
+<li>convert <em>grammar</em> into <em>executable function</em></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="grammars-dont-compose">Grammars Don’t Compose!</h2>
+<p>If we have <em>two</em> kinds of structured objects <code class="sourceCode haskell"><span class="dt">Thingy</span></code> and <code class="sourceCode haskell"><span class="dt">Whatsit</span></code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">Thingy</span> <span class="op">:</span> rule 	{ action }</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">Whatsit</span> <span class="op">:</span> rule  { action }</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>;</span></code></pre></div>
+<p>To parse <em>sequences</em> of <code class="sourceCode haskell"><span class="dt">Thingy</span></code> and <code class="sourceCode haskell"><span class="dt">Whatsit</span></code> we must <em>repeat ourselves</em>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">Thingies</span> <span class="op">:</span> <span class="dt">Thingy</span> <span class="dt">Thingies</span>  { <span class="op">...</span> }</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>           <span class="dt">EmptyThingy</span>      { <span class="op">...</span> }</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Whatsits</span> <span class="op">:</span> <span class="dt">Whatsit</span> <span class="dt">Whatsits</span> { <span class="op">...</span> }</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>           <span class="dt">EmptyWhatsit</span>     { <span class="op">...</span> }</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>;</span></code></pre></div>
+<p>No way to:</p>
+<ul>
+<li>Define a generic parser for sequences</li>
+<li>Reuse this generic parser for <code class="sourceCode haskell"><span class="dt">Thingy</span></code> and <code class="sourceCode haskell"><span class="dt">Whatsit</span></code></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-new-hope-parsers-as-functions">A New Hope: Parsers as Functions</h2>
+<p>Lets think of parsers directly <strong>as functions</strong> that</p>
+<ul>
+<li><strong>Take</strong> as input a <code class="sourceCode haskell"><span class="dt">String</span></code></li>
+<li><strong>Convert</strong> a part of the input into a <code class="sourceCode haskell"><span class="dt">StructuredObject</span></code></li>
+<li>Return the <strong>remainder</strong> unconsumed to be parsed <em>later</em></li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Parser</span> a <span class="ot">=</span> <span class="dt">P</span> (<span class="dt">String</span> <span class="ot">-&gt;</span> (a, <span class="dt">String</span>))</span></code></pre></div>
+<p>A <code class="sourceCode haskell"><span class="dt">Parser</span> a</code></p>
+<ul>
+<li>Converts a <em>prefix</em> of a <code class="sourceCode haskell"><span class="dt">String</span></code></li>
+<li>Into a <em>structured</em> object of type <code class="sourceCode haskell">a</code> and</li>
+<li>Returns the <em>suffix</em> <code class="sourceCode haskell"><span class="dt">String</span></code> unchanged</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="parsers-can-produce-many-results">Parsers Can Produce Many Results</h2>
+<p>Sometimes we want to parse a <code class="sourceCode haskell"><span class="dt">String</span></code> like</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;2 - 3 - 4&quot;</span></span></code></pre></div>
+<p>into a <strong>list</strong> of possible results</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>[(<span class="dt">Minus</span> (<span class="dt">Minus</span> <span class="dv">2</span> <span class="dv">3</span>) <span class="dv">4</span>),   <span class="dt">Minus</span> <span class="dv">2</span> (<span class="dt">Minus</span> <span class="dv">3</span> <span class="dv">4</span>)]</span></code></pre></div>
+<p>So we generalize the <code class="sourceCode haskell"><span class="dt">Parser</span></code> type to</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Parser</span> a <span class="ot">=</span> <span class="dt">P</span> (<span class="dt">String</span> <span class="ot">-&gt;</span> [(a, <span class="dt">String</span>)])</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exercise">EXERCISE</h2>
+<p>Given the definition</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Parser</span> a <span class="ot">=</span> <span class="dt">P</span> (<span class="dt">String</span> <span class="ot">-&gt;</span> [(a, <span class="dt">String</span>)])</span></code></pre></div>
+<p>Implement a function</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ot">runParser ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> [(a, <span class="dt">String</span>)]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>runParser p s <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz">QUIZ</h2>
+<p>Given the definition</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Parser</span> a <span class="ot">=</span> <span class="dt">P</span> (<span class="dt">String</span> <span class="ot">-&gt;</span> [(a, <span class="dt">String</span>)])</span></code></pre></div>
+<p>Which of the following is a valid <code class="sourceCode haskell"><span class="ot">oneChar ::</span> <span class="dt">Parser</span> <span class="dt">Char</span></code></p>
+<p>that returns the <strong>first</strong> <code class="sourceCode haskell"><span class="dt">Char</span></code> from a string (if one exists)</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- A</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>oneChar <span class="ot">=</span> <span class="dt">P</span> (\s <span class="ot">-&gt;</span> <span class="fu">head</span> s)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- B</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>oneChar <span class="ot">=</span> <span class="dt">P</span> (\s <span class="ot">-&gt;</span> <span class="kw">case</span> s <span class="kw">of</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                      []   <span class="ot">-&gt;</span> [('', s)]</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                      c<span class="op">:</span>cs <span class="ot">-&gt;</span> [c, cs])</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">-- C</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>oneChar <span class="ot">=</span> <span class="dt">P</span> (\s <span class="ot">-&gt;</span> (<span class="fu">head</span> s, <span class="fu">tail</span> s))</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">-- D</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>oneChar <span class="ot">=</span> <span class="dt">P</span> (\s <span class="ot">-&gt;</span> [(<span class="fu">head</span> s, <span class="fu">tail</span> s)])</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">-- E</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>oneChar <span class="ot">=</span> <span class="dt">P</span> (\s <span class="ot">-&gt;</span> <span class="kw">case</span> s <span class="kw">of</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>                      [] <span class="ot">-&gt;</span> []</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                      c<span class="op">:</span>cs <span class="ot">-&gt;</span> [(c, cs)])</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="lets-run-our-first-parser">Lets Run Our First Parser!</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser oneChar <span class="st">&quot;hey!&quot;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>[(<span class="ch">'h'</span>, <span class="st">&quot;ey&quot;</span>)]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser oneChar <span class="st">&quot;yippee&quot;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>[(<span class="ch">'y'</span>, <span class="st">&quot;ippee&quot;</span>)]</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser oneChar <span class="st">&quot;&quot;</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>[]</span></code></pre></div>
+<p><strong>Failure</strong> to parse means result is an <strong>empty</strong> list!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exercise-1">EXERCISE</h2>
+<p>Your turn: Write a parser to grab <strong>first two chars</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ot">twoChar ::</span> <span class="dt">Parser</span> (<span class="dt">Char</span>, <span class="dt">Char</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>twoChar <span class="ot">=</span> <span class="dt">P</span> (\cs <span class="ot">-&gt;</span> <span class="op">???</span>)</span></code></pre></div>
+<p>When you are done, we should get</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser twoChar <span class="st">&quot;hey!&quot;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>[((<span class="ch">'h'</span>, <span class="ch">'e'</span>), <span class="st">&quot;y!&quot;</span>)]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser twoChar <span class="st">&quot;&quot;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>[]</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser twoChar <span class="st">&quot;h&quot;</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>[]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="composing-parsers">Composing Parsers</h2>
+<p>We can write <code class="sourceCode haskell">twoChars</code> from scratch like so:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ot">twoChar ::</span> <span class="dt">Parser</span> (<span class="dt">Char</span>, <span class="dt">Char</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>twoChar  <span class="ot">=</span> <span class="dt">P</span> (\cs <span class="ot">-&gt;</span> <span class="kw">case</span> cs <span class="kw">of</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                       c1<span class="op">:</span>c2<span class="op">:</span>cs' <span class="ot">-&gt;</span> [((c1, c2), cs')]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                       _         <span class="ot">-&gt;</span> [])</span></code></pre></div>
+<p>But this is <strong>sad</strong>: would be much better to reuse <code class="sourceCode haskell">oneChar</code>!</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ot">twoChar ::</span> <span class="dt">Parser</span> (<span class="dt">Char</span>, <span class="dt">Char</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>twoChar <span class="ot">=</span> pairP oneChar oneChar</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-1">QUIZ</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ot">twoChar ::</span> <span class="dt">Parser</span> (<span class="dt">Char</span>, <span class="dt">Char</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>twoChar <span class="ot">=</span> pairP oneChar oneChar</span></code></pre></div>
+<p>What must the type of <code class="sourceCode haskell">pairP</code> be?</p>
+<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dt">Parser</span> (<span class="dt">Char</span>, <span class="dt">Char</span>)</code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell"><span class="dt">Parser</span> <span class="dt">Char</span> <span class="ot">-&gt;</span> <span class="dt">Parser</span> (<span class="dt">Char</span>, <span class="dt">Char</span>)</code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell"><span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> (a, a)</code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> b <span class="ot">-&gt;</span> <span class="dt">Parser</span> (a, b)</code></p>
+<p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> (a, a)</code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-pair-combinator">A Pair Combinator</h2>
+<p>Lets implement <code class="sourceCode haskell">pairP</code>!</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ot">pairP ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> b <span class="ot">-&gt;</span> <span class="dt">Parser</span> (a, b)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>pairP aP bP <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p>High-level idea:</p>
+<ul>
+<li>Run <code class="sourceCode haskell">aP</code> on the input string</li>
+<li><em>For each</em> result <code class="sourceCode haskell">(a, s')</code> of <code class="sourceCode haskell">aP</code>, run <code class="sourceCode haskell">bP</code> on <code class="sourceCode haskell">s'</code></li>
+<li><em>For each</em> result <code class="sourceCode haskell">(b, s'')</code> of <code class="sourceCode haskell">bP</code>, return <code class="sourceCode haskell">((a, b), s'')</code></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | We have just seen this &quot;for-each&quot; function in the previous lecture!</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ot">forEach ::</span> [a] <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> [b]) <span class="ot">-&gt;</span> [b]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>forEach xs f <span class="ot">=</span> <span class="fu">concatMap</span> f xs</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="ot">pairP ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> b <span class="ot">-&gt;</span> <span class="dt">Parser</span> (a, b)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>pairP aP bP <span class="ot">=</span> <span class="dt">P</span> (\s <span class="ot">-&gt;</span> forEach (runParser aP s)  (\(a, s') <span class="ot">-&gt;</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                       forEach (runParser bP s') (\(b, s'') <span class="ot">-&gt;</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                       [((a, b), s'')])</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                ))</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br></p>
+<p>This works, but is was a bit of a pain to write!</p>
+<p>Does this code look familiar?</p>
+<p><br>
+<br>
+<br>
+<br></p>
+<p>It’s like doing <em>mutable state</em> + <em>non-determinism</em> the hard way!</p>
+<ul>
+<li>i.e. without monads</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br></p>
+<p>Also, take a second look at the <code class="sourceCode haskell"><span class="dt">Parser</span></code> type:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Parser</span> a <span class="ot">=</span> <span class="dt">P</span> (<span class="dt">String</span> <span class="ot">-&gt;</span> [(a, <span class="dt">String</span>)])</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">State</span> s a   <span class="ot">=</span> <span class="dt">S</span> (s <span class="ot">-&gt;</span> (a, s))</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="parser-is-a-monad">Parser is a Monad!</h2>
+<p>Like <code class="sourceCode haskell"><span class="dt">State</span></code> and <code class="sourceCode haskell">[]</code>, <a href="http://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf"><code class="sourceCode haskell"><span class="dt">Parser</span></code> is a monad!</a></p>
+<p>We need to implement two functions</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ot">returnP ::</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> a</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ot">bindP   ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">Parser</span> b) <span class="ot">-&gt;</span> <span class="dt">Parser</span> b</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-2">QUIZ</h2>
+<p>Which of the following is a valid implementation of <code class="sourceCode haskell">returnP</code></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Parser</span> a <span class="ot">=</span> <span class="dt">P</span> (<span class="dt">String</span> <span class="ot">-&gt;</span> [(a, <span class="dt">String</span>)])</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ot">returnP   ::</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> a</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>returnP a <span class="ot">=</span> <span class="dt">P</span> (\s <span class="ot">-&gt;</span> [])          <span class="co">-- A</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>returnP a <span class="ot">=</span> <span class="dt">P</span> (\s <span class="ot">-&gt;</span> [(a, s)])    <span class="co">-- B</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>returnP a <span class="ot">=</span> <span class="dt">P</span> (\s <span class="ot">-&gt;</span> (a, s))      <span class="co">-- C</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>returnP a <span class="ot">=</span> <span class="dt">P</span> (\s <span class="ot">-&gt;</span> [(a, <span class="st">&quot;&quot;</span>)])   <span class="co">-- D</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>returnP a <span class="ot">=</span> <span class="dt">P</span> (\s <span class="ot">-&gt;</span> [(s, a)])    <span class="co">-- E</span></span></code></pre></div>
+<p><strong>HINT:</strong> what did <code class="sourceCode haskell"><span class="fu">return</span></code> do for <code class="sourceCode haskell"><span class="dt">State</span></code> and <code class="sourceCode haskell">[]</code>?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="bind-for-parsers">Bind for Parsers</h2>
+<p>Next, lets implement <code class="sourceCode haskell">bindP</code></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ot">bindP ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">Parser</span> b) <span class="ot">-&gt;</span> <span class="dt">Parser</span> b</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>bindP aP fbP <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p>High-level idea:</p>
+<ul>
+<li>Run <code class="sourceCode haskell">aP</code> on the input string</li>
+<li><em>For each</em> result <code class="sourceCode haskell">(a, s')</code> of <code class="sourceCode haskell">aP</code>, run <code class="sourceCode haskell">bp <span class="ot">=</span> fbP a</code> on <code class="sourceCode haskell">s'</code></li>
+<li><em>For each</em> result <code class="sourceCode haskell">(b, s'')</code> of <code class="sourceCode haskell">bP</code>, return <code class="sourceCode haskell">(b, s'')</code></li>
+</ul>
+<p>In other words, this is just a <em>generalization</em> of <code class="sourceCode haskell">pairP</code>!</p>
+<p><img src="../static/img/bind-0.png" /></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ot">bindP ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">Parser</span> b) <span class="ot">-&gt;</span> <span class="dt">Parser</span> b</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>bindP aP fbP <span class="ot">=</span> <span class="dt">P</span> (\s <span class="ot">-&gt;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  forEach (runParser aP s) (\(a, s') <span class="ot">-&gt;</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    forEach (runParser (fbP a) s') (\(b, s'') <span class="ot">-&gt;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>      [(b, s'')]</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="the-parser-monad">The Parser Monad</h2>
+<p>We can now make <code class="sourceCode haskell"><span class="dt">Parser</span></code> an instance of <code class="sourceCode haskell"><span class="dt">Monad</span></code></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Monad</span> <span class="dt">Parser</span> <span class="kw">where</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  (<span class="op">&gt;&gt;=</span>)  <span class="ot">=</span> bindP</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> <span class="ot">=</span> returnP</span></code></pre></div>
+<p><img src="https://www.artgroup.com/assets/img/products/WDC44013" /></p>
+<p>And now, let the <em>wild rumpus begin!</em></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="parser-combinators">Parser Combinators</h2>
+<p>Lets write lots of <em>high-level</em> operators to <strong>combine</strong> parsers!</p>
+<p>Here’s a cleaned up <code class="sourceCode haskell">pairP</code></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ot">pairP ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> b <span class="ot">-&gt;</span> <span class="dt">Parser</span> (a, b)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>pairP aP bP <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> aP</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  b <span class="ot">&lt;-</span> bP</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (a, b)</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="failures-are-the-pillars-of-success">Failures are the Pillars of Success!</h2>
+<p>Surprisingly useful, always <em>fails</em></p>
+<ul>
+<li>i.e. returns <code class="sourceCode haskell">[]</code> no successful parses</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ot">failP ::</span> <span class="dt">Parser</span> a</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>failP <span class="ot">=</span> <span class="dt">P</span> (\_ <span class="ot">-&gt;</span> [])</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-3">QUIZ</h2>
+<p>Consider the parser</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ot">satP ::</span> (<span class="dt">Char</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span>) <span class="ot">-&gt;</span> <span class="dt">Parser</span> <span class="dt">Char</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>satP p <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  c <span class="ot">&lt;-</span> oneChar</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">if</span> p c <span class="kw">then</span> <span class="fu">return</span> c <span class="kw">else</span> failP</span></code></pre></div>
+<p>What is the value of</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>quiz1 <span class="ot">=</span> runParser (satP (\c <span class="ot">-&gt;</span> c <span class="op">==</span> <span class="ch">'h'</span>)) <span class="st">&quot;hello&quot;</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>quiz2 <span class="ot">=</span> runParser (satP (\c <span class="ot">-&gt;</span> c <span class="op">==</span> <span class="ch">'h'</span>)) <span class="st">&quot;yellow&quot;</span></span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: right;"><code class="sourceCode haskell">quiz1</code></th>
+<th style="text-align: right;"><code class="sourceCode haskell">quiz2</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><strong>A</strong></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[]</code></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[]</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><strong>B</strong></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[(<span class="ch">'h'</span>, <span class="st">&quot;ello&quot;</span>)]</code></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[(<span class="ch">'y'</span>, <span class="st">&quot;ellow&quot;</span>)]</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><strong>C</strong></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[(<span class="ch">'h'</span>, <span class="st">&quot;ello&quot;</span>)]</code></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[]</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><strong>D</strong></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[]</code></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[(<span class="ch">'y'</span>, <span class="st">&quot;ellow&quot;</span>)]</code></td>
+</tr>
+</tbody>
+</table>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="parsing-alphabets-and-numerics">Parsing Alphabets and Numerics</h2>
+<p>We can now use <code class="sourceCode haskell">satP</code> to write</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- parse ONLY the Char c</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ot">charP ::</span> <span class="dt">Char</span> <span class="ot">-&gt;</span> <span class="dt">Parser</span> <span class="dt">Char</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>charP c <span class="ot">=</span> satP (\c' <span class="ot">-&gt;</span> c <span class="op">==</span> c')</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- parse ANY ALPHABET</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="ot">alphaCharP ::</span> <span class="dt">Parser</span> <span class="dt">Char</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>alphaCharP <span class="ot">=</span> satP <span class="fu">isAlpha</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">-- parse ANY NUMERIC DIGIT</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="ot">digitCharP ::</span> <span class="dt">Parser</span> <span class="dt">Char</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>digitCharP <span class="ot">=</span> satP <span class="fu">isDigit</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-4">QUIZ</h2>
+<p>We can parse a single <code class="sourceCode haskell"><span class="dt">Int</span></code> digit</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ot">digitP ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>digitP <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  c <span class="ot">&lt;-</span> digitCharP     <span class="co">-- parse the Char c</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (<span class="fu">read</span> [c])   <span class="co">-- convert Char to Int</span></span></code></pre></div>
+<p>What is the result of</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>quiz1 <span class="ot">=</span> runParser digitP <span class="st">&quot;92&quot;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>quiz2 <span class="ot">=</span> runParser digitP <span class="st">&quot;cat&quot;</span></span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: right;"><code class="sourceCode haskell">quiz1</code></th>
+<th style="text-align: right;"><code class="sourceCode haskell">quiz2</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><strong>A</strong></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[]</code></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[]</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><strong>B</strong></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[(<span class="ch">'9'</span>, <span class="st">&quot;2&quot;</span>)]</code></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[(<span class="ch">'c'</span>, <span class="st">&quot;at&quot;</span>)]</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><strong>C</strong></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[(<span class="dv">9</span>, <span class="st">&quot;2&quot;</span>)]</code></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[]</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><strong>D</strong></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[]</code></td>
+<td style="text-align: right;"><code class="sourceCode haskell">[(<span class="ch">'c'</span>, <span class="st">&quot;at&quot;</span>)]</code></td>
+</tr>
+</tbody>
+</table>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-choice-combinator">A Choice Combinator</h2>
+<p>Lets write a combinator <code class="sourceCode haskell">p1 <span class="op">&lt;|&gt;</span> p2</code> that</p>
+<ul>
+<li>returns the results of <code class="sourceCode haskell">p1</code></li>
+</ul>
+<p><strong>or, else</strong> <em>if those are empty</em></p>
+<ul>
+<li>returns the results of <code class="sourceCode haskell">p2</code></li>
+</ul>
+<p>E.g. <code class="sourceCode haskell"><span class="op">&lt;|&gt;</span></code> lets us build a parser that produces an alphabet <em>OR</em> a numeric character</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ot">alphaNumCharP ::</span> <span class="dt">Parser</span> <span class="dt">Char</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>alphaNumCharP <span class="ot">=</span> alphaCharP <span class="op">&lt;|&gt;</span> digitCharP</span></code></pre></div>
+<p>Which should produce</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser alphaNumCharP <span class="st">&quot;cat&quot;</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>[(<span class="ch">'c'</span>, <span class="st">&quot;at&quot;</span>)]</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser alphaNumCharP <span class="st">&quot;2cat&quot;</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>[(<span class="ch">'2'</span>, <span class="st">&quot;cat&quot;</span>)]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-5">QUIZ</h2>
+<div class="sourceCode" id="cb36"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ot">(&lt;|&gt;) ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> a</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;|&gt;</span> p2 <span class="ot">=</span> <span class="op">???</span> <span class="co">-- produce results of `p1` if non-empty</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>                <span class="co">-- OR-ELSE results of `p2`</span></span></code></pre></div>
+<p>Which of the following implements <code class="sourceCode haskell">(<span class="op">&lt;|&gt;</span>)</code>?</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="co">-- (A)</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  r1s <span class="ot">&lt;-</span> p1</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  r2s <span class="ot">&lt;-</span> p2</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (r1s <span class="op">++</span> r2s)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="co">-- (B)</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  r1s <span class="ot">&lt;-</span> p1</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">case</span> r1s <span class="kw">of</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    [] <span class="ot">-&gt;</span> p2</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    _  <span class="ot">-&gt;</span> <span class="fu">return</span> r1s</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co">-- (C)</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="dt">P</span> (\s <span class="ot">-&gt;</span> runParser p1 s <span class="op">++</span> runParser p2 s)</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="co">-- (D)</span></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="dt">P</span> (\s <span class="ot">-&gt;</span></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">case</span> runParser p1 s <span class="kw">of</span></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>    []  <span class="ot">-&gt;</span> runParser p2 s</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>    r1s <span class="ot">-&gt;</span> r1s</span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-simple-expression-parser">A Simple Expression Parser</h2>
+<p>Let’s write a parser <code class="sourceCode haskell"><span class="ot">calc ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></code> that <em>parses and evaluates</em> simple arithmetic expressions</p>
+<ul>
+<li>an expression is <code class="sourceCode haskell">a <span class="op">+</span> b</code>, <code class="sourceCode haskell">a <span class="op">-</span> b</code>, <code class="sourceCode haskell">a <span class="op">*</span> b</code>, <code class="sourceCode haskell">a <span class="op">/</span> b</code></li>
+<li>where <code class="sourceCode haskell">a</code> and <code class="sourceCode haskell">b</code> are <em>single-digit</em> integers</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser calc <span class="st">&quot;8/2&quot;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">4</span>,<span class="st">&quot;&quot;</span>)]</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser calc <span class="st">&quot;8+2cat&quot;</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">10</span>,<span class="st">&quot;cat&quot;</span>)]</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser calc <span class="st">&quot;8-2cat&quot;</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">6</span>,<span class="st">&quot;cat&quot;</span>)]</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser calc <span class="st">&quot;8*2cat&quot;</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">16</span>,<span class="st">&quot;cat&quot;</span>)]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- 1. First, parse the operator</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="ot">opP      ::</span> <span class="dt">Parser</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>opP      <span class="ot">=</span> plus <span class="op">&lt;|&gt;</span> minus <span class="op">&lt;|&gt;</span> times <span class="op">&lt;|&gt;</span> divide</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    plus   <span class="ot">=</span> <span class="kw">do</span> { _ <span class="ot">&lt;-</span> charP <span class="ch">'+'</span>; <span class="fu">return</span> (<span class="op">+</span>) }</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    minus  <span class="ot">=</span> <span class="kw">do</span> { _ <span class="ot">&lt;-</span> charP <span class="ch">'-'</span>; <span class="fu">return</span> (<span class="op">-</span>) }</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    times  <span class="ot">=</span> <span class="kw">do</span> { _ <span class="ot">&lt;-</span> charP <span class="ch">'*'</span>; <span class="fu">return</span> (<span class="op">*</span>) }</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    divide <span class="ot">=</span> <span class="kw">do</span> { _ <span class="ot">&lt;-</span> charP <span class="ch">'/'</span>; <span class="fu">return</span> <span class="fu">div</span> }</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co">-- 2. Now parse the expression!</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="ot">calc ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>calc <span class="ot">=</span> <span class="kw">do</span> x  <span class="ot">&lt;-</span> digitP</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>          op <span class="ot">&lt;-</span> opP</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>          y  <span class="ot">&lt;-</span> digitP</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>          <span class="fu">return</span> (x <span class="ot">`op`</span> y)</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-6">QUIZ</h2>
+<p>What will <code class="sourceCode haskell">quiz</code> evaluate to?</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ot">calc ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>calc <span class="ot">=</span> <span class="kw">do</span> x  <span class="ot">&lt;-</span> digitP</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>          op <span class="ot">&lt;-</span> opP</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>          y  <span class="ot">&lt;-</span> digitP</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>          <span class="fu">return</span> (x <span class="ot">`op`</span> y)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> runParser calc <span class="st">&quot;10+2&quot;</span></span></code></pre></div>
+<p><strong>A.</strong> <code class="sourceCode haskell">[(<span class="dv">12</span>,<span class="st">&quot;&quot;</span>)]</code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell">[]</code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell">[(<span class="dv">10</span>, <span class="st">&quot;+2&quot;</span>)]</code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell">[(<span class="dv">1</span>, <span class="st">&quot;0+2&quot;</span>)]</code></p>
+<p><strong>E.</strong> Run-time exception</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="next-recursive-parsing">Next: Recursive Parsing</h2>
+<p>Its cool to parse individual <code class="sourceCode haskell"><span class="dt">Char</span></code> …</p>
+<p>… but <em>way</em> more interesting to parse recursive structures!</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;((2 + 10) * (7 - 4)) * (5 + 2)&quot;</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exercise-parsing-many-times">EXERCISE: Parsing Many Times</h2>
+<p>Often we want to <em>repeat</em> parsing some object</p>
+<ul>
+<li>E.g. to parse an <code class="sourceCode haskell"><span class="dt">Int</span></code> we need to parse a digit <em>many times</em></li>
+</ul>
+<p>Implement a function <code class="sourceCode haskell">manyP</code> that:</p>
+<ul>
+<li>applies a parser <code class="sourceCode haskell">p</code> as many times as it can</li>
+<li>returns a list of the results</li>
+</ul>
+<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | `manyP p` repeatedly runs `p` to return a list of [a]</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="ot">manyP  ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> [a]</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>manyP <span class="ot">=</span> <span class="op">???</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser (manyP digitCharP) <span class="st">&quot;2022cat&quot;</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>[(<span class="st">&quot;2022&quot;</span>,<span class="st">&quot;cat&quot;</span>)]</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser (manyP digitCharP) <span class="st">&quot;cat&quot;</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>[(<span class="st">&quot;&quot;</span>,<span class="st">&quot;cat&quot;</span>)]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | `manyP p` repeatedly runs `p` to return a list of [a]</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="ot">manyP  ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> [a]</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>manyP p <span class="ot">=</span> m1 <span class="op">&lt;|&gt;</span> m0</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    m0  <span class="ot">=</span> <span class="fu">return</span> []</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    m1  <span class="ot">=</span> <span class="kw">do</span> { x <span class="ot">&lt;-</span> p; xs <span class="ot">&lt;-</span> manyP p; <span class="fu">return</span> (x<span class="op">:</span>xs) }</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="parsing-numbers">Parsing Numbers</h2>
+<p>Now, we can write an <code class="sourceCode haskell"><span class="dt">Int</span></code> parser as:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="ot">int ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>int <span class="ot">=</span> <span class="kw">do</span> { xs <span class="ot">&lt;-</span> manyP digitChar; <span class="fu">return</span> (<span class="fu">read</span> xs) }</span></code></pre></div>
+<p><br>
+<br></p>
+<p>… but is this correct?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-parsing-numbers">QUIZ: Parsing Numbers</h2>
+<p>What will `quiz`` evaluate to?</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="ot">int ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>int <span class="ot">=</span> <span class="kw">do</span> { xs <span class="ot">&lt;-</span> manyP digitChar; <span class="fu">return</span> (<span class="fu">read</span> xs) }</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> runParser int <span class="st">&quot;cat&quot;</span></span></code></pre></div>
+<p><strong>A.</strong> Type Error</p>
+<p><strong>B.</strong> <code class="sourceCode haskell">[(<span class="dv">0</span>,<span class="st">&quot;cat&quot;</span>)]</code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell">[]</code></p>
+<p><strong>D.</strong> Run-time exception</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="parsing-numbers-take-2">Parsing Numbers: Take 2</h2>
+<p>A number has <em>one or more</em> digits, not <em>zero or more</em>!</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="ot">manyOneP ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> [a]</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>manyOneP p <span class="ot">=</span> <span class="kw">do</span> { x <span class="ot">&lt;-</span> p; xs <span class="ot">&lt;-</span> manyP p; <span class="fu">return</span> (x<span class="op">:</span>xs) }</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="ot">int ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>int <span class="ot">=</span> <span class="kw">do</span> { xs <span class="ot">&lt;-</span> manyOneP digitChar; <span class="fu">return</span> (<span class="fu">read</span> xs) }</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser int <span class="st">&quot;2022cat&quot;</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">2022</span>,<span class="st">&quot;cat&quot;</span>)]</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser int <span class="st">&quot;cat&quot;</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>[] <span class="co">-- as expected!</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="parsing-arithmetic-expressions">Parsing Arithmetic Expressions</h2>
+<p><em>Now</em> we can build a proper calculator!</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="ot">calc ::</span>  <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>calc <span class="ot">=</span> binExp <span class="op">&lt;|&gt;</span> int</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> int</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> opP</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> calc</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
+<p>Works pretty well!</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser calc <span class="st">&quot;11+22+33&quot;</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">66</span>,<span class="st">&quot;&quot;</span>)]</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser calc <span class="st">&quot;11+22-33&quot;</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">0</span>,<span class="st">&quot;&quot;</span>)]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="warning">WARNING</h2>
+<p>The real <code class="sourceCode haskell">(<span class="op">&lt;|&gt;</span>)</code> combinator in Parsec has different semantics:</p>
+<p>It only runs <code class="sourceCode haskell">p2</code> if <code class="sourceCode haskell">p1</code> fails <strong>without consuming any input</strong></p>
+<ul>
+<li>This makes parsers more efficient</li>
+<li>And helps with error reporting</li>
+</ul>
+<p>To choose between objects that can have the same prefix, you need to use <code class="sourceCode haskell">try</code>:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- In Parsec</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="ot">calc ::</span>  <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>calc <span class="ot">=</span> try binExp <span class="op">&lt;|&gt;</span> int</span></code></pre></div>
+<p>Otherwise, <code class="sourceCode haskell">runParser calc <span class="st">&quot;10&quot;</span></code> would fail</p>
+<ul>
+<li>because <code class="sourceCode haskell">binExp</code> consumes the <code class="sourceCode haskell"><span class="dv">10</span></code></li>
+<li>so <code class="sourceCode haskell">int</code> is never tried</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-7">QUIZ</h2>
+<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="ot">calc ::</span>  <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>calc <span class="ot">=</span> binExp <span class="op">&lt;|&gt;</span> int</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> int</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> opP</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> calc</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
+<p>What does <code class="sourceCode haskell">quiz</code> evaluate to?</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> runParser calc <span class="st">&quot;10-5-5&quot;</span></span></code></pre></div>
+<p><strong>A.</strong> <code class="sourceCode haskell">[(<span class="dv">0</span>, <span class="st">&quot;&quot;</span>)]</code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell">[]</code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell">[(<span class="dv">10</span>, <span class="st">&quot;&quot;</span>)]</code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell">[(<span class="dv">10</span>, <span class="st">&quot;-5-5&quot;</span>)]</code></p>
+<p><strong>E.</strong> <code class="sourceCode haskell">[(<span class="dv">5</span>, <span class="st">&quot;-5&quot;</span>)]</code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="problem-right-associativity">Problem: Right-Associativity</h2>
+<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> int</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> opP</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> calc</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
+<p><code class="sourceCode haskell"><span class="st">&quot;10-5-5&quot;</span></code> gets parsed as <code class="sourceCode haskell"><span class="dv">10</span> <span class="op">-</span> (<span class="dv">5</span> <span class="op">-</span> <span class="dv">5</span>)</code> because</p>
+<p><img src="../static/img/parse-left.png" /></p>
+<p>The <code class="sourceCode haskell">calc</code> parser implicitly forces each operator to be <strong>right associative</strong></p>
+<ul>
+<li><p>doesn’t matter for <code class="sourceCode haskell"><span class="op">+</span></code>, <code class="sourceCode haskell"><span class="op">*</span></code></p></li>
+<li><p>but is incorrect for <code class="sourceCode haskell"><span class="op">-</span></code>, <code class="sourceCode haskell"><span class="fu">div</span></code></p></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-8">QUIZ</h2>
+<div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> int</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> opP</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> calc</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
+<p>What does <code class="sourceCode haskell">quiz</code> get evaluated to?</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> runParser calc <span class="st">&quot;10*2+100&quot;</span></span></code></pre></div>
+<p><strong>A.</strong> <code class="sourceCode haskell">[(<span class="dv">1020</span>,<span class="st">&quot;&quot;</span>)]</code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell">[(<span class="dv">120</span>,<span class="st">&quot;&quot;</span>)]</code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell">[(<span class="dv">120</span>,<span class="st">&quot;&quot;</span>), (<span class="dv">1020</span>, <span class="st">&quot;&quot;</span>)]</code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell">[(<span class="dv">1020</span>,<span class="st">&quot;&quot;</span>), (<span class="dv">120</span>, <span class="st">&quot;&quot;</span>)]</code></p>
+<p><strong>E.</strong> <code class="sourceCode haskell">[]</code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p>The <code class="sourceCode haskell">calc</code> parser implicitly forces each operator to be right associative</p>
+<p>… <strong>at the same precedence level</strong>!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="left-associativity">Left Associativity</h2>
+<p>How can we make the parser <em>left associative</em></p>
+<ul>
+<li>i.e. parse “10-5-5” as <code class="sourceCode haskell">(<span class="dv">10</span> <span class="op">-</span> <span class="dv">5</span>) <span class="op">-</span> <span class="dv">5</span></code> ?</li>
+</ul>
+<p>Lets flip the order!</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> calc <span class="co">-- now calc is on the left</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> intOp</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> int</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
+<p>But …</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser calc <span class="st">&quot;2+2&quot;</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code></pre></div>
+<p>Infinite loop! <code class="sourceCode haskell">calc <span class="op">--&gt;</span> binExp <span class="op">--&gt;</span> calc <span class="op">--&gt;</span> binExp <span class="op">--&gt;</span> <span class="op">...</span></code></p>
+<ul>
+<li>without <em>consuming</em> any input :-(</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="solution-grammar-factoring">Solution: Grammar Factoring</h2>
+<p>Any expression is a <strong>sum-of-products</strong>!</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>  expr <span class="op">:==</span> <span class="fu">sum</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>  <span class="op">:==</span> (((prod <span class="st">&quot;+&quot;</span> prod) <span class="st">&quot;+&quot;</span> prod) <span class="st">&quot;+&quot;</span> <span class="op">...</span> <span class="st">&quot;+&quot;</span> prod)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  prod <span class="op">:==</span> (((atom <span class="st">&quot;*&quot;</span> atom) <span class="st">&quot;*&quot;</span> atom) <span class="st">&quot;*&quot;</span> <span class="op">...</span> <span class="st">&quot;*&quot;</span> atom)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  atom <span class="op">:==</span> <span class="st">&quot;(&quot;</span> expr <span class="st">&quot;)&quot;</span> <span class="op">|</span> int</span></code></pre></div>
+<p>Or in Haskell:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>expr <span class="ot">=</span> foldLP prod (plus <span class="op">&lt;|&gt;</span> minus)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>prod <span class="ot">=</span> foldLP atom (times <span class="op">&lt;|&gt;</span> <span class="fu">div</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>atom <span class="ot">=</span> parensP expr <span class="op">&lt;|&gt;</span> int</span></code></pre></div>
+<p>All that is left is to implement <code class="sourceCode haskell">parensP</code> and <code class="sourceCode haskell">foldLP</code>!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exercise-parsing-parenthetic-expressions">EXERCISE: Parsing Parenthetic Expressions</h2>
+<p>Implement the function <code class="sourceCode haskell">parensP</code>:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Parse what `p` parses, surrounded by parentheses:</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="ot">parensP ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> a</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>parensP p <span class="ot">=</span> <span class="op">???</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser (parensP int) <span class="st">&quot;(10)&quot;</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">10</span>,<span class="st">&quot;&quot;</span>)]</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser (parensP int) <span class="st">&quot;10&quot;</span></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>[]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="fold-left-parser">Fold Left Parser</h2>
+<p>Lets implement <code class="sourceCode haskell">foldLP aP oP</code> as a combinator</p>
+<ul>
+<li><code class="sourceCode haskell">vP</code> parses a <em>single</em> <code class="sourceCode haskell">a</code> value</li>
+<li><code class="sourceCode haskell">oP</code> parses a <em>binary operator</em> <code class="sourceCode haskell">a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</code></li>
+<li><code class="sourceCode haskell">foldLP vP oP</code> parses and returns the result <code class="sourceCode haskell">((v1 o v2) o v3) o v4) o <span class="op">...</span> o vn)</code></li>
+</ul>
+<p>But how?</p>
+<ol type="1">
+<li><p><em>grab</em> the first <code class="sourceCode haskell">v1</code> using <code class="sourceCode haskell">vP</code></p></li>
+<li><p><em>continue</em> by</p>
+<ul>
+<li>either trying <code class="sourceCode haskell">oP</code> then <code class="sourceCode haskell">v2</code> … and recursively continue with <code class="sourceCode haskell">v1 o v2</code></li>
+<li><em>or else</em> (no more <code class="sourceCode haskell">o</code>) just return <code class="sourceCode haskell">v1</code></li>
+</ul></li>
+</ol>
+<p><br>
+<br>
+<br>
+<br></p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="ot">foldLP ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> (a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a) <span class="ot">-&gt;</span> <span class="dt">Parser</span> a</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>foldLP vP oP <span class="ot">=</span> <span class="kw">do</span> {v1 <span class="ot">&lt;-</span> vP; continue v1}</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    continue v1 <span class="ot">=</span> <span class="kw">do</span> { o <span class="ot">&lt;-</span> oP; v2 <span class="ot">&lt;-</span> vP; continue (v1 <span class="ot">`o`</span> v2) }</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>               <span class="op">&lt;|&gt;</span> <span class="fu">return</span> v1</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p>Lets make sure it works!</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser expr <span class="st">&quot;10-5-5&quot;</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">0</span>,<span class="st">&quot;&quot;</span>)]</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser expr <span class="st">&quot;10*2+100&quot;</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">120</span>,<span class="st">&quot;&quot;</span>)]</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> doParse sumE2 <span class="st">&quot;100+10*2&quot;</span></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">120</span>,<span class="st">&quot;&quot;</span>)]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="parser-combinators-1">Parser combinators</h2>
+<p>That was a taste of Parser Combinators</p>
+<ul>
+<li>Transferred from Haskell to <a href="http://www.haskell.org/haskellwiki/Parsec"><em>many</em> other languages</a>.</li>
+</ul>
+<p>Many libraries including <a href="http://www.haskell.org/haskellwiki/Parsec">Parsec</a> used in your homework
+- <code class="sourceCode haskell">oneOrMore</code> is called <code class="sourceCode haskell">chainl</code></p>
+<p>Read more about the <em>theory</em>
+- in these <a href="http://www.cse.chalmers.se/~nad/publications/danielsson-parser-combinators.html">recent</a> <a href="http://portal.acm.org/citation.cfm?doid=1706299.1706347">papers</a></p>
+<p>Read more about the <em>practice</em>
+- in this recent post that I like <a href="https://abhinavsarkar.net/posts/json-parsing-from-scratch-in-haskell/">JSON parsing from scratch</a></p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</article>
+
+        </div>
+        <div id="footer">
+        </div>
+      <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://nadia-polikarpova.github.io/cse130-web/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/polikarn" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://plus.google.com/u/0/104385825850161331469" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/nadia-polikarpova" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+		    
+                </ul>
+                <p class="copyright text-muted">
+                
+                  Generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>,
+                  template by <a href="http://lucumr.pocoo.org">Armin Ronacher</a>,
+                  suggest improvements <a href="https://github.com/ucsd-progsys/liquidhaskell-blog/">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- jQuery -->
+<script src="https://nadia-polikarpova.github.io/cse130-web/static/js/jquery.min.js"></script>
+<script src="https://nadia-polikarpova.github.io/cse130-web/static/js/spaceg.stylesheets.min.js"></script>
+<script src="https://nadia-polikarpova.github.io/cse130-web/static/js/bootstrap.min.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://nadia-polikarpova.github.io/cse130-web/static/js/anim.js"></script>
+<script src="https://nadia-polikarpova.github.io/cse130-web/static/js/scripts.js"></script>
+
+    </body>
+</html>

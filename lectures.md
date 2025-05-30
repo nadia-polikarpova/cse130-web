@@ -33,7 +33,7 @@ Lecture schedule is subject to change!
 | 5/23       | contd.                          |                           |
 | 5/26       | *No lecture: Memorial Day*      |                           |
 | 5/28       | contd.                          |                           |
-| 5/30       | Parser Combinators              |                           |
+| 5/30       | Parser Combinators              | [html][lec8]              |
 | 6/2        | contd.                          |                           |
 | 6/4        | contd.                          |                           |
 | 6/6        | **Final quiz**                  |                           |
@@ -53,6 +53,7 @@ Discussion slides are available [here](https://drive.google.com/drive/folders/19
 [lec5]: lectures/05-closure.html
 [lec6]: lectures/07-classes.html
 [lec7]: lectures/08-monads.html
+[lec8]: lectures/09-parsers.html
 [soundness]: lectures/soundness.html
 [mock-final]: https://github.com/cse130-assignments/mock-final
 
