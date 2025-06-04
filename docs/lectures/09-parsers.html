@@ -1109,55 +1109,30 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br>
 <br></p>
+<h2 id="parsing-at-least-one">Parsing at least one</h2>
+<p>Often we need to parse <em>at least one</em> repetition:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="ot">manyOneP ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> [a]</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>manyOneP p <span class="ot">=</span> <span class="kw">do</span> { x <span class="ot">&lt;-</span> p; xs <span class="ot">&lt;-</span> manyP p; <span class="fu">return</span> (x<span class="op">:</span>xs) }</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="parsing-numbers">Parsing Numbers</h2>
-<p>Now, we can write an <code class="sourceCode haskell"><span class="dt">Int</span></code> parser as:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="ot">int ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>int <span class="ot">=</span> <span class="kw">do</span> { xs <span class="ot">&lt;-</span> manyP digitChar; <span class="fu">return</span> (<span class="fu">read</span> xs) }</span></code></pre></div>
-<p><br>
-<br></p>
-<p>… but is this correct?</p>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
-<h2 id="quiz-parsing-numbers">QUIZ: Parsing Numbers</h2>
-<p>What will `quiz`` evaluate to?</p>
+<p>Now, we can write a parser for natural numbers:</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="ot">int ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>int <span class="ot">=</span> <span class="kw">do</span> { xs <span class="ot">&lt;-</span> manyP digitChar; <span class="fu">return</span> (<span class="fu">read</span> xs) }</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>int <span class="ot">=</span> <span class="kw">do</span> { xs <span class="ot">&lt;-</span> manyOneP digitChar; <span class="fu">return</span> (<span class="fu">read</span> xs) }</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> runParser int <span class="st">&quot;cat&quot;</span></span></code></pre></div>
-<p><strong>A.</strong> Type Error</p>
-<p><strong>B.</strong> <code class="sourceCode haskell">[(<span class="dv">0</span>,<span class="st">&quot;cat&quot;</span>)]</code></p>
-<p><strong>C.</strong> <code class="sourceCode haskell">[]</code></p>
-<p><strong>D.</strong> Run-time exception</p>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
-<h2 id="parsing-numbers-take-2">Parsing Numbers: Take 2</h2>
-<p>A number has <em>one or more</em> digits, not <em>zero or more</em>!</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="ot">manyOneP ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> [a]</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>manyOneP p <span class="ot">=</span> <span class="kw">do</span> { x <span class="ot">&lt;-</span> p; xs <span class="ot">&lt;-</span> manyP p; <span class="fu">return</span> (x<span class="op">:</span>xs) }</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="ot">int ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>int <span class="ot">=</span> <span class="kw">do</span> { xs <span class="ot">&lt;-</span> manyOneP digitChar; <span class="fu">return</span> (<span class="fu">read</span> xs) }</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser int <span class="st">&quot;2022cat&quot;</span></span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">2022</span>,<span class="st">&quot;cat&quot;</span>)]</span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser int <span class="st">&quot;cat&quot;</span></span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>[] <span class="co">-- as expected!</span></span></code></pre></div>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser int <span class="st">&quot;2022cat&quot;</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">2022</span>,<span class="st">&quot;cat&quot;</span>)]</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser int <span class="st">&quot;cat&quot;</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>[] <span class="co">-- parser fails, as expected!</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1172,21 +1147,21 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="parsing-arithmetic-expressions">Parsing Arithmetic Expressions</h2>
 <p><em>Now</em> we can build a proper calculator!</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="ot">expr ::</span>  <span class="dt">Parser</span> <span class="dt">Int</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>expr <span class="ot">=</span> binExp <span class="op">&lt;|&gt;</span> int</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> int</span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> opP</span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> expr</span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="ot">expr ::</span>  <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>expr <span class="ot">=</span> binExp <span class="op">&lt;|&gt;</span> int</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> int</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> opP</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> expr</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
 <p>Works pretty well!</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser expr <span class="st">&quot;11+22+33&quot;</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">66</span>,<span class="st">&quot;&quot;</span>)]</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser expr <span class="st">&quot;11+22-33&quot;</span></span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">0</span>,<span class="st">&quot;&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser expr <span class="st">&quot;11+22+33&quot;</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">66</span>,<span class="st">&quot;&quot;</span>)]</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser expr <span class="st">&quot;11+22-33&quot;</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">0</span>,<span class="st">&quot;&quot;</span>)]</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1203,9 +1178,9 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>And helps with error reporting</li>
 </ul>
 <p>To choose between objects that can have the same prefix, you need to use <code class="sourceCode haskell">try</code>:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- In Parsec</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="ot">expr ::</span>  <span class="dt">Parser</span> <span class="dt">Int</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>expr <span class="ot">=</span> try binExp <span class="op">&lt;|&gt;</span> int</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- In Parsec</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="ot">expr ::</span>  <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>expr <span class="ot">=</span> try binExp <span class="op">&lt;|&gt;</span> int</span></code></pre></div>
 <p>Otherwise, <code class="sourceCode haskell">runParser expr <span class="st">&quot;10&quot;</span></code> would fail</p>
 <ul>
 <li>because <code class="sourceCode haskell">binExp</code> consumes the <code class="sourceCode haskell"><span class="dv">10</span></code></li>
@@ -1228,17 +1203,17 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <h2 id="quiz-7">QUIZ</h2>
-<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="ot">expr ::</span>  <span class="dt">Parser</span> <span class="dt">Int</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>expr <span class="ot">=</span> binExp <span class="op">&lt;|&gt;</span> int</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> int</span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> opP</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> expr</span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="ot">expr ::</span>  <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>expr <span class="ot">=</span> binExp <span class="op">&lt;|&gt;</span> int</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> int</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> opP</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> expr</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
 <p>What does <code class="sourceCode haskell">quiz</code> evaluate to?</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> runParser expr <span class="st">&quot;10-5-5&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> runParser expr <span class="st">&quot;10-5-5&quot;</span></span></code></pre></div>
 <p><strong>A.</strong> <code class="sourceCode haskell">[(<span class="dv">0</span>, <span class="st">&quot;&quot;</span>)]</code></p>
 <p><strong>B.</strong> <code class="sourceCode haskell">[]</code></p>
 <p><strong>C.</strong> <code class="sourceCode haskell">[(<span class="dv">10</span>, <span class="st">&quot;&quot;</span>)]</code></p>
@@ -1256,12 +1231,12 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <h2 id="problem-right-associativity">Problem: Right-Associativity</h2>
-<div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> int</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> opP</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> expr</span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> int</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> opP</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> expr</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
 <p><code class="sourceCode haskell"><span class="st">&quot;10-5-5&quot;</span></code> gets parsed as <code class="sourceCode haskell"><span class="dv">10</span> <span class="op">-</span> (<span class="dv">5</span> <span class="op">-</span> <span class="dv">5</span>)</code> because</p>
 <p><img src="../static/img/parse-left.png" /></p>
 <p>The <code class="sourceCode haskell">expr</code> parser implicitly forces each operator to be <strong>right associative</strong></p>
@@ -1278,14 +1253,14 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <h2 id="quiz-8">QUIZ</h2>
-<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> int</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> opP</span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> expr</span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> int</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> opP</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> expr</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
 <p>What does <code class="sourceCode haskell">quiz</code> get evaluated to?</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> runParser expr <span class="st">&quot;10*2+100&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> runParser expr <span class="st">&quot;10*2+100&quot;</span></span></code></pre></div>
 <p><strong>A.</strong> <code class="sourceCode haskell">[(<span class="dv">1020</span>,<span class="st">&quot;&quot;</span>)]</code></p>
 <p><strong>B.</strong> <code class="sourceCode haskell">[(<span class="dv">120</span>,<span class="st">&quot;&quot;</span>)]</code></p>
 <p><strong>C.</strong> <code class="sourceCode haskell">[(<span class="dv">120</span>,<span class="st">&quot;&quot;</span>), (<span class="dv">1020</span>, <span class="st">&quot;&quot;</span>)]</code></p>
@@ -1324,15 +1299,15 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>i.e. parse “10-5-5” as <code class="sourceCode haskell">(<span class="dv">10</span> <span class="op">-</span> <span class="dv">5</span>) <span class="op">-</span> <span class="dv">5</span></code> ?</li>
 </ul>
 <p>Lets flip the order!</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> expr <span class="co">-- now expr is on the left</span></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> intOp</span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> int</span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> expr <span class="co">-- now expr is on the left</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> intOp</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> int</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>
 <p>But …</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser expr <span class="st">&quot;2+2&quot;</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser expr <span class="st">&quot;2+2&quot;</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code></pre></div>
 <p>Infinite loop! <code class="sourceCode haskell">expr <span class="op">--&gt;</span> binExp <span class="op">--&gt;</span> expr <span class="op">--&gt;</span> binExp <span class="op">--&gt;</span> <span class="op">...</span></code></p>
 <ul>
 <li>without <em>consuming</em> any input :-(</li>
@@ -1357,14 +1332,14 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="solution-grammar-factoring">Solution: Grammar Factoring</h2>
 <p>Any expression is a <strong>sum-of-products</strong>!</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>  expr <span class="op">:==</span> <span class="fu">sum</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>  <span class="op">:==</span> (((prod <span class="st">&quot;+&quot;</span> prod) <span class="st">&quot;+&quot;</span> prod) <span class="st">&quot;+&quot;</span> <span class="op">...</span> <span class="st">&quot;+&quot;</span> prod)</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  prod <span class="op">:==</span> (((atom <span class="st">&quot;*&quot;</span> atom) <span class="st">&quot;*&quot;</span> atom) <span class="st">&quot;*&quot;</span> <span class="op">...</span> <span class="st">&quot;*&quot;</span> atom)</span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  atom <span class="op">:==</span> <span class="st">&quot;(&quot;</span> expr <span class="st">&quot;)&quot;</span> <span class="op">|</span> int</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>  expr <span class="op">:==</span> <span class="fu">sum</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>  <span class="op">:==</span> (((prod <span class="st">&quot;+&quot;</span> prod) <span class="st">&quot;+&quot;</span> prod) <span class="st">&quot;+&quot;</span> <span class="op">...</span> <span class="st">&quot;+&quot;</span> prod)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  prod <span class="op">:==</span> (((atom <span class="st">&quot;*&quot;</span> atom) <span class="st">&quot;*&quot;</span> atom) <span class="st">&quot;*&quot;</span> <span class="op">...</span> <span class="st">&quot;*&quot;</span> atom)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  atom <span class="op">:==</span> <span class="st">&quot;(&quot;</span> expr <span class="st">&quot;)&quot;</span> <span class="op">|</span> int</span></code></pre></div>
 <p>Or in Haskell:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>expr <span class="ot">=</span> foldLP prod (plus <span class="op">&lt;|&gt;</span> minus)</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>prod <span class="ot">=</span> foldLP atom (times <span class="op">&lt;|&gt;</span> <span class="fu">div</span>)</span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>atom <span class="ot">=</span> parensP expr <span class="op">&lt;|&gt;</span> int</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>expr <span class="ot">=</span> foldLP prod (plus <span class="op">&lt;|&gt;</span> minus)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>prod <span class="ot">=</span> foldLP atom (times <span class="op">&lt;|&gt;</span> <span class="fu">div</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>atom <span class="ot">=</span> parensP expr <span class="op">&lt;|&gt;</span> int</span></code></pre></div>
 <p>All that is left is to implement <code class="sourceCode haskell">parensP</code> and <code class="sourceCode haskell">foldLP</code>!</p>
 <p><br>
 <br>
@@ -1386,15 +1361,15 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="exercise-parsing-parenthetic-expressions">EXERCISE: Parsing Parenthetic Expressions</h2>
 <p>Implement the function <code class="sourceCode haskell">parensP</code>:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Parse what `p` parses, surrounded by parentheses:</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="ot">parensP ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> a</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>parensP p <span class="ot">=</span> <span class="op">???</span></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser (parensP int) <span class="st">&quot;(10)&quot;</span></span>
-<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">10</span>,<span class="st">&quot;&quot;</span>)]</span>
-<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser (parensP int) <span class="st">&quot;10&quot;</span></span>
-<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>[]</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Parse what `p` parses, surrounded by parentheses:</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="ot">parensP ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> a</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>parensP p <span class="ot">=</span> <span class="op">???</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser (parensP int) <span class="st">&quot;(10)&quot;</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">10</span>,<span class="st">&quot;&quot;</span>)]</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser (parensP int) <span class="st">&quot;10&quot;</span></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>[]</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1431,11 +1406,11 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br>
 <br></p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="ot">foldLP ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> (a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a) <span class="ot">-&gt;</span> <span class="dt">Parser</span> a</span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>foldLP vP oP <span class="ot">=</span> <span class="kw">do</span> {v1 <span class="ot">&lt;-</span> vP; continue v1}</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    continue v1 <span class="ot">=</span> <span class="kw">do</span> { o <span class="ot">&lt;-</span> oP; v2 <span class="ot">&lt;-</span> vP; continue (v1 <span class="ot">`o`</span> v2) }</span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>               <span class="op">&lt;|&gt;</span> <span class="fu">return</span> v1</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="ot">foldLP ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">Parser</span> (a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a) <span class="ot">-&gt;</span> <span class="dt">Parser</span> a</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>foldLP vP oP <span class="ot">=</span> <span class="kw">do</span> {v1 <span class="ot">&lt;-</span> vP; continue v1}</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    continue v1 <span class="ot">=</span> <span class="kw">do</span> { o <span class="ot">&lt;-</span> oP; v2 <span class="ot">&lt;-</span> vP; continue (v1 <span class="ot">`o`</span> v2) }</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>               <span class="op">&lt;|&gt;</span> <span class="fu">return</span> v1</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1453,14 +1428,14 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <p>Lets make sure it works!</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser expr <span class="st">&quot;10-5-5&quot;</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">0</span>,<span class="st">&quot;&quot;</span>)]</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser expr <span class="st">&quot;10*2+100&quot;</span></span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">120</span>,<span class="st">&quot;&quot;</span>)]</span>
-<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> doParse sumE2 <span class="st">&quot;100+10*2&quot;</span></span>
-<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">120</span>,<span class="st">&quot;&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser expr <span class="st">&quot;10-5-5&quot;</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">0</span>,<span class="st">&quot;&quot;</span>)]</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runParser expr <span class="st">&quot;10*2+100&quot;</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">120</span>,<span class="st">&quot;&quot;</span>)]</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> doParse sumE2 <span class="st">&quot;100+10*2&quot;</span></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">120</span>,<span class="st">&quot;&quot;</span>)]</span></code></pre></div>
 <p><br>
 <br>
 <br>
