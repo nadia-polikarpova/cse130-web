@@ -30,7 +30,7 @@ but no more than *four late days* per assignment.
 ### Project (20%)
 
 - Bigger and more open-ended than the assignments.
-- You will work in groups of 2-3.
+- You will work in groups of 3-4.
 - You are allowed (and even encouraged) to use AI assistants (e.g., Copilot, ChatGPT) in your project,
 but you must understand (and will be asked to explain) the code you submit.
 - More details about project submission and grading TBD.
