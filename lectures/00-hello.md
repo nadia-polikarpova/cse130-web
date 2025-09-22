@@ -1,7 +1,7 @@
 ---
 title: Hello, world!
 headerImg: sea.jpg
-date: 2025-03-31
+date: 2025-09-25
 ---
 
 ## Who am I?
@@ -33,14 +33,7 @@ date: 2025-03-31
 
 ### Teaching Assistants
 
-* [Emmanuel Anaya González](https://eanayag.com/)
 * [Ilana Shapiro](https://ilanashapiro.github.io/)
-
-### Tutors
-
-* Alexander Zhang
-* Shaurya Raswan
-* Hisham Baobaid
 
 <br>
 <br>
@@ -281,8 +274,8 @@ If you work on a large system, you **will** design a new PL!
 - Haskell (3 weeks)
     - A practical functional language
 - Build your own language (5 weeks)
-    - How do we implement a new language (in Haksell)?
-    - Fun project: how do we make LLMs generate code in our language?
+    - How do we implement a new language (in Haskell)?
+    - Fun project: add new features to your language
 
 
 <br>
@@ -368,9 +361,9 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 - [webpage](https://nadia-polikarpova.github.io/cse130-web)
     - calendar, lecture notes, programming assignments, ...
-- [piazza](https://www.piazza.com/ucsd/spring2025/cse130/home)
+- [piazza](https://www.piazza.com/ucsd/fall2025/cse130/home)
     - announcements and discussions
-- [gradescope](https://www.gradescope.com/courses/1012632) (code: X2GEG5)
+- [gradescope](https://www.gradescope.com/courses/1141535) (code: GVYVKD)
     - homework/exam submissions, grades
 - [classquestion](https://classquestion.com/students) (code: GXJVJ)
     - anonymous questions during lecture
@@ -385,10 +378,10 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 ## Grading
 
-- 50% Homework assignments
-- 20% Project (aka "the last assignment")
-- 15% Midterm quiz
-- 15% Final quiz
+- 30% Homework assignments
+- 30% Project (aka "the last assignment")
+- 20% Midterm quiz
+- 20% Final quiz
 - 05% Extra credit for Piazza discussion
     - To **top 20** best participants
 
@@ -411,7 +404,10 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 - Submitted via Gradescope
     - submission instructions in the assignment
 - Solve **alone or in groups of two**
-    - user this [piazza thread](https://piazza.com/class/m8usoopybn1t8/post/5) to find a partner
+    - use this [piazza thread](https://piazza.com/class/mfvni9c6w522p7/post/5) to find a partner
+- AI assistants are **discouraged** for assignments
+    - because the purpose of assignments is to practice new coding skills on simple problems
+    - you are responsible for understanding *all the code* you submit
 
 <br>
 <br>
@@ -423,10 +419,10 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 ## Project
 
 - Bigger and more open-ended than the other assignments
-- You will work in groups of 2-3
-- You are allowed (and even encouraged) to use AI assistants (e.g., Copilot, ChatGPT) in your project,
-    but you must understand (and will be asked to explain) the code you submit.
-- More details coming soon
+- You will work in groups of 3-4
+- You are allowed (and **encouraged**) to use AI assistants (e.g., Copilot, ChatGPT) in your project,
+but you must understand the code you submit.
+- We will hold interview sessions during the final slot, where you will demo your project and answer questions about it.
 
 <br>
 <br>
@@ -437,11 +433,11 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 ## Exams
 
-- Midterm on *May 5*
-- Final: *June 6*
+- Midterm on *October 28*
+- Final: *December 4*
 - Gradescope multiple choice
 - Individual
-- Done during class
+- Done *in person* during class
 
 
 <br>
@@ -502,12 +498,12 @@ How can you earn 5% extra credit for this class?
 
 ## Your Resources
 
-- Discussion section: Mon 1pm
-    - PCYNH 106
 - Office hours
-    - every day, check calendar
+    - check calendar
 - Piazza
-    - we answer during work hours
+    - we might not answer every day (we are short-staffed this quarter)
+    - try to rely on each other and AI assistants
+    - but we will eventually read all posts and intervene if we see misconceptions
 - **No text**
     - online lecture notes and links
 
@@ -543,7 +539,7 @@ For exams **additionally do not**:
   - try to find past exams that are not publicly posted
 
 Policy on using AI assistants (e.g., Copilot, ChatGPT):
-  - using AI assistants is allowed for coding (not quizzes), as long as you acknowledge them in your submission
+  - using AI assistants is allowed for coding (not quizzes)
   - you are responsible for understanding *all the code* you submit
   - in the final project, you *are encouraged* to use AI assistants
   - in the assignments, you *are discouraged* to use AI assistants because the purpose

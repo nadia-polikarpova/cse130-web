@@ -5,12 +5,12 @@ headerImg: angles.jpg
 
 ## Course Resources
 
-- **Lectures:**             MWF 2:00-2:50pm PCYNH 106
-- **Discussion section:**   M 1:00-1:50pm PCYNH 106
+- **Lectures:**             TTh 12:30-1:50pm CENTR 113
+<!-- - **Discussion section:**   M 1:00-1:50pm PCYNH 106 -->
 - **Calendar:**             Check [here](calendar.html) for office hours, deadlines, etc.
-- **Piazza:**               Check [here](https://piazza.com/ucsd/spring2025/cse130) for announcement and discussions
+- **Piazza:**               Check [here](https://piazza.com/ucsd/fall2025/cse130) for announcement and discussions
 <!-- - **Canvas:**               Check [here](https://canvas.ucsd.edu/courses/64516)  -->
-- **Gradescope:**           Submit assignments [here](https://www.gradescope.com/courses/1012632) (code: X2GEG5)
+- **Gradescope:**           Submit assignments [here](https://www.gradescope.com/courses/1141535) (code: GVYVKD)
 - **ClassQuestion:**        Sign up [here](https://classquestion.com/students) (code: GXJVJ)
 
 
@@ -22,12 +22,7 @@ headerImg: angles.jpg
 
 ### TA/Tutor Team
 
-* [Emmanuel Anaya González](https://eanayag.com/)
 * [Ilana Shapiro](https://ilanashapiro.github.io/)
-* Alexander Zhang
-* Shaurya Raswan
-* Hisham Baobaid
-
 
 ## Overview
 
@@ -50,9 +45,6 @@ experimentation.
 University rules on integrity of scholarship will be strictly enforced. By
 taking this course, you implicitly agree to abide by the UCSD Policy on
 Integrity of Scholarship described [here](https://senate.ucsd.edu/Operating-Procedures/Senate-Manual/appendices/2).
-
-In particular, our general policy is that
-**any work you submit for grade should be your own, or else the source must be cited**.
 
 Incidents which violate the University's rules on integrity of scholarship
 will be taken seriously.  In addition to **receiving a zero (0)** on the

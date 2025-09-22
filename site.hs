@@ -80,7 +80,7 @@ siteCtx =
     constField "google_username"    "npolikarpova@ucsd.edu"       `mappend`
     constField "google_userid"      "u/0/104385825850161331469" `mappend`
     -- constField "canvas_classid"     "54610" `mappend`
-    constField "piazza_classid"     "ucsd/spring2025/cse130/home" `mappend`
+    constField "piazza_classid"     "ucsd/fall2025/cse130/home" `mappend`
     defaultContext
 
 
