@@ -1,0 +1,11 @@
+# macOS system files
+.DS_Store
+
+# Stack build files
+.stack-work/
+stack.yaml.lock
+
+# Generated site files
+_site/
+_site.zip
+_cache/
