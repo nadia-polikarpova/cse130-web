@@ -1,4 +1,4 @@
-resolver: lts-21.25
+resolver: lts-24.11
 system-ghc: true
 
 flags: {}
