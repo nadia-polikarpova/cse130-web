@@ -434,7 +434,7 @@ but you must understand the code you submit.
 
 ## Exams
 
-- Midterm on *October 28*
+- Midterm on *October 30*
 - Final: *December 4*
 - Gradescope multiple choice
 - Individual
