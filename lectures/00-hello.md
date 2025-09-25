@@ -15,9 +15,10 @@ date: 2025-09-25
 
 ### My Research
 
+- Usability of AI programming assistants: how do programmers use AI assistants and how can we make them better?
 - *In the past:* Program Verification: how to *prove* the program is doing the right thing?
-- Program Synthesis: how to *generate* a program that does the right thing?
-- Usability of AI assistants: how do programmers use AI assistants and how can we make them better?
+- *In the past:* Program Synthesis: how to *generate* a program that does the right thing?
+
 
 <br>
 <br>
@@ -141,9 +142,9 @@ But good luck writing
 
 Learning...
 
-- JavaScript in March
-- Haskell in April
-- C++ in May
+- JavaScript in October
+- Haskell in November
+- C++ in December
 - etc.
 
 ### New languages come (and go ...)

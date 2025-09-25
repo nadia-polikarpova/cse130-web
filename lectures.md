@@ -14,20 +14,20 @@ Lecture schedule is subject to change!
 | 10/9       | A crash course in Haskell       |                           |
 | 10/14      | contd.                          |                           |
 | 10/16      | Algebraic Data Types            |                           |
-| 10/21      | Higher Order Functions          |                           |
-| 10/23      | contd.                          |                           |
-| 10/28      | **Midterm quiz**                |                           |
-| 10/30      | Interpreters                    |                           |
-| 11/4       | contd.                          |                           |
-| 11/6       | Type Classes                    |                           |
-| 11/11      | Monads                          |                           |
+| 10/21      | contd.                          |                           |
+| 10/23      | Higher Order Functions          |                           |
+| 10/28      | contd.                          |                           |
+| 10/30      | **Midterm**                     |                           |
+| 11/4       | Interpreters                    |                           |
+| 11/6       | contd.                          |                           |
+| 11/11      | Type Classes                    |                           |
 | 11/13      | contd.                          |                           |
-| 11/18      | contd.                          |                           |
-| 11/20      | Parser Combinators              |                           |
-| 11/25      | contd.                          |                           |
+| 11/18      | Monads                          |                           |
+| 11/20      | contd.                          |                           |
+| 11/25      | Parser Combinators              |                           |
 | 11/27      | *No lecture: Thanksgiving*      |                           |
 | 12/2       | contd.                          |                           |
-| 12/4       | **Final quiz**                  |                           |
+| 12/4       | **Final**                       |                           |
 | 12/12      | **Project presentations**       |                           |
 
 
