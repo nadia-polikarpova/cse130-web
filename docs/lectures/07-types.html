@@ -276,8 +276,6 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p><strong>(D)</strong> <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> \y <span class="ot">-&gt;</span> x y</code></p>
 <p><strong>(E)</strong> <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> x x</code></p>
 <p><br></p>
-<p><em>Answer:</em> <strong>D</strong>. A adds a function; B applies a number; C defines <code class="sourceCode haskell">f</code> to take an <code class="sourceCode haskell"><span class="dt">Int</span></code> and then passes in a function;
-E requires a type <code class="sourceCode haskell"><span class="dt">T</span></code> that is equal to <code class="sourceCode haskell"><span class="dt">T</span> <span class="ot">-&gt;</span> <span class="dt">T</span></code>, which doesn’t exit.</p>
 <p><br>
 <br>
 <br>
@@ -394,19 +392,14 @@ which maps all its <em>free variables</em> to their <em>types</em></p>
 <br></p>
 <p><strong>Example 2</strong>:</p>
 <p>Let’s derive: <code class="sourceCode haskell">[] <span class="op">|-</span> <span class="kw">let</span> x <span class="ot">=</span> <span class="dv">1</span> <span class="kw">in</span> x <span class="op">+</span> <span class="dv">2</span><span class="ot"> ::</span> <span class="dt">Int</span></code></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>                 [<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>]<span class="co">-----------------   -----------------[T-Num]</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                         x<span class="op">:</span><span class="dt">Int</span> <span class="op">|-</span><span class="ot"> x ::</span> <span class="dt">Int</span>   x<span class="op">:</span><span class="dt">Int</span> <span class="op">|-</span> <span class="dv">2</span><span class="ot"> ::</span> <span class="dt">Int</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Num</span>] <span class="co">--------------   ------------------------------------[T-Add]</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        [] <span class="op">|-</span> <span class="dv">1</span><span class="ot"> ::</span> <span class="dt">Int</span>   x<span class="op">:</span><span class="dt">Int</span> <span class="op">|-</span> x <span class="op">+</span> <span class="dv">2</span><span class="ot"> ::</span> <span class="dt">Int</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Let</span>] <span class="co">-----------------------------------------------</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        [] <span class="op">|-</span> <span class="kw">let</span> x <span class="ot">=</span> <span class="dv">1</span> <span class="kw">in</span> x <span class="op">+</span> <span class="dv">2</span><span class="ot"> ::</span> <span class="dt">Int</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>[<span class="op">?</span>]   <span class="co">-----------------------------------------------</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        [] <span class="op">|-</span> <span class="kw">let</span> x <span class="ot">=</span> <span class="dv">1</span> <span class="kw">in</span> x <span class="op">+</span> <span class="dv">2</span><span class="ot"> ::</span> <span class="dt">Int</span></span></code></pre></div>
 <p>But we <em>cannot</em> derive: <code class="sourceCode haskell">[] <span class="op">|-</span> <span class="kw">let</span> x <span class="ot">=</span> \y <span class="ot">-&gt;</span> y <span class="kw">in</span> x <span class="op">+</span> <span class="dv">2</span><span class="ot"> ::</span> <span class="dt">T</span></code> for any type <code class="sourceCode haskell"><span class="dt">T</span></code></p>
-<p>The <code class="sourceCode haskell">[<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>]</code> rule above will fail to derive <code class="sourceCode haskell"><span class="ot">x ::</span> <span class="dt">Int</span></code></p>
 <p><br>
 <br></p>
 <p><strong>Example 3</strong>:</p>
 <p>We cannot derive: <code class="sourceCode haskell">[] <span class="op">|-</span> (\x <span class="ot">-&gt;</span> x x)<span class="ot"> ::</span> <span class="dt">T</span></code> for any type <code class="sourceCode haskell"><span class="dt">T</span></code></p>
-<p>We cannot find any type <code class="sourceCode haskell"><span class="dt">T</span></code> to fill in for <code class="sourceCode haskell">x</code>, because it has to be equal to <code class="sourceCode haskell"><span class="dt">T</span> <span class="ot">-&gt;</span> <span class="dt">T</span></code></p>
 <p><br>
 <br>
 <br>
@@ -420,7 +413,6 @@ which maps all its <em>free variables</em> to their <em>types</em></p>
 <ul>
 <li>examples?</li>
 </ul>
-<p><code class="sourceCode haskell"><span class="dv">1</span> <span class="dv">2</span></code> has no types; <code class="sourceCode haskell"><span class="dv">1</span></code> has one type (<code class="sourceCode haskell"><span class="dt">Int</span></code>)</p>
 <p><br>
 <br>
 <br>
@@ -459,14 +451,6 @@ which maps all its <em>free variables</em> to their <em>types</em></p>
 <p><strong>(C)</strong> Me: nope, rules: okay</p>
 <p><strong>(D)</strong> Me: nope, rules: nope</p>
 <p><br></p>
-<p><em>Answer:</em> B
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br></p>
 <h2 id="double-identity">Double identity</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="fu">id</span> <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="kw">in</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> y <span class="ot">=</span> <span class="fu">id</span> <span class="dv">5</span> <span class="kw">in</span></span>
@@ -587,7 +571,6 @@ which maps all its <em>free variables</em> to their <em>types</em></p>
 <p><strong>(C)</strong> Error: no mapping for type variable <code class="sourceCode haskell">d</code></p>
 <p><strong>(D)</strong> Error: type variable <code class="sourceCode haskell">a</code> is unused</p>
 <p><br></p>
-<p><em>Answer:</em> B</p>
 <p><br>
 <br>
 <br>
@@ -648,17 +631,13 @@ which maps all its <em>free variables</em> to their <em>types</em></p>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        [] <span class="op">|-</span> \x <span class="ot">-&gt; x ::</span> <span class="kw">forall</span> a <span class="op">.</span> a <span class="ot">-&gt;</span> a</span></code></pre></div>
 <p><br></p>
 <p>Can we derive: <code class="sourceCode haskell">[x<span class="op">:</span>a] <span class="op">|-</span><span class="ot"> x ::</span> <span class="kw">forall</span> a <span class="op">.</span> a</code>?</p>
-<p>No! The side condition of <code class="sourceCode haskell">[<span class="dt">T</span><span class="op">-</span><span class="dt">Gen</span>]</code> is violated because <code class="sourceCode haskell">a</code> <strong>is present</strong> in the context!</p>
 <p><br>
 <br></p>
 <p><strong>Example 2</strong></p>
 <p>Let’s derive: <code class="sourceCode haskell"><span class="dt">G1</span> <span class="op">|-</span> <span class="fu">id</span> <span class="dv">5</span><span class="ot"> ::</span> <span class="dt">Int</span></code> where <code class="sourceCode haskell"><span class="dt">G1</span> <span class="ot">=</span> [<span class="fu">id</span> <span class="op">:</span> (<span class="kw">forall</span> a <span class="op">.</span> a <span class="ot">-&gt;</span> a)]</code>:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>]<span class="co">-------------------------</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>     <span class="dt">G1</span> <span class="op">|-</span><span class="ot"> id ::</span> <span class="kw">forall</span> a<span class="op">.</span>a <span class="ot">-&gt;</span> a</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Inst</span>]<span class="co">------------------------   --------------[T-Num]</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">G1</span> <span class="op">|-</span><span class="ot"> id ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>     <span class="dt">G1</span> <span class="op">|-</span> <span class="dv">5</span><span class="ot"> ::</span> <span class="dt">Int</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">App</span>] <span class="co">---------------------------------------</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">G1</span> <span class="op">|-</span> <span class="fu">id</span> <span class="dv">5</span><span class="ot"> ::</span> <span class="dt">Int</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>    <span class="op">?</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>[<span class="op">?</span>] <span class="co">----------------</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">G1</span> <span class="op">|-</span> <span class="fu">id</span> <span class="dv">5</span><span class="ot"> ::</span> <span class="dt">Int</span></span></code></pre></div>
 <p><br>
 <br></p>
 <p><strong>Example 3</strong></p>
@@ -860,17 +839,17 @@ find a type substitution <code class="sourceCode haskell"><span class="dt">U</sp
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">-&gt;</span> a    <span class="fu">and</span>  <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>  is [a <span class="op">/</span> <span class="dt">Int</span>]</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>a <span class="ot">-&gt;</span> <span class="dt">Int</span>  <span class="fu">and</span>  <span class="dt">Int</span> <span class="ot">-&gt;</span> b    is [a <span class="op">/</span> <span class="dt">Int</span>, b <span class="op">/</span> <span class="dt">Int</span>]</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>a <span class="ot">-&gt;</span> <span class="dt">Int</span>  <span class="fu">and</span>  <span class="dt">Int</span> <span class="ot">-&gt;</span> b    is <span class="op">???</span></span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="dt">Int</span>       <span class="fu">and</span>  <span class="dt">Int</span>         is []</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="dt">Int</span>       <span class="fu">and</span>  <span class="dt">Int</span>         is <span class="op">???</span></span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>a         <span class="fu">and</span>  a           is []</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>a         <span class="fu">and</span>  a           is <span class="op">???</span></span>
 <span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="dt">Int</span>       <span class="fu">and</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>   cannot unify<span class="op">!</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="dt">Int</span>       <span class="fu">and</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>   is <span class="op">???</span></span>
 <span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="dt">Int</span>       <span class="fu">and</span> a <span class="ot">-&gt;</span> a       cannot unify<span class="op">!</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="dt">Int</span>       <span class="fu">and</span> a <span class="ot">-&gt;</span> a       is <span class="op">???</span></span>
 <span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>a         <span class="fu">and</span> a <span class="ot">-&gt;</span> a       cannot unify<span class="op">!</span>   </span></code></pre></div>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>a         <span class="fu">and</span> a <span class="ot">-&gt;</span> a       is <span class="op">???</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -961,9 +940,6 @@ find a type substitution <code class="sourceCode haskell"><span class="dt">U</sp
 <p><strong>(D)</strong> <code class="sourceCode haskell"><span class="dv">1</span> <span class="op">+</span> (\x <span class="ot">-&gt;</span> x)</code></p>
 <p><strong>(E)</strong> <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> x <span class="op">+</span> x <span class="dv">5</span></code></p>
 <p><br></p>
-<p><em>Answer:</em> E. A fails in step 1 (LHS is ill-typed); B fails in step 4 (RHS is ill-typed);
-C fails in step 2 (LHS is not <code class="sourceCode haskell"><span class="dt">Int</span></code>); D fails in step 5 (RHS is not <code class="sourceCode haskell"><span class="dt">Int</span></code>);
-finally, E fails because LHS and RHS by themselves are fine, but not together!</p>
 <p><br>
 <br>
 <br>
@@ -994,7 +970,6 @@ finally, E fails because LHS and RHS by themselves are fine, but not together!</
 <p><br>
 <br></p>
 <p>Can we do that in Haskell?</p>
-<p>No, Haskell is pure. Have to thread the counter through :(</p>
 <p><br>
 <br>
 <br>
