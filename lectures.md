@@ -11,7 +11,7 @@ Lecture schedule is subject to change!
 | 9/30       | The Lambda Calculus             | [html][lec1]              |
 | 10/2       | contd.                          |                           |
 | 10/7       | contd.                          |                           |
-| 10/9       | A crash course in Haskell       |                           |
+| 10/9       | A crash course in Haskell       | [html][lec2]              |
 | 10/14      | contd.                          |                           |
 | 10/16      | Algebraic Data Types            |                           |
 | 10/21      | contd.                          |                           |
