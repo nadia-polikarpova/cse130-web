@@ -13,7 +13,7 @@ Lecture schedule is subject to change!
 | 10/7       | contd.                          |                           |
 | 10/9       | A crash course in Haskell       | [html][lec2]              |
 | 10/14      | contd.                          |                           |
-| 10/16      | Algebraic Data Types            |                           |
+| 10/16      | Algebraic Data Types            | [html][lec3]              |
 | 10/21      | contd.                          |                           |
 | 10/23      | Higher Order Functions          |                           |
 | 10/28      | contd.                          |                           |
