@@ -15,7 +15,7 @@ Lecture schedule is subject to change!
 | 10/14      | contd.                          |                           |
 | 10/16      | Algebraic Data Types            | [html][lec3]              |
 | 10/21      | contd.                          |                           |
-| 10/23      | Higher Order Functions          |                           |
+| 10/23      | Higher Order Functions          | [html][lec4]              |
 | 10/28      | contd.                          |                           |
 | 10/30      | **Midterm**                     |                           |
 | 11/4       | Interpreters                    |                           |
