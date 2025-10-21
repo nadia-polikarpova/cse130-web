@@ -14,7 +14,7 @@ Lecture schedule is subject to change!
 | 10/9       | A crash course in Haskell       | [html][lec2]              |
 | 10/14      | contd.                          |                           |
 | 10/16      | Algebraic Data Types            | [html][lec3]              |
-| 10/21      | contd.                          |                           |
+| 10/21      | contd.                          | [self-study on tail recursion][tailrec]|
 | 10/23      | Higher Order Functions          | [html][lec4]              |
 | 10/28      | contd.                          |                           |
 | 10/30      | **Midterm**                     |                           |
@@ -46,6 +46,7 @@ But we have slides from previous years' discussion sections available [here](htt
 [lec6]: lectures/07-classes.html
 [lec7]: lectures/08-monads.html
 [lec8]: lectures/09-parsers.html
+[tailrec]: lectures/03-tailrec.html
 [soundness]: lectures/soundness.html
 [mock-final]: https://github.com/cse130-assignments/mock-final
 
