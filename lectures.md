@@ -18,7 +18,7 @@ Lecture schedule is subject to change!
 | 10/23      | Higher Order Functions          | [html][lec4]              |
 | 10/28      | contd.                          |                           |
 | 10/30      | **Midterm**                     |                           |
-| 11/4       | Interpreters                    |                           |
+| 11/4       | Interpreters                    | [html][lec5]              |
 | 11/6       | contd.                          |                           |
 | 11/11      | Type Classes                    |                           |
 | 11/13      | contd.                          |                           |

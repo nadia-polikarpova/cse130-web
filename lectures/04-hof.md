@@ -1092,26 +1092,40 @@ foldr :: (a -> b -> b) -> b -> [a] -> b  -- Right
 <br>
 
 
-## EXERCISE: list reversal
+## EXERCISE: list reversal two ways
 
-Use `foldl` to write a function `reverse` that reverses a list:
+Write a function that reverses a list first using `foldr` and then using `foldl`.
 
 ```haskell
-reverse :: [a] -> [a]
-reverse = foldl op base
+reverser :: [a] -> [a]
+reverser = foldr op base
   where
-    base = ...
-    op   = ...
+    base     = ...
+    op x res = ...
 ```
+
+and
+
+```haskell
+reversel :: [a] -> [a]
+reversel = foldl op base
+  where
+    base     = ...
+    op acc x = ...
+```
+
+Which one is more efficient?
 
 Recall:
 
 ```haskell
--- Type of foldl:
+-- Types:
 foldl :: (b -> a -> b) -> b -> [a] -> b
+foldr :: (a -> b -> b) -> b -> [a] -> b
 
--- Computation pattern of foldl:
+-- Computation patterns:
 foldl op b [x1, x2, x3]  ==> ((b `op` x1) `op` x2) `op` x3
+foldr op b [x1, x2, x3]  ==> x1 `op` (x2 `op` (x3 `op` b))
 ```
 
 <br>
