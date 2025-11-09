@@ -20,8 +20,8 @@ Lecture schedule is subject to change!
 | 10/30      | **Midterm**                     |                           |
 | 11/4       | Interpreters                    | [html][lec5]              |
 | 11/6       | contd.                          |                           |
-| 11/11      | Type Classes                    | [html][lec6]              |
-| 11/13      | contd.                          |                           |
+| 11/11      | *No lecture: Veterans Day*      |                           |
+| 11/13      | Type Classes                    | [html][lec6]              |
 | 11/18      | Monads                          |                           |
 | 11/20      | contd.                          |                           |
 | 11/25      | Parser Combinators              |                           |
