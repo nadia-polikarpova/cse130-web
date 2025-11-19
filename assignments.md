@@ -22,23 +22,8 @@ If you get an error when creating a team, **try a different team name**
 | [HW3](https://classroom.github.com/a/J2K_lPO6)   | All about Fold                  | 11/5                      |
 | [gradescope](https://www.gradescope.com/courses/1141535/assignments/7081106) | Project Team Registration       | 11/12                     |
 | [HW4](https://classroom.github.com/a/MM8q_rei)   | Nano                            | 11/19                     |
+| [project](https://classroom.github.com/a/nvQNt5Nq) | Nano Extensions               | 12/12                     |
 
 <!-- | [HW4](https://classroom.github.com/a/vTfX6RCH)   | Nano                            | 11/19                     | -->
-
-
-
-<!--
-| [project](https://classroom.github.com/a/QmCQ_yh_) | Nano Extensions               | [Team registration](https://forms.gle/4VSjHzc82qeaptMD7): 11/19 <br/> Presentation: 12/12  | -->
-
-
-
-
-<!--
-## Practice Exams
-
-- [Midterm Wi 19](/static/raw/130-midterm-wi19.pdf) ([solution](/static/raw/130-midterm-wi19-solution.pdf)),
-  [Midterm Fa 19](/static/raw/130-midterm-fa19.pdf) ([solution](/static/raw/130-midterm-fa19-solution.pdf)).
-
-- [Practice Final](https://classroom.github.com/a/8Md6lTLp) -->
 
 
