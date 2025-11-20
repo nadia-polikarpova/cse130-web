@@ -24,7 +24,7 @@ Lecture schedule is subject to change!
 | 11/13      | Type Classes                    | [html][lec6]              |
 | 11/18      | Monads                          | [html][lec7]              |
 | 11/20      | contd.                          |                           |
-| 11/25      | Parser Combinators              |                           |
+| 11/25      | Parser Combinators              | [html][lec8]              |
 | 11/27      | *No lecture: Thanksgiving*      |                           |
 | 12/2       | contd.                          |                           |
 | 12/4       | **Final**                       |                           |
